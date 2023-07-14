@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6.1 記述統計 | マーケティングリサーチ講義ノート</title>
+  <meta name="description" content="6.1 記述統計 | マーケティングリサーチ講義ノート" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6.1 記述統計 | マーケティングリサーチ講義ノート" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.github.io.git" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6.1 記述統計 | マーケティングリサーチ講義ノート" />
+  
+  
+  
+
+<meta name="author" content="Takumi Tagashira" />
+
+
+<meta name="date" content="2023-07-14" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="データの要約と可視化.html"/>
+<link rel="next" href="カテゴリ変数の要約.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Marketing Research Lecture Note</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> はじめに（本資料について）</a></li>
+<li class="chapter" data-level="2" data-path="r-と-r-studioに慣れる.html"><a href="r-と-r-studioに慣れる.html"><i class="fa fa-check"></i><b>2</b> R と R studioに慣れる</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="posit-cloudを始める.html"><a href="posit-cloudを始める.html"><i class="fa fa-check"></i><b>2.1</b> Posit cloudを始める</a></li>
+<li class="chapter" data-level="2.2" data-path="補足r-studio-デスクトップ版の利用.html"><a href="補足r-studio-デスクトップ版の利用.html"><i class="fa fa-check"></i><b>2.2</b> （補足）R studio デスクトップ版の利用</a></li>
+<li class="chapter" data-level="2.3" data-path="補足デスクトップ版の利用とプロジェクト機能.html"><a href="補足デスクトップ版の利用とプロジェクト機能.html"><i class="fa fa-check"></i><b>2.3</b> （補足）デスクトップ版の利用とプロジェクト機能</a></li>
+<li class="chapter" data-level="2.4" data-path="rの基本操作.html"><a href="rの基本操作.html"><i class="fa fa-check"></i><b>2.4</b> Rの基本操作</a></li>
+<li class="chapter" data-level="2.5" data-path="r-スクリプトのすゝめ.html"><a href="r-スクリプトのすゝめ.html"><i class="fa fa-check"></i><b>2.5</b> R スクリプトのすゝめ</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="r-スクリプトのすゝめ.html"><a href="r-スクリプトのすゝめ.html#rスクリプトを書く"><i class="fa fa-check"></i><b>2.5.1</b> Rスクリプトを書く</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="本章のまとめ.html"><a href="本章のまとめ.html"><i class="fa fa-check"></i><b>2.6</b> 本章のまとめ</a></li>
+<li class="chapter" data-level="2.7" data-path="参考文献.html"><a href="参考文献.html"><i class="fa fa-check"></i><b>2.7</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="リサーチデザイン.html"><a href="リサーチデザイン.html"><i class="fa fa-check"></i><b>3</b> リサーチデザイン</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="実務とリサーチの分離.html"><a href="実務とリサーチの分離.html"><i class="fa fa-check"></i><b>3.1</b> 実務とリサーチの分離</a></li>
+<li class="chapter" data-level="3.2" data-path="リサーチデザインと論文の構成.html"><a href="リサーチデザインと論文の構成.html"><i class="fa fa-check"></i><b>3.2</b> リサーチデザインと論文の構成</a></li>
+<li class="chapter" data-level="3.3" data-path="研究を行うことの目的.html"><a href="研究を行うことの目的.html"><i class="fa fa-check"></i><b>3.3</b> 研究を行うことの目的</a></li>
+<li class="chapter" data-level="3.4" data-path="研究課題問いの設定.html"><a href="研究課題問いの設定.html"><i class="fa fa-check"></i><b>3.4</b> 研究課題（問い）の設定</a></li>
+<li class="chapter" data-level="3.5" data-path="研究における理論の利用と精緻化.html"><a href="研究における理論の利用と精緻化.html"><i class="fa fa-check"></i><b>3.5</b> 研究における理論の利用と精緻化</a></li>
+<li class="chapter" data-level="3.6" data-path="問題と分析をつなげる仮説の提示.html"><a href="問題と分析をつなげる仮説の提示.html"><i class="fa fa-check"></i><b>3.6</b> 問題と分析をつなげる仮説の提示</a></li>
+<li class="chapter" data-level="3.7" data-path="参考文献-1.html"><a href="参考文献-1.html"><i class="fa fa-check"></i><b>3.7</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="データの種類とアンケートデザイン.html"><a href="データの種類とアンケートデザイン.html"><i class="fa fa-check"></i><b>4</b> データの種類とアンケートデザイン</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="記述的リサーチデザインとアンケート.html"><a href="記述的リサーチデザインとアンケート.html"><i class="fa fa-check"></i><b>4.1</b> 記述的リサーチデザインとアンケート</a></li>
+<li class="chapter" data-level="4.2" data-path="質問におけるワーディング.html"><a href="質問におけるワーディング.html"><i class="fa fa-check"></i><b>4.2</b> 質問におけるワーディング</a></li>
+<li class="chapter" data-level="4.3" data-path="アンケートデザイン.html"><a href="アンケートデザイン.html"><i class="fa fa-check"></i><b>4.3</b> アンケートデザイン</a></li>
+<li class="chapter" data-level="4.4" data-path="参考文献-2.html"><a href="参考文献-2.html"><i class="fa fa-check"></i><b>4.4</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="データ処理と顧客関係管理crm.html"><a href="データ処理と顧客関係管理crm.html"><i class="fa fa-check"></i><b>5</b> データ処理と顧客関係管理（CRM）</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="データの読み込み.html"><a href="データの読み込み.html"><i class="fa fa-check"></i><b>5.1</b> データの読み込み</a></li>
+<li class="chapter" data-level="5.2" data-path="データの整形.html"><a href="データの整形.html"><i class="fa fa-check"></i><b>5.2</b> データの整形</a></li>
+<li class="chapter" data-level="5.3" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html"><i class="fa fa-check"></i><b>5.3</b> 統計的検定を用いない顧客分析</a></li>
+<li class="chapter" data-level="5.4" data-path="おまけ-wide型とlong型データセット.html"><a href="おまけ-wide型とlong型データセット.html"><i class="fa fa-check"></i><b>5.4</b> (おまけ) Wide型とLong型データセット</a></li>
+<li class="chapter" data-level="5.5" data-path="参考文献-3.html"><a href="参考文献-3.html"><i class="fa fa-check"></i><b>5.5</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="データの要約と可視化.html"><a href="データの要約と可視化.html"><i class="fa fa-check"></i><b>6</b> データの要約と可視化</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="記述統計.html"><a href="記述統計.html"><i class="fa fa-check"></i><b>6.1</b> 記述統計</a></li>
+<li class="chapter" data-level="6.2" data-path="カテゴリ変数の要約.html"><a href="カテゴリ変数の要約.html"><i class="fa fa-check"></i><b>6.2</b> カテゴリ変数の要約</a></li>
+<li class="chapter" data-level="6.3" data-path="データの可視化.html"><a href="データの可視化.html"><i class="fa fa-check"></i><b>6.3</b> データの可視化</a></li>
+<li class="chapter" data-level="6.4" data-path="二変数間の関係の要約.html"><a href="二変数間の関係の要約.html"><i class="fa fa-check"></i><b>6.4</b> 二変数間の関係の要約</a></li>
+<li class="chapter" data-level="6.5" data-path="参考文献-4.html"><a href="参考文献-4.html"><i class="fa fa-check"></i><b>6.5</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="基礎統計学復習.html"><a href="基礎統計学復習.html"><i class="fa fa-check"></i><b>7</b> 基礎統計学復習</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="確率モデル期待値と分散.html"><a href="確率モデル期待値と分散.html"><i class="fa fa-check"></i><b>7.1</b> 確率モデル、期待値と分散</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="確率モデル期待値と分散.html"><a href="確率モデル期待値と分散.html#確率と確率変数"><i class="fa fa-check"></i><b>7.1.1</b> 確率と確率変数</a></li>
+<li class="chapter" data-level="7.1.2" data-path="確率モデル期待値と分散.html"><a href="確率モデル期待値と分散.html#期待値と分散"><i class="fa fa-check"></i><b>7.1.2</b> 期待値と分散</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="統計的推測.html"><a href="統計的推測.html"><i class="fa fa-check"></i><b>7.2</b> 統計的推測</a></li>
+<li class="chapter" data-level="7.3" data-path="点推定.html"><a href="点推定.html"><i class="fa fa-check"></i><b>7.3</b> 点推定</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="点推定.html"><a href="点推定.html#代表定期推定量としての標本平均"><i class="fa fa-check"></i><b>7.3.1</b> 代表定期推定量としての標本平均</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="推定量もまた確率変数.html"><a href="推定量もまた確率変数.html"><i class="fa fa-check"></i><b>7.4</b> 推定量もまた確率変数</a></li>
+<li class="chapter" data-level="7.5" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html"><i class="fa fa-check"></i><b>7.5</b> 補足（いくつかの確率分布の関係性）</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#正規分布"><i class="fa fa-check"></i><b>7.5.1</b> 正規分布</a></li>
+<li class="chapter" data-level="7.5.2" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#カイ二乗分布"><i class="fa fa-check"></i><b>7.5.2</b> カイ二乗分布</a></li>
+<li class="chapter" data-level="7.5.3" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#t分布"><i class="fa fa-check"></i><b>7.5.3</b> t分布</a></li>
+<li class="chapter" data-level="7.5.4" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#f分布"><i class="fa fa-check"></i><b>7.5.4</b> F分布</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="区間推定.html"><a href="区間推定.html"><i class="fa fa-check"></i><b>7.6</b> 区間推定</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="区間推定.html"><a href="区間推定.html#信頼区間概要"><i class="fa fa-check"></i><b>7.6.1</b> 信頼区間概要</a></li>
+<li class="chapter" data-level="7.6.2" data-path="区間推定.html"><a href="区間推定.html#確率と区間の計算"><i class="fa fa-check"></i><b>7.6.2</b> 確率と区間の計算</a></li>
+<li class="chapter" data-level="7.6.3" data-path="区間推定.html"><a href="区間推定.html#信頼区間の導出と解釈"><i class="fa fa-check"></i><b>7.6.3</b> 信頼区間の導出と解釈</a></li>
+<li class="chapter" data-level="7.6.4" data-path="区間推定.html"><a href="区間推定.html#rを用いた信頼区間の計算標準正規分布"><i class="fa fa-check"></i><b>7.6.4</b> Rを用いた信頼区間の計算（標準正規分布）</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="信頼区間の解釈.html"><a href="信頼区間の解釈.html"><i class="fa fa-check"></i><b>7.7</b> 信頼区間の解釈</a></li>
+<li class="chapter" data-level="7.8" data-path="統計的仮説検定.html"><a href="統計的仮説検定.html"><i class="fa fa-check"></i><b>7.8</b> 統計的仮説検定</a>
+<ul>
+<li class="chapter" data-level="7.8.1" data-path="統計的仮説検定.html"><a href="統計的仮説検定.html#検定における仮説"><i class="fa fa-check"></i><b>7.8.1</b> 検定における仮説</a></li>
+<li class="chapter" data-level="7.8.2" data-path="統計的仮説検定.html"><a href="統計的仮説検定.html#統計的検定の実行t検定"><i class="fa fa-check"></i><b>7.8.2</b> 統計的検定の実行（t検定）</a></li>
+</ul></li>
+<li class="chapter" data-level="7.9" data-path="検定統計量と臨界値.html"><a href="検定統計量と臨界値.html"><i class="fa fa-check"></i><b>7.9</b> 検定統計量と臨界値</a>
+<ul>
+<li class="chapter" data-level="7.9.1" data-path="検定統計量と臨界値.html"><a href="検定統計量と臨界値.html#有意水準と検定における誤り"><i class="fa fa-check"></i><b>7.9.1</b> 有意水準と検定における誤り</a></li>
+<li class="chapter" data-level="7.9.2" data-path="検定統計量と臨界値.html"><a href="検定統計量と臨界値.html#rを用いた統計的検定の実施標準正規分布"><i class="fa fa-check"></i><b>7.9.2</b> Rを用いた統計的検定の実施（標準正規分布）</a></li>
+<li class="chapter" data-level="7.9.3" data-path="検定統計量と臨界値.html"><a href="検定統計量と臨界値.html#p値について"><i class="fa fa-check"></i><b>7.9.3</b> p値について</a></li>
+<li class="chapter" data-level="7.9.4" data-path="検定統計量と臨界値.html"><a href="検定統計量と臨界値.html#母平均の検定小括"><i class="fa fa-check"></i><b>7.9.4</b> 母平均の検定小括</a></li>
+</ul></li>
+<li class="chapter" data-level="7.10" data-path="平均値に関するその他の検定.html"><a href="平均値に関するその他の検定.html"><i class="fa fa-check"></i><b>7.10</b> 平均値に関するその他の検定</a>
+<ul>
+<li class="chapter" data-level="7.10.1" data-path="平均値に関するその他の検定.html"><a href="平均値に関するその他の検定.html#平均の差の検定"><i class="fa fa-check"></i><b>7.10.1</b> 平均の差の検定</a></li>
+</ul></li>
+<li class="chapter" data-level="7.11" data-path="分散分析.html"><a href="分散分析.html"><i class="fa fa-check"></i><b>7.11</b> 分散分析</a></li>
+<li class="chapter" data-level="7.12" data-path="参考文献-5.html"><a href="参考文献-5.html"><i class="fa fa-check"></i><b>7.12</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="回帰分析.html"><a href="回帰分析.html"><i class="fa fa-check"></i><b>8</b> 回帰分析</a></li>
+<li class="chapter" data-level="9" data-path="回帰分析上の工夫紹介.html"><a href="回帰分析上の工夫紹介.html"><i class="fa fa-check"></i><b>9</b> 回帰分析上の工夫紹介</a></li>
+<li class="chapter" data-level="10" data-path="セグメントとクラスター分析.html"><a href="セグメントとクラスター分析.html"><i class="fa fa-check"></i><b>10</b> セグメントとクラスター分析</a></li>
+<li class="chapter" data-level="11" data-path="ポジショニングと知覚マップ.html"><a href="ポジショニングと知覚マップ.html"><i class="fa fa-check"></i><b>11</b> ポジショニングと知覚マップ</a></li>
+<li class="chapter" data-level="12" data-path="価格感度測定.html"><a href="価格感度測定.html"><i class="fa fa-check"></i><b>12</b> 価格感度測定</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">マーケティングリサーチ講義ノート</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="記述統計" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> 記述統計<a href="記述統計.html#記述統計" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>記述統計の利用においては、データのタイプ別に利用すべき統計量が異なることに注意が必要である。「データのタイプ」という節で確認したように、データには量的変数とカテゴリ（を示す質的）変数がある。量的変数は数値で測定できるものであり、その計算結果を解釈することも可能である。一方でカテゴリ変数は、各観測個体が属している状態やグループを表す指標であり、それを計算してもそこから含意を得るのが難しい。Rのような統計ソフトは非常に素直なので、たとえカテゴリ変数であってもそこに数値が入力されていれば、記述統計に必要な計算を実行し、結果を返してくれる。しかしながら研究においてはそれらの結果を適切に解釈する必要があり、自身が用いている変数のタイプに応じた分析を実行する必要がある。</p>
+<p>その上で本節ではまずひとつの量的変数の情報を要約するための記述統計を紹介する。一つの数値によってデータ全体を代表させるような数値を代表値と呼ぶ。代表値はおもにデータの中心を示す指標と考えられる。本節ではデータの中心を表す指標として中央値 (median) と平均値 (mean) を紹介する。中央値は、データのすべての観測値において、その値より小さな観測値の数と大きな観測値の数が等しくなるような真ん中の値を表す。そのため、（1, 3, 2, 5, 4）というデータにおける中央値は3である。これは、このデータを、1, 2, 3, 4, 5 と並べ替えると、3よりより小さな観測値の数と大きな観測値の数が等しくなっていることから確認できる<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>。</p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="記述統計.html#cb104-1" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">4</span>)</span>
+<span id="cb104-2"><a href="記述統計.html#cb104-2" tabindex="-1"></a><span class="fu">median</span>(d)</span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="記述統計.html#cb106-1" tabindex="-1"></a>d2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">6</span>)</span>
+<span id="cb106-2"><a href="記述統計.html#cb106-2" tabindex="-1"></a><span class="fu">median</span>(d2)</span></code></pre></div>
+<pre><code>## [1] 3.5</code></pre>
+<p>平均値（算術平均と呼ばれる）は、最もよく使われる代表値の一つである。平均値は、n個のデータ、<span class="math inline">\(\small x_1,x_2,...,x_n\)</span> に対して以下のように定義される。</p>
+<p><span class="math display">\[\bar{x} = \frac{1}{n}\sum_i^n x_i\]</span></p>
+<p>観測値と平均値の差（<span class="math inline">\(x_i - \bar{x}\)</span>）は偏差と呼ばれ、偏差の和はゼロである（<span class="math inline">\(\sum_ix_i - \bar{x}=0\)</span>）という性質を持つ。つまり、平均値を中心として、データの正の方向へのばらつきと負の方向へのばらつきが釣り合いが取れているということが伺える。この点が、平均値がデータの中心を表す代表値として用いられるひとつの理由である。また、平均値にはいくつかの好ましい統計的性質があるのだが、それについては後述する。Rにおいては、<code>mean()</code> 関数を用いることで分析が可能である。例えば、9人の生徒に対して行われた数学(x)と国語(y)のテスト(10 点満点)の結果が、それぞれ以下の通りであったとしよう。</p>
+<ul>
+<li>数学: (3,3,5,5,5,5,5,7,7)</li>
+<li>国語: (2,3,3,5,5,5,7,7,8)</li>
+</ul>
+<p>このときの平均値は以下のように求まる。</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="記述統計.html#cb108-1" tabindex="-1"></a>math <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">7</span>)</span>
+<span id="cb108-2"><a href="記述統計.html#cb108-2" tabindex="-1"></a>jpn <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">7</span>,<span class="dv">8</span>)</span>
+<span id="cb108-3"><a href="記述統計.html#cb108-3" tabindex="-1"></a></span>
+<span id="cb108-4"><a href="記述統計.html#cb108-4" tabindex="-1"></a><span class="fu">mean</span>(math)</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="記述統計.html#cb110-1" tabindex="-1"></a><span class="fu">mean</span>(jpn)</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<p>計算の結果、どちらも平均値は5であった。データの中心を表す代表値の値が等しかったため、これら2科目のテスト結果は同じ分布を持つと判断して良いのだろうか。自明かもしれないが、そのような解釈は不適切である。具体的には、データの「ばらつき」についても確認する必要がある。分布のばらつきは、平均値からの離れ方(平均値からの偏差) によって判断される事が多く、これが大きなデータが多い場合は、よりデータは散らばっ て分布していると解釈される。一方でデータが平均の近くに集まって分布している場合、ばらつきが小さいと捉えられる。この分布のばらつきは主に、分散や標準偏差という指標で測られる。</p>
+<p>分散 (Variance, <span class="math inline">\(S^2\)</span>で定義する) は以下のように、平均からの偏差の二乗の和をデータ数で割ったものだと定義される。平均からの偏差の和を計算すると、正の方向へのズレとマイナス方向へのずれがあるので、互いに相殺しあって合計は 0 になる。そこで、偏差の二乗和を用いることでデータ全体がどの程度平均からばらついているかを把握する。
+<span class="math display">\[S^2 = \frac{1}{n}\sum_i^n (x_i-\bar{x})^2\]</span></p>
+<p>しかしながら、分散は元の値を二乗しているのでもとのデータと単位が異なる。そのため、分散の正の平方根 (<span class="math inline">\(\sqrt{\cdot}\)</span>) を取った値を標準偏差と呼び、この標準偏差を用いることも多い<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>。なお、Rでは <code>var()</code> と <code>sd()</code> によって分散と標準偏差をそれぞれ求める。ただし、Rの関数による計算では <span class="math inline">\(s^2=\frac{1}{n-1}\sum_i^n (x_i-\bar{x})^2\)</span> で定義される「不偏標本分散」および「不偏標準誤差」という指標を用いる。これは、これらの指標のほうが統計的に好ましい性質を持っているためであるが、Rを用いた分散の計算値が、nで割った際の手計算値と異なることがあるのでその点には注意が必要である。</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="記述統計.html#cb112-1" tabindex="-1"></a><span class="fu">var</span>(math)</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="記述統計.html#cb114-1" tabindex="-1"></a><span class="fu">var</span>(jpn)</span></code></pre></div>
+<pre><code>## [1] 4.25</code></pre>
+<p>先程の数学と国語のテスト結果データを用いて分散を計算すると、国語の方が分散が大きいことがわかる。つまり、両テストとも平均値は同じであるものの、国語のほうがそのスコアのばらつきが大きいことがわかる。このように、代表値とともにデータのばらつきに関する情報も踏まえてデータの特徴を把握することが好ましい。</p>
+<p>観察されたデータと標準偏差を用いて、特定の観測結果がデータ内において「相対的に」どのような位置にいるのかを捉えることも可能になる。具体的には、任意の量的変数 <span class="math inline">\(x_1,...,x_n\)</span> に対して、標準化されたスコア <span class="math inline">\(z_1,..,z_n\)</span> は以下のように定義できる。</p>
+<p><span class="math display">\[
+z_i=\frac{(x_i-\bar{x})}{\sqrt{(S^2)}}
+\]</span></p>
+<p>ただし、 <span class="math inline">\(S^2\)</span> は変数 <span class="math inline">\(x\)</span> の分散である（不偏標本分散を用いることもある）。上記定義の通り、標準化スコアは観測値の平均からの偏差を標準偏差で割っており、ある観測が平均値から標準偏差何個分ズレているかを示していると解釈できる。なお、標準化スコアは、平均が0、分散が1になることも知られている。</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="5">
+<li id="fn5"><p>一方でデータの観測数（ <span class="math inline">\(n\)</span> ）が偶数である場合、<span class="math inline">\(\small n/2\)</span> 番目と、<span class="math inline">\(\small (n/2)+1\)</span> 番目が中央となるため、n個のデータの観測値を、<span class="math inline">\(x_1,x_2,...,x_n\)</span> とすると、これらふたつの値の平均値（ <span class="math inline">\(\small \frac{x_{\frac{n}{2}}+x_{ \frac{n}{2}+1}}{2}\)</span> ）が中央値となる。Rにおいては<code>median()</code> 関数によって以下のように計算することができる。<a href="記述統計.html#fnref5" class="footnote-back">↩︎</a></p></li>
+<li id="fn6"><p>偏差の二乗和のかわりに偏差の絶対値を用いた平均偏差という指標も存在する。しかしながら、分散や標準偏差のほうが好ましい統計的性質を持つことから、二乗和が用いられることが多い。<a href="記述統計.html#fnref6" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="データの要約と可視化.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="カテゴリ変数の要約.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/05-Visualization.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

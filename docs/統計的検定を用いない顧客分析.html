@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5.3 統計的検定を用いない顧客分析 | マーケティングリサーチ講義ノート</title>
+  <meta name="description" content="5.3 統計的検定を用いない顧客分析 | マーケティングリサーチ講義ノート" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5.3 統計的検定を用いない顧客分析 | マーケティングリサーチ講義ノート" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.github.io.git" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5.3 統計的検定を用いない顧客分析 | マーケティングリサーチ講義ノート" />
+  
+  
+  
+
+<meta name="author" content="Takumi Tagashira" />
+
+
+<meta name="date" content="2023-07-14" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="データの整形.html"/>
+<link rel="next" href="おまけ-wide型とlong型データセット.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Marketing Research Lecture Note</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> はじめに（本資料について）</a></li>
+<li class="chapter" data-level="2" data-path="r-と-r-studioに慣れる.html"><a href="r-と-r-studioに慣れる.html"><i class="fa fa-check"></i><b>2</b> R と R studioに慣れる</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="posit-cloudを始める.html"><a href="posit-cloudを始める.html"><i class="fa fa-check"></i><b>2.1</b> Posit cloudを始める</a></li>
+<li class="chapter" data-level="2.2" data-path="補足r-studio-デスクトップ版の利用.html"><a href="補足r-studio-デスクトップ版の利用.html"><i class="fa fa-check"></i><b>2.2</b> （補足）R studio デスクトップ版の利用</a></li>
+<li class="chapter" data-level="2.3" data-path="補足デスクトップ版の利用とプロジェクト機能.html"><a href="補足デスクトップ版の利用とプロジェクト機能.html"><i class="fa fa-check"></i><b>2.3</b> （補足）デスクトップ版の利用とプロジェクト機能</a></li>
+<li class="chapter" data-level="2.4" data-path="rの基本操作.html"><a href="rの基本操作.html"><i class="fa fa-check"></i><b>2.4</b> Rの基本操作</a></li>
+<li class="chapter" data-level="2.5" data-path="r-スクリプトのすゝめ.html"><a href="r-スクリプトのすゝめ.html"><i class="fa fa-check"></i><b>2.5</b> R スクリプトのすゝめ</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="r-スクリプトのすゝめ.html"><a href="r-スクリプトのすゝめ.html#rスクリプトを書く"><i class="fa fa-check"></i><b>2.5.1</b> Rスクリプトを書く</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="本章のまとめ.html"><a href="本章のまとめ.html"><i class="fa fa-check"></i><b>2.6</b> 本章のまとめ</a></li>
+<li class="chapter" data-level="2.7" data-path="参考文献.html"><a href="参考文献.html"><i class="fa fa-check"></i><b>2.7</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="リサーチデザイン.html"><a href="リサーチデザイン.html"><i class="fa fa-check"></i><b>3</b> リサーチデザイン</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="実務とリサーチの分離.html"><a href="実務とリサーチの分離.html"><i class="fa fa-check"></i><b>3.1</b> 実務とリサーチの分離</a></li>
+<li class="chapter" data-level="3.2" data-path="リサーチデザインと論文の構成.html"><a href="リサーチデザインと論文の構成.html"><i class="fa fa-check"></i><b>3.2</b> リサーチデザインと論文の構成</a></li>
+<li class="chapter" data-level="3.3" data-path="研究を行うことの目的.html"><a href="研究を行うことの目的.html"><i class="fa fa-check"></i><b>3.3</b> 研究を行うことの目的</a></li>
+<li class="chapter" data-level="3.4" data-path="研究課題問いの設定.html"><a href="研究課題問いの設定.html"><i class="fa fa-check"></i><b>3.4</b> 研究課題（問い）の設定</a></li>
+<li class="chapter" data-level="3.5" data-path="研究における理論の利用と精緻化.html"><a href="研究における理論の利用と精緻化.html"><i class="fa fa-check"></i><b>3.5</b> 研究における理論の利用と精緻化</a></li>
+<li class="chapter" data-level="3.6" data-path="問題と分析をつなげる仮説の提示.html"><a href="問題と分析をつなげる仮説の提示.html"><i class="fa fa-check"></i><b>3.6</b> 問題と分析をつなげる仮説の提示</a></li>
+<li class="chapter" data-level="3.7" data-path="参考文献-1.html"><a href="参考文献-1.html"><i class="fa fa-check"></i><b>3.7</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="データの種類とアンケートデザイン.html"><a href="データの種類とアンケートデザイン.html"><i class="fa fa-check"></i><b>4</b> データの種類とアンケートデザイン</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="記述的リサーチデザインとアンケート.html"><a href="記述的リサーチデザインとアンケート.html"><i class="fa fa-check"></i><b>4.1</b> 記述的リサーチデザインとアンケート</a></li>
+<li class="chapter" data-level="4.2" data-path="質問におけるワーディング.html"><a href="質問におけるワーディング.html"><i class="fa fa-check"></i><b>4.2</b> 質問におけるワーディング</a></li>
+<li class="chapter" data-level="4.3" data-path="アンケートデザイン.html"><a href="アンケートデザイン.html"><i class="fa fa-check"></i><b>4.3</b> アンケートデザイン</a></li>
+<li class="chapter" data-level="4.4" data-path="参考文献-2.html"><a href="参考文献-2.html"><i class="fa fa-check"></i><b>4.4</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="データ処理と顧客関係管理crm.html"><a href="データ処理と顧客関係管理crm.html"><i class="fa fa-check"></i><b>5</b> データ処理と顧客関係管理（CRM）</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="データの読み込み.html"><a href="データの読み込み.html"><i class="fa fa-check"></i><b>5.1</b> データの読み込み</a></li>
+<li class="chapter" data-level="5.2" data-path="データの整形.html"><a href="データの整形.html"><i class="fa fa-check"></i><b>5.2</b> データの整形</a></li>
+<li class="chapter" data-level="5.3" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html"><i class="fa fa-check"></i><b>5.3</b> 統計的検定を用いない顧客分析</a></li>
+<li class="chapter" data-level="5.4" data-path="おまけ-wide型とlong型データセット.html"><a href="おまけ-wide型とlong型データセット.html"><i class="fa fa-check"></i><b>5.4</b> (おまけ) Wide型とLong型データセット</a></li>
+<li class="chapter" data-level="5.5" data-path="参考文献-3.html"><a href="参考文献-3.html"><i class="fa fa-check"></i><b>5.5</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="データの要約と可視化.html"><a href="データの要約と可視化.html"><i class="fa fa-check"></i><b>6</b> データの要約と可視化</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="記述統計.html"><a href="記述統計.html"><i class="fa fa-check"></i><b>6.1</b> 記述統計</a></li>
+<li class="chapter" data-level="6.2" data-path="カテゴリ変数の要約.html"><a href="カテゴリ変数の要約.html"><i class="fa fa-check"></i><b>6.2</b> カテゴリ変数の要約</a></li>
+<li class="chapter" data-level="6.3" data-path="データの可視化.html"><a href="データの可視化.html"><i class="fa fa-check"></i><b>6.3</b> データの可視化</a></li>
+<li class="chapter" data-level="6.4" data-path="二変数間の関係の要約.html"><a href="二変数間の関係の要約.html"><i class="fa fa-check"></i><b>6.4</b> 二変数間の関係の要約</a></li>
+<li class="chapter" data-level="6.5" data-path="参考文献-4.html"><a href="参考文献-4.html"><i class="fa fa-check"></i><b>6.5</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="基礎統計学復習.html"><a href="基礎統計学復習.html"><i class="fa fa-check"></i><b>7</b> 基礎統計学復習</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="確率モデル期待値と分散.html"><a href="確率モデル期待値と分散.html"><i class="fa fa-check"></i><b>7.1</b> 確率モデル、期待値と分散</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="確率モデル期待値と分散.html"><a href="確率モデル期待値と分散.html#確率と確率変数"><i class="fa fa-check"></i><b>7.1.1</b> 確率と確率変数</a></li>
+<li class="chapter" data-level="7.1.2" data-path="確率モデル期待値と分散.html"><a href="確率モデル期待値と分散.html#期待値と分散"><i class="fa fa-check"></i><b>7.1.2</b> 期待値と分散</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="統計的推測.html"><a href="統計的推測.html"><i class="fa fa-check"></i><b>7.2</b> 統計的推測</a></li>
+<li class="chapter" data-level="7.3" data-path="点推定.html"><a href="点推定.html"><i class="fa fa-check"></i><b>7.3</b> 点推定</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="点推定.html"><a href="点推定.html#代表定期推定量としての標本平均"><i class="fa fa-check"></i><b>7.3.1</b> 代表定期推定量としての標本平均</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="推定量もまた確率変数.html"><a href="推定量もまた確率変数.html"><i class="fa fa-check"></i><b>7.4</b> 推定量もまた確率変数</a></li>
+<li class="chapter" data-level="7.5" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html"><i class="fa fa-check"></i><b>7.5</b> 補足（いくつかの確率分布の関係性）</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#正規分布"><i class="fa fa-check"></i><b>7.5.1</b> 正規分布</a></li>
+<li class="chapter" data-level="7.5.2" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#カイ二乗分布"><i class="fa fa-check"></i><b>7.5.2</b> カイ二乗分布</a></li>
+<li class="chapter" data-level="7.5.3" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#t分布"><i class="fa fa-check"></i><b>7.5.3</b> t分布</a></li>
+<li class="chapter" data-level="7.5.4" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#f分布"><i class="fa fa-check"></i><b>7.5.4</b> F分布</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="区間推定.html"><a href="区間推定.html"><i class="fa fa-check"></i><b>7.6</b> 区間推定</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="区間推定.html"><a href="区間推定.html#信頼区間概要"><i class="fa fa-check"></i><b>7.6.1</b> 信頼区間概要</a></li>
+<li class="chapter" data-level="7.6.2" data-path="区間推定.html"><a href="区間推定.html#確率と区間の計算"><i class="fa fa-check"></i><b>7.6.2</b> 確率と区間の計算</a></li>
+<li class="chapter" data-level="7.6.3" data-path="区間推定.html"><a href="区間推定.html#信頼区間の導出と解釈"><i class="fa fa-check"></i><b>7.6.3</b> 信頼区間の導出と解釈</a></li>
+<li class="chapter" data-level="7.6.4" data-path="区間推定.html"><a href="区間推定.html#rを用いた信頼区間の計算標準正規分布"><i class="fa fa-check"></i><b>7.6.4</b> Rを用いた信頼区間の計算（標準正規分布）</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="信頼区間の解釈.html"><a href="信頼区間の解釈.html"><i class="fa fa-check"></i><b>7.7</b> 信頼区間の解釈</a></li>
+<li class="chapter" data-level="7.8" data-path="統計的仮説検定.html"><a href="統計的仮説検定.html"><i class="fa fa-check"></i><b>7.8</b> 統計的仮説検定</a>
+<ul>
+<li class="chapter" data-level="7.8.1" data-path="統計的仮説検定.html"><a href="統計的仮説検定.html#検定における仮説"><i class="fa fa-check"></i><b>7.8.1</b> 検定における仮説</a></li>
+<li class="chapter" data-level="7.8.2" data-path="統計的仮説検定.html"><a href="統計的仮説検定.html#統計的検定の実行t検定"><i class="fa fa-check"></i><b>7.8.2</b> 統計的検定の実行（t検定）</a></li>
+</ul></li>
+<li class="chapter" data-level="7.9" data-path="検定統計量と臨界値.html"><a href="検定統計量と臨界値.html"><i class="fa fa-check"></i><b>7.9</b> 検定統計量と臨界値</a>
+<ul>
+<li class="chapter" data-level="7.9.1" data-path="検定統計量と臨界値.html"><a href="検定統計量と臨界値.html#有意水準と検定における誤り"><i class="fa fa-check"></i><b>7.9.1</b> 有意水準と検定における誤り</a></li>
+<li class="chapter" data-level="7.9.2" data-path="検定統計量と臨界値.html"><a href="検定統計量と臨界値.html#rを用いた統計的検定の実施標準正規分布"><i class="fa fa-check"></i><b>7.9.2</b> Rを用いた統計的検定の実施（標準正規分布）</a></li>
+<li class="chapter" data-level="7.9.3" data-path="検定統計量と臨界値.html"><a href="検定統計量と臨界値.html#p値について"><i class="fa fa-check"></i><b>7.9.3</b> p値について</a></li>
+<li class="chapter" data-level="7.9.4" data-path="検定統計量と臨界値.html"><a href="検定統計量と臨界値.html#母平均の検定小括"><i class="fa fa-check"></i><b>7.9.4</b> 母平均の検定小括</a></li>
+</ul></li>
+<li class="chapter" data-level="7.10" data-path="平均値に関するその他の検定.html"><a href="平均値に関するその他の検定.html"><i class="fa fa-check"></i><b>7.10</b> 平均値に関するその他の検定</a>
+<ul>
+<li class="chapter" data-level="7.10.1" data-path="平均値に関するその他の検定.html"><a href="平均値に関するその他の検定.html#平均の差の検定"><i class="fa fa-check"></i><b>7.10.1</b> 平均の差の検定</a></li>
+</ul></li>
+<li class="chapter" data-level="7.11" data-path="分散分析.html"><a href="分散分析.html"><i class="fa fa-check"></i><b>7.11</b> 分散分析</a></li>
+<li class="chapter" data-level="7.12" data-path="参考文献-5.html"><a href="参考文献-5.html"><i class="fa fa-check"></i><b>7.12</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="回帰分析.html"><a href="回帰分析.html"><i class="fa fa-check"></i><b>8</b> 回帰分析</a></li>
+<li class="chapter" data-level="9" data-path="回帰分析上の工夫紹介.html"><a href="回帰分析上の工夫紹介.html"><i class="fa fa-check"></i><b>9</b> 回帰分析上の工夫紹介</a></li>
+<li class="chapter" data-level="10" data-path="セグメントとクラスター分析.html"><a href="セグメントとクラスター分析.html"><i class="fa fa-check"></i><b>10</b> セグメントとクラスター分析</a></li>
+<li class="chapter" data-level="11" data-path="ポジショニングと知覚マップ.html"><a href="ポジショニングと知覚マップ.html"><i class="fa fa-check"></i><b>11</b> ポジショニングと知覚マップ</a></li>
+<li class="chapter" data-level="12" data-path="価格感度測定.html"><a href="価格感度測定.html"><i class="fa fa-check"></i><b>12</b> 価格感度測定</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">マーケティングリサーチ講義ノート</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="統計的検定を用いない顧客分析" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> 統計的検定を用いない顧客分析<a href="統計的検定を用いない顧客分析.html#統計的検定を用いない顧客分析" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>顧客の購買データを用いて、（統計的な分析を要さず）重要顧客や顧客層を発見することが、小売企業を中心に行われている。ここでは基本的に、ID-POSデータを用いたデータベースの正規化と集計2焦点を合わせる。特に、顧客個人に関する情報を用いながら企業や店舗にとって重要な顧客を特定し、その顧客との関係性を深めた場合を考える。店舗の運営効率から考えると、単に来店客数を増やすだけでなく、より頻繁に、より高額の買い物をする顧客を特定し、その人（達）の購買を促進することが効果的になる。言い換えると、企業や店舗は、ロイヤルカスタマーを特定し、その顧客との関係性を構築したいと考えるのである。そのためにはまず、ロイヤルカスタマーを特定する作業が必要になる。そこで本節では、データから企業にとって価値のある顧客を発見する方法について、データの前処理技術を応用する形で紹介する。</p>
+<p>本節では簡単に、単純なデータハンドリングから顧客インサイトを得る方法を考える。特に、データ処理とソーティング（順番の入れ替え）を用いる方法を用いる。本節ではID-POSデータを用いた分析として、デシル分析とRFM分析を紹介する。デシル分析は、支出額をもとに上位から顧客を並べ替え、その順番に基づき顧客を10分割することで、上位の支出額を担うランクに属する顧客を特定する。なお、他の指標で同様の分析を実行することも可能だが、一般的には支出額を用いることが多い。例えば、月当たり5000人の顧客がいるとすると、500人ずつのグループに分け、購買額の大きい順にデシル1〜10 (10〜1の場合もある) とする形でランク分けする方法がこれにあたる。このとき、各顧客の情報がポイントカードやアプリで紐付いているのであれば、最も購買額の多いグループの特徴を整理することで、現在購入額の高い顧客がどんな特徴を持つのか理解できる。</p>
+<p>一方、RFM（Recency, Frequency, Monetary）分析は、取引情報から、最近いつ買ったか、どれだけの頻度で買い物するか、どれだけ支出しているかといった情報を総合的に勘案し、どの顧客が最重要かを特定する方法である。これらの指標は、ロイヤルティや再購買確率が高い顧客を判別するのに役立つ3つの指標である。例えば、最終購買日から時間が経っている顧客は離反しているかもしれないし、購買頻度や購買額が高いと、ロイヤルティが高い可能性が高い。また、クーポンや割引利用の有無の情報と紐付けることができれば、当該顧客がチェリーピッカーか否かも判断することができる。</p>
+<p>ID-POSデータは、各顧客の会員IDについての情報はありながらも取引ベースで情報が整理されている。このようなデータに対して以下の手順を用いてデータを集計・ソーティングする。</p>
+<ol style="list-style-type: decimal">
+<li>顧客IDごとに、各取引情報を集計する。</li>
+<li>顧客ID情報についてまとめたデータベースにおける順番をソートし、重要顧客を識別する。</li>
+</ol>
+<p>このようなデータの集計は、データ構造を取引ベースから顧客IDベースに変換することを可能にする。下図は、取引ベースのID-POSデータを、集計作業によって顧客IDベースのデータ構造に変換するイメージを示したものである。ID-POSデータは、顧客ID情報が含まれていながらも、データの行（観測）は各取引を示している。そのため、仮に同じIDの顧客がデータ収集期間に複数回取引を行っている場合、同じIDを含む観測がいくつも見られることになる。一方で下部の顧客IDベースのデータは、ID-POSデータを顧客ID情報によって集計したものであり、一定期間中に特定のIDを持つ顧客がどのような購買行動を示していたかを捉えたデータである。そのため、データの行は各顧客IDを示している。本節では、まずはじめにこのようなデータ構造の変換について説明する。</p>
+<div class="float">
+<img src="datahandling/datastructure.png" alt="データ構造変化" />
+<div class="figcaption">データ構造変化</div>
+</div>
+<p>ここでは、先程利用した idpos データを用いて作業を進める。改めて、当該データを以下のコマンドで確認する。</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="統計的検定を用いない顧客分析.html#cb77-1" tabindex="-1"></a><span class="fu">head</span>(idpos)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 5
+##      id date       spent coupon gender
+##   &lt;dbl&gt; &lt;date&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; 
+## 1    12 2019-09-25 14326      1 male  
+## 2    32 2019-09-10 10232      1 female
+## 3    30 2019-09-09  6881      1 female
+## 4    29 2019-09-04  6365      0 female
+## 5    46 2019-09-10  7595      1 male  
+## 6    44 2019-09-14  7858      0 female</code></pre>
+<p>ここで、date変数を用いて直近で何日前の来店かを示す変数を作成する。このデータは、2019年09月01日 から 2019年10月01日までの一ヶ月間、とある店舗で記録された取引データであると仮定し作成されている。そのため、データ収集終了最新時点（2019-10-2）と来店日時の差を表す変数を作成する (ここでの処理にエラーが出る場合は、<code>idpos$date &lt;- as.Date(idpos$date)</code> というコマンドを事前に試してから変数の定義を行ってほしい)。head関数により出力された結果によって新たな変数（datediff）が追加されたことがわかる。</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="統計的検定を用いない顧客分析.html#cb79-1" tabindex="-1"></a>idpos<span class="sc">$</span>datediff<span class="ot">&lt;-</span> </span>
+<span id="cb79-2"><a href="統計的検定を用いない顧客分析.html#cb79-2" tabindex="-1"></a>  <span class="fu">round</span>(<span class="fu">as.numeric</span>(<span class="fu">difftime</span>(<span class="st">&quot;2019-10-02&quot;</span>,idpos<span class="sc">$</span>date,<span class="at">units=</span><span class="st">&quot;days&quot;</span>)))</span>
+<span id="cb79-3"><a href="統計的検定を用いない顧客分析.html#cb79-3" tabindex="-1"></a><span class="fu">head</span>(idpos)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 6
+##      id date       spent coupon gender datediff
+##   &lt;dbl&gt; &lt;date&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;
+## 1    12 2019-09-25 14326      1 male          7
+## 2    32 2019-09-10 10232      1 female       22
+## 3    30 2019-09-09  6881      1 female       23
+## 4    29 2019-09-04  6365      0 female       28
+## 5    46 2019-09-10  7595      1 male         22
+## 6    44 2019-09-14  7858      0 female       18</code></pre>
+<p>続いて、パイプ演算子を使ったデータ処理によって顧客IDベースの形へ集計する。ここでは特に、group_by() という関数を使い、顧客id (今回は性別情報も残したいので gender も加えている)をグループ化の基準と指定する形で集計を行う。また、CRM分析で使う変数のために、idレベルでの集計という形で以下の変数を作成する。そして、以下の変数を用いて集計した新たなデータセットを “idpos_cust” として定義する。</p>
+<ul>
+<li>frequency：各idの出現頻度をn()でカウントする</li>
+<li>monetary：spentの合計をsum()で計算する</li>
+<li>cherry (picker)：クーポンの利用回数の合計をsum()で計算する</li>
+<li>recency：datediffの最小値をmin()で求め、直近でいつ来たかを判別</li>
+</ul>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="統計的検定を用いない顧客分析.html#cb81-1" tabindex="-1"></a>idpos_cust <span class="ot">&lt;-</span> idpos <span class="sc">%&gt;%</span> </span>
+<span id="cb81-2"><a href="統計的検定を用いない顧客分析.html#cb81-2" tabindex="-1"></a>  <span class="fu">group_by</span>(id,gender) <span class="sc">%&gt;%</span> </span>
+<span id="cb81-3"><a href="統計的検定を用いない顧客分析.html#cb81-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">frequency =</span> <span class="fu">n</span>(), </span>
+<span id="cb81-4"><a href="統計的検定を用いない顧客分析.html#cb81-4" tabindex="-1"></a>            <span class="at">monetary =</span> <span class="fu">sum</span>(spent), </span>
+<span id="cb81-5"><a href="統計的検定を用いない顧客分析.html#cb81-5" tabindex="-1"></a>            <span class="at">cherry =</span> <span class="fu">sum</span>(coupon), </span>
+<span id="cb81-6"><a href="統計的検定を用いない顧客分析.html#cb81-6" tabindex="-1"></a>            <span class="at">recency =</span> <span class="fu">min</span>(datediff)</span>
+<span id="cb81-7"><a href="統計的検定を用いない顧客分析.html#cb81-7" tabindex="-1"></a>            )</span>
+<span id="cb81-8"><a href="統計的検定を用いない顧客分析.html#cb81-8" tabindex="-1"></a><span class="fu">head</span>(idpos_cust)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 6
+## # Groups:   id [6]
+##      id gender frequency monetary cherry recency
+##   &lt;dbl&gt; &lt;chr&gt;      &lt;int&gt;    &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
+## 1     1 female        21   173314      8       1
+## 2     2 female        20   157976     13       2
+## 3     3 male          21   134673      5       1
+## 4     4 female        19   154416     10       4
+## 5     5 female        20   177156     11       3
+## 6     6 male          19   151853     11       3</code></pre>
+<p>上記の操作によって、元々のidposデータから、顧客ベースのデータ構造（idpos_cust）に変換できたはずである。しかしこれだけでは、まだ我々は誰が重要顧客か特定できない。そのため、次に我々はデータの並べかえを行う。具体的には、支出額が高い順に並び替えたあとに上位20人の顧客を表示する。また、以下のコードでは上位20人の顧客内での男女比についても出力する。</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="統計的検定を用いない顧客分析.html#cb83-1" tabindex="-1"></a>idpos_cust_m <span class="ot">&lt;-</span> idpos_cust <span class="sc">%&gt;%</span> </span>
+<span id="cb83-2"><a href="統計的検定を用いない顧客分析.html#cb83-2" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(monetary))</span>
+<span id="cb83-3"><a href="統計的検定を用いない顧客分析.html#cb83-3" tabindex="-1"></a></span>
+<span id="cb83-4"><a href="統計的検定を用いない顧客分析.html#cb83-4" tabindex="-1"></a><span class="do">##Customers in the top 20 (Monetary) </span></span>
+<span id="cb83-5"><a href="統計的検定を用いない顧客分析.html#cb83-5" tabindex="-1"></a>idpos_cust_m[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>,]</span></code></pre></div>
+<pre><code>## # A tibble: 20 × 6
+## # Groups:   id [20]
+##       id gender frequency monetary cherry recency
+##    &lt;dbl&gt; &lt;chr&gt;      &lt;int&gt;    &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
+##  1    15 female        31   305665     13       1
+##  2    35 male          30   262181     13       1
+##  3    31 female        31   254804     19       3
+##  4    33 male          29   251352     14       2
+##  5    22 male          24   214150      9       4
+##  6    20 male          21   199197     11       2
+##  7    18 male          24   196686     13       3
+##  8    49 male          24   196143     12       4
+##  9     9 male          24   195788     14       1
+## 10    12 male          25   194860     15       1
+## 11    42 female        21   193582      5       1
+## 12    30 female        26   190687     17       2
+## 13    36 female        20   189937     13       6
+## 14    14 male          21   188600     14       1
+## 15    26 female        22   184657     10       2
+## 16    32 female        20   184276     12       1
+## 17    17 female        19   181947     13       1
+## 18    44 female        23   181397     12       1
+## 19    34 female        20   179533      8       2
+## 20    37 female        21   179169     11       2</code></pre>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="統計的検定を用いない顧客分析.html#cb85-1" tabindex="-1"></a><span class="co">#gender ratio in the top 20</span></span>
+<span id="cb85-2"><a href="統計的検定を用いない顧客分析.html#cb85-2" tabindex="-1"></a><span class="fu">table</span>(idpos_cust_m[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>,]<span class="sc">$</span>gender)</span></code></pre></div>
+<pre><code>## 
+## female   male 
+##     11      9</code></pre>
+<p>分析の結果、支出額について上位20名分の顧客ID出力され、当該調査期間において ID: 15が最も多く支出した顧客であることが確認できた。また分析の結果、上位20人のうち男女はほぼ同数であることも伺えた。</p>
+<p>続いては先述のデシル分析を実行する。具体的には、idpos_custに対し、cut()関数を使うことで、monetaryの大きさに基づきサンプルを10等分し、新たに “decile_rank” という変数（列）をデータに追加し、その新たなデータセットを “idpos_cust_m”と定義する。なお、次節にてこのデータを改めて使うため、データをprojectのdataディレクトリ内に保存しておいてほしい。</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="統計的検定を用いない顧客分析.html#cb87-1" tabindex="-1"></a>idpos_cust_m<span class="sc">$</span>decile_rank <span class="ot">&lt;-</span> </span>
+<span id="cb87-2"><a href="統計的検定を用いない顧客分析.html#cb87-2" tabindex="-1"></a>  <span class="fu">cut</span>(idpos_cust_m<span class="sc">$</span>monetary,</span>
+<span id="cb87-3"><a href="統計的検定を用いない顧客分析.html#cb87-3" tabindex="-1"></a>      <span class="fu">quantile</span>(idpos_cust_m<span class="sc">$</span>monetary, (<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>)<span class="sc">/</span><span class="dv">10</span>,<span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb87-4"><a href="統計的検定を用いない顧客分析.html#cb87-4" tabindex="-1"></a>      <span class="at">label=</span><span class="cn">FALSE</span>,<span class="at">include.lowest=</span><span class="cn">TRUE</span>)</span>
+<span id="cb87-5"><a href="統計的検定を用いない顧客分析.html#cb87-5" tabindex="-1"></a><span class="fu">head</span>(idpos_cust_m)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 7
+## # Groups:   id [6]
+##      id gender frequency monetary cherry recency decile_rank
+##   &lt;dbl&gt; &lt;chr&gt;      &lt;int&gt;    &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;       &lt;int&gt;
+## 1    15 female        31   305665     13       1          10
+## 2    35 male          30   262181     13       1          10
+## 3    31 female        31   254804     19       3          10
+## 4    33 male          29   251352     14       2          10
+## 5    22 male          24   214150      9       4          10
+## 6    20 male          21   199197     11       2          10</code></pre>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="統計的検定を用いない顧客分析.html#cb89-1" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_csv</span>(idpos_cust_m, <span class="at">path =</span> <span class="st">&quot;data/idpos_customer.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning: The `path` argument of `write_csv()` is deprecated as of readr 1.4.0.
+## ℹ Please use the `file` argument instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.</code></pre>
+<p>head()関数によって新たな変数の追加を確認したあとは、各デシルの店舗売上への貢献度を確認する。ここでは、decile_rankをグループ化の基準として設定し、summarize() によって集計する方法を用いる。その後、各デシルの売上比率を計算し、高い順に並び替える。集計・分析の結果は、上位20%の顧客で、ID-POSに計上されている売上の57%を締めていることを示した。</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="統計的検定を用いない顧客分析.html#cb91-1" tabindex="-1"></a>decile <span class="ot">&lt;-</span> idpos_cust_m <span class="sc">%&gt;%</span> </span>
+<span id="cb91-2"><a href="統計的検定を用いない顧客分析.html#cb91-2" tabindex="-1"></a>  <span class="fu">group_by</span>(decile_rank) <span class="sc">%&gt;%</span> </span>
+<span id="cb91-3"><a href="統計的検定を用いない顧客分析.html#cb91-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">freq =</span> <span class="fu">n</span>(),</span>
+<span id="cb91-4"><a href="統計的検定を用いない顧客分析.html#cb91-4" tabindex="-1"></a>            <span class="at">monetary =</span> <span class="fu">sum</span>(monetary)) </span>
+<span id="cb91-5"><a href="統計的検定を用いない顧客分析.html#cb91-5" tabindex="-1"></a>total <span class="ot">&lt;-</span> <span class="fu">sum</span>(decile<span class="sc">$</span>monetary)</span>
+<span id="cb91-6"><a href="統計的検定を用いない顧客分析.html#cb91-6" tabindex="-1"></a></span>
+<span id="cb91-7"><a href="統計的検定を用いない顧客分析.html#cb91-7" tabindex="-1"></a>decile2 <span class="ot">&lt;-</span> decile <span class="sc">%&gt;%</span> </span>
+<span id="cb91-8"><a href="統計的検定を用いない顧客分析.html#cb91-8" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">percent =</span> monetary<span class="sc">/</span>total<span class="sc">*</span><span class="dv">100</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb91-9"><a href="統計的検定を用いない顧客分析.html#cb91-9" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(decile_rank))</span>
+<span id="cb91-10"><a href="統計的検定を用いない顧客分析.html#cb91-10" tabindex="-1"></a></span>
+<span id="cb91-11"><a href="統計的検定を用いない顧客分析.html#cb91-11" tabindex="-1"></a>decile2</span></code></pre></div>
+<pre><code>## # A tibble: 10 × 4
+##    decile_rank  freq monetary percent
+##          &lt;int&gt; &lt;int&gt;    &lt;dbl&gt;   &lt;dbl&gt;
+##  1          10   149 11141710   45.1 
+##  2           9   149  3042467   12.3 
+##  3           8   147  2220019    8.98
+##  4           7   150  1976807    8.00
+##  5           6   148  1687031    6.83
+##  6           5   149  1466609    5.93
+##  7           4   149  1213922    4.91
+##  8           3   148   939338    3.80
+##  9           2   149   670413    2.71
+## 10           1   149   358988    1.45</code></pre>
+<p>本節で示したように、高度な統計的分析を実行せずとも重要顧客を特定する事が可能になる。本節では特に、データの集計や処理技術を使った方法を紹介した。このような分析によって回答できる問いは「企業にとっての重要顧客は誰か」というものだろう。この問いは非常に興味深く実務的にも有意義なものであるが、以下の点に注意することが重要である。第一に、何をもって顧客の重要性を定義するかという問題である。本節では特にRFMなどの基準を用いて、観察可能な購買結果をもとに重要顧客を識別する方法を捉えた。しかしながら、例えば購買頻度と購買額では異なる側面を捉えており、どの指標を用いて分析するかによって（通常は）結果が異なる。そのため、研究者自身が「重要性」をどのように定義するのかを注意深く判断し、なおかつそれをレポートやプレゼンテーション内できちんと明示する必要がある。さらに、データでは捉えきれない側面は分析結果に反映されないという点についても注意が必要である。例えば日本には江戸時代から続く小売企業もいくつも存在する。仮に、そのような小売企業と、長期間代々取引を続けている顧客（一族や企業）がいたとして、さらにその顧客が分析による上位顧客に含まれなかったとする。その場合、この顧客を重要顧客でないと切り捨てて良いのでだろうか。災害、国家の統治体制の変化、戦争、などの激動を経てなお取引が続いている顧客は重要でないと言い切れるのだろうか。もちろん、このような顧客を重要でないと捉えることも、経営判断として間違ったものではない。しかしながら、少なくともデータを用いた分析結果を過信しすぎず、データによって何が捉えられており、何が捉えきれていないのかについて研究者・意思決定者のどちらも自覚的になることが必要になる。</p>
+<p>第二に、分析を行うだけでマーケティング実務が完結するわけではないという点についても注意が必要である。「重要顧客を特定する」という研究課題の背後には、「CRMを実行して収益性を向上させる」という実務的課題が存在しているはずである。そのため、今回の発見物をもとに、マーケティング活動への示唆を与えていくことが重要になるのだが、誰が重要顧客か、という問いに答えるだけでは具体的な活動指針（アプリを通じた囲い込みや、訪問販売等）を与えるのは難しい。そのため、重要顧客のライフスタイルや価値観などの彼/彼女らの特徴に踏み込んだ調査を行うことも必要になるかもしれない。昨今のロイヤルティプログラム（ポイントシステム）では、モバイルアプリを通じて個人の様々な行動履歴が記録されたり、アンケートへの回答を促されたりすることがあるだろう。これらの情報とID-POSデータをうまく接合できれば、重要顧客を特定しつつ、それらの顧客に適したCRM方策を策定できるかもしれない。</p>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="データの整形.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="おまけ-wide型とlong型データセット.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/04-datahandling.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

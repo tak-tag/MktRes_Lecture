@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>7.10 平均値に関するその他の検定 | マーケティングリサーチ講義ノート</title>
+  <meta name="description" content="7.10 平均値に関するその他の検定 | マーケティングリサーチ講義ノート" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="7.10 平均値に関するその他の検定 | マーケティングリサーチ講義ノート" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.github.io.git" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="7.10 平均値に関するその他の検定 | マーケティングリサーチ講義ノート" />
+  
+  
+  
+
+<meta name="author" content="Takumi Tagashira" />
+
+
+<meta name="date" content="2023-07-14" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="検定統計量と臨界値.html"/>
+<link rel="next" href="分散分析.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Marketing Research Lecture Note</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> はじめに（本資料について）</a></li>
+<li class="chapter" data-level="2" data-path="r-と-r-studioに慣れる.html"><a href="r-と-r-studioに慣れる.html"><i class="fa fa-check"></i><b>2</b> R と R studioに慣れる</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="posit-cloudを始める.html"><a href="posit-cloudを始める.html"><i class="fa fa-check"></i><b>2.1</b> Posit cloudを始める</a></li>
+<li class="chapter" data-level="2.2" data-path="補足r-studio-デスクトップ版の利用.html"><a href="補足r-studio-デスクトップ版の利用.html"><i class="fa fa-check"></i><b>2.2</b> （補足）R studio デスクトップ版の利用</a></li>
+<li class="chapter" data-level="2.3" data-path="補足デスクトップ版の利用とプロジェクト機能.html"><a href="補足デスクトップ版の利用とプロジェクト機能.html"><i class="fa fa-check"></i><b>2.3</b> （補足）デスクトップ版の利用とプロジェクト機能</a></li>
+<li class="chapter" data-level="2.4" data-path="rの基本操作.html"><a href="rの基本操作.html"><i class="fa fa-check"></i><b>2.4</b> Rの基本操作</a></li>
+<li class="chapter" data-level="2.5" data-path="r-スクリプトのすゝめ.html"><a href="r-スクリプトのすゝめ.html"><i class="fa fa-check"></i><b>2.5</b> R スクリプトのすゝめ</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="r-スクリプトのすゝめ.html"><a href="r-スクリプトのすゝめ.html#rスクリプトを書く"><i class="fa fa-check"></i><b>2.5.1</b> Rスクリプトを書く</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="本章のまとめ.html"><a href="本章のまとめ.html"><i class="fa fa-check"></i><b>2.6</b> 本章のまとめ</a></li>
+<li class="chapter" data-level="2.7" data-path="参考文献.html"><a href="参考文献.html"><i class="fa fa-check"></i><b>2.7</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="リサーチデザイン.html"><a href="リサーチデザイン.html"><i class="fa fa-check"></i><b>3</b> リサーチデザイン</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="実務とリサーチの分離.html"><a href="実務とリサーチの分離.html"><i class="fa fa-check"></i><b>3.1</b> 実務とリサーチの分離</a></li>
+<li class="chapter" data-level="3.2" data-path="リサーチデザインと論文の構成.html"><a href="リサーチデザインと論文の構成.html"><i class="fa fa-check"></i><b>3.2</b> リサーチデザインと論文の構成</a></li>
+<li class="chapter" data-level="3.3" data-path="研究を行うことの目的.html"><a href="研究を行うことの目的.html"><i class="fa fa-check"></i><b>3.3</b> 研究を行うことの目的</a></li>
+<li class="chapter" data-level="3.4" data-path="研究課題問いの設定.html"><a href="研究課題問いの設定.html"><i class="fa fa-check"></i><b>3.4</b> 研究課題（問い）の設定</a></li>
+<li class="chapter" data-level="3.5" data-path="研究における理論の利用と精緻化.html"><a href="研究における理論の利用と精緻化.html"><i class="fa fa-check"></i><b>3.5</b> 研究における理論の利用と精緻化</a></li>
+<li class="chapter" data-level="3.6" data-path="問題と分析をつなげる仮説の提示.html"><a href="問題と分析をつなげる仮説の提示.html"><i class="fa fa-check"></i><b>3.6</b> 問題と分析をつなげる仮説の提示</a></li>
+<li class="chapter" data-level="3.7" data-path="参考文献-1.html"><a href="参考文献-1.html"><i class="fa fa-check"></i><b>3.7</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="データの種類とアンケートデザイン.html"><a href="データの種類とアンケートデザイン.html"><i class="fa fa-check"></i><b>4</b> データの種類とアンケートデザイン</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="記述的リサーチデザインとアンケート.html"><a href="記述的リサーチデザインとアンケート.html"><i class="fa fa-check"></i><b>4.1</b> 記述的リサーチデザインとアンケート</a></li>
+<li class="chapter" data-level="4.2" data-path="質問におけるワーディング.html"><a href="質問におけるワーディング.html"><i class="fa fa-check"></i><b>4.2</b> 質問におけるワーディング</a></li>
+<li class="chapter" data-level="4.3" data-path="アンケートデザイン.html"><a href="アンケートデザイン.html"><i class="fa fa-check"></i><b>4.3</b> アンケートデザイン</a></li>
+<li class="chapter" data-level="4.4" data-path="参考文献-2.html"><a href="参考文献-2.html"><i class="fa fa-check"></i><b>4.4</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="データ処理と顧客関係管理crm.html"><a href="データ処理と顧客関係管理crm.html"><i class="fa fa-check"></i><b>5</b> データ処理と顧客関係管理（CRM）</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="データの読み込み.html"><a href="データの読み込み.html"><i class="fa fa-check"></i><b>5.1</b> データの読み込み</a></li>
+<li class="chapter" data-level="5.2" data-path="データの整形.html"><a href="データの整形.html"><i class="fa fa-check"></i><b>5.2</b> データの整形</a></li>
+<li class="chapter" data-level="5.3" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html"><i class="fa fa-check"></i><b>5.3</b> 統計的検定を用いない顧客分析</a></li>
+<li class="chapter" data-level="5.4" data-path="おまけ-wide型とlong型データセット.html"><a href="おまけ-wide型とlong型データセット.html"><i class="fa fa-check"></i><b>5.4</b> (おまけ) Wide型とLong型データセット</a></li>
+<li class="chapter" data-level="5.5" data-path="参考文献-3.html"><a href="参考文献-3.html"><i class="fa fa-check"></i><b>5.5</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="データの要約と可視化.html"><a href="データの要約と可視化.html"><i class="fa fa-check"></i><b>6</b> データの要約と可視化</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="記述統計.html"><a href="記述統計.html"><i class="fa fa-check"></i><b>6.1</b> 記述統計</a></li>
+<li class="chapter" data-level="6.2" data-path="カテゴリ変数の要約.html"><a href="カテゴリ変数の要約.html"><i class="fa fa-check"></i><b>6.2</b> カテゴリ変数の要約</a></li>
+<li class="chapter" data-level="6.3" data-path="データの可視化.html"><a href="データの可視化.html"><i class="fa fa-check"></i><b>6.3</b> データの可視化</a></li>
+<li class="chapter" data-level="6.4" data-path="二変数間の関係の要約.html"><a href="二変数間の関係の要約.html"><i class="fa fa-check"></i><b>6.4</b> 二変数間の関係の要約</a></li>
+<li class="chapter" data-level="6.5" data-path="参考文献-4.html"><a href="参考文献-4.html"><i class="fa fa-check"></i><b>6.5</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="基礎統計学復習.html"><a href="基礎統計学復習.html"><i class="fa fa-check"></i><b>7</b> 基礎統計学復習</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="確率モデル期待値と分散.html"><a href="確率モデル期待値と分散.html"><i class="fa fa-check"></i><b>7.1</b> 確率モデル、期待値と分散</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="確率モデル期待値と分散.html"><a href="確率モデル期待値と分散.html#確率と確率変数"><i class="fa fa-check"></i><b>7.1.1</b> 確率と確率変数</a></li>
+<li class="chapter" data-level="7.1.2" data-path="確率モデル期待値と分散.html"><a href="確率モデル期待値と分散.html#期待値と分散"><i class="fa fa-check"></i><b>7.1.2</b> 期待値と分散</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="統計的推測.html"><a href="統計的推測.html"><i class="fa fa-check"></i><b>7.2</b> 統計的推測</a></li>
+<li class="chapter" data-level="7.3" data-path="点推定.html"><a href="点推定.html"><i class="fa fa-check"></i><b>7.3</b> 点推定</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="点推定.html"><a href="点推定.html#代表定期推定量としての標本平均"><i class="fa fa-check"></i><b>7.3.1</b> 代表定期推定量としての標本平均</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="推定量もまた確率変数.html"><a href="推定量もまた確率変数.html"><i class="fa fa-check"></i><b>7.4</b> 推定量もまた確率変数</a></li>
+<li class="chapter" data-level="7.5" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html"><i class="fa fa-check"></i><b>7.5</b> 補足（いくつかの確率分布の関係性）</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#正規分布"><i class="fa fa-check"></i><b>7.5.1</b> 正規分布</a></li>
+<li class="chapter" data-level="7.5.2" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#カイ二乗分布"><i class="fa fa-check"></i><b>7.5.2</b> カイ二乗分布</a></li>
+<li class="chapter" data-level="7.5.3" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#t分布"><i class="fa fa-check"></i><b>7.5.3</b> t分布</a></li>
+<li class="chapter" data-level="7.5.4" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#f分布"><i class="fa fa-check"></i><b>7.5.4</b> F分布</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="区間推定.html"><a href="区間推定.html"><i class="fa fa-check"></i><b>7.6</b> 区間推定</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="区間推定.html"><a href="区間推定.html#信頼区間概要"><i class="fa fa-check"></i><b>7.6.1</b> 信頼区間概要</a></li>
+<li class="chapter" data-level="7.6.2" data-path="区間推定.html"><a href="区間推定.html#確率と区間の計算"><i class="fa fa-check"></i><b>7.6.2</b> 確率と区間の計算</a></li>
+<li class="chapter" data-level="7.6.3" data-path="区間推定.html"><a href="区間推定.html#信頼区間の導出と解釈"><i class="fa fa-check"></i><b>7.6.3</b> 信頼区間の導出と解釈</a></li>
+<li class="chapter" data-level="7.6.4" data-path="区間推定.html"><a href="区間推定.html#rを用いた信頼区間の計算標準正規分布"><i class="fa fa-check"></i><b>7.6.4</b> Rを用いた信頼区間の計算（標準正規分布）</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="信頼区間の解釈.html"><a href="信頼区間の解釈.html"><i class="fa fa-check"></i><b>7.7</b> 信頼区間の解釈</a></li>
+<li class="chapter" data-level="7.8" data-path="統計的仮説検定.html"><a href="統計的仮説検定.html"><i class="fa fa-check"></i><b>7.8</b> 統計的仮説検定</a>
+<ul>
+<li class="chapter" data-level="7.8.1" data-path="統計的仮説検定.html"><a href="統計的仮説検定.html#検定における仮説"><i class="fa fa-check"></i><b>7.8.1</b> 検定における仮説</a></li>
+<li class="chapter" data-level="7.8.2" data-path="統計的仮説検定.html"><a href="統計的仮説検定.html#統計的検定の実行t検定"><i class="fa fa-check"></i><b>7.8.2</b> 統計的検定の実行（t検定）</a></li>
+</ul></li>
+<li class="chapter" data-level="7.9" data-path="検定統計量と臨界値.html"><a href="検定統計量と臨界値.html"><i class="fa fa-check"></i><b>7.9</b> 検定統計量と臨界値</a>
+<ul>
+<li class="chapter" data-level="7.9.1" data-path="検定統計量と臨界値.html"><a href="検定統計量と臨界値.html#有意水準と検定における誤り"><i class="fa fa-check"></i><b>7.9.1</b> 有意水準と検定における誤り</a></li>
+<li class="chapter" data-level="7.9.2" data-path="検定統計量と臨界値.html"><a href="検定統計量と臨界値.html#rを用いた統計的検定の実施標準正規分布"><i class="fa fa-check"></i><b>7.9.2</b> Rを用いた統計的検定の実施（標準正規分布）</a></li>
+<li class="chapter" data-level="7.9.3" data-path="検定統計量と臨界値.html"><a href="検定統計量と臨界値.html#p値について"><i class="fa fa-check"></i><b>7.9.3</b> p値について</a></li>
+<li class="chapter" data-level="7.9.4" data-path="検定統計量と臨界値.html"><a href="検定統計量と臨界値.html#母平均の検定小括"><i class="fa fa-check"></i><b>7.9.4</b> 母平均の検定小括</a></li>
+</ul></li>
+<li class="chapter" data-level="7.10" data-path="平均値に関するその他の検定.html"><a href="平均値に関するその他の検定.html"><i class="fa fa-check"></i><b>7.10</b> 平均値に関するその他の検定</a>
+<ul>
+<li class="chapter" data-level="7.10.1" data-path="平均値に関するその他の検定.html"><a href="平均値に関するその他の検定.html#平均の差の検定"><i class="fa fa-check"></i><b>7.10.1</b> 平均の差の検定</a></li>
+</ul></li>
+<li class="chapter" data-level="7.11" data-path="分散分析.html"><a href="分散分析.html"><i class="fa fa-check"></i><b>7.11</b> 分散分析</a></li>
+<li class="chapter" data-level="7.12" data-path="参考文献-5.html"><a href="参考文献-5.html"><i class="fa fa-check"></i><b>7.12</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="回帰分析.html"><a href="回帰分析.html"><i class="fa fa-check"></i><b>8</b> 回帰分析</a></li>
+<li class="chapter" data-level="9" data-path="回帰分析上の工夫紹介.html"><a href="回帰分析上の工夫紹介.html"><i class="fa fa-check"></i><b>9</b> 回帰分析上の工夫紹介</a></li>
+<li class="chapter" data-level="10" data-path="セグメントとクラスター分析.html"><a href="セグメントとクラスター分析.html"><i class="fa fa-check"></i><b>10</b> セグメントとクラスター分析</a></li>
+<li class="chapter" data-level="11" data-path="ポジショニングと知覚マップ.html"><a href="ポジショニングと知覚マップ.html"><i class="fa fa-check"></i><b>11</b> ポジショニングと知覚マップ</a></li>
+<li class="chapter" data-level="12" data-path="価格感度測定.html"><a href="価格感度測定.html"><i class="fa fa-check"></i><b>12</b> 価格感度測定</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">マーケティングリサーチ講義ノート</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="平均値に関するその他の検定" class="section level2 hasAnchor" number="7.10">
+<h2><span class="header-section-number">7.10</span> 平均値に関するその他の検定<a href="平均値に関するその他の検定.html#平均値に関するその他の検定" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>これまでは、母平均が特定の値を取るか否かに着目し、統計的仮説検定の基礎について説明した。しかしながら本章の冒頭でも例に挙げた通り、平均値をあるグループ間で比較したいと考えることも多い。本節では、期待値の比較に着目し、平均の差の検定と、分散分析について説明する。これらの検定では、用いる検定統計量は先述のものと異なるが、統計的仮説検定そのものの手順や、肝となる考え方は共通である。</p>
+<div id="平均の差の検定" class="section level3 hasAnchor" number="7.10.1">
+<h3><span class="header-section-number">7.10.1</span> 平均の差の検定<a href="平均値に関するその他の検定.html#平均の差の検定" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>前節で考えた、「女性に比べ男性の方が新製品購買意図が高い。」という作業仮説を再度考える。このとき、我々が観察可能なのは男性グループの標本平均（<span class="math inline">\(\small \bar{X}\)</span>）と女性グループの標本平均（<span class="math inline">\(\small \bar{Y}\)</span>）であるが、検定においてはそれぞれの期待値（<span class="math inline">\(\small \mu_x\)</span> と <span class="math inline">\(\small \mu_y\)</span>）に着目し、帰無仮説を作成する。なお、<span class="math inline">\(\small X_1,...,X_n\)</span> は<span class="math inline">\(\small N(\mu_x,\sigma^2_x)\)</span>に従う母集団からの無作為標本であり、<span class="math inline">\(\small Y_1,...,Y_n\)</span> は<span class="math inline">\(\small N(\mu_y,\sigma^2_y)\)</span>に従う母集団からの無作為標本であるとする。また、<span class="math inline">\(\small X_1,...,X_n\)</span> と <span class="math inline">\(\small Y_1,...,Y_n\)</span> は互いに独立であり、母分散は未知であるとする。</p>
+<p>先述の男女間の購買意図の差に関する作業仮説について、男性における購買意図の期待値を <span class="math inline">\(\small \mu_x\)</span>、女性における購買意図の期待値を <span class="math inline">\(\small \mu_y\)</span>とすると、帰無仮説と対立仮説は以下のように示すことができる。</p>
+<p><span class="math display">\[H_0:~\mu_x=\mu_y,~~H_1:~\mu_x\neq\mu_y\]</span>
+統計的検定の手順と直感的な検定統計量の作り方は前節の内容と同じである。そのため、本検定における推定量と帰無仮説条件下での未知パラメータの値を特定したい。この検定ではグループ間の平均の差を捉えているため、その関係を <span class="math inline">\(\small \bar{X}-\bar{Y}\)</span> と示す。したがって、帰無仮説と対立仮説は以下のように書き直すことができる。</p>
+<p><span class="math display">\[H_0:~\mu_x-\mu_y=0,~~H_1:~\mu_x-\mu_y\neq0\]</span>
+また、母分散が未知である場合にはt検定を行うということも先程と同様である。このことから、以下の検定統計量を用いる。</p>
+<p><span class="math display">\[
+t=\frac{(\bar{X}-\bar{Y})-(\mu_x-\mu_y)}{\sqrt{s^2\left(\frac{1}{m}+\frac{1}{n}\right)}}\sim t(𝑚+𝑛−1)
+\]</span></p>
+<p>ただし、<span class="math inline">\(s^2\)</span> は標準誤差と呼ばれる母集団の標準偏差の推定量である。なお、<span class="math inline">\(s^2\)</span>は母分散を捉えた推定量であるが、母分散が両群で等しい（等分散: <span class="math inline">\(\small \sigma^2_x=\sigma^2_y=\sigma^2\)</span>）である場合には上記の検定統計量を自由度（<span class="math inline">\(\small m+n-1\)</span>）の<em>t</em>分布として分析可能である。一方で等分散出ない場合には、Welchのt検定と呼ばれる、自由度の計算を修正した分析方法を用いる。なお、Welchのt検定で用いられる自由度の式は複雑なのでここでは省略する。</p>
+<p>このとき、帰無仮説が正しいという仮定のもとでは、<span class="math inline">\(\small \mu_x-\mu_y=0\)</span>である。そのため、上記の検定統計量は以下のように観察可能な情報のみで構成される形で書き換えることができる。また、帰無仮説が正しければ、この検定統計量は自由度（<span class="math inline">\(\small m+n-1\)</span>）の<em>t</em>分布に従うと考えられる。</p>
+<p><span class="math display">\[
+t=\frac{(\bar{X}-\bar{Y})}{\sqrt{s^2\left(\frac{1}{m}+\frac{1}{n}\right)}}\sim t(𝑚+𝑛−1)
+\]</span></p>
+<p>そのため、データに基づき計算された検定統計量<em>t</em>の実現値を用いて、以下の方式で検定を行う。</p>
+<p><span class="math display">\[
+\begin{cases}
+|t|&gt;t_{\alpha/2}(m+n-1) &amp; \Rightarrow \text{H0を棄却する。}\\
+|t|\leq t_{\alpha/2}(m+n-1)&amp; \Rightarrow \text{H0を採択する。}
+\end{cases}
+\]</span>
+Rにおいて平均の差の検定を行うことはさほど難しくない。先程の等分散性についても、<code>var.equal=TRUE</code>または<code>var.equal=FALSE</code>という引数で設定できる。<code>var.equal=</code> 引数についてはTRUEが等分散性を仮定するが、デフォルトでは、FALSEとなっている。</p>
+<p>平均の差の検定では、 <code>t.test(outcome ~ category)</code> のように、はじめに着目する成果変数を、その後 ~（チルダ）のあとに着目するカテゴリ変数を指示することで、どの変数（outcome）の平均の差をどのカテゴリ変数（category）で検定するのかを特定化する。ここでは、以前の章で利用したidposデータを利用して、総支出額の平均が男女間で異なるか否かを以下のように分析する。</p>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="平均値に関するその他の検定.html#cb169-1" tabindex="-1"></a>idpos_cust <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/idpos_customer.csv&quot;</span>)</span>
+<span id="cb169-2"><a href="平均値に関するその他の検定.html#cb169-2" tabindex="-1"></a><span class="fu">t.test</span>(monetary <span class="sc">~</span> gender, <span class="at">data =</span> idpos_cust)</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  monetary by gender
+## t = 1.3564, df = 1446, p-value = 0.1752
+## alternative hypothesis: true difference in means between group female and group male is not equal to 0
+## 95 percent confidence interval:
+##  -936.2278 5133.3112
+## sample estimates:
+## mean in group female   mean in group male 
+##             17658.13             15559.58</code></pre>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="平均値に関するその他の検定.html#cb171-1" tabindex="-1"></a><span class="fu">t.test</span>(monetary <span class="sc">~</span> gender, <span class="at">data =</span> idpos_cust,<span class="at">var.equal=</span>T)</span></code></pre></div>
+<pre><code>## 
+##  Two Sample t-test
+## 
+## data:  monetary by gender
+## t = 1.3532, df = 1485, p-value = 0.1762
+## alternative hypothesis: true difference in means between group female and group male is not equal to 0
+## 95 percent confidence interval:
+##  -943.5144 5140.5978
+## sample estimates:
+## mean in group female   mean in group male 
+##             17658.13             15559.58</code></pre>
+<p>分析の結果、等分散性を仮定するか否かで、計算結果は微妙に異なるが、どちらの検定結果においても10%有意水準で帰無仮説を棄却できなかった。そのため、本データにおいて総支出額に関する男女差があるとは言えない。</p>
+<p>なおRにおいては、等分散性に関する検定も<code>var.test(outcome ~ category)</code>実行可能である。先程のidposデータに関する男女差について、等分散性の分析を以下のように実施する。</p>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="平均値に関するその他の検定.html#cb173-1" tabindex="-1"></a><span class="fu">var.test</span>(monetary <span class="sc">~</span> gender, <span class="at">data =</span> idpos_cust, <span class="at">ratio =</span> <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## 
+##  F test to compare two variances
+## 
+## data:  monetary by gender
+## F = 1.4669, num df = 752, denom df = 733, p-value = 2.013e-07
+## alternative hypothesis: true ratio of variances is not equal to 1
+## 95 percent confidence interval:
+##  1.270151 1.694002
+## sample estimates:
+## ratio of variances 
+##           1.466945</code></pre>
+<p>等分散性の検定では、ひとつのグループの分散ともう一方のグループの分散の比が１（等分散）であるという帰無仮説を設計する。詳細は割愛するが、帰無仮説が正しい場合には両グループの不偏標本分散の比が自由度（<span class="math inline">\(m-1\)</span>, <span class="math inline">\(n-1\)</span>）のF分布に従う。分析の結果、帰無仮説は棄却されたため、等分散とは言えないと結論づけることができる。そのため、平均の差の検定においては、Welchのt検定を利用した分析結果を採用して議論することが好ましい。</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="検定統計量と臨界値.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="分散分析.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/06-stat.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
