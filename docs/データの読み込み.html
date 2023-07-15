@@ -23,7 +23,7 @@
 <meta name="author" content="Takumi Tagashira" />
 
 
-<meta name="date" content="2023-07-15" />
+<meta name="date" content="2023-07-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -175,7 +175,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="5.1" data-path="データの読み込み.html"><a href="データの読み込み.html"><i class="fa fa-check"></i><b>5.1</b> データの読み込み</a></li>
 <li class="chapter" data-level="5.2" data-path="データの整形.html"><a href="データの整形.html"><i class="fa fa-check"></i><b>5.2</b> データの整形</a></li>
-<li class="chapter" data-level="5.3" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html"><i class="fa fa-check"></i><b>5.3</b> 統計的検定を用いない顧客分析</a></li>
+<li class="chapter" data-level="5.3" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html"><i class="fa fa-check"></i><b>5.3</b> 統計的検定を用いない顧客分析</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html#データの構造変化とソート"><i class="fa fa-check"></i><b>5.3.1</b> データの構造変化とソート</a></li>
+<li class="chapter" data-level="5.3.2" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html#データ結合"><i class="fa fa-check"></i><b>5.3.2</b> データ結合</a></li>
+</ul></li>
 <li class="chapter" data-level="5.4" data-path="おまけ-wide型とlong型データセット.html"><a href="おまけ-wide型とlong型データセット.html"><i class="fa fa-check"></i><b>5.4</b> (おまけ) Wide型とLong型データセット</a></li>
 <li class="chapter" data-level="5.5" data-path="参考文献-3.html"><a href="参考文献-3.html"><i class="fa fa-check"></i><b>5.5</b> 参考文献</a></li>
 </ul></li>
@@ -279,25 +283,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>問題なくデータを読み込むことができたら、そのデータの冒頭数行を head() 関数によって表示する。head() 関数の結果によると、このidposデータは、3000行、5列のデータセットであることがわかる。なお、同様の情報は R studio 画面内の Environment タブから確認することできる。</p>
 <div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="データの読み込み.html#cb53-1" tabindex="-1"></a><span class="fu">head</span>(idpos)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 5
-##      id date       spent coupon gender
-##   &lt;dbl&gt; &lt;date&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; 
-## 1    12 2019-09-25 14326      1 male  
-## 2    32 2019-09-10 10232      1 female
-## 3    30 2019-09-09  6881      1 female
-## 4    29 2019-09-04  6365      0 female
-## 5    46 2019-09-10  7595      1 male  
-## 6    44 2019-09-14  7858      0 female</code></pre>
+##      id date       spent coupon datediff
+##   &lt;dbl&gt; &lt;date&gt;     &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;
+## 1    12 2019-09-25 14326      1        7
+## 2    32 2019-09-10 10232      1       22
+## 3    30 2019-09-09  6881      1       23
+## 4    29 2019-09-04  6365      0       28
+## 5    46 2019-09-10  7595      1       22
+## 6    44 2019-09-14  7858      0       18</code></pre>
 <p>また、読み込んだデータ特徴の確認は他の関数でも実行できる。例えば、name() 関数を使えば、データ内の変数名 (列名) を確認できるし、tidyverseに含まれる glimpse() 関数によってもデータの冒頭数行を含むいくつかの情報を返してくれる。</p>
 <div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="データの読み込み.html#cb55-1" tabindex="-1"></a><span class="fu">names</span>(idpos)</span></code></pre></div>
-<pre><code>## [1] &quot;id&quot;     &quot;date&quot;   &quot;spent&quot;  &quot;coupon&quot; &quot;gender&quot;</code></pre>
+<pre><code>## [1] &quot;id&quot;       &quot;date&quot;     &quot;spent&quot;    &quot;coupon&quot;   &quot;datediff&quot;</code></pre>
 <div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="データの読み込み.html#cb57-1" tabindex="-1"></a><span class="fu">glimpse</span>(idpos)</span></code></pre></div>
 <pre><code>## Rows: 3,000
 ## Columns: 5
-## $ id     &lt;dbl&gt; 12, 32, 30, 29, 46, 44, 44, 32, 3, 34, 36, 3, 42, 18, 38, 4, 19…
-## $ date   &lt;date&gt; 2019-09-25, 2019-09-10, 2019-09-09, 2019-09-04, 2019-09-10, 20…
-## $ spent  &lt;dbl&gt; 14326, 10232, 6881, 6365, 7595, 7858, 9405, 1821, 8375, 1828, 6…
-## $ coupon &lt;dbl&gt; 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, …
-## $ gender &lt;chr&gt; &quot;male&quot;, &quot;female&quot;, &quot;female&quot;, &quot;female&quot;, &quot;male&quot;, &quot;female&quot;, &quot;female…</code></pre>
+## $ id       &lt;dbl&gt; 12, 32, 30, 29, 46, 44, 44, 32, 3, 34, 36, 3, 42, 18, 38, 4, …
+## $ date     &lt;date&gt; 2019-09-25, 2019-09-10, 2019-09-09, 2019-09-04, 2019-09-10, …
+## $ spent    &lt;dbl&gt; 14326, 10232, 6881, 6365, 7595, 7858, 9405, 1821, 8375, 1828,…
+## $ coupon   &lt;dbl&gt; 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1…
+## $ datediff &lt;dbl&gt; 7, 22, 23, 28, 22, 18, 23, 12, 2, 25, 19, 7, 5, 3, 23, 22, 30…</code></pre>
 <p>なお、このidposデータは、POS (Point of sales) という小売店レジでの取引データとロイヤルティプログラムなどの会員IDを含むID-POSと呼ばれるデータを想定し作成した、簡易的な人工データである。データには、小売店舗での取引日（date）、金額（spent）、クーポン利用の有無 (coupon)、性別 (gender) が含まれている。本来のPOSデータは、より詳細な日時や具体的な製品単品レベルの取引品目など、より詳細な情報が含まれているはずだが、ここでは簡単化のためにこのようなデータにしている。また、もしスプレッドシート形式で表示したい場合には View() 関数をconsoleに直接入力することでそれが可能になる。例えば、idposデータを用いて以下のようなコードを入力することで、Sourceウィンドウに新しいタブができ、そこにデータセットが表示される。</p>
 </div>
             </section>
@@ -355,11 +359,6 @@ gitbook.start({
 },
 "toc": {
 "collapse": "subsection"
-},
-"toolbar": {
-"position": "fixed",
-"download": ["pdf", "epub"],
-"search": true
 }
 });
 });

@@ -23,7 +23,7 @@
 <meta name="author" content="Takumi Tagashira" />
 
 
-<meta name="date" content="2023-07-15" />
+<meta name="date" content="2023-07-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -175,7 +175,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="5.1" data-path="データの読み込み.html"><a href="データの読み込み.html"><i class="fa fa-check"></i><b>5.1</b> データの読み込み</a></li>
 <li class="chapter" data-level="5.2" data-path="データの整形.html"><a href="データの整形.html"><i class="fa fa-check"></i><b>5.2</b> データの整形</a></li>
-<li class="chapter" data-level="5.3" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html"><i class="fa fa-check"></i><b>5.3</b> 統計的検定を用いない顧客分析</a></li>
+<li class="chapter" data-level="5.3" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html"><i class="fa fa-check"></i><b>5.3</b> 統計的検定を用いない顧客分析</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html#データの構造変化とソート"><i class="fa fa-check"></i><b>5.3.1</b> データの構造変化とソート</a></li>
+<li class="chapter" data-level="5.3.2" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html#データ結合"><i class="fa fa-check"></i><b>5.3.2</b> データ結合</a></li>
+</ul></li>
 <li class="chapter" data-level="5.4" data-path="おまけ-wide型とlong型データセット.html"><a href="おまけ-wide型とlong型データセット.html"><i class="fa fa-check"></i><b>5.4</b> (おまけ) Wide型とLong型データセット</a></li>
 <li class="chapter" data-level="5.5" data-path="参考文献-3.html"><a href="参考文献-3.html"><i class="fa fa-check"></i><b>5.5</b> 参考文献</a></li>
 </ul></li>
@@ -262,41 +266,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="カテゴリ変数の要約" class="section level2 hasAnchor" number="6.2">
 <h2><span class="header-section-number">6.2</span> カテゴリ変数の要約<a href="カテゴリ変数の要約.html#カテゴリ変数の要約" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>一方でカテゴリ変数は、代表値や分散によって含意を得るのではなく、頻度のカウント（集計）や、クロス集計を用いることが多い。これにより、各カテゴリにどれぐらいの観測数があるのかを確認することが可能になる。カテゴリ変数の内容（出現頻度）の確認には、<code>table()</code> 関数を用いる。また、<code>with()</code>関数を用いて同様の結果を得ることも可能である。ここでは、前節で保存した顧客ベースのidposデータを用いる。</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="カテゴリ変数の要約.html#cb116-1" tabindex="-1"></a>idpos_cust <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/idpos_customer.csv&quot;</span>)</span>
-<span id="cb116-2"><a href="カテゴリ変数の要約.html#cb116-2" tabindex="-1"></a></span>
-<span id="cb116-3"><a href="カテゴリ変数の要約.html#cb116-3" tabindex="-1"></a><span class="fu">table</span>(idpos_cust<span class="sc">$</span>gender)</span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="カテゴリ変数の要約.html#cb119-1" tabindex="-1"></a>idpos_cust <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/idpos_customer.csv&quot;</span>)</span>
+<span id="cb119-2"><a href="カテゴリ変数の要約.html#cb119-2" tabindex="-1"></a></span>
+<span id="cb119-3"><a href="カテゴリ変数の要約.html#cb119-3" tabindex="-1"></a><span class="fu">table</span>(idpos_cust<span class="sc">$</span>gender)</span></code></pre></div>
 <pre><code>## 
 ## female   male 
-##    753    734</code></pre>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="カテゴリ変数の要約.html#cb118-1" tabindex="-1"></a><span class="fu">with</span>(idpos_cust, <span class="fu">table</span>(gender))</span></code></pre></div>
+##    985    502</code></pre>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="カテゴリ変数の要約.html#cb121-1" tabindex="-1"></a><span class="fu">with</span>(idpos_cust, <span class="fu">table</span>(gender))</span></code></pre></div>
 <pre><code>## gender
 ## female   male 
-##    753    734</code></pre>
+##    985    502</code></pre>
 <p>また、table関数にて2つのカテゴリ変数を指定することで、両変数に対応するカテゴリの出現頻度を返してくれる。このような表のことをクロス集計表とよぶ。例えば、同データにおける各デシルランクと性別の関係は以下のように示される。</p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="カテゴリ変数の要約.html#cb120-1" tabindex="-1"></a><span class="fu">with</span>(idpos_cust, <span class="fu">table</span>(gender,decile_rank))</span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="カテゴリ変数の要約.html#cb123-1" tabindex="-1"></a><span class="fu">with</span>(idpos_cust, <span class="fu">table</span>(gender,decile_rank))</span></code></pre></div>
 <pre><code>##         decile_rank
-## gender    1  2  3  4  5  6  7  8  9 10
-##   female 83 70 77 69 80 76 67 72 77 82
-##   male   66 79 71 80 69 72 83 75 72 67</code></pre>
+## gender     1   2   3   4   5   6   7   8   9  10
+##   female 102 100  99  94 106 103  97  83  98 103
+##   male    47  49  49  55  43  45  53  64  51  46</code></pre>
 <p>特定のカテゴリ（例、デシルランク）に着目して、カテゴリ変数（例、性別）についての集計を行うことも可能である。例えば、デシルランク10における男女差のみを調べたいときには、<code>filter()</code> 関数を用いれば良い。</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="カテゴリ変数の要約.html#cb122-1" tabindex="-1"></a>idpos_cust <span class="sc">%&gt;%</span> </span>
-<span id="cb122-2"><a href="カテゴリ変数の要約.html#cb122-2" tabindex="-1"></a>  <span class="fu">filter</span>(decile_rank <span class="sc">==</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb122-3"><a href="カテゴリ変数の要約.html#cb122-3" tabindex="-1"></a>  <span class="fu">with</span>(<span class="fu">table</span>(gender))</span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="カテゴリ変数の要約.html#cb125-1" tabindex="-1"></a>idpos_cust <span class="sc">%&gt;%</span> </span>
+<span id="cb125-2"><a href="カテゴリ変数の要約.html#cb125-2" tabindex="-1"></a>  <span class="fu">filter</span>(decile_rank <span class="sc">==</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb125-3"><a href="カテゴリ変数の要約.html#cb125-3" tabindex="-1"></a>  <span class="fu">with</span>(<span class="fu">table</span>(gender))</span></code></pre></div>
 <pre><code>## gender
 ## female   male 
-##     82     67</code></pre>
+##    103     46</code></pre>
 <p>カテゴリ変数と量的変数の関係を調べることも、グループ別に量的変数の要約を行う形で可能である。また、そのための手法はすでに我々は学習済みである。具体的には、前節で利用した <code>group_by()</code> 関数を用いる。例えば、合計支出額と購買頻度の平均と標準偏差を男女ごとに確認することは、以下のような指示で可能になる。なお、tidyverseを起動していない場合には、必要に応じて <code>library(tidyverse)</code> を事前に指示してほしい。</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="カテゴリ変数の要約.html#cb124-1" tabindex="-1"></a>idpos_cust <span class="sc">%&gt;%</span> </span>
-<span id="cb124-2"><a href="カテゴリ変数の要約.html#cb124-2" tabindex="-1"></a>  <span class="fu">group_by</span>(gender) <span class="sc">%&gt;%</span> </span>
-<span id="cb124-3"><a href="カテゴリ変数の要約.html#cb124-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mon_m =</span> <span class="fu">mean</span>(monetary),</span>
-<span id="cb124-4"><a href="カテゴリ変数の要約.html#cb124-4" tabindex="-1"></a>            <span class="at">mon_sd =</span> <span class="fu">sd</span>(monetary),</span>
-<span id="cb124-5"><a href="カテゴリ変数の要約.html#cb124-5" tabindex="-1"></a>            <span class="at">freq_m =</span> <span class="fu">mean</span>(frequency),</span>
-<span id="cb124-6"><a href="カテゴリ変数の要約.html#cb124-6" tabindex="-1"></a>            <span class="at">freq_sd =</span> <span class="fu">sd</span>(frequency))</span></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="カテゴリ変数の要約.html#cb127-1" tabindex="-1"></a>idpos_cust <span class="sc">%&gt;%</span> </span>
+<span id="cb127-2"><a href="カテゴリ変数の要約.html#cb127-2" tabindex="-1"></a>  <span class="fu">group_by</span>(gender) <span class="sc">%&gt;%</span> </span>
+<span id="cb127-3"><a href="カテゴリ変数の要約.html#cb127-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mon_m =</span> <span class="fu">mean</span>(monetary),</span>
+<span id="cb127-4"><a href="カテゴリ変数の要約.html#cb127-4" tabindex="-1"></a>            <span class="at">mon_sd =</span> <span class="fu">sd</span>(monetary),</span>
+<span id="cb127-5"><a href="カテゴリ変数の要約.html#cb127-5" tabindex="-1"></a>            <span class="at">freq_m =</span> <span class="fu">mean</span>(frequency),</span>
+<span id="cb127-6"><a href="カテゴリ変数の要約.html#cb127-6" tabindex="-1"></a>            <span class="at">freq_sd =</span> <span class="fu">sd</span>(frequency))</span></code></pre></div>
 <pre><code>## # A tibble: 2 × 5
 ##   gender  mon_m mon_sd freq_m freq_sd
 ##   &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
-## 1 female 17658. 32567.   2.13    3.80
-## 2 male   15560. 26888.   1.90    3.27</code></pre>
+## 1 female 17511. 32770.   2.13    3.88
+## 2 male   14878. 23222.   1.80    2.77</code></pre>
 </div>
             </section>
 
@@ -353,11 +357,6 @@ gitbook.start({
 },
 "toc": {
 "collapse": "subsection"
-},
-"toolbar": {
-"position": "fixed",
-"download": ["pdf", "epub"],
-"search": true
 }
 });
 });

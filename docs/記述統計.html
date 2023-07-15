@@ -23,7 +23,7 @@
 <meta name="author" content="Takumi Tagashira" />
 
 
-<meta name="date" content="2023-07-15" />
+<meta name="date" content="2023-07-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -175,7 +175,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="5.1" data-path="データの読み込み.html"><a href="データの読み込み.html"><i class="fa fa-check"></i><b>5.1</b> データの読み込み</a></li>
 <li class="chapter" data-level="5.2" data-path="データの整形.html"><a href="データの整形.html"><i class="fa fa-check"></i><b>5.2</b> データの整形</a></li>
-<li class="chapter" data-level="5.3" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html"><i class="fa fa-check"></i><b>5.3</b> 統計的検定を用いない顧客分析</a></li>
+<li class="chapter" data-level="5.3" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html"><i class="fa fa-check"></i><b>5.3</b> 統計的検定を用いない顧客分析</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html#データの構造変化とソート"><i class="fa fa-check"></i><b>5.3.1</b> データの構造変化とソート</a></li>
+<li class="chapter" data-level="5.3.2" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html#データ結合"><i class="fa fa-check"></i><b>5.3.2</b> データ結合</a></li>
+</ul></li>
 <li class="chapter" data-level="5.4" data-path="おまけ-wide型とlong型データセット.html"><a href="おまけ-wide型とlong型データセット.html"><i class="fa fa-check"></i><b>5.4</b> (おまけ) Wide型とLong型データセット</a></li>
 <li class="chapter" data-level="5.5" data-path="参考文献-3.html"><a href="参考文献-3.html"><i class="fa fa-check"></i><b>5.5</b> 参考文献</a></li>
 </ul></li>
@@ -263,11 +267,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">6.1</span> 記述統計<a href="記述統計.html#記述統計" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>記述統計の利用においては、データのタイプ別に利用すべき統計量が異なることに注意が必要である。「データのタイプ」という節で確認したように、データには量的変数とカテゴリ（を示す質的）変数がある。量的変数は数値で測定できるものであり、その計算結果を解釈することも可能である。一方でカテゴリ変数は、各観測個体が属している状態やグループを表す指標であり、それを計算してもそこから含意を得るのが難しい。Rのような統計ソフトは非常に素直なので、たとえカテゴリ変数であってもそこに数値が入力されていれば、記述統計に必要な計算を実行し、結果を返してくれる。しかしながら研究においてはそれらの結果を適切に解釈する必要があり、自身が用いている変数のタイプに応じた分析を実行する必要がある。</p>
 <p>その上で本節ではまずひとつの量的変数の情報を要約するための記述統計を紹介する。一つの数値によってデータ全体を代表させるような数値を代表値と呼ぶ。代表値はおもにデータの中心を示す指標と考えられる。本節ではデータの中心を表す指標として中央値 (median) と平均値 (mean) を紹介する。中央値は、データのすべての観測値において、その値より小さな観測値の数と大きな観測値の数が等しくなるような真ん中の値を表す。そのため、（1, 3, 2, 5, 4）というデータにおける中央値は3である。これは、このデータを、1, 2, 3, 4, 5 と並べ替えると、3よりより小さな観測値の数と大きな観測値の数が等しくなっていることから確認できる<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>。</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="記述統計.html#cb104-1" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">4</span>)</span>
-<span id="cb104-2"><a href="記述統計.html#cb104-2" tabindex="-1"></a><span class="fu">median</span>(d)</span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="記述統計.html#cb107-1" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">4</span>)</span>
+<span id="cb107-2"><a href="記述統計.html#cb107-2" tabindex="-1"></a><span class="fu">median</span>(d)</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="記述統計.html#cb106-1" tabindex="-1"></a>d2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">6</span>)</span>
-<span id="cb106-2"><a href="記述統計.html#cb106-2" tabindex="-1"></a><span class="fu">median</span>(d2)</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="記述統計.html#cb109-1" tabindex="-1"></a>d2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">6</span>)</span>
+<span id="cb109-2"><a href="記述統計.html#cb109-2" tabindex="-1"></a><span class="fu">median</span>(d2)</span></code></pre></div>
 <pre><code>## [1] 3.5</code></pre>
 <p>平均値（算術平均と呼ばれる）は、最もよく使われる代表値の一つである。平均値は、n個のデータ、<span class="math inline">\(\small x_1,x_2,...,x_n\)</span> に対して以下のように定義される。</p>
 <p><span class="math display">\[\bar{x} = \frac{1}{n}\sum_i^n x_i\]</span></p>
@@ -277,20 +281,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>国語: (2,3,3,5,5,5,7,7,8)</li>
 </ul>
 <p>このときの平均値は以下のように求まる。</p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="記述統計.html#cb108-1" tabindex="-1"></a>math <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">7</span>)</span>
-<span id="cb108-2"><a href="記述統計.html#cb108-2" tabindex="-1"></a>jpn <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">7</span>,<span class="dv">8</span>)</span>
-<span id="cb108-3"><a href="記述統計.html#cb108-3" tabindex="-1"></a></span>
-<span id="cb108-4"><a href="記述統計.html#cb108-4" tabindex="-1"></a><span class="fu">mean</span>(math)</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="記述統計.html#cb111-1" tabindex="-1"></a>math <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">7</span>)</span>
+<span id="cb111-2"><a href="記述統計.html#cb111-2" tabindex="-1"></a>jpn <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">7</span>,<span class="dv">8</span>)</span>
+<span id="cb111-3"><a href="記述統計.html#cb111-3" tabindex="-1"></a></span>
+<span id="cb111-4"><a href="記述統計.html#cb111-4" tabindex="-1"></a><span class="fu">mean</span>(math)</span></code></pre></div>
 <pre><code>## [1] 5</code></pre>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="記述統計.html#cb110-1" tabindex="-1"></a><span class="fu">mean</span>(jpn)</span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="記述統計.html#cb113-1" tabindex="-1"></a><span class="fu">mean</span>(jpn)</span></code></pre></div>
 <pre><code>## [1] 5</code></pre>
 <p>計算の結果、どちらも平均値は5であった。データの中心を表す代表値の値が等しかったため、これら2科目のテスト結果は同じ分布を持つと判断して良いのだろうか。自明かもしれないが、そのような解釈は不適切である。具体的には、データの「ばらつき」についても確認する必要がある。分布のばらつきは、平均値からの離れ方(平均値からの偏差) によって判断される事が多く、これが大きなデータが多い場合は、よりデータは散らばっ て分布していると解釈される。一方でデータが平均の近くに集まって分布している場合、ばらつきが小さいと捉えられる。この分布のばらつきは主に、分散や標準偏差という指標で測られる。</p>
 <p>分散 (Variance, <span class="math inline">\(S^2\)</span>で定義する) は以下のように、平均からの偏差の二乗の和をデータ数で割ったものだと定義される。平均からの偏差の和を計算すると、正の方向へのズレとマイナス方向へのずれがあるので、互いに相殺しあって合計は 0 になる。そこで、偏差の二乗和を用いることでデータ全体がどの程度平均からばらついているかを把握する。
 <span class="math display">\[S^2 = \frac{1}{n}\sum_i^n (x_i-\bar{x})^2\]</span></p>
 <p>しかしながら、分散は元の値を二乗しているのでもとのデータと単位が異なる。そのため、分散の正の平方根 (<span class="math inline">\(\sqrt{\cdot}\)</span>) を取った値を標準偏差と呼び、この標準偏差を用いることも多い<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>。なお、Rでは <code>var()</code> と <code>sd()</code> によって分散と標準偏差をそれぞれ求める。ただし、Rの関数による計算では <span class="math inline">\(s^2=\frac{1}{n-1}\sum_i^n (x_i-\bar{x})^2\)</span> で定義される「不偏標本分散」および「不偏標準誤差」という指標を用いる。これは、これらの指標のほうが統計的に好ましい性質を持っているためであるが、Rを用いた分散の計算値が、nで割った際の手計算値と異なることがあるのでその点には注意が必要である。</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="記述統計.html#cb112-1" tabindex="-1"></a><span class="fu">var</span>(math)</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="記述統計.html#cb115-1" tabindex="-1"></a><span class="fu">var</span>(math)</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="記述統計.html#cb114-1" tabindex="-1"></a><span class="fu">var</span>(jpn)</span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="記述統計.html#cb117-1" tabindex="-1"></a><span class="fu">var</span>(jpn)</span></code></pre></div>
 <pre><code>## [1] 4.25</code></pre>
 <p>先程の数学と国語のテスト結果データを用いて分散を計算すると、国語の方が分散が大きいことがわかる。つまり、両テストとも平均値は同じであるものの、国語のほうがそのスコアのばらつきが大きいことがわかる。このように、代表値とともにデータのばらつきに関する情報も踏まえてデータの特徴を把握することが好ましい。</p>
 <p>観察されたデータと標準偏差を用いて、特定の観測結果がデータ内において「相対的に」どのような位置にいるのかを捉えることも可能になる。具体的には、任意の量的変数 <span class="math inline">\(x_1,...,x_n\)</span> に対して、標準化されたスコア <span class="math inline">\(z_1,..,z_n\)</span> は以下のように定義できる。</p>
@@ -361,11 +365,6 @@ gitbook.start({
 },
 "toc": {
 "collapse": "subsection"
-},
-"toolbar": {
-"position": "fixed",
-"download": ["pdf", "epub"],
-"search": true
 }
 });
 });

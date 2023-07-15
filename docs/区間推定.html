@@ -23,7 +23,7 @@
 <meta name="author" content="Takumi Tagashira" />
 
 
-<meta name="date" content="2023-07-15" />
+<meta name="date" content="2023-07-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -175,7 +175,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="5.1" data-path="データの読み込み.html"><a href="データの読み込み.html"><i class="fa fa-check"></i><b>5.1</b> データの読み込み</a></li>
 <li class="chapter" data-level="5.2" data-path="データの整形.html"><a href="データの整形.html"><i class="fa fa-check"></i><b>5.2</b> データの整形</a></li>
-<li class="chapter" data-level="5.3" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html"><i class="fa fa-check"></i><b>5.3</b> 統計的検定を用いない顧客分析</a></li>
+<li class="chapter" data-level="5.3" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html"><i class="fa fa-check"></i><b>5.3</b> 統計的検定を用いない顧客分析</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html#データの構造変化とソート"><i class="fa fa-check"></i><b>5.3.1</b> データの構造変化とソート</a></li>
+<li class="chapter" data-level="5.3.2" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html#データ結合"><i class="fa fa-check"></i><b>5.3.2</b> データ結合</a></li>
+</ul></li>
 <li class="chapter" data-level="5.4" data-path="おまけ-wide型とlong型データセット.html"><a href="おまけ-wide型とlong型データセット.html"><i class="fa fa-check"></i><b>5.4</b> (おまけ) Wide型とLong型データセット</a></li>
 <li class="chapter" data-level="5.5" data-path="参考文献-3.html"><a href="参考文献-3.html"><i class="fa fa-check"></i><b>5.5</b> 参考文献</a></li>
 </ul></li>
@@ -307,10 +311,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>このデータは、平均が <span class="math inline">\(\small \mu\)</span>、分散が <span class="math inline">\(\small 180^2\)</span> である正規分布（<span class="math inline">\(\small N(\mu, \sigma^2=180^2)\)</span> と表記する）からの無作為標本 <span class="math inline">\(X_1,..., X_{16}\)</span>の実現値とみなすことができる。なお、このデータの標本平均は1,835（時間）、不偏標本標準偏差は 200である。このデータに基づく、新型電球寿命の期待値に関する95% 信頼区間（95%の確率で真の母数を含む区間）は<code>t.tes()</code> 関数を用いると以下の様に求まる（ただし後述するが、この方法はこの例に対しては適切ではない）。</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="区間推定.html#cb156-1" tabindex="-1"></a>bulb <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1873</span>, <span class="dv">1685</span>, <span class="dv">2275</span>, <span class="dv">1760</span>, <span class="dv">1769</span>, <span class="dv">2176</span>, <span class="dv">1748</span>, <span class="dv">1760</span>, <span class="dv">1994</span>, <span class="dv">1473</span>, <span class="dv">1715</span>, <span class="dv">1771</span>, <span class="dv">1784</span>, <span class="dv">1684</span>, <span class="dv">2038</span>, <span class="dv">1850</span>)</span>
-<span id="cb156-2"><a href="区間推定.html#cb156-2" tabindex="-1"></a></span>
-<span id="cb156-3"><a href="区間推定.html#cb156-3" tabindex="-1"></a>bulb_ci <span class="ot">&lt;-</span> <span class="fu">t.test</span>(bulb) <span class="co">#t検定の実施と格納</span></span>
-<span id="cb156-4"><a href="区間推定.html#cb156-4" tabindex="-1"></a>bulb_ci<span class="sc">$</span>conf.int <span class="co">#信頼区間の出力（デフォルトで95%信頼水準）</span></span></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="区間推定.html#cb159-1" tabindex="-1"></a>bulb <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1873</span>, <span class="dv">1685</span>, <span class="dv">2275</span>, <span class="dv">1760</span>, <span class="dv">1769</span>, <span class="dv">2176</span>, <span class="dv">1748</span>, <span class="dv">1760</span>, <span class="dv">1994</span>, <span class="dv">1473</span>, <span class="dv">1715</span>, <span class="dv">1771</span>, <span class="dv">1784</span>, <span class="dv">1684</span>, <span class="dv">2038</span>, <span class="dv">1850</span>)</span>
+<span id="cb159-2"><a href="区間推定.html#cb159-2" tabindex="-1"></a></span>
+<span id="cb159-3"><a href="区間推定.html#cb159-3" tabindex="-1"></a>bulb_ci <span class="ot">&lt;-</span> <span class="fu">t.test</span>(bulb) <span class="co">#t検定の実施と格納</span></span>
+<span id="cb159-4"><a href="区間推定.html#cb159-4" tabindex="-1"></a>bulb_ci<span class="sc">$</span>conf.int <span class="co">#信頼区間の出力（デフォルトで95%信頼水準）</span></span></code></pre></div>
 <pre><code>## [1] 1728.235 1941.140
 ## attr(,&quot;conf.level&quot;)
 ## [1] 0.95</code></pre>
@@ -373,18 +377,18 @@ P\left(\bar{X}-t_{\alpha/2}(n-1)\cdot \frac{s}{\sqrt{n}}\leq \mu \leq \bar{X}+t_
 \bar{X}\pm z_{\alpha/2}\cdot \sigma/\sqrt{n}
 \]</span>
 このとき、仮定より <span class="math inline">\(\small \bar{X}=1835\)</span>, <span class="math inline">\(\sigma=180\)</span> であることがわかっている。また、慣習より95%信頼水準を仮定すると、確率 <span class="math inline">\(\small \alpha = 0.05\)</span>となる。そのため、区間推定の計算で必要な要素のうち現時点で不明なのは、 <span class="math inline">\(z_{\alpha/2}=z_{0.025}\)</span>の値である。この値は、任意の確率に対応する区間の閾値を表している。今回の場合、分布が左右対称の分布であり正負どちらか一方の値さえ分かればよいため、閾値（<span class="math inline">\(z_{0.025}\)</span>）以上の区間を取る確率が2.5%になるような閾値に着目する。このような閾値は、Rによって以下のように求める（なお先述の通り、統計学教科書に掲載されている分布表を使っても同様の数値を求めることができる）。</p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="区間推定.html#cb158-1" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.025</span>, <span class="at">lower.tail=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="区間推定.html#cb161-1" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.025</span>, <span class="at">lower.tail=</span><span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## [1] 1.959964</code></pre>
 <p>これにより、計算に必要な情報が揃ったため、以下の要領で信頼区間を出力できる。</p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="区間推定.html#cb160-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(bulb)</span>
-<span id="cb160-2"><a href="区間推定.html#cb160-2" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.025</span>, <span class="at">lower.tail=</span><span class="cn">FALSE</span>)</span>
-<span id="cb160-3"><a href="区間推定.html#cb160-3" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(bulb)</span>
-<span id="cb160-4"><a href="区間推定.html#cb160-4" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="dv">180</span></span>
-<span id="cb160-5"><a href="区間推定.html#cb160-5" tabindex="-1"></a>upper <span class="ot">&lt;-</span> xbar<span class="sc">+</span>z<span class="sc">*</span>(sigma<span class="sc">/</span><span class="fu">sqrt</span>(n))</span>
-<span id="cb160-6"><a href="区間推定.html#cb160-6" tabindex="-1"></a>lower <span class="ot">&lt;-</span> xbar<span class="sc">-</span>z<span class="sc">*</span>(sigma<span class="sc">/</span><span class="fu">sqrt</span>(n))</span>
-<span id="cb160-7"><a href="区間推定.html#cb160-7" tabindex="-1"></a>ci.bulb <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(lower,upper),<span class="at">nrow=</span><span class="dv">1</span>)</span>
-<span id="cb160-8"><a href="区間推定.html#cb160-8" tabindex="-1"></a><span class="fu">colnames</span>(ci.bulb) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;ci.lower&quot;</span>, <span class="st">&quot;ci.upper&quot;</span>)</span>
-<span id="cb160-9"><a href="区間推定.html#cb160-9" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(ci.bulb, <span class="at">caption =</span> <span class="st">&quot;Bulb data CI（95%）&quot;</span>, <span class="at">align =</span> <span class="st">&quot;cc&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="区間推定.html#cb163-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(bulb)</span>
+<span id="cb163-2"><a href="区間推定.html#cb163-2" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.025</span>, <span class="at">lower.tail=</span><span class="cn">FALSE</span>)</span>
+<span id="cb163-3"><a href="区間推定.html#cb163-3" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(bulb)</span>
+<span id="cb163-4"><a href="区間推定.html#cb163-4" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="dv">180</span></span>
+<span id="cb163-5"><a href="区間推定.html#cb163-5" tabindex="-1"></a>upper <span class="ot">&lt;-</span> xbar<span class="sc">+</span>z<span class="sc">*</span>(sigma<span class="sc">/</span><span class="fu">sqrt</span>(n))</span>
+<span id="cb163-6"><a href="区間推定.html#cb163-6" tabindex="-1"></a>lower <span class="ot">&lt;-</span> xbar<span class="sc">-</span>z<span class="sc">*</span>(sigma<span class="sc">/</span><span class="fu">sqrt</span>(n))</span>
+<span id="cb163-7"><a href="区間推定.html#cb163-7" tabindex="-1"></a>ci.bulb <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(lower,upper),<span class="at">nrow=</span><span class="dv">1</span>)</span>
+<span id="cb163-8"><a href="区間推定.html#cb163-8" tabindex="-1"></a><span class="fu">colnames</span>(ci.bulb) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;ci.lower&quot;</span>, <span class="st">&quot;ci.upper&quot;</span>)</span>
+<span id="cb163-9"><a href="区間推定.html#cb163-9" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(ci.bulb, <span class="at">caption =</span> <span class="st">&quot;Bulb data CI（95%）&quot;</span>, <span class="at">align =</span> <span class="st">&quot;cc&quot;</span>)</span></code></pre></div>
 <table>
 <caption>(#tab:ci_bulb)Bulb data CI（95%）</caption>
 <thead>
@@ -464,11 +468,6 @@ gitbook.start({
 },
 "toc": {
 "collapse": "subsection"
-},
-"toolbar": {
-"position": "fixed",
-"download": ["pdf", "epub"],
-"search": true
 }
 });
 });

@@ -23,7 +23,7 @@
 <meta name="author" content="Takumi Tagashira" />
 
 
-<meta name="date" content="2023-07-15" />
+<meta name="date" content="2023-07-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -175,7 +175,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="5.1" data-path="データの読み込み.html"><a href="データの読み込み.html"><i class="fa fa-check"></i><b>5.1</b> データの読み込み</a></li>
 <li class="chapter" data-level="5.2" data-path="データの整形.html"><a href="データの整形.html"><i class="fa fa-check"></i><b>5.2</b> データの整形</a></li>
-<li class="chapter" data-level="5.3" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html"><i class="fa fa-check"></i><b>5.3</b> 統計的検定を用いない顧客分析</a></li>
+<li class="chapter" data-level="5.3" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html"><i class="fa fa-check"></i><b>5.3</b> 統計的検定を用いない顧客分析</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html#データの構造変化とソート"><i class="fa fa-check"></i><b>5.3.1</b> データの構造変化とソート</a></li>
+<li class="chapter" data-level="5.3.2" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html#データ結合"><i class="fa fa-check"></i><b>5.3.2</b> データ結合</a></li>
+</ul></li>
 <li class="chapter" data-level="5.4" data-path="おまけ-wide型とlong型データセット.html"><a href="おまけ-wide型とlong型データセット.html"><i class="fa fa-check"></i><b>5.4</b> (おまけ) Wide型とLong型データセット</a></li>
 <li class="chapter" data-level="5.5" data-path="参考文献-3.html"><a href="参考文献-3.html"><i class="fa fa-check"></i><b>5.5</b> 参考文献</a></li>
 </ul></li>
@@ -267,7 +271,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="figcaption">Wide型データ</div>
 </div>
 <p>手元にあるWide型データをLong型に変換したい場合の対応策として、ここでは tidyverseに含まれているtidyrのgather()関数を用いる方法を紹介する。この関数の利用方法を実演するためにManabaにアップされている sales_wide.csv をダウンロードし、プロジェクト内のdataディレクトリに移して欲しい。データを読み込むと、以下のようにデータ構造を確認することができる。</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="おまけ-wide型とlong型データセット.html#cb93-1" tabindex="-1"></a>sales_wide <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/sales_wide.csv&quot;</span>, <span class="at">na =</span> <span class="st">&quot;.&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="おまけ-wide型とlong型データセット.html#cb96-1" tabindex="-1"></a>sales_wide <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/sales_wide.csv&quot;</span>, <span class="at">na =</span> <span class="st">&quot;.&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 4 Columns: 6
 ## ── Column specification ─────────────────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
@@ -275,7 +279,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="おまけ-wide型とlong型データセット.html#cb95-1" tabindex="-1"></a>sales_wide</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="おまけ-wide型とlong型データセット.html#cb98-1" tabindex="-1"></a>sales_wide</span></code></pre></div>
 <pre><code>## # A tibble: 4 × 6
 ##   store sales06 sales07 sales08 sales09 sales10
 ##   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -289,9 +293,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 - value: 変数を１列にまとめたあと、値が入る列につける名前
 - どの範囲を一列にまとめるかの範囲指定</p>
 <p>その上で、さきほどのsalesデータをLong型に変換するために、以下のようなコマンドを利用する。</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="おまけ-wide型とlong型データセット.html#cb97-1" tabindex="-1"></a>sales_long<span class="ot">&lt;-</span> <span class="fu">gather</span>(<span class="at">data =</span> sales_wide, <span class="at">key =</span> <span class="st">&quot;month&quot;</span>,</span>
-<span id="cb97-2"><a href="おまけ-wide型とlong型データセット.html#cb97-2" tabindex="-1"></a>               <span class="at">value =</span> <span class="st">&quot;sales&quot;</span>, <span class="fu">starts_with</span>(<span class="st">&quot;sales&quot;</span>))</span>
-<span id="cb97-3"><a href="おまけ-wide型とlong型データセット.html#cb97-3" tabindex="-1"></a>sales_long</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="おまけ-wide型とlong型データセット.html#cb100-1" tabindex="-1"></a>sales_long<span class="ot">&lt;-</span> <span class="fu">gather</span>(<span class="at">data =</span> sales_wide, <span class="at">key =</span> <span class="st">&quot;month&quot;</span>,</span>
+<span id="cb100-2"><a href="おまけ-wide型とlong型データセット.html#cb100-2" tabindex="-1"></a>               <span class="at">value =</span> <span class="st">&quot;sales&quot;</span>, <span class="fu">starts_with</span>(<span class="st">&quot;sales&quot;</span>))</span>
+<span id="cb100-3"><a href="おまけ-wide型とlong型データセット.html#cb100-3" tabindex="-1"></a>sales_long</span></code></pre></div>
 <pre><code>## # A tibble: 20 × 3
 ##    store month   sales
 ##    &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;
@@ -316,16 +320,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 19     3 sales10   650
 ## 20     4 sales10  1400</code></pre>
 <p>編集された縦長データは上記の通り示されるが、その中身を見ると、monthの列にsales06などの情報が記載されており、好ましくない。この問題は、元のデータにおける変数名に該当する情報を新しいkey列の値に使うというgather関数の仕様に影響するものである。この問題に対しては、パイプ演算子を使ってgatherの実行前に、列名を年だけの形に変更することで対応可能である。以下が、修正版のコードであり、出力結果より、先述の問題点が解決されたことが確認できる。ただし、gather関数の実行において、下記コード内では範囲の引数の指定についても修正されていることに注意が必要である。</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="おまけ-wide型とlong型データセット.html#cb99-1" tabindex="-1"></a>sales_long <span class="ot">&lt;-</span> sales_wide <span class="sc">%&gt;%</span> </span>
-<span id="cb99-2"><a href="おまけ-wide型とlong型データセット.html#cb99-2" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">`</span><span class="at">06</span><span class="st">`</span> <span class="ot">=</span> sales06,</span>
-<span id="cb99-3"><a href="おまけ-wide型とlong型データセット.html#cb99-3" tabindex="-1"></a>         <span class="st">`</span><span class="at">07</span><span class="st">`</span> <span class="ot">=</span> sales07,</span>
-<span id="cb99-4"><a href="おまけ-wide型とlong型データセット.html#cb99-4" tabindex="-1"></a>         <span class="st">`</span><span class="at">08</span><span class="st">`</span> <span class="ot">=</span> sales08,</span>
-<span id="cb99-5"><a href="おまけ-wide型とlong型データセット.html#cb99-5" tabindex="-1"></a>         <span class="st">`</span><span class="at">09</span><span class="st">`</span> <span class="ot">=</span> sales09,</span>
-<span id="cb99-6"><a href="おまけ-wide型とlong型データセット.html#cb99-6" tabindex="-1"></a>         <span class="st">`</span><span class="at">10</span><span class="st">`</span> <span class="ot">=</span> sales10) <span class="sc">%&gt;%</span> </span>
-<span id="cb99-7"><a href="おまけ-wide型とlong型データセット.html#cb99-7" tabindex="-1"></a>  <span class="fu">gather</span>(<span class="at">key =</span> <span class="st">&quot;month&quot;</span>,<span class="at">value =</span> <span class="st">&quot;sales&quot;</span>,</span>
-<span id="cb99-8"><a href="おまけ-wide型とlong型データセット.html#cb99-8" tabindex="-1"></a>         <span class="st">`</span><span class="at">06</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">10</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb99-9"><a href="おまけ-wide型とlong型データセット.html#cb99-9" tabindex="-1"></a>  <span class="fu">arrange</span>(store)</span>
-<span id="cb99-10"><a href="おまけ-wide型とlong型データセット.html#cb99-10" tabindex="-1"></a>sales_long</span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="おまけ-wide型とlong型データセット.html#cb102-1" tabindex="-1"></a>sales_long <span class="ot">&lt;-</span> sales_wide <span class="sc">%&gt;%</span> </span>
+<span id="cb102-2"><a href="おまけ-wide型とlong型データセット.html#cb102-2" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">`</span><span class="at">06</span><span class="st">`</span> <span class="ot">=</span> sales06,</span>
+<span id="cb102-3"><a href="おまけ-wide型とlong型データセット.html#cb102-3" tabindex="-1"></a>         <span class="st">`</span><span class="at">07</span><span class="st">`</span> <span class="ot">=</span> sales07,</span>
+<span id="cb102-4"><a href="おまけ-wide型とlong型データセット.html#cb102-4" tabindex="-1"></a>         <span class="st">`</span><span class="at">08</span><span class="st">`</span> <span class="ot">=</span> sales08,</span>
+<span id="cb102-5"><a href="おまけ-wide型とlong型データセット.html#cb102-5" tabindex="-1"></a>         <span class="st">`</span><span class="at">09</span><span class="st">`</span> <span class="ot">=</span> sales09,</span>
+<span id="cb102-6"><a href="おまけ-wide型とlong型データセット.html#cb102-6" tabindex="-1"></a>         <span class="st">`</span><span class="at">10</span><span class="st">`</span> <span class="ot">=</span> sales10) <span class="sc">%&gt;%</span> </span>
+<span id="cb102-7"><a href="おまけ-wide型とlong型データセット.html#cb102-7" tabindex="-1"></a>  <span class="fu">gather</span>(<span class="at">key =</span> <span class="st">&quot;month&quot;</span>,<span class="at">value =</span> <span class="st">&quot;sales&quot;</span>,</span>
+<span id="cb102-8"><a href="おまけ-wide型とlong型データセット.html#cb102-8" tabindex="-1"></a>         <span class="st">`</span><span class="at">06</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">10</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb102-9"><a href="おまけ-wide型とlong型データセット.html#cb102-9" tabindex="-1"></a>  <span class="fu">arrange</span>(store)</span>
+<span id="cb102-10"><a href="おまけ-wide型とlong型データセット.html#cb102-10" tabindex="-1"></a>sales_long</span></code></pre></div>
 <pre><code>## # A tibble: 20 × 3
 ##    store month sales
 ##    &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
@@ -356,14 +360,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>value: 複数列に分ける値</li>
 </ul>
 <p>例えば、以下のコードで先程の sales_long データをwide型に変換することができる。</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="おまけ-wide型とlong型データセット.html#cb101-1" tabindex="-1"></a>wide_test <span class="ot">&lt;-</span> sales_long <span class="sc">%&gt;%</span> </span>
-<span id="cb101-2"><a href="おまけ-wide型とlong型データセット.html#cb101-2" tabindex="-1"></a>  <span class="fu">spread</span>(<span class="at">key =</span> <span class="st">&quot;month&quot;</span>, <span class="at">value =</span> <span class="st">&quot;sales&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb101-3"><a href="おまけ-wide型とlong型データセット.html#cb101-3" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">sales06 =</span> <span class="st">`</span><span class="at">06</span><span class="st">`</span>,</span>
-<span id="cb101-4"><a href="おまけ-wide型とlong型データセット.html#cb101-4" tabindex="-1"></a>         <span class="at">sales07 =</span> <span class="st">`</span><span class="at">07</span><span class="st">`</span>,</span>
-<span id="cb101-5"><a href="おまけ-wide型とlong型データセット.html#cb101-5" tabindex="-1"></a>         <span class="at">sales08 =</span> <span class="st">`</span><span class="at">08</span><span class="st">`</span>,</span>
-<span id="cb101-6"><a href="おまけ-wide型とlong型データセット.html#cb101-6" tabindex="-1"></a>         <span class="at">sales09 =</span> <span class="st">`</span><span class="at">09</span><span class="st">`</span>,</span>
-<span id="cb101-7"><a href="おまけ-wide型とlong型データセット.html#cb101-7" tabindex="-1"></a>         <span class="at">sales10 =</span> <span class="st">`</span><span class="at">10</span><span class="st">`</span>)</span>
-<span id="cb101-8"><a href="おまけ-wide型とlong型データセット.html#cb101-8" tabindex="-1"></a>wide_test</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="おまけ-wide型とlong型データセット.html#cb104-1" tabindex="-1"></a>wide_test <span class="ot">&lt;-</span> sales_long <span class="sc">%&gt;%</span> </span>
+<span id="cb104-2"><a href="おまけ-wide型とlong型データセット.html#cb104-2" tabindex="-1"></a>  <span class="fu">spread</span>(<span class="at">key =</span> <span class="st">&quot;month&quot;</span>, <span class="at">value =</span> <span class="st">&quot;sales&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb104-3"><a href="おまけ-wide型とlong型データセット.html#cb104-3" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">sales06 =</span> <span class="st">`</span><span class="at">06</span><span class="st">`</span>,</span>
+<span id="cb104-4"><a href="おまけ-wide型とlong型データセット.html#cb104-4" tabindex="-1"></a>         <span class="at">sales07 =</span> <span class="st">`</span><span class="at">07</span><span class="st">`</span>,</span>
+<span id="cb104-5"><a href="おまけ-wide型とlong型データセット.html#cb104-5" tabindex="-1"></a>         <span class="at">sales08 =</span> <span class="st">`</span><span class="at">08</span><span class="st">`</span>,</span>
+<span id="cb104-6"><a href="おまけ-wide型とlong型データセット.html#cb104-6" tabindex="-1"></a>         <span class="at">sales09 =</span> <span class="st">`</span><span class="at">09</span><span class="st">`</span>,</span>
+<span id="cb104-7"><a href="おまけ-wide型とlong型データセット.html#cb104-7" tabindex="-1"></a>         <span class="at">sales10 =</span> <span class="st">`</span><span class="at">10</span><span class="st">`</span>)</span>
+<span id="cb104-8"><a href="おまけ-wide型とlong型データセット.html#cb104-8" tabindex="-1"></a>wide_test</span></code></pre></div>
 <pre><code>## # A tibble: 4 × 6
 ##   store sales06 sales07 sales08 sales09 sales10
 ##   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -427,11 +431,6 @@ gitbook.start({
 },
 "toc": {
 "collapse": "subsection"
-},
-"toolbar": {
-"position": "fixed",
-"download": ["pdf", "epub"],
-"search": true
 }
 });
 });

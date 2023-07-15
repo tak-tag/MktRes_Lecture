@@ -23,7 +23,7 @@
 <meta name="author" content="Takumi Tagashira" />
 
 
-<meta name="date" content="2023-07-15" />
+<meta name="date" content="2023-07-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -175,7 +175,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="5.1" data-path="データの読み込み.html"><a href="データの読み込み.html"><i class="fa fa-check"></i><b>5.1</b> データの読み込み</a></li>
 <li class="chapter" data-level="5.2" data-path="データの整形.html"><a href="データの整形.html"><i class="fa fa-check"></i><b>5.2</b> データの整形</a></li>
-<li class="chapter" data-level="5.3" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html"><i class="fa fa-check"></i><b>5.3</b> 統計的検定を用いない顧客分析</a></li>
+<li class="chapter" data-level="5.3" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html"><i class="fa fa-check"></i><b>5.3</b> 統計的検定を用いない顧客分析</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html#データの構造変化とソート"><i class="fa fa-check"></i><b>5.3.1</b> データの構造変化とソート</a></li>
+<li class="chapter" data-level="5.3.2" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html#データ結合"><i class="fa fa-check"></i><b>5.3.2</b> データ結合</a></li>
+</ul></li>
 <li class="chapter" data-level="5.4" data-path="おまけ-wide型とlong型データセット.html"><a href="おまけ-wide型とlong型データセット.html"><i class="fa fa-check"></i><b>5.4</b> (おまけ) Wide型とLong型データセット</a></li>
 <li class="chapter" data-level="5.5" data-path="参考文献-3.html"><a href="参考文献-3.html"><i class="fa fa-check"></i><b>5.5</b> 参考文献</a></li>
 </ul></li>
@@ -264,7 +268,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>ここまでの内容では、２グループ間の平均の差に関する分析を捉えた。しかしながら、三つ以上のグループ間の平均の差に関心があることもある。例えば、異なる地域における売上高の差を比較したい場合が挙げられる。このような目的を持つ場合によく用いられるのが分散分析（Analysis of Variance; ANOVA）である。本節では、ANOVAの実行方法を中心に説明を行う。なお、ANOVAに関するより詳細な説明は別添の補足資料を参照してほしい。
 ANOVAの構造については、要因と水準という二つの要素に基づく説明が行われる。要因とは、観測値に影響を与えていると考えうるカテゴリ変数のことを指し、水準とは、要因を構成するいくつかの条件やグループを指す。例えばある小売企業における各店舗の一定期間内の売上高が出店エリア特性によって差があるのかという問いに関心があるとする。その際各店舗を、都市エリア、郊外エリア、農村エリアという三つのグループに分類し、それぞれのグループにおける標本平均を求めれば、エリアごとの差を分析できるだろう。この場合、「地域」が売上高に影響を与えうる要因であり、「都市、郊外、農村」という三つのグループが水準だと言える。</p>
 <p>分析において取り上げる要因が一つである分散分析を一元配置分散分析と呼ぶ。二元配置分散分析については本資料では扱わないため、補足資料を参照してほしい。なお、分散分析をRで実行することは難しくない。ここでは、<code>reshape2</code>というパッケージに内包されてる tipping データを用いてANOVAを実行するため、以下のように<code>reshape2</code>パッケージをインストールして欲しい。</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="分散分析.html#cb175-1" tabindex="-1"></a><span class="fu">install.packages</span>(reshape2)</span></code></pre></div>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="分散分析.html#cb178-1" tabindex="-1"></a><span class="fu">install.packages</span>(reshape2)</span></code></pre></div>
 <p>パッケージをインストールしたら、以下のように<code>reshape2</code>を起動し、今回使用する <code>tips</code> データを確認する。本データに含まれている変数は以下の通りである。</p>
 <ul>
 <li>total_bill: 支払料金（ドル）</li>
@@ -275,8 +279,8 @@ ANOVAの構造については、要因と水準という二つの要素に基づ
 <li>time: 時間帯</li>
 <li>size: 人数</li>
 </ul>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="分散分析.html#cb176-1" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
-<span id="cb176-2"><a href="分散分析.html#cb176-2" tabindex="-1"></a><span class="fu">str</span>(tips)</span></code></pre></div>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="分散分析.html#cb179-1" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
+<span id="cb179-2"><a href="分散分析.html#cb179-2" tabindex="-1"></a><span class="fu">str</span>(tips)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    244 obs. of  7 variables:
 ##  $ total_bill: num  17 10.3 21 23.7 24.6 ...
 ##  $ tip       : num  1.01 1.66 3.5 3.31 3.61 4.71 2 3.12 1.96 3.23 ...
@@ -286,8 +290,8 @@ ANOVAの構造については、要因と水準という二つの要素に基づ
 ##  $ time      : Factor w/ 2 levels &quot;Dinner&quot;,&quot;Lunch&quot;: 1 1 1 1 1 1 1 1 1 1 ...
 ##  $ size      : int  2 3 3 2 4 4 2 4 2 2 ...</code></pre>
 <p>ここでは、以下の通りチップ額が曜日によって異なるか否かを分析する。ANOVAの実行においては<code>aov()</code>関数によって分析するモデルとデータを指定し、<code>anova()</code> によって分析結果を出力する（<code>summary()</code> を用いることも可能である）。なお、上記のデータサマリーより、<code>day</code> という要因には四水準 (levels) 含まれていることがうかがえる。</p>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="分散分析.html#cb178-1" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">aov</span>(tip <span class="sc">~</span> day, <span class="at">data =</span> tips)</span>
-<span id="cb178-2"><a href="分散分析.html#cb178-2" tabindex="-1"></a><span class="fu">anova</span>(s)</span></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="分散分析.html#cb181-1" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">aov</span>(tip <span class="sc">~</span> day, <span class="at">data =</span> tips)</span>
+<span id="cb181-2"><a href="分散分析.html#cb181-2" tabindex="-1"></a><span class="fu">anova</span>(s)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: tip
@@ -296,8 +300,8 @@ ANOVAの構造については、要因と水準という二つの要素に基づ
 ## Residuals 240 455.69  1.8987</code></pre>
 <p>分析結果における <code>Sum Sq</code> は、水準間変動和（i.e.,平方和）と呼ばれ、特定要因の水準間によって説明される観測値の変動を表している。 <code>Mean Sq</code> は平均平方と呼ばれ、Sum SqをDF(自由度)で割ったものである。<code>F value</code> は F値という検定統計量の実現値であり、<code>Pr(&gt;F)</code> は本検定の p値を表している。また、<code>Residuals</code> の行で示されているのは、残差平方和と呼ばれ、郡内変動、つまり同グループ（水準）内での値のばらつきの程度を表している。</p>
 <p>なお分析の結果、チップ額について曜日による統計的に有意な差は確認されなかった。それでは、ANOVAでは具体的にどのような帰無仮説を用いた検定を行っているのだろうか？結論を先に述べると、「すべての水準間で平均値は同じか」を検定しており、仮に帰無仮説が棄却された場合、「少なくとも一つの水準では値が異なる」と考える。そのため、ANOVAにおける帰無仮説の棄却は、少なくとも1つの群は全体と異なる平均値を持っているという結論につながる。そのため、具体的にどの水準間に差があるのかはわからない。そこで、ANOVAを用いた研究では事後分析として、多重比較と呼ばれる分析を行うことが多い。しかし、この多重比較には統計的な問題が伴うと言われている（詳細は補足資料参照）。その問題に対応した手法として広く用いられているのが、Tukeyのpair-wise 比較である。Rではこの分析を、<code>TukeyHSD()</code> という関数で実行できる。具体的には、<code>aov()</code> でストアしたANOVAの分析結果を用いて以下のように実施する。また、<code>TukeyHSD()</code>を用いて、pair-wise比較の結果を95%信頼区間とともに図示化することもできる。</p>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="分散分析.html#cb180-1" tabindex="-1"></a>tukey_result <span class="ot">&lt;-</span> <span class="fu">TukeyHSD</span>(s)</span>
-<span id="cb180-2"><a href="分散分析.html#cb180-2" tabindex="-1"></a>tukey_result</span></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="分散分析.html#cb183-1" tabindex="-1"></a>tukey_result <span class="ot">&lt;-</span> <span class="fu">TukeyHSD</span>(s)</span>
+<span id="cb183-2"><a href="分散分析.html#cb183-2" tabindex="-1"></a>tukey_result</span></code></pre></div>
 <pre><code>##   Tukey multiple comparisons of means
 ##     95% family-wise confidence level
 ## 
@@ -311,7 +315,7 @@ ANOVAの構造については、要因と水準という二つの要素に基づ
 ## Sun-Sat   0.26202813 -0.2976929 0.8217492 0.6203822
 ## Thur-Sat -0.22165184 -0.8141430 0.3708394 0.7678581
 ## Thur-Sun -0.48367997 -1.0937520 0.1263921 0.1724212</code></pre>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="分散分析.html#cb182-1" tabindex="-1"></a><span class="fu">plot</span>(tukey_result)</span></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="分散分析.html#cb185-1" tabindex="-1"></a><span class="fu">plot</span>(tukey_result)</span></code></pre></div>
 <embed src="mktres_lecture_files/figure-html/tukeys-1.pdf" width="672" type="application/pdf" />
 <p>分析結果における <code>diff</code> 列は平均値の差を表している。 <code>lwer</code> と <code>upr</code> は信頼区間の下限と上限を表しており、一番右の列はp値を示している。分析の結果、P-valueが10%水準よりも低い結果がないため、どのペアに関する検定でも有意な差は確認できなかった。したがって、分析結果は必ずしもチップ額が曜日によって変化するとは言えないことを示した。この結果は、アメリカにおけるチップ額が会計額に対する割合や提供されたサービス品質によって決まるという慣習から考えると妥当な結果である。しかしながら、前節で注意した通り、このような統計的に非有意な結果をもって「曜日はチップ額に影響を与えない」と結論づけるのは不適切である。</p>
 <p>なお、今回の分析においてはANOVAもTukeyのpair-wise比較も有意な結論を得ることができなかったという点で、両者の結果に一貫性があった。しかしながら、ANOVAでは有意だが、Tukeyの分析ではどの組み合わせも有意ではないという一見整合でない結果を得ることもある。その場合には、慣習としてTukeyの多重比較結果を優先して解釈を提示することが多い。しかしながら、研究者が自身の実施した検定の「意味」を理解し、解釈や議論を提示することも重要である。例えば、ANOVAとTukeyでは用いている帰無仮説が異なるため、異なる比較対象を用いた検定を実施している。そのため、自身が実行した分析がどのような帰無仮説を採用しており、何と何の比較を行っているのかを正確に把握し、実施した検定の意味に適した解釈や議論を展開する事が重要になる。そのためにも単にソフトウェア上の分析方法を覚えるだけでなく、統計的分析に関する理論的側面についても学習しておく必要がある。</p>
@@ -372,11 +376,6 @@ gitbook.start({
 },
 "toc": {
 "collapse": "subsection"
-},
-"toolbar": {
-"position": "fixed",
-"download": ["pdf", "epub"],
-"search": true
 }
 });
 });
