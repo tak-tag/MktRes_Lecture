@@ -289,25 +289,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb129-2"><a href="データの可視化.html#cb129-2" tabindex="-1"></a>p1 <span class="sc">+</span> <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
 <span id="cb129-3"><a href="データの可視化.html#cb129-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;価格&quot;</span>, <span class="at">y =</span> <span class="st">&quot;頻度&quot;</span>,</span>
 <span id="cb129-4"><a href="データの可視化.html#cb129-4" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;ヒストグラム1: ダイアモンド価格&quot;</span>)</span></code></pre></div>
-<p><img src="mktres_lecture_files/figure-html/histogram-1.png" width="672" /></p>
+<embed src="mktres_lecture_files/figure-html/histogram-1.pdf" width="672" type="application/pdf" />
 <p>なお、縦軸を確率密度(density)に変えるときは、geom_density()を用いる。その際、fillという引数を設定すると、密度を範囲に色を塗ることができる (なお、“p1” というオブジェクトは再利用できるので、再びggplot()によって指定する必要はない)。</p>
 <div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="データの可視化.html#cb130-1" tabindex="-1"></a>p1 <span class="sc">+</span> <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">&quot;black&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
 <span id="cb130-2"><a href="データの可視化.html#cb130-2" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;価格&quot;</span>, <span class="at">y =</span> <span class="st">&quot;頻度&quot;</span>,</span>
 <span id="cb130-3"><a href="データの可視化.html#cb130-3" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;ヒストグラム2: ダイアモンド価格（geom_density）&quot;</span>)</span></code></pre></div>
-<p><img src="mktres_lecture_files/figure-html/density-1.png" width="672" /></p>
+<embed src="mktres_lecture_files/figure-html/density-1.pdf" width="672" type="application/pdf" />
 <p>箱ひげ図は、四分位数と四分位範囲等を図示化したもの。四分位数はデータを4等分する区切りの値であり、第一四分位はQ1、第二四分位はQ2、第三四分位はQ3、最大値はQ4で示される。四分位範囲はQ3-Q1の範囲で示されるものである。ここでは、Cutの質（Fair, Good, Very Good, Premium, Ideal）ごとに価格の分布を比べるため、複数の箱ひげ図を並べる例を提示する。</p>
 <div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="データの可視化.html#cb131-1" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(diamonds, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> cut, <span class="at">y =</span> price))</span>
 <span id="cb131-2"><a href="データの可視化.html#cb131-2" tabindex="-1"></a>p2 <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
 <span id="cb131-3"><a href="データの可視化.html#cb131-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Cutの質&quot;</span>, <span class="at">y =</span> <span class="st">&quot;価格&quot;</span>,</span>
 <span id="cb131-4"><a href="データの可視化.html#cb131-4" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;箱ひげ図1: ダイアモンド価格&quot;</span>)</span></code></pre></div>
-<p><img src="mktres_lecture_files/figure-html/boxplot-1.png" width="672" /></p>
+<embed src="mktres_lecture_files/figure-html/boxplot-1.pdf" width="672" type="application/pdf" />
 <p>箱ひげ図を作成すると、ひげの上下に点が表示されることがある（上図では上部が太線のように見えている）。これは、外れ値の候補として全体の分布から離れて存在する観測値が示されている。ここで示される外れ値の候補は、Q1よりも四分位範囲<span class="math inline">\(\times 1.5\times 1.5\)</span> 以上小さい、ないしは、Q3よりも四分位範囲<span class="math inline">\(\times 1.5\times 1.5\)</span> 以上大きいかで特定される。外れ値がある場合、入力ミスなどのエラーではないか、異質な観測値でないか、を検討、確認することが必要になる。</p>
 <p>バイオリンプロットは、箱ひげ図よりももう少し詳しくデータの分布を確認できる図である。ggplot2では、<code>geom_violin()</code> を用いる。例えば、先程の箱ひげ図をバイオリンプロットで示すと、以下のようになる。以下の図は、バイオリンプロット内に箱ひげ図を示すことでよりわかりやすい図を作成するように工夫している。</p>
 <div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="データの可視化.html#cb132-1" tabindex="-1"></a>p2 <span class="sc">+</span> <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
 <span id="cb132-2"><a href="データの可視化.html#cb132-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">&quot;gray&quot;</span>, <span class="at">width =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
 <span id="cb132-3"><a href="データの可視化.html#cb132-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Cutの質&quot;</span>, <span class="at">y =</span> <span class="st">&quot;価格&quot;</span>,</span>
 <span id="cb132-4"><a href="データの可視化.html#cb132-4" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;バイオリンプロット: ダイアモンド価格&quot;</span>)</span></code></pre></div>
-<p><img src="mktres_lecture_files/figure-html/ciolin-1.png" width="672" /></p>
+<embed src="mktres_lecture_files/figure-html/ciolin-1.pdf" width="672" type="application/pdf" />
 <p>バイオリンプロットで横に広がっているところは、ヒストグラムで言う山が高いところを意味しており、そこに多くのデータが集まっていることを示している。</p>
 </div>
             </section>
