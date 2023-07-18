@@ -23,7 +23,7 @@
 <meta name="author" content="Takumi Tagashira" />
 
 
-<meta name="date" content="2023-07-17" />
+<meta name="date" content="2023-07-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -267,7 +267,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">7.1</span> 確率モデル、期待値と分散<a href="確率モデル期待値と分散.html#確率モデル期待値と分散" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="確率と確率変数" class="section level3 hasAnchor" number="7.1.1">
 <h3><span class="header-section-number">7.1.1</span> 確率と確率変数<a href="確率モデル期待値と分散.html#確率と確率変数" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>伝統的なデータ分析では、標本から得た情報に基づき母集団の性質について推測する。母集団とは確率分布であり、標本はその確率分布に従う確率変数、データはその確率変数の実現値だと解釈することができる（倉田・星野、2011）。そのうえで確率とは、起こりうる事象の集合内において、各事象の起こりやすさの度合いを０以上１以下の実数で表したものである。より詳細な定義として、標本空間を <span class="math inline">\(\small \Omega\)</span>、任意の事象 <em>A</em> に対して実数 <em>P(A)</em> が定まっていて、以下の三つを満たすとき、<em>P(A)</em>は事象 <em>A</em> の確率という：</p>
+<p>伝統的なデータ分析では、標本から得た情報に基づき母集団の性質について推測する。母集団、標本と、データの関係を要約すると、母集団とは確率分布、標本はその確率分布に従う確率変数、データはその確率変数の実現値だと解釈することができる（倉田・星野、2011）。そのうえで確率とは、起こりうる事象の集合内において、各事象の起こりやすさの度合いを０以上１以下の実数で表したものである。より詳細な定義として、標本空間を <span class="math inline">\(\small \Omega\)</span>、任意の事象 <em>A</em> に対して実数 <em>P(A)</em> が定まっていて、以下の三つを満たすとき、<em>P(A)</em>は事象 <em>A</em> の確率という：</p>
 <ol style="list-style-type: decimal">
 <li>確率は非負であり、以下を満たす：
 <span class="math display">\[0\leq P(A)\leq 1\]</span></li>
@@ -278,7 +278,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math display">\[
 P(A_1\cup A_2\cup ...)=P(A_1)+P(A_2)+...
 \]</span></p>
-<p>確率変数とは、ある標本空間上で定義される取りうる各値に対してそれぞれ一定の確率と対応関係のあるような変数である。例えば、細工のないサイコロを投げるとき、出た目の値を <span class="math inline">\(x\)</span> とすると、<span class="math inline">\(x\)</span> は１から６までの整数を取りうる変数だと言い換えることができる。この場合標本空間は、取りうる出目に対応した6個の標本点からなる。またこれらの標本点には、それぞれ対応する確率が以下のように付与されている。</p>
+<p>確率変数とは、ある標本空間上で定義される取りうる各値に対してそれぞれ一定の確率と対応関係のあるような変数である。例えば、細工のないサイコロを投げるとき、出た目の値を <span class="math inline">\(x\)</span> とすると、<span class="math inline">\(x\)</span> は１から６までの整数を取りうる確率変数だと言い換えることができる。この場合標本空間は、取りうる出目に対応した6個の標本点からなる。またこれらの標本点には、それぞれ対応する確率が以下のように付与されている。</p>
 <table>
 <caption><span id="tab:dice">Table 7.1: </span>サイコロの確率分布</caption>
 <thead>
@@ -304,8 +304,8 @@ P(A_1\cup A_2\cup ...)=P(A_1)+P(A_2)+...
 </tr>
 </tbody>
 </table>
-<p>このように、確率変数の取る値に対応して確率が付与されるルール（ <span class="math inline">\(x\)</span> の関数としての確率 <span class="math inline">\(P(x)\)</span> ）を確率分布や確率分布関数という。確率変数は主に、離散確率変数と連続確率変数に分けることができる。離散確率変数は、サイコロのように、取りうる値が離散的な確率変数である。一方で、連続確率変数は、ある範囲の中で連続的にどんな値も取りうる確率変数である。離散確率変数では、サイコロの表で示されているように、取りうる特定の値に対応する確率を確率分布に基づき計算できる。</p>
-<p>一方で連続確率変数の場合、取りうる値の数が無限に存在するため取りうるある特定の値に対応する確率は０になる。もし取りうる各値に確率が付与されていると、確率の合計が無限大になってしまうという問題に直面する。そのため、連続確率変数の場合、取りうる区間に対して確率が付与される。これを踏まえて連続確率変数を捉え直すと、連続確率変数は、その取りうる任意の区間に対して一定の確率が対応するような変数であるといえる。また、連続確率変数における取りうる区間の起こりやすさには「確率密度」が対応することで計算可能になる。言い換えると、確率変数 <span class="math inline">\(x\)</span> の値に確率密度がどのように対応するのかという関係は、<span class="math inline">\(f(x)\)</span> という確率密度関数（probability density function: PDF）として示される。PDF <span class="math inline">\(f(x)\)</span> を持つ連続確率変数 <span class="math inline">\(x\)</span> が区間 [a, b] を取る確率 <span class="math inline">\(P(a\leq x \leq b)\)</span> は、以下の積分計算で求められる。</p>
+<p>このように、確率変数の取る値に対応して確率が付与されるルール（ <span class="math inline">\(x\)</span> の関数としての確率 <span class="math inline">\(P(x)\)</span> ）を確率分布や確率分布関数という。</p>
+<p>確率変数は主に、離散確率変数と連続確率変数に分けることができる。離散確率変数は、サイコロのように、取りうる値が離散的な確率変数である。離散確率変数では、サイコロの表で示されているように、取りうる特定の値に対応する確率を確率分布に基づき計算できる。一方で、連続確率変数は、ある範囲の中で連続的にどんな値も取りうる確率変数である。連続確率変数の場合、取りうる値の数が無限に存在するため取りうるある特定の値に対応する確率は０になる。もし取りうる各値に確率が付与されていると、確率の合計が無限大になってしまうという問題に直面する。そのため、連続確率変数の場合、取りうる区間に対して確率が付与される。これを踏まえて連続確率変数を捉え直すと、連続確率変数は、その取りうる任意の区間に対して一定の確率が対応するような変数であるといえる。また、連続確率変数における取りうる区間の起こりやすさには「確率密度」が対応することで計算可能になる。言い換えると、確率変数 <span class="math inline">\(x\)</span> の値に確率密度がどのように対応するのかという関係は、<span class="math inline">\(f(x)\)</span> という確率密度関数（probability density function: PDF）として示される。PDF <span class="math inline">\(f(x)\)</span> を持つ連続確率変数 <span class="math inline">\(x\)</span> が区間 [a, b] を取る確率 <span class="math inline">\(P(a\leq x \leq b)\)</span> は、以下の積分計算で求められる。</p>
 <p><span class="math display">\[
 P(a\leq x \leq b)=\int^b_a f(x) dx
 \]</span></p>
@@ -314,7 +314,7 @@ P(a\leq x \leq b)=\int^b_a f(x) dx
 <img src="stat/pdf.png" alt="連続確率変数例" />
 <div class="figcaption">連続確率変数例</div>
 </div>
-<p>連続確率変数を用いた具体的な確率計算例を紹介するために、ここでは一様分布（uniform distribution）を用いる。区間 [a, b] を持つ一様分布に従う確率変数 <span class="math inline">\(x\)</span> のPDFは以下のように示される。</p>
+<p>連続確率変数を用いた確率計算方法は、後述する統計的な推測や検定に関する直感的な理解にもつながるため、もう少し深掘りする。ここでは、ここでは一様分布（uniform distribution）を用いて、簡単な計算例を紹介する。区間 [a, b] を持つ一様分布に従う確率変数 <span class="math inline">\(x\)</span> のPDFは以下のように示される。</p>
 <p><span class="math display">\[
 f(x) =
 \begin{cases}
