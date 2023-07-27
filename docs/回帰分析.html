@@ -23,7 +23,7 @@
 <meta name="author" content="Takumi Tagashira" />
 
 
-<meta name="date" content="2023-07-27" />
+<meta name="date" content="2023-07-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -318,7 +318,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="回帰分析.html#cb187-1" tabindex="-1"></a>firmdata19 <span class="sc">%&gt;%</span> </span>
 <span id="cb187-2"><a href="回帰分析.html#cb187-2" tabindex="-1"></a>  <span class="fu">select</span>(sales, mkexp, emp, operating_profit) <span class="sc">%&gt;%</span> </span>
 <span id="cb187-3"><a href="回帰分析.html#cb187-3" tabindex="-1"></a>GGally<span class="sc">::</span><span class="fu">ggpairs</span>()<span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;ggpairs example&quot;</span>)</span></code></pre></div>
-<embed src="mktres_lecture_files/figure-html/ggpairs-1.pdf" width="672" type="application/pdf" />
+<p><img src="mktres_lecture_files/figure-html/ggpairs-1.png" width="672" /></p>
 <p>なお、記述統計については既出の <code>summary()</code>関数にデータフレームを指定することで、データセット全体の記述統計を出力する。ここでは例として先程と同じ変数の記述統計を以下のように出力してみる。</p>
 <div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="回帰分析.html#cb188-1" tabindex="-1"></a>ds1 <span class="ot">&lt;-</span> firmdata19 <span class="sc">%&gt;%</span> </span>
 <span id="cb188-2"><a href="回帰分析.html#cb188-2" tabindex="-1"></a>  <span class="fu">select</span>(sales, mkexp, emp, operating_profit) <span class="sc">%&gt;%</span> </span>

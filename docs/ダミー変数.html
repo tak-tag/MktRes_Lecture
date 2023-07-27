@@ -23,7 +23,7 @@
 <meta name="author" content="Takumi Tagashira" />
 
 
-<meta name="date" content="2023-07-27" />
+<meta name="date" content="2023-07-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -282,7 +282,7 @@ E(y_i|D_i=0)=\alpha+\beta x_i
 \]</span></p>
 <p>つまり、ダミー変数に対応する回帰係数はベースライン（<span class="math inline">\(D_i=0\)</span>）グループとの「切片の差」を表しているということがわかる。例えば、<span class="math inline">\(\small \alpha\)</span>、<span class="math inline">\(\small \beta\)</span>と、<span class="math inline">\(\small \gamma\)</span>が正の値を取るような場合、上記のダミー変数の関係は以下の図のように示す事ができる。例えば、このダミー変数が女性ダミーであるならば、女性はその他の性別に比べて、<em>y</em> の値が相対的に高い、と解釈できる。</p>
 <div class="float">
-<img src="reg/dummy.png" alt="ダミー変数関係図" />
+<img src="reg/dummy.png" style="width:70.0%" alt="ダミー変数関係図" />
 <div class="figcaption">ダミー変数関係図</div>
 </div>
 <p>ダミー変数を説明変数に含む回帰分析をRで実行することはとても簡単である。<code>lm()</code> 関数内のモデル定義において、カテゴリ変数を含めば良いだけである。Characterという文字列情報のデータ型で示されているカテゴリ変数を用いると、自動でダミー変数化して、回帰分析を実行してくれる。</p>

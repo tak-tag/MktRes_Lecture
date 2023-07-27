@@ -23,7 +23,7 @@
 <meta name="author" content="Takumi Tagashira" />
 
 
-<meta name="date" content="2023-07-27" />
+<meta name="date" content="2023-07-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -272,7 +272,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>本章では、二変数間の関係について「予測」と「検証」の二点からより深掘りしていく方法を紹介する。マーケティングを実行する企業の立場に立てば、マーケティング二関連する方策や投資を導入することで成果（売上や利益）を向上させたいと考えるだろう。そのため、企業も闇雲に意思決定を行うわけには行かず、その意思決定によって、どの程度の成果の向上を見込めるかの予測ができると良い。最も基本的な予測の形式は、ある説明変数（先行要因）が被説明変数（成果）とどのような影響を与えるのかを特定し、それに基づき予測値を算出するという方法である。</p>
 <p>二変数間の関係を捉える分析手法として6章では相関係数を紹介した。相関係数は二変数間の線形関係を表す -1から 1 の値を取る指標である。 しかしながら、相関係数は線形関係の強さ（どれだけデータが直線上に近く分布しているか）を表しているものの、示されている直線の切片や傾きといった線形関数の特徴は捉えられない。例えば、下図の二つのデータは異なる切片と傾きを有しているが、相関係数は等しくなるはずである。</p>
 <div class="float">
-<img src="reg/cor.png" alt="相関と線形関係" />
+<img src="reg/cor.png" style="width:70.0%" alt="相関と線形関係" />
 <div class="figcaption">相関と線形関係</div>
 </div>
 <p>ここで、二つの異なる変数 <span class="math inline">\(y,~x\)</span> の関係を <span class="math inline">\(\small y=f(x)\)</span> のように<span class="math inline">\(y\)</span>を<span class="math inline">\(x\)</span>の関数（<span class="math inline">\(f(x)\)</span>）で示すというアイディアで分析を行う。このとき <span class="math inline">\(y\)</span> を「被説明変数（Explained variable）もしくは従属変数（dependent variable）」、<span class="math inline">\(x\)</span> を「説明変数（Explaining variable）もしくは独立変数（independent variable）」という。そして、被説明変数と説明変数の関係を特定化した式のことを一般的に回帰モデルという。最も基本的な関数型の特定方法は以下のような一次関数による特定化である。</p>
@@ -281,14 +281,14 @@ y=\beta_0+\beta_1x
 \]</span>
 このとき、<span class="math inline">\(\small \beta_0\)</span> は切片、<span class="math inline">\(\small \beta_1\)</span> は傾きを表す係数であり、回帰係数と呼ばれる。</p>
 <p>回帰モデルは線形の関係を捉えているものの、実際にデータを入手し散布図を作成すると、以下のように、直線とは異なる結果を得る。そのため、上記のモデルは正確な表現でないことがわかる。</p>
-<embed src="mktres_lecture_files/figure-html/scatterplot-1.pdf" width="672" type="application/pdf" />
+<p><img src="mktres_lecture_files/figure-html/scatterplot-1.png" width="672" /></p>
 <p>分析者がデータとして得る情報は、<span class="math inline">\(y\)</span> や <span class="math inline">\(x\)</span> の実現値であり、回帰モデルの切片や傾きの値は直接はわからない。そこで、モデルで捉えた直線と実現値のズレを考え、得たデータから回帰モデルのパラメータ（係数）を推定するという方針をとる。モデルで捉えた直線による（係数の推定値に基づく）<span class="math inline">\(y\)</span> と<span class="math inline">\(x\)</span> の関係は、<span class="math inline">\(\small x=x_i\)</span> のとき、<span class="math inline">\(y_i\)</span> の予測値である<span class="math inline">\(\small \hat{y}_i\)</span>（ワイハット）と、係数の推定値 <span class="math inline">\(\small \hat{\beta}_0\)</span>、 <span class="math inline">\(\small \hat{\beta}_1\)</span> を用いて以下のように定義できる。</p>
 <p><span class="math display">\[
 \hat{y}_i=\hat{\beta}_0+ \hat{\beta}_1 x_i
 \]</span></p>
 <p>係数の推定値 <span class="math inline">\(\small \hat{\beta}_0\)</span> と <span class="math inline">\(\small \hat{\beta}_1\)</span> を求めるための計算方法は、（最尤法や積率法など）いくつかあるものの、本書では最小二乗法（Ordinary least square: OLS）という方法に着目し紹介する。OLS推定量（OLS Estimator: OLSE）の求め方の直感は、以下の図の通り、観測値と回帰直線間の距離の合計（残差平方和）を最小にするように計算される。</p>
 <div class="float">
-<img src="reg/ols.png" alt="OLSE概要" />
+<img src="reg/ols.png" style="width:70.0%" alt="OLSE概要" />
 <div class="figcaption">OLSE概要</div>
 </div>
 <p>予測値のモデルで示されているのは、データを分析した結果求めたOLSEに基づく説明変数 <span class="math inline">\(x_i\)</span> と、<span class="math inline">\(\small \hat{y}_i\)</span> との関係である。<span class="math inline">\(\small \hat{y}_i\)</span> は被説明変数 <span class="math inline">\(y_i\)</span> の「予測値（predicted value）」や「理論値（fitted value）」と呼ばれるものであり、<span class="math inline">\(y_i\)</span> の観測値とは異なる値であることに注意が必要である。このとき、観測値と予測値のズレ（<span class="math inline">\(\small y_i-\hat{y}_i\)</span>）を「残差（residual）」という。OLSは残差を <span class="math inline">\(\hat{u}_i\)</span> とし、以下で示される、残差平方和（二乗和）を最小にするように推定量を求める方法である。なお、OLSEの計算仮定については、秋山（2018）が詳しく説明をしてくれている。</p>

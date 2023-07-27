@@ -23,7 +23,7 @@
 <meta name="author" content="Takumi Tagashira" />
 
 
-<meta name="date" content="2023-07-27" />
+<meta name="date" content="2023-07-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -271,12 +271,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">9.2</span> 交差項<a href="交差項.html#交差項" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>マーケティングに関する研究では、ある説明変数の被説明変数に与える影響が、別の説明変数に影響を受ける形で変化することを捉えることも多い。このような変数間の関係に影響するような効果を調整効果と言い、以下のような図で示されることが多い。</p>
 <div class="float">
-<img src="reg/moderate.png" alt="ダミー変数関係図" />
+<img src="reg/moderate.png" style="width:70.0%" alt="ダミー変数関係図" />
 <div class="figcaption">ダミー変数関係図</div>
 </div>
 <p>上の図では、メインの説明変数と調整変数が存在するかのように見えるが、分析に置いてはどちらか一方をメインと扱うことはなく、<em>X</em>と<em>Z</em>をかけ合わせた交差項を含めたモデルを分析する。なお、調整変数（moderating effect）もしくは相互作用効果（interaction effect）はダミー変数もしくは量的変数のどちらも用いることができる。</p>
 <div class="float">
-<img src="reg/moderate2.png" alt="交差項概念図" />
+<img src="reg/moderate2.png" style="width:70.0%" alt="交差項概念図" />
 <div class="figcaption">交差項概念図</div>
 </div>
 <p>回帰モデルにおける交差項の利用には、以下の点に注意が必要である。</p>
@@ -355,7 +355,7 @@ D_i=0\Rightarrow &amp; \frac{\Delta y_i}{\Delta x_i}=\beta_1
 <span id="cb214-5"><a href="交差項.html#cb214-5" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Marketing Expense&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Profitability&quot;</span>) <span class="sc">+</span></span>
 <span id="cb214-6"><a href="交差項.html#cb214-6" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">name =</span> <span class="st">&quot;Retail Dummy&quot;</span>)</span>
 <span id="cb214-7"><a href="交差項.html#cb214-7" tabindex="-1"></a>pred</span></code></pre></div>
-<embed src="mktres_lecture_files/figure-html/slopeanalysis-1.pdf" width="672" type="application/pdf" />
+<p><img src="mktres_lecture_files/figure-html/slopeanalysis-1.png" width="672" /></p>
 <p>分析の結果、小売企業においてはマーケティング支出と利益率の関係は右上がりである一方で、その他の企業では右下がりである。回帰分析における交差項の係数がこの傾きの違いを示している。また、実線を比較すると マーケティング支出が 0.5 辺りを境に小売企業の利益率の予測値のほうがその他グループよりも高くなっているように見える<a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a>。しかしながら、両直線の95%信頼区間は重なっており、統計的に有意な差があるとは言えない。そのため、マーケティング支出が高いとき、小売企業の利益率（の予測値）のほうが有意に高くとは言えない。</p>
 </div>
 <div id="量的変数同士の交差項" class="section level3 hasAnchor" number="9.2.2">
@@ -464,7 +464,7 @@ y_i = \beta_0 + \beta_1 (x_i-\bar{x})+\beta_2(z_i-\bar{z})+\beta_3(x_i-\bar{x})\
 <pre><code>## Scale for colour is already present.
 ## Adding another scale for colour, which will replace the existing scale.</code></pre>
 <div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="交差項.html#cb223-1" tabindex="-1"></a>int_fig1</span></code></pre></div>
-<embed src="mktres_lecture_files/figure-html/slopeHeadphone-1.pdf" width="672" type="application/pdf" />
+<p><img src="mktres_lecture_files/figure-html/slopeHeadphone-1.png" width="672" /></p>
 <p>続いて、二つ目の方法を実行するために、以下の要領でパッケージをインストールしてほしい。<code>marginaleffects</code> は、<code>margins</code> や <code>emtrends</code> の機能を引き継ぎ、限界効果に関する計算結果を図示化するためのパッケージである<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a>。</p>
 <div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="交差項.html#cb224-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;marginaleffects&quot;</span>)</span></code></pre></div>
 <p>R&amp;D が 売上に与える影響（傾き）がどのように変化するかは、<code>plot_slopes()</code> という関数を用いる。以下は、傾きの変化に関する図の出力結果である。</p>
@@ -473,7 +473,7 @@ y_i = \beta_0 + \beta_1 (x_i-\bar{x})+\beta_2(z_i-\bar{z})+\beta_3(x_i-\bar{x})\
 <span id="cb225-3"><a href="交差項.html#cb225-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Marginal effects of R&amp;D on Sales&quot;</span>,</span>
 <span id="cb225-4"><a href="交差項.html#cb225-4" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Promotion&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Slope of R&amp;D on Sales&quot;</span>) <span class="sc">+</span> <span class="fu">geom_hline</span>(<span class="fu">aes</span>(<span class="at">yintercept=</span><span class="dv">0</span>), <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>) </span>
 <span id="cb225-5"><a href="交差項.html#cb225-5" tabindex="-1"></a>int_fig2</span></code></pre></div>
-<embed src="mktres_lecture_files/figure-html/unnamed-chunk-21-1.pdf" width="672" type="application/pdf" />
+<p><img src="mktres_lecture_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 <p>分析の結果、promotionが0（平均）である条件を基準に、R&amp;Dの傾きが正に転じていることが伺える。なお、よく見ると、直線の周りに灰色の影が描画されていることがわかる。これは、99%信頼区間を示している。今回は人工的に作成したデータなので、非常に当てはまりがよく信頼区間がとても狭くなっているが、実際のデータを用いて同様の図示化をすればもう少し明確に信頼区間を視認できる。このように、交差項を利用した回帰モデルを分析する際は、事後的な図示化を行うことを心がけると良い。この作業により実務的・学術的により有益な含意につながることがある。</p>
 <!--- fit1_ame <- slopes(fit_int_c, variables = "rd_c",
                    newdata = datagrid(promotion_c = -86:155))--->
@@ -486,7 +486,7 @@ y_i = \beta_0 + \beta_1 (x_i-\bar{x})+\beta_2(z_i-\bar{z})+\beta_3(x_i-\bar{x})\
 <span id="cb226-6"><a href="交差項.html#cb226-6" tabindex="-1"></a></span>
 <span id="cb226-7"><a href="交差項.html#cb226-7" tabindex="-1"></a>int_fig3 <span class="ot">&lt;-</span> <span class="fu">plot_slopes</span>(fit_int2, <span class="at">variables =</span> <span class="st">&quot;mkexp_c&quot;</span>, <span class="at">condition =</span> <span class="st">&quot;asset_c&quot;</span>, <span class="at">conf_level =</span> <span class="fl">0.99</span>) <span class="sc">+</span> <span class="fu">geom_hline</span>(<span class="fu">aes</span>(<span class="at">yintercept=</span><span class="dv">0</span>), <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>) </span>
 <span id="cb226-8"><a href="交差項.html#cb226-8" tabindex="-1"></a>int_fig3</span></code></pre></div>
-<embed src="mktres_lecture_files/figure-html/omake-1.pdf" width="672" type="application/pdf" />
+<p><img src="mktres_lecture_files/figure-html/omake-1.png" width="672" /></p>
 <p>図を見ると、Headphoneデータよりもはっきりと信頼区間が視認できる。マーケティング支出の効果は資産によって低下するように見えるが、信頼区間を考慮すると、資産額が平均値（asset_c <span class="math inline">\(=0\)</span>）付近の値を取るときのみマーケティング支出は負に有意の影響を持つが、それ以外の区間では有意でない（信頼区間に0を含む）ことが伺える。このように、信頼区間の出力は結果の解釈を有意義なものにしてくれる。</p>
 </div>
 </div>

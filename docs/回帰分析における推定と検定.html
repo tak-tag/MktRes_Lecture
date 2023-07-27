@@ -23,7 +23,7 @@
 <meta name="author" content="Takumi Tagashira" />
 
 
-<meta name="date" content="2023-07-27" />
+<meta name="date" content="2023-07-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -274,14 +274,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 y_i = \beta_0+\beta_1x_i+u_i,
 \]</span>
 ただし、<span class="math inline">\(\small u_i\)</span> は誤差項、<span class="math inline">\(\small \beta_0\)</span>切片、<span class="math inline">\(\small \beta_1\)</span>は傾きのパラメータである。つまり、このモデルは母集団での統計的特徴を反映した理論的モデルだと理解できる。なお、通常レポートや論文内に回帰モデルを記載する際には、上記のような回帰パラメータと誤差項を含んだ理論モデルを用いる。理論的なモデルは <span class="math inline">\(\small y\)</span> を説明する要素として確率的な誤差項 <span class="math inline">\(u\)</span> を含んでおり、被説明変数 <span class="math inline">\(\small y\)</span> は確率変数として捉えられる。一方で、説明変数 <span class="math inline">\(\small x\)</span> は、定数として扱う。また、前節で紹介した回帰係数の推定量（OLSE）は、 <span class="math inline">\(\small y\)</span> や <span class="math inline">\(\small \bar{y}\)</span> を含んでいる ため、推定量（OLSE）もまた確率変数であると考えられる。</p>
-<embed src="mktres_lecture_files/figure-html/plotLine-1.pdf" width="672" type="application/pdf" />
+<p><img src="mktres_lecture_files/figure-html/plotLine-1.png" width="672" /></p>
 <p><span class="math inline">\(y\)</span> の値が確率的にバラつくと考え誤差項を含んでいるのだとしたら、回帰直線は何を表しているのだろうか。理論的には、ある <span class="math inline">\(x\)</span> の値が与えられたとき、<span class="math inline">\(y\)</span> の「平均値（期待値）」と <span class="math inline">\(x\)</span> の間には線形の関係があることを捉えている。より具体的には、回帰直線は以下のように <span class="math inline">\(x\)</span> を所与とした際の <span class="math inline">\(y\)</span> の条件付き期待値として表される。</p>
 <p><span class="math display">\[
 E(y|x)=\beta_0+\beta_1x
 \]</span>
 この関係は、以下の図のように示すことができる（Wooldridge, 2013）。</p>
 <div class="float">
-<img src="reg/conditionalexp.png" alt="条件付期待値としての回帰直線" />
+<img src="reg/conditionalexp.png" style="width:70.0%" alt="条件付期待値としての回帰直線" />
 <div class="figcaption">条件付期待値としての回帰直線</div>
 </div>
 <p>したがって、回帰モデルは、ある <span class="math inline">\(x\)</span> の値に基づき <span class="math inline">\(y\)</span> の期待値（平均）示してくれるが、具体的にどのような値を取るかは確率的に決まるものだと言える。つまり、回帰分析の結果によって言えることは、例えば、「身長（<span class="math inline">\(x\)</span>）の高い人は、<span class="math inline">\(\color{red}{\text{平均的に}}\)</span>重い（<span class="math inline">\(y\)</span>）」ということである。</p>

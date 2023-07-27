@@ -23,7 +23,7 @@
 <meta name="author" content="Takumi Tagashira" />
 
 
-<meta name="date" content="2023-07-27" />
+<meta name="date" content="2023-07-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -281,7 +281,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p>このようなデータの集計は、データ構造を取引ベースから顧客IDベースに変換することを可能にする。下図は、取引ベースのID-POSデータを、集計作業によって顧客IDベースのデータ構造に変換するイメージを示したものである。ID-POSデータは、顧客ID情報が含まれていながらも、データの行（観測）は各取引を示している。そのため、仮に同じIDの顧客がデータ収集期間に複数回取引を行っている場合、同じIDを含む観測がいくつも見られることになる。一方で下部の顧客IDベースのデータは、ID-POSデータを顧客ID情報によって集計したものであり、一定期間中に特定のIDを持つ顧客がどのような購買行動を示していたかを捉えたデータである。そのため、データの行は各顧客IDを示している。本節では、まずはじめにこのようなデータ構造の変換について説明する。</p>
 <div class="float">
-<img src="datahandling/datastructure.png" alt="データ構造変化" />
+<img src="datahandling/datastructure.png" style="width:70.0%" alt="データ構造変化" />
 <div class="figcaption">データ構造変化</div>
 </div>
 <p>ここでは、先程利用した idpos データを用いて作業を進める。改めて、当該データを以下のコマンドで確認する。</p>

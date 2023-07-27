@@ -23,7 +23,7 @@
 <meta name="author" content="Takumi Tagashira" />
 
 
-<meta name="date" content="2023-07-27" />
+<meta name="date" content="2023-07-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -272,8 +272,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>点推定は特定の推定量によって母数を捉えようとするが、どのような推定量を用いるべきなのだろうか。本節では、不偏性（unbiasedness）、一致性（Consistency）、効率性（efficiency）という統計的に重要な推定量の性質について説明する。なお、以下の説明では、未知パラメータ <span class="math inline">\(\small \theta\)</span>（シータ）に対する推定量 <span class="math inline">\(\small \hat{\theta}\)</span>（シータハット）を考える。不偏性とは、推定量の「期待値」が未知パラメータの真の値に等しいという性質であり、以下のように示すことができる。</p>
 <p><span class="math display">\[
 E(\hat{\theta})=\theta
-\]</span>
-つまり、実際の推定量の実現値がどうかは置いておいて、期待値の下では推定量が未知パラメータを示していることを表すものであり、サンプルサイズに関係のない推定量の性質である。そして、不偏性を満たす推定量のことを不偏推定量（unbiased estimator）という。なお、上記の定義から、統計的なバイアス（B）は、以下のように定義できる。</p>
+\]</span></p>
+<p>つまり、実際の推定量の実現値がどうかは置いておいて、期待値の下では推定量が未知パラメータを示していることを表すものであり、サンプルサイズに関係のない推定量の性質である。そして、不偏性を満たす推定量のことを不偏推定量（unbiased estimator）という。なお、上記の定義から、統計的なバイアス（B）は、以下のように定義できる。</p>
 <p><span class="math display">\[
 B=E(\hat{\theta})-\theta
 \]</span></p>
@@ -303,15 +303,15 @@ Z=\frac{\bar{X}-\mu}{\sqrt{\sigma^2/n}}\sim N(0,1)
 <p>また、母集団分散の推定量としては、不偏標本分散が使われる事が多い。上記と同じ無作為標本に対し、標本分散 <span class="math inline">\(S^2\)</span> と、不偏標本分散 <span class="math inline">\(s^2\)</span> は以下のように定義される。</p>
 <p><span class="math display">\[
 S^2=\frac{1}{n}\sum_{i=1}^n (X_i-\bar{X})
-\]</span>
-<span class="math display">\[
+\]</span></p>
+<p><span class="math display">\[
 s^2=\frac{1}{n-1}\sum_{i=1}^n (X_i-\bar{X})
-\]</span>
-そして、それぞれの推定量の期待値は以下のようになることが知られている（計算省略）。そのため、母集団分散の推定量として、不偏標本分散（<span class="math inline">\(s^2\)</span>）が用いられる。</p>
+\]</span></p>
+<p>そして、それぞれの推定量の期待値は以下のようになることが知られている（計算省略）。そのため、母集団分散の推定量として、不偏標本分散（<span class="math inline">\(s^2\)</span>）が用いられる。</p>
 <p><span class="math display">\[
 E(S^2)=\frac{n-1}{n}\sigma^2
-\]</span>
-<span class="math display">\[
+\]</span></p>
+<p><span class="math display">\[
 E(s^2)=\sigma^2
 \]</span></p>
 </div>

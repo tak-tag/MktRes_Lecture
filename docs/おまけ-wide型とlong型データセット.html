@@ -23,7 +23,7 @@
 <meta name="author" content="Takumi Tagashira" />
 
 
-<meta name="date" content="2023-07-27" />
+<meta name="date" content="2023-07-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -271,7 +271,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">5.4</span> (おまけ) Wide型とLong型データセット<a href="おまけ-wide型とlong型データセット.html#おまけ-wide型とlong型データセット" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>インターネットを通じて、とても都合の良いかつ信頼できるデータセットが入手できたとしても、それが分析のために望ましい形で保存されているとは限らない。特に、横長(wide)と縦長(long)データが存在し、それらのデータの型の違いには注意が必要である。我々人間がデータを眺め、解釈を与える場合にはwide型データのほうが扱いやすいのだが、コンピュータやソフトウェアがデータを分析する際には、long型のほうが好ましい。例えば、下図は4店舗のある年の6月から10月までの売上情報（単位：千円）を示したデータセットである。これは、複数サンプル-複数時点という構造のデータだが、各時点の観測値が横に並んでおり、wide型データだといえる。</p>
 <div class="float">
-<img src="datahandling/wide.png" alt="Wide型データ" />
+<img src="datahandling/wide.png" style="width:70.0%" alt="Wide型データ" />
 <div class="figcaption">Wide型データ</div>
 </div>
 <p>手元にあるWide型データをLong型に変換したい場合の対応策として、ここでは tidyverseに含まれているtidyrのgather()関数を用いる方法を紹介する。この関数の利用方法を実演するためにManabaにアップされている sales_wide.csv をダウンロードし、プロジェクト内のdataディレクトリに移して欲しい。データを読み込むと、以下のようにデータ構造を確認することができる。</p>

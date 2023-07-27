@@ -23,7 +23,7 @@
 <meta name="author" content="Takumi Tagashira" />
 
 
-<meta name="date" content="2023-07-27" />
+<meta name="date" content="2023-07-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -326,7 +326,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 P(Z\leq z_\alpha) = \int^{z_\alpha}_{-\infty}~f(z)~dz =\int^{z_\alpha}_{-\infty}~\frac{1}{\sqrt{2\pi}}\exp\left(-\frac{z^2}{2}\right)~ dz = 1-\alpha
 \]</span></p>
 <div class="float">
-<img src="stat/norm_onetail.png" alt="標準正規分布と確率計算" />
+<img src="stat/norm_onetail.png" style="width:70.0%" alt="標準正規分布と確率計算" />
 <div class="figcaption">標準正規分布と確率計算</div>
 </div>
 <p>同様に、以下のような関係も捉えることができる。この場合、斜線部で示されている範囲の確率は両側合わせて <span class="math inline">\(\small \alpha\)</span> であり、その内側の確率は 1 <span class="math inline">\(\small - \alpha\)</span> である。</p>
@@ -334,7 +334,7 @@ P(Z\leq z_\alpha) = \int^{z_\alpha}_{-\infty}~f(z)~dz =\int^{z_\alpha}_{-\infty}
 P(-z_{\alpha/2} \leq Z\leq z_{\alpha/2}) = \int^{z_{\alpha/2}}_{-z_{\alpha/2}}~f(z)~dz = 1-\alpha
 \]</span></p>
 <div class="float">
-<img src="stat/norm_twotails.png" alt="標準正規分布と両側確率" />
+<img src="stat/norm_twotails.png" style="width:70.0%" alt="標準正規分布と両側確率" />
 <div class="figcaption">標準正規分布と両側確率</div>
 </div>
 <p>上述の関係を、区間推定に応用するために、あるデータの標本平均に関する議論を捉える。標準正規分布に従う確率変数は、正規分布に従う確率変数を標準化することで得ることができる。ここで、<span class="math inline">\(\small X_1,...,X_n\)</span> を、期待値 <span class="math inline">\(\small \mu\)</span>、分散 <span class="math inline">\(\small \sigma^2\)</span> の正規分布に従う母集団からの無作為標本とする。これまで学んだ標準化および標本平均の特性から、以下の通り、標本平均を標準化したものは標準正規分布に従うことがわかる。</p>
@@ -363,7 +363,7 @@ P\left(-t_{\alpha/2}(n-1)\leq \frac{\bar{X}-\mu}{s^2/n}\leq t_{\alpha/2}(n-1)\ri
 P\left(\bar{X}-t_{\alpha/2}(n-1)\cdot \frac{s}{\sqrt{n}}\leq \mu \leq \bar{X}+t_{\alpha/2}(n-1)\cdot \frac{s}{\sqrt{n}}\right)=1-\alpha
 \]</span></p>
 <p>信頼区間を求めるための手順は標準正規分布の場合もt分布の場合も同様だが、標準正規分布のかわりに <em>t</em> 分布を用いた場合、特定の確率に対応する閾値が変わることが知られている（<span class="math inline">\(\small z_{\alpha/2}\neq t_{\alpha/2}(n-1)\)</span>）。 <em>t</em>分布は、左右対称であり標準正規分布よりもテールが厚いという特徴を持つが、自由度が大きくなると正規分布に近づくことが知られている。標準正規分布と、自由度の異なる <em>t</em> 分布との関係は以下のように図示化できる。自由度（df）3の <em>t</em> 分布よりも自由度20の <em>t</em> 分布のほうが標準正規分布に近い形状であることが伺える。</p>
-<embed src="mktres_lecture_files/figure-html/normandt-1.pdf" width="672" type="application/pdf" />
+<p><img src="mktres_lecture_files/figure-html/normandt-1.png" width="672" /></p>
 <p>標準正規分布と <em>t</em> 分布によってある確率に対応する閾値が異なるということは、ある信頼水準に対応する信頼区間も仮定する分布によって異なるということである。そのため、先述の新型電球の製品寿命についての信頼区間を <em>t</em> 分布（<code>t.test()</code> と<code>conf.int()</code>）ではなく、標準正規分布による信頼区間の計算によって求める必要がある。
 先述の通り、標準正規分布に基づく信頼区間は以下のように示すことができる。</p>
 <p><span class="math display">\[

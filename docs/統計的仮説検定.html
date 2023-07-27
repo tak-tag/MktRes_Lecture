@@ -23,7 +23,7 @@
 <meta name="author" content="Takumi Tagashira" />
 
 
-<meta name="date" content="2023-07-27" />
+<meta name="date" content="2023-07-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -336,13 +336,13 @@ Z=\frac{1835-1700}{\sqrt{180^2/16}}
 \]</span></p>
 <p>臨界値 <em>c</em> の求め方は区間推定と同様、分析に対応する確率分布（今回であれば標準正規分布）に基づくある区間の確率計算で求まる。研究者はまず、任意の確率 <span class="math inline">\(\small \alpha\)</span> を決める。この確率は「有意水準（significance level）」と呼ばれ、この有意水準と標準正規分布に基づく確率計算によって臨界値（下図内では <span class="math inline">\(\small \pm z_{\alpha/2}\)</span>）を求める。その上で、統計量の計算結果が臨界値より外側（下図における斜線部）にある場合には帰無仮説を棄却する。そのため、斜線部のような領域を棄却域、確率 <span class="math inline">\(\small 1-\alpha\)</span> に対応する範囲を採択域と一般に呼ぶ。</p>
 <div class="float">
-<img src="stat/ztest_twotails.png" alt="臨界値と確率計算" />
+<img src="stat/ztest_twotails.png" style="width:70.0%" alt="臨界値と確率計算" />
 <div class="figcaption">臨界値と確率計算</div>
 </div>
 <p>また、ここまでの例では対立仮説を <span class="math inline">\(H_1:~\mu\neq1700\)</span> とし、左右対称の分布の両端に棄却域を設定した。このような検定方法を一般的に両側検定と呼ぶ。しかし、現実的ないしは理論的な根拠をもとに、ある値よりも高い（もしくは低い）ことが事前に予測できる場合がある。その場合には、例えば <span class="math inline">\(\small \mu&gt;1700\)</span> や <span class="math inline">\(\small \mu&lt;1700\)</span>といった対立仮説を設定することも可能である。このような対立仮説を利用した検定方法を一般的に片側検定と呼ぶ。ここでは、仮に<span class="math inline">\(\small \mu&gt;1700\)</span>という対立仮説を立てた場合を考えるが、<span class="math inline">\(\small \mu&lt;1700\)</span>のような対立仮説を設計しても正負を入れ替えることで同様の議論ができる。なお、片側検定において帰無仮説が棄却された場合、直ちに帰無仮説の値よりも大きい値を取ると判断する。しかしながら、たとえ異なる対立仮説を提示しても、採用する検定統計量や帰無仮説に基づく分布の仮定などは同じである。
 片側検定を利用した場合の特殊性はその棄却域に現れる。片側検定の場合の棄却域は以下の図のように片側のみとなる。なお、その場合分布の両端に棄却域を設ける必要がないため、正の方向に <span class="math inline">\(\small \alpha\)</span> 分の棄却域を設定する。</p>
 <div class="float">
-<img src="stat/ztest_onetail.png" alt="片側検定（正の場合）" />
+<img src="stat/ztest_onetail.png" style="width:70.0%" alt="片側検定（正の場合）" />
 <div class="figcaption">片側検定（正の場合）</div>
 </div>
 <p>ここで再び話を両側検定に戻し、統計的検定において用いられる有意水準について説明する。ここまでの内容をまとめると、帰無仮説を仮定して検定統計量を計算する場合、帰無仮説が正しければ、棄却域内の値を取る確率は <span class="math inline">\(\small 100\times \alpha\)</span>%であると言える。そして、検定統計量の計算結果が棄却域に含まれる場合、帰無仮説を棄却するという判断を下す。そのため、統計的に帰無仮説を棄却したからと言って、その結果が必ず正しいとは言い切れない。統計的検定には、根本的に第一種の誤り（Type 1 error）と第二種の誤り（Type 2 error）という二種類の誤りの可能性が内包されている。</p>
@@ -393,8 +393,11 @@ P(T_0\in R|H_0~\text{is False})=1-\beta
 <p><span class="math display">\[
 1-\alpha=P(|Z|\leq c|\mu=1700) = \int^c_{-c}f(Z)dZ~_{|\mu=1700}=0.95
 \]</span>
-再掲になるが、上式の関係を表した図が、以下のものになる。
-<img src="stat/ztest_twotails.png" alt="標準正規分布の両側検定" /></p>
+再掲になるが、上式の関係を表した図が、以下のものになる。</p>
+<div class="float">
+<img src="stat/ztest_twotails.png" style="width:70.0%" alt="標準正規分布の両側検定" />
+<div class="figcaption">標準正規分布の両側検定</div>
+</div>
 <p>このとき、検定統計量 <em>Z</em> は帰無仮説が正しければ標準正規分布に従うはずである。したがって、臨界値 <span class="math inline">\(\pm c\)</span> は、<span class="math inline">\(\pm z_{0.025}\)</span> として分布表などより導出が可能である。Rにおいては前節と同様、<code>qnorm()</code> により、<span class="math inline">\(z_{0.025}=1.96\)</span> だとわかる。すなわち、検定統計量の計算結果が 1.96（-1.96）を上回る（下回る）場合には、帰無仮説を棄却するが、そこには第一種の誤りを犯す確率が5%残されていると解釈できる。</p>
 <p>ここまでの議論を踏まえ、新型電球に関する統計的検定を標準正規分布に基づき以下のように実施する。</p>
 <div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="統計的仮説検定.html#cb168-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(bulb)</span>
