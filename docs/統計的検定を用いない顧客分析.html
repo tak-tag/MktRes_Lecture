@@ -23,7 +23,7 @@
 <meta name="author" content="Takumi Tagashira" />
 
 
-<meta name="date" content="2023-08-05" />
+<meta name="date" content="2023-08-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -173,10 +173,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="データの種類とアンケートデザイン.html"><a href="データの種類とアンケートデザイン.html"><i class="fa fa-check"></i><b>4</b> データの種類とアンケートデザイン</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="記述的リサーチデザインとアンケート.html"><a href="記述的リサーチデザインとアンケート.html"><i class="fa fa-check"></i><b>4.1</b> 記述的リサーチデザインとアンケート</a></li>
-<li class="chapter" data-level="4.2" data-path="質問におけるワーディング.html"><a href="質問におけるワーディング.html"><i class="fa fa-check"></i><b>4.2</b> 質問におけるワーディング</a></li>
-<li class="chapter" data-level="4.3" data-path="アンケートデザイン.html"><a href="アンケートデザイン.html"><i class="fa fa-check"></i><b>4.3</b> アンケートデザイン</a></li>
-<li class="chapter" data-level="4.4" data-path="参考文献-2.html"><a href="参考文献-2.html"><i class="fa fa-check"></i><b>4.4</b> 参考文献</a></li>
+<li class="chapter" data-level="4.1" data-path="記述的リサーチデザイン.html"><a href="記述的リサーチデザイン.html"><i class="fa fa-check"></i><b>4.1</b> 記述的リサーチデザイン</a></li>
+<li class="chapter" data-level="4.2" data-path="アンケート設計.html"><a href="アンケート設計.html"><i class="fa fa-check"></i><b>4.2</b> アンケート設計</a></li>
+<li class="chapter" data-level="4.3" data-path="質問におけるワーディング.html"><a href="質問におけるワーディング.html"><i class="fa fa-check"></i><b>4.3</b> 質問におけるワーディング</a></li>
+<li class="chapter" data-level="4.4" data-path="アンケートデザイン.html"><a href="アンケートデザイン.html"><i class="fa fa-check"></i><b>4.4</b> アンケートデザイン</a></li>
+<li class="chapter" data-level="4.5" data-path="参考文献-2.html"><a href="参考文献-2.html"><i class="fa fa-check"></i><b>4.5</b> 参考文献</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="データ処理と顧客関係管理crm.html"><a href="データ処理と顧客関係管理crm.html"><i class="fa fa-check"></i><b>5</b> データ処理と顧客関係管理（CRM）</a>
 <ul>
@@ -292,28 +293,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>ここでは、先程利用した idpos データを用いて作業を進める。改めて、当該データを以下のコマンドで確認する。</p>
 <div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="統計的検定を用いない顧客分析.html#cb77-1" tabindex="-1"></a><span class="fu">head</span>(idpos)</span></code></pre></div>
-<pre><code>## # A tibble: 6 × 5
-##      id date       spent coupon datediff
-##   &lt;dbl&gt; &lt;date&gt;     &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;
-## 1    12 2019-09-25 14326      1        7
-## 2    32 2019-09-10 10232      1       22
-## 3    30 2019-09-09  6881      1       23
-## 4    29 2019-09-04  6365      0       28
-## 5    46 2019-09-10  7595      1       22
-## 6    44 2019-09-14  7858      0       18</code></pre>
+<pre><code>## # A tibble: 6 × 4
+##      id date      spent coupon
+##   &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt;
+## 1    12 2019/9/25 14326      1
+## 2    32 2019/9/10 10232      1
+## 3    30 2019/9/9   6881      1
+## 4    29 2019/9/4   6365      0
+## 5    46 2019/9/10  7595      1
+## 6    44 2019/9/14  7858      0</code></pre>
 <p>ここで、date変数を用いて直近で何日前の来店かを示す変数を作成する。このデータは、2019年09月01日 から 2019年10月01日までの一ヶ月間、とある店舗で記録された取引データであると仮定し作成されている。そのため、データ収集終了最新時点（2019-10-2）と来店日時の差を表す変数を作成する (ここでの処理にエラーが出る場合は、<code>idpos$date &lt;- as.Date(idpos$date)</code> というコマンドを事前に試してから変数の定義を行ってほしい)。head関数により出力された結果によって新たな変数（datediff）が追加されたことがわかる。</p>
 <div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="統計的検定を用いない顧客分析.html#cb79-1" tabindex="-1"></a>idpos<span class="sc">$</span>datediff<span class="ot">&lt;-</span> </span>
 <span id="cb79-2"><a href="統計的検定を用いない顧客分析.html#cb79-2" tabindex="-1"></a>  <span class="fu">round</span>(<span class="fu">as.numeric</span>(<span class="fu">difftime</span>(<span class="st">&quot;2019-10-02&quot;</span>,idpos<span class="sc">$</span>date,<span class="at">units=</span><span class="st">&quot;days&quot;</span>)))</span>
 <span id="cb79-3"><a href="統計的検定を用いない顧客分析.html#cb79-3" tabindex="-1"></a><span class="fu">head</span>(idpos)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 5
-##      id date       spent coupon datediff
-##   &lt;dbl&gt; &lt;date&gt;     &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;
-## 1    12 2019-09-25 14326      1        7
-## 2    32 2019-09-10 10232      1       22
-## 3    30 2019-09-09  6881      1       23
-## 4    29 2019-09-04  6365      0       28
-## 5    46 2019-09-10  7595      1       22
-## 6    44 2019-09-14  7858      0       18</code></pre>
+##      id date      spent coupon datediff
+##   &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;
+## 1    12 2019/9/25 14326      1        7
+## 2    32 2019/9/10 10232      1       22
+## 3    30 2019/9/9   6881      1       23
+## 4    29 2019/9/4   6365      0       28
+## 5    46 2019/9/10  7595      1       22
+## 6    44 2019/9/14  7858      0       18</code></pre>
 <p>続いて、パイプ演算子を使ったデータ処理によって顧客IDベースの形へ集計する。ここでは特に、group_by() という関数を使い、顧客id (今回は性別情報も残したいので gender も加えている)をグループ化の基準と指定する形で集計を行う。また、CRM分析で使う変数のために、idレベルでの集計という形で以下の変数を作成する。そして、以下の変数を用いて集計した新たなデータセットを “idpos_cust” として定義する。</p>
 <ul>
 <li>frequency：各idの出現頻度をn()でカウントする</li>

@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>6.4 二変数間の関係の要約 | マーケティングリサーチ講義ノート</title>
-  <meta name="description" content="6.4 二変数間の関係の要約 | マーケティングリサーチ講義ノート" />
+  <title>7.9 分散分析 | マーケティングリサーチ講義ノート</title>
+  <meta name="description" content="7.9 分散分析 | マーケティングリサーチ講義ノート" />
   <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="6.4 二変数間の関係の要約 | マーケティングリサーチ講義ノート" />
+  <meta property="og:title" content="7.9 分散分析 | マーケティングリサーチ講義ノート" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.github.io.git" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="6.4 二変数間の関係の要約 | マーケティングリサーチ講義ノート" />
+  <meta name="twitter:title" content="7.9 分散分析 | マーケティングリサーチ講義ノート" />
   
   
   
@@ -23,15 +23,15 @@
 <meta name="author" content="Takumi Tagashira" />
 
 
-<meta name="date" content="2023-08-25" />
+<meta name="date" content="2023-08-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="データの可視化.html"/>
-<link rel="next" href="参考文献-4.html"/>
+<link rel="prev" href="平均値に関するその他の検定.html"/>
+<link rel="next" href="参考文献-5.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -173,11 +173,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="データの種類とアンケートデザイン.html"><a href="データの種類とアンケートデザイン.html"><i class="fa fa-check"></i><b>4</b> データの種類とアンケートデザイン</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="記述的リサーチデザイン.html"><a href="記述的リサーチデザイン.html"><i class="fa fa-check"></i><b>4.1</b> 記述的リサーチデザイン</a></li>
-<li class="chapter" data-level="4.2" data-path="アンケート設計.html"><a href="アンケート設計.html"><i class="fa fa-check"></i><b>4.2</b> アンケート設計</a></li>
-<li class="chapter" data-level="4.3" data-path="質問におけるワーディング.html"><a href="質問におけるワーディング.html"><i class="fa fa-check"></i><b>4.3</b> 質問におけるワーディング</a></li>
-<li class="chapter" data-level="4.4" data-path="アンケートデザイン.html"><a href="アンケートデザイン.html"><i class="fa fa-check"></i><b>4.4</b> アンケートデザイン</a></li>
-<li class="chapter" data-level="4.5" data-path="参考文献-2.html"><a href="参考文献-2.html"><i class="fa fa-check"></i><b>4.5</b> 参考文献</a></li>
+<li class="chapter" data-level="4.1" data-path="記述的リサーチデザインとアンケート.html"><a href="記述的リサーチデザインとアンケート.html"><i class="fa fa-check"></i><b>4.1</b> 記述的リサーチデザインとアンケート</a></li>
+<li class="chapter" data-level="4.2" data-path="質問におけるワーディング.html"><a href="質問におけるワーディング.html"><i class="fa fa-check"></i><b>4.2</b> 質問におけるワーディング</a></li>
+<li class="chapter" data-level="4.3" data-path="アンケートデザイン.html"><a href="アンケートデザイン.html"><i class="fa fa-check"></i><b>4.3</b> アンケートデザイン</a></li>
+<li class="chapter" data-level="4.4" data-path="参考文献-2.html"><a href="参考文献-2.html"><i class="fa fa-check"></i><b>4.4</b> 参考文献</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="データ処理と顧客関係管理crm.html"><a href="データ処理と顧客関係管理crm.html"><i class="fa fa-check"></i><b>5</b> データ処理と顧客関係管理（CRM）</a>
 <ul>
@@ -274,104 +273,71 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="二変数間の関係の要約" class="section level2 hasAnchor" number="6.4">
-<h2><span class="header-section-number">6.4</span> 二変数間の関係の要約<a href="二変数間の関係の要約.html#二変数間の関係の要約" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>ここまでの内容は（カテゴリ変数に関する一部の説明を除き）、一つの変数に関する要約と可視化を扱っていた。しかし、データ分析では二つの異なる変数間の関係を捉えたいと考えることも多い。二変数間の関係を数量的に要約するための指標の代表例が共分散や相関係数である。データ数をnとする変数xとyの共分散（<span class="math inline">\(S_{xy}\)</span>）は、以下のように定義される。なお、Rで共分散を求める際には <code>cov()</code> 関数を用いる。</p>
-<p><span class="math inline">\(S_{xy}=\frac{1}{n}\sum_i^n (x_i-\bar{x})(y_i-\bar{y})\)</span></p>
-<p>また、<span class="math inline">\(S_x\)</span>と<span class="math inline">\(S_y\)</span>をそれぞれxとyの分散とし、相関係数（<span class="math inline">\(\rho_{xy}\)</span>）は以下のように定義される。Rで相関係数を求める際には <code>cor()</code> 関数を用いる。</p>
-<p><span class="math inline">\(\rho_{xy}=\frac{S_{xy}}{\sqrt{S_x^2}\cdot \sqrt{S_y^2}}\)</span></p>
-<p>共分散は、二つのデータ間の共変動を示す指標であるものの、この数値を持って我々研究者が二変数の関係について（例えばその強弱などを）解釈するのは困難である。そこで、二変数間の関係を数値的に解釈する場合には、一般的に相関係数を用いる。相関係数は、-1 から 1 までの値を取り、正の値を取る場合は正の相関、負の値を取る場合は負の相関を、着目している二つの変数が持つことが知られている。また、相関係数が正（負）の値かつ1に近いほど強い正（負）の相関であることが知られている。ただし、相関係数で表される二変数間の関係は、線形関係の程度である。言い換えると、相関が高いとはデータがどれだけ直線上に集まって分布しているかを示しており、グラフ等で示される線形関係の傾きについては何も回答することができないという点に注意が必要である。
-例えば、以下のようなデータセットを考える。</p>
-<pre><code>## # A tibble: 5 × 3
-##      x1    y1    y2
-##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1    -3    16     8
-## 2    -1    12     6
-## 3     0    10     5
-## 4     2     6     3
-## 5     5     0     0</code></pre>
-<p>このデータセットにおける x1 と y1 の相関係数は -1 であり、両者の関係を図で示すと、すべてのデータが直線上（<span class="math inline">\(y=-2x+10\)</span>）に並ぶことがわかる。一方で、x1 と y2 との相関係数も -1 であるものの、両者の線形関係は <span class="math inline">\(y=-x+5\)</span>である。このことからも、相関係数が線形関数の傾きや切片についての情報は何も持たないことがわかる。</p>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="二変数間の関係の要約.html#cb137-1" tabindex="-1"></a><span class="fu">cor</span>(X<span class="sc">$</span>x1, X<span class="sc">$</span>y1)</span></code></pre></div>
-<pre><code>## [1] -1</code></pre>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="二変数間の関係の要約.html#cb139-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> X, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x1, <span class="at">y =</span> y1)) <span class="sc">+</span> </span>
-<span id="cb139-2"><a href="二変数間の関係の要約.html#cb139-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb139-3"><a href="二変数間の関係の要約.html#cb139-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm)</span></code></pre></div>
-<p><img src="mktres_lecture_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
-<p>また我々は、二変数間の相関係数がゼロであることが、両者が無関係であることを意味しないことにも注意をしなければならない。例えば、以下のようなデータセットにおけるA と B の相関は 0 になる。</p>
-<pre><code>## # A tibble: 5 × 2
-##       A     B
-##   &lt;dbl&gt; &lt;dbl&gt;
-## 1    -2     4
-## 2    -1     1
-## 3     0     0
-## 4     1     1
-## 5     2     4</code></pre>
-<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="二変数間の関係の要約.html#cb141-1" tabindex="-1"></a><span class="fu">cor</span>(AB<span class="sc">$</span>A, AB<span class="sc">$</span>B)</span></code></pre></div>
-<pre><code>## [1] 0</code></pre>
-<p>しかしながら、両者の関係を描画すると、<span class="math inline">\(y = x^2\)</span> という二次関数の関係にあることがわかる。つまり、相関係数がゼロだからといって、二つの変数間に関係がないと結論づける事はできず、相関ではなく異なる複数の分析アプローチによって関係を特定していくことが必要になる。</p>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="二変数間の関係の要約.html#cb143-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> AB, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> A, <span class="at">y =</span> B)) <span class="sc">+</span> </span>
-<span id="cb143-2"><a href="二変数間の関係の要約.html#cb143-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb143-3"><a href="二変数間の関係の要約.html#cb143-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, <span class="at">formula =</span> y <span class="sc">~</span> x <span class="sc">+</span> <span class="fu">I</span>(x<span class="sc">^</span><span class="dv">2</span>), <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<p><img src="mktres_lecture_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
-<p>勘の良い読者であればすでに気づいているかも知れないが、二変数間の関係についての可視化もggplot2にて対応できる。具体的には、<code>geom_point()</code>という関数を用いるのだが、それだけではなく、mappingに対する引数として、x と y 二つの変数を指定することが必要になる。ダイアモンドの価格は、カラット数に大きく依存すると考えられる。そこで、以下のようにカラット数と価格との間の共分散と相関を計算する。</p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="二変数間の関係の要約.html#cb144-1" tabindex="-1"></a><span class="fu">cov</span>(diamonds<span class="sc">$</span>carat,diamonds<span class="sc">$</span>price)</span></code></pre></div>
-<pre><code>## [1] 1742.765</code></pre>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="二変数間の関係の要約.html#cb146-1" tabindex="-1"></a><span class="fu">cor</span>(diamonds<span class="sc">$</span>carat,diamonds<span class="sc">$</span>price)</span></code></pre></div>
-<pre><code>## [1] 0.9215913</code></pre>
-<p>これらの変数間の相関係数は約0.92であり、高い正の相関関係であることが確認された。続いて、これらの変数の関係を可視化する。二変数間の関係を端的に可視化する方法が散布図である。散布図は、一方の変数を横軸に、もう一方の変数を縦軸に取り、各データのそれぞれの値の組み合わせをプロットしたものである。</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="二変数間の関係の要約.html#cb148-1" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(diamonds, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price))</span>
-<span id="cb148-2"><a href="二変数間の関係の要約.html#cb148-2" tabindex="-1"></a>p3 <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb148-3"><a href="二変数間の関係の要約.html#cb148-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;カラット&quot;</span>, <span class="at">y =</span> <span class="st">&quot;価格&quot;</span>,</span>
-<span id="cb148-4"><a href="二変数間の関係の要約.html#cb148-4" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;散布図1: カラット：価格&quot;</span>)</span></code></pre></div>
-<p><img src="mktres_lecture_files/figure-html/plotnormal-1.png" width="672" /></p>
-<p>研究目的次第では、二つの変数間の関係をカテゴリごとに比較したい場合もあるだろう。例えば、我々はカラットと価格の関係は、カットの質によって変わるのか、という問いに関心があるとしよう。その場合には、(1) 同一図内にてカテゴリごとに色分けする方法と、(2) カテゴリごとに分割して図示化する方法がある。それぞれのggplot2での実行方法は、以下のとおりである。</p>
-<ol style="list-style-type: decimal">
-<li>Mapping = aes() 内に、 color = categ_varと指定することで、categ_var変数のカテゴリに基づき色分けする。</li>
-<li>facet_grid() や facet_wrap() を用いる。</li>
-</ol>
-<p>まず、(1) の図内での色分け方法は、以下のようなコマンドで実行できる。</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="二変数間の関係の要約.html#cb149-1" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(diamonds, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price, <span class="at">color =</span> cut))</span>
-<span id="cb149-2"><a href="二変数間の関係の要約.html#cb149-2" tabindex="-1"></a>p4 <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb149-3"><a href="二変数間の関係の要約.html#cb149-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;カラット&quot;</span>, <span class="at">y =</span> <span class="st">&quot;価格&quot;</span>, <span class="at">color =</span> <span class="st">&quot;カット&quot;</span>,</span>
-<span id="cb149-4"><a href="二変数間の関係の要約.html#cb149-4" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;散布図 2: カット別、カラット：価格&quot;</span>)</span></code></pre></div>
-<p><img src="mktres_lecture_files/figure-html/plotcolor-1.png" width="672" /></p>
-<p>このように、<code>mapping = aes()</code> 内にて色付けに関する引数を設定することで散布図内の観測値を色分けできる。ただし、ここで重要なのは、<code>color =</code>という引数では、カテゴリ変数を指定すべきであり、色そのもの（例えば、redやblue）を指定するものではないということである。しかしながら、散布図 2のように多くのカテゴリが含まれる場合には、この可視化の方法だと逆に見にくいかもしれない。そこで、以下の方法を紹介する。<code>facet_wrap()</code> を用いた図の作成では、散布図 2のように color 引数を指定する必要はなく、p3 を再利用できる。<code>geom_point()</code> で散布図作成の指示を与えたあとに、<code>facet_wrap()</code> のレイヤーを重ねる指示を与えれば、散布図 3が作成される。</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="二変数間の関係の要約.html#cb150-1" tabindex="-1"></a>p3 <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>cut) <span class="sc">+</span></span>
-<span id="cb150-2"><a href="二変数間の関係の要約.html#cb150-2" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;カラット&quot;</span>, <span class="at">y =</span> <span class="st">&quot;価格&quot;</span>,</span>
-<span id="cb150-3"><a href="二変数間の関係の要約.html#cb150-3" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;散布図 3: カット別、カラット：価格&quot;</span>)</span></code></pre></div>
-<p><img src="mktres_lecture_files/figure-html/plotfacet-1.png" width="672" /></p>
-<p>散布図 3をみると、基本的にはカラット数と価格には正の相関があるものの、カットの質が低い（例、Fair）場合にはばらつきが大きいことがうかがえる。</p>
-<p>これまでに学んだdplyrによるデータ処理方法をパイプ演算子でつなげることで、特定の群のみを対象にした図示化も容易になる。ここでは例として、1.00カラット以上と未満とで分けて、それぞれのヒストグラムを作成してみる。</p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="二変数間の関係の要約.html#cb151-1" tabindex="-1"></a>p5 <span class="ot">&lt;-</span> diamonds <span class="sc">%&gt;%</span> </span>
-<span id="cb151-2"><a href="二変数間の関係の要約.html#cb151-2" tabindex="-1"></a>  <span class="fu">filter</span>(carat <span class="sc">&gt;=</span> <span class="fl">1.0</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb151-3"><a href="二変数間の関係の要約.html#cb151-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> price))</span>
-<span id="cb151-4"><a href="二変数間の関係の要約.html#cb151-4" tabindex="-1"></a>p5 <span class="sc">+</span> <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
-<span id="cb151-5"><a href="二変数間の関係の要約.html#cb151-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;価格&quot;</span>, <span class="at">y =</span> <span class="st">&quot;頻度&quot;</span>,</span>
-<span id="cb151-6"><a href="二変数間の関係の要約.html#cb151-6" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;ヒストグラム:1.00カラット以上&quot;</span>)</span></code></pre></div>
-<p><img src="mktres_lecture_files/figure-html/pipegg-1.png" width="672" /></p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="二変数間の関係の要約.html#cb152-1" tabindex="-1"></a>p6 <span class="ot">&lt;-</span> diamonds <span class="sc">%&gt;%</span> </span>
-<span id="cb152-2"><a href="二変数間の関係の要約.html#cb152-2" tabindex="-1"></a>  <span class="fu">filter</span>(carat <span class="sc">&lt;</span> <span class="fl">1.0</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb152-3"><a href="二変数間の関係の要約.html#cb152-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> price))</span>
-<span id="cb152-4"><a href="二変数間の関係の要約.html#cb152-4" tabindex="-1"></a>p6 <span class="sc">+</span> <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
-<span id="cb152-5"><a href="二変数間の関係の要約.html#cb152-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;価格&quot;</span>, <span class="at">y =</span> <span class="st">&quot;頻度&quot;</span>,</span>
-<span id="cb152-6"><a href="二変数間の関係の要約.html#cb152-6" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;ヒストグラム:1.00カラット未満&quot;</span>)</span></code></pre></div>
-<p><img src="mktres_lecture_files/figure-html/pipegg-2.png" width="672" /></p>
-<p>Rで図を作成したら保存（出力）したいと考えることも多いだろう。日本語を使っていない図はggsaveを使い簡単に保存できる。具体的には、まず、作成した図そのもの（図示化のためのggplot() オブジェクトではない）をオブジェクトとして定義（例、plot1）する。ggsaveの使用例は以下の様になる (以下は見本コード)。</p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="二変数間の関係の要約.html#cb153-1" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">filename =</span> <span class="st">&quot;plot1.pdf&quot;</span>, </span>
-<span id="cb153-2"><a href="二変数間の関係の要約.html#cb153-2" tabindex="-1"></a> <span class="at">plot =</span> plot1, <span class="at">width =</span> <span class="dv">10</span>, <span class="at">height =</span> <span class="dv">5</span>, <span class="at">units =</span> <span class="st">&quot;cm&quot;</span>)</span></code></pre></div>
-<p>日本語を含む頭の場合、<code>quartz()</code> を用いた以下の手順を経て図を保存する。
-1. quartz()で作図デバイスを起動する。
-2. 作図デバイスを開いたまま、Rstudio内で図を表示する。
-3. dev.off()という指示で作図デバイスを閉じることで図が保存される。</p>
-<p>また、Rstudio内のplotタブから、クリック-バイ-クリックで実行することも可能である（Export -&gt; Save as Image/ Save as PDF -&gt; Directory -&gt; File name）。</p>
+<div id="分散分析" class="section level2 hasAnchor" number="7.9">
+<h2><span class="header-section-number">7.9</span> 分散分析<a href="分散分析.html#分散分析" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>ここまでの内容では、２グループ間の平均の差に関する分析を捉えた。しかしながら、三つ以上のグループ間の平均の差に関心があることもある。例えば、異なる地域における売上高の差を比較したい場合が挙げられる。このような目的を持つ場合によく用いられるのが分散分析（Analysis of Variance; ANOVA）である。本節では、ANOVAの実行方法を中心に説明を行う。なお、ANOVAに関するより詳細な説明は別添の補足資料を参照してほしい。
+ANOVAの構造については、要因と水準という二つの要素から説明が行われる。要因とは、観測値に影響を与えていると考えうるカテゴリ変数のことを指し、水準とは、要因を構成するいくつかの条件やグループを指す。例えばある小売企業における各店舗の一定期間内の売上高が出店エリア特性によって差があるのかという問いに関心があるとする。その際各店舗を、都市エリア、郊外エリア、農村エリアという三つのグループに分類し、それぞれのグループにおける標本平均を求めれば、エリアごとの差を分析できるだろう。この場合、「地域」が売上高に影響を与えうる要因であり、「都市、郊外、農村」という三つのグループが水準だと言える。</p>
+<p>分析において取り上げる要因が一つである分散分析を一元配置分散分析と呼ぶ。二元配置分散分析については本資料では扱わないため、補足資料を参照してほしい。なお、分散分析をRで実行することは難しくない。ここでは、<code>reshape2</code>というパッケージに内包されてる tipping データを用いてANOVAを実行するため、以下のように<code>reshape2</code>パッケージをインストールして欲しい。</p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="分散分析.html#cb176-1" tabindex="-1"></a><span class="fu">install.packages</span>(reshape2)</span></code></pre></div>
+<p>パッケージをインストールしたら、以下のように<code>reshape2</code>を起動し、今回使用する <code>tips</code> データを確認する。本データに含まれている変数は以下の通りである。</p>
+<ul>
+<li>total_bill: 支払料金（ドル）</li>
+<li>tip: チップ額（ドル）</li>
+<li>sex: 支払い者の性別</li>
+<li>smoker: グループ内に喫煙者がいるか</li>
+<li>day: 曜日</li>
+<li>time: 時間帯</li>
+<li>size: 人数</li>
+</ul>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="分散分析.html#cb177-1" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
+<span id="cb177-2"><a href="分散分析.html#cb177-2" tabindex="-1"></a><span class="fu">str</span>(tips)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    244 obs. of  7 variables:
+##  $ total_bill: num  17 10.3 21 23.7 24.6 ...
+##  $ tip       : num  1.01 1.66 3.5 3.31 3.61 4.71 2 3.12 1.96 3.23 ...
+##  $ sex       : Factor w/ 2 levels &quot;Female&quot;,&quot;Male&quot;: 1 2 2 2 1 2 2 2 2 2 ...
+##  $ smoker    : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ day       : Factor w/ 4 levels &quot;Fri&quot;,&quot;Sat&quot;,&quot;Sun&quot;,..: 3 3 3 3 3 3 3 3 3 3 ...
+##  $ time      : Factor w/ 2 levels &quot;Dinner&quot;,&quot;Lunch&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ size      : int  2 3 3 2 4 4 2 4 2 2 ...</code></pre>
+<p>ここでは、以下の通りチップ額が曜日によって異なるか否かを分析する。ANOVAの実行においては<code>aov()</code>関数によって分析するモデルとデータを指定し、<code>anova()</code> によって分析結果を出力する（<code>summary()</code> を用いることも可能である）。なお、上記のデータサマリーより、<code>day</code> という要因には四水準 (levels) 含まれていることがうかがえる。</p>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="分散分析.html#cb179-1" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">aov</span>(tip <span class="sc">~</span> day, <span class="at">data =</span> tips)</span>
+<span id="cb179-2"><a href="分散分析.html#cb179-2" tabindex="-1"></a><span class="fu">anova</span>(s)</span></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: tip
+##            Df Sum Sq Mean Sq F value Pr(&gt;F)
+## day         3   9.53  3.1753  1.6724 0.1736
+## Residuals 240 455.69  1.8987</code></pre>
+<p>分析結果における <code>Sum Sq</code> は、水準間変動和（i.e.,平方和）と呼ばれ、特定要因の水準間によって説明される観測値の変動を表している。 <code>Mean Sq</code> は平均平方と呼ばれ、Sum SqをDF(自由度)で割ったものである。<code>F value</code> は F値という検定統計量の実現値であり、<code>Pr(&gt;F)</code> は本検定の p値を表している。また、<code>Residuals</code> の行で示されているのは、残差平方和と呼ばれ、郡内変動、つまり同グループ（水準）内での値のばらつきの程度を表している。</p>
+<p>分析の結果、チップ額について曜日による統計的に有意な差は確認されなかった。それでは、ANOVAでは具体的にどのような帰無仮説を用いた検定を行っているのだろうか？結論を先に述べると、「すべての水準間で平均値は同じ」という帰無仮説を検定しており、仮に帰無仮説が棄却された場合、「少なくとも一つの水準では値が異なる」という対立仮説を指示する。そのため、ANOVAにおける帰無仮説の棄却は、少なくとも1つの群は全体と異なる平均値を持っているという結論につながる。そのため、ANOVAの検定結果だけでは具体的にどの水準間に差があるのかはわからない。そこで、ANOVAを用いた研究では事後分析として、多重比較と呼ばれる分析を行うことが多い。しかし、この多重比較には統計的な問題が伴うと言われている（詳細は補足資料参照）。その問題に対応した手法として広く用いられているのが、Tukeyのpair-wise 比較である。Rではこの分析を、<code>TukeyHSD()</code> という関数で実行できる。具体的には、<code>aov()</code> でストアしたANOVAの分析結果を用いて以下のように実施する。また、<code>plot()</code>を用いて、pair-wise比較の結果を95%信頼区間とともに図示化することもできる。</p>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="分散分析.html#cb181-1" tabindex="-1"></a>tukey_result <span class="ot">&lt;-</span> <span class="fu">TukeyHSD</span>(s)</span>
+<span id="cb181-2"><a href="分散分析.html#cb181-2" tabindex="-1"></a>tukey_result</span></code></pre></div>
+<pre><code>##   Tukey multiple comparisons of means
+##     95% family-wise confidence level
+## 
+## Fit: aov(formula = tip ~ day, data = tips)
+## 
+## $day
+##                 diff        lwr       upr     p adj
+## Sat-Fri   0.25836661 -0.6443694 1.1611026 0.8806455
+## Sun-Fri   0.52039474 -0.3939763 1.4347658 0.4558054
+## Thur-Fri  0.03671477 -0.8980753 0.9715049 0.9996235
+## Sun-Sat   0.26202813 -0.2976929 0.8217492 0.6203822
+## Thur-Sat -0.22165184 -0.8141430 0.3708394 0.7678581
+## Thur-Sun -0.48367997 -1.0937520 0.1263921 0.1724212</code></pre>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="分散分析.html#cb183-1" tabindex="-1"></a><span class="fu">plot</span>(tukey_result)</span></code></pre></div>
+<p><img src="mktres_lecture_files/figure-html/tukeys-1.png" width="672" /></p>
+<p>分析結果における <code>diff</code> 列は平均値の差を表している。 <code>lwer</code> と <code>upr</code> は信頼区間の下限と上限を表しており、一番右の列はp値を示している。分析の結果、P-valueが10%水準よりも低い結果がないため、どのペアに関する検定でも有意な差は確認できなかった。したがって、分析結果は必ずしもチップ額が曜日によって変化するとは言えないことを示した。この結果は、アメリカにおけるチップ額が会計額に対する割合や提供されたサービス品質によって決まるという慣習から考えると妥当な結果である。しかしながら、前節で注意した通り、このような統計的に非有意な結果をもって「曜日はチップ額に影響を与えない」と結論づけるのは不適切である。</p>
+<p>なお、今回の分析においてはANOVAもTukeyのpair-wise比較も有意な結論を得ることができなかったという点で、両者の結果に一貫性があった。しかしながら、ANOVAでは有意だが、Tukeyの分析ではどの組み合わせも有意ではないという一見整合でない結果を得ることもある。その場合には、慣習としてTukeyの多重比較結果を優先して解釈を提示することが多い。しかしながら、研究者が自身の実施した検定の「意味」を理解し、解釈や議論を提示することも重要である。例えば、ANOVAとTukeyでは用いている帰無仮説が異なるため、異なる比較対象を用いた検定を実施している。そのため、自身が実行した分析がどのような帰無仮説を採用しており、何と何の比較を行っているのかを正確に把握し、実施した検定の意味に適した解釈や議論を展開する事が重要になる。</p>
+<p>本章では、基礎的な統計学の復習として、主に区間推定と統計的仮説検定について説明した。区間推定では、主に信頼区間の計算に着目し、信頼区間の意味についてきちんと理解、解釈することの重要性を強調した。また、統計的仮説検定では、母平均の検定を起点とし統計的検定の基礎的な構造と考え方について説明した。検定においては、母集団の統計的特徴に関する予測である帰無仮説と対立仮説を設計することが重要である。また、グループ間の差異に着目した検定を行う場合には、関心のある未知パラメータについての差や比に着目し検定統計量を作成する事が多いが、基本的な統計的検定の考え方と手順は変わらないという点についても説明した。</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="データの可視化.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="参考文献-4.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="平均値に関するその他の検定.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="参考文献-5.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -402,7 +368,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/05-Visualization.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/06-stat.Rmd",
 "text": "Edit"
 },
 "history": {

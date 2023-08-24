@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>6.4 二変数間の関係の要約 | マーケティングリサーチ講義ノート</title>
-  <meta name="description" content="6.4 二変数間の関係の要約 | マーケティングリサーチ講義ノート" />
+  <title>4.2 アンケート設計 | マーケティングリサーチ講義ノート</title>
+  <meta name="description" content="4.2 アンケート設計 | マーケティングリサーチ講義ノート" />
   <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="6.4 二変数間の関係の要約 | マーケティングリサーチ講義ノート" />
+  <meta property="og:title" content="4.2 アンケート設計 | マーケティングリサーチ講義ノート" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.github.io.git" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="6.4 二変数間の関係の要約 | マーケティングリサーチ講義ノート" />
+  <meta name="twitter:title" content="4.2 アンケート設計 | マーケティングリサーチ講義ノート" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="データの可視化.html"/>
-<link rel="next" href="参考文献-4.html"/>
+<link rel="prev" href="記述的リサーチデザイン.html"/>
+<link rel="next" href="質問におけるワーディング.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -274,104 +274,84 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="二変数間の関係の要約" class="section level2 hasAnchor" number="6.4">
-<h2><span class="header-section-number">6.4</span> 二変数間の関係の要約<a href="二変数間の関係の要約.html#二変数間の関係の要約" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>ここまでの内容は（カテゴリ変数に関する一部の説明を除き）、一つの変数に関する要約と可視化を扱っていた。しかし、データ分析では二つの異なる変数間の関係を捉えたいと考えることも多い。二変数間の関係を数量的に要約するための指標の代表例が共分散や相関係数である。データ数をnとする変数xとyの共分散（<span class="math inline">\(S_{xy}\)</span>）は、以下のように定義される。なお、Rで共分散を求める際には <code>cov()</code> 関数を用いる。</p>
-<p><span class="math inline">\(S_{xy}=\frac{1}{n}\sum_i^n (x_i-\bar{x})(y_i-\bar{y})\)</span></p>
-<p>また、<span class="math inline">\(S_x\)</span>と<span class="math inline">\(S_y\)</span>をそれぞれxとyの分散とし、相関係数（<span class="math inline">\(\rho_{xy}\)</span>）は以下のように定義される。Rで相関係数を求める際には <code>cor()</code> 関数を用いる。</p>
-<p><span class="math inline">\(\rho_{xy}=\frac{S_{xy}}{\sqrt{S_x^2}\cdot \sqrt{S_y^2}}\)</span></p>
-<p>共分散は、二つのデータ間の共変動を示す指標であるものの、この数値を持って我々研究者が二変数の関係について（例えばその強弱などを）解釈するのは困難である。そこで、二変数間の関係を数値的に解釈する場合には、一般的に相関係数を用いる。相関係数は、-1 から 1 までの値を取り、正の値を取る場合は正の相関、負の値を取る場合は負の相関を、着目している二つの変数が持つことが知られている。また、相関係数が正（負）の値かつ1に近いほど強い正（負）の相関であることが知られている。ただし、相関係数で表される二変数間の関係は、線形関係の程度である。言い換えると、相関が高いとはデータがどれだけ直線上に集まって分布しているかを示しており、グラフ等で示される線形関係の傾きについては何も回答することができないという点に注意が必要である。
-例えば、以下のようなデータセットを考える。</p>
-<pre><code>## # A tibble: 5 × 3
-##      x1    y1    y2
-##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1    -3    16     8
-## 2    -1    12     6
-## 3     0    10     5
-## 4     2     6     3
-## 5     5     0     0</code></pre>
-<p>このデータセットにおける x1 と y1 の相関係数は -1 であり、両者の関係を図で示すと、すべてのデータが直線上（<span class="math inline">\(y=-2x+10\)</span>）に並ぶことがわかる。一方で、x1 と y2 との相関係数も -1 であるものの、両者の線形関係は <span class="math inline">\(y=-x+5\)</span>である。このことからも、相関係数が線形関数の傾きや切片についての情報は何も持たないことがわかる。</p>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="二変数間の関係の要約.html#cb137-1" tabindex="-1"></a><span class="fu">cor</span>(X<span class="sc">$</span>x1, X<span class="sc">$</span>y1)</span></code></pre></div>
-<pre><code>## [1] -1</code></pre>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="二変数間の関係の要約.html#cb139-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> X, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x1, <span class="at">y =</span> y1)) <span class="sc">+</span> </span>
-<span id="cb139-2"><a href="二変数間の関係の要約.html#cb139-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb139-3"><a href="二変数間の関係の要約.html#cb139-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm)</span></code></pre></div>
-<p><img src="mktres_lecture_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
-<p>また我々は、二変数間の相関係数がゼロであることが、両者が無関係であることを意味しないことにも注意をしなければならない。例えば、以下のようなデータセットにおけるA と B の相関は 0 になる。</p>
-<pre><code>## # A tibble: 5 × 2
-##       A     B
-##   &lt;dbl&gt; &lt;dbl&gt;
-## 1    -2     4
-## 2    -1     1
-## 3     0     0
-## 4     1     1
-## 5     2     4</code></pre>
-<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="二変数間の関係の要約.html#cb141-1" tabindex="-1"></a><span class="fu">cor</span>(AB<span class="sc">$</span>A, AB<span class="sc">$</span>B)</span></code></pre></div>
-<pre><code>## [1] 0</code></pre>
-<p>しかしながら、両者の関係を描画すると、<span class="math inline">\(y = x^2\)</span> という二次関数の関係にあることがわかる。つまり、相関係数がゼロだからといって、二つの変数間に関係がないと結論づける事はできず、相関ではなく異なる複数の分析アプローチによって関係を特定していくことが必要になる。</p>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="二変数間の関係の要約.html#cb143-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> AB, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> A, <span class="at">y =</span> B)) <span class="sc">+</span> </span>
-<span id="cb143-2"><a href="二変数間の関係の要約.html#cb143-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb143-3"><a href="二変数間の関係の要約.html#cb143-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, <span class="at">formula =</span> y <span class="sc">~</span> x <span class="sc">+</span> <span class="fu">I</span>(x<span class="sc">^</span><span class="dv">2</span>), <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<p><img src="mktres_lecture_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
-<p>勘の良い読者であればすでに気づいているかも知れないが、二変数間の関係についての可視化もggplot2にて対応できる。具体的には、<code>geom_point()</code>という関数を用いるのだが、それだけではなく、mappingに対する引数として、x と y 二つの変数を指定することが必要になる。ダイアモンドの価格は、カラット数に大きく依存すると考えられる。そこで、以下のようにカラット数と価格との間の共分散と相関を計算する。</p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="二変数間の関係の要約.html#cb144-1" tabindex="-1"></a><span class="fu">cov</span>(diamonds<span class="sc">$</span>carat,diamonds<span class="sc">$</span>price)</span></code></pre></div>
-<pre><code>## [1] 1742.765</code></pre>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="二変数間の関係の要約.html#cb146-1" tabindex="-1"></a><span class="fu">cor</span>(diamonds<span class="sc">$</span>carat,diamonds<span class="sc">$</span>price)</span></code></pre></div>
-<pre><code>## [1] 0.9215913</code></pre>
-<p>これらの変数間の相関係数は約0.92であり、高い正の相関関係であることが確認された。続いて、これらの変数の関係を可視化する。二変数間の関係を端的に可視化する方法が散布図である。散布図は、一方の変数を横軸に、もう一方の変数を縦軸に取り、各データのそれぞれの値の組み合わせをプロットしたものである。</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="二変数間の関係の要約.html#cb148-1" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(diamonds, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price))</span>
-<span id="cb148-2"><a href="二変数間の関係の要約.html#cb148-2" tabindex="-1"></a>p3 <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb148-3"><a href="二変数間の関係の要約.html#cb148-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;カラット&quot;</span>, <span class="at">y =</span> <span class="st">&quot;価格&quot;</span>,</span>
-<span id="cb148-4"><a href="二変数間の関係の要約.html#cb148-4" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;散布図1: カラット：価格&quot;</span>)</span></code></pre></div>
-<p><img src="mktres_lecture_files/figure-html/plotnormal-1.png" width="672" /></p>
-<p>研究目的次第では、二つの変数間の関係をカテゴリごとに比較したい場合もあるだろう。例えば、我々はカラットと価格の関係は、カットの質によって変わるのか、という問いに関心があるとしよう。その場合には、(1) 同一図内にてカテゴリごとに色分けする方法と、(2) カテゴリごとに分割して図示化する方法がある。それぞれのggplot2での実行方法は、以下のとおりである。</p>
+<div id="アンケート設計" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> アンケート設計<a href="アンケート設計.html#アンケート設計" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>マーケティングにおける記述的リサーチアプローチとして広く用いられれているのが、質問紙（アンケート）調査である。マーケティングにおける調査や研究では行動データ等では捉えきれない消費者の態度や知覚について知ることを目的とする場合も多い。このような目的を達成するため、これまでの研究では伝統的に質問紙調査によって情報を得てきた。質問紙調査とは、データ収集のための構造化された手法で、回答者が回答する一連の質問（書面または口頭）から構成される。質問紙調査では、調査者が求める情報を、回答者が回答できる一連の具体的な質問に変換することを目的とする。調査の実施において研究者は、回答者が相互コミュニケーションに参加し、協力し、面接を完了するように意欲を高め、動機を与え、奨励すると同時に、回答誤差を最小化する必要がある。</p>
+<p>質問紙調査は、研究者と回答者との間のコミュニケーションとして捉えられる。また、研究者はこの双方向的なコミュニケーションにおいて、下の図のようなノイズが生じることを理解し、それを削減する努力を講じることが求められる。</p>
+<div class="float">
+<img src="Research%20design/survey_noise.png" style="width:70.0%" alt="アンケートノイズ" />
+<div class="figcaption">アンケートノイズ</div>
+</div>
+<p>アンケートによるデータ収集は、社会科学における「人を対象にした研究」に該当するため、人を対象にした研究としての研究倫理規則を守る必要がある。例えば、一橋大学における研究倫理規則は以下のリンクから確認できる（<a href="https://www.hit-u.ac.jp/academic/research_ethics/index.html" class="uri">https://www.hit-u.ac.jp/academic/research_ethics/index.html</a>）。ここでは、主に調査協力者の身体的・精神的負担を最小化し、彼らに不利益が生じないよう留意する必要がある。また、データを収集する際には、研究対象者から同意（インフォームド・コンセント）を得る必要がある。インフォームド・コンセントにおいては、、調査を行う主体、目的、調査により得た情報の管理方法、公開有無や方法について明示し、この条件について回答者から許諾を得る必要がある。ただし、大規模な無記名アンケート調査など、研究者が、回答者から個人名を記載した形の同意書を得ることが困難な場合がある。その場合は慣習として、調査開始前に上記の点について説明し、調査回答へ進むことで同意を得たことと代替する事が多い。ただし、このような対応方法に関する適切性の議論も、時代の経過とともに変化することが考えられるため、研究倫理については研究者自身が継続的に学習し、適切な手法を採用していくことが求められる。以下は、実際に田頭が使用したアンケートにおけるカバーレターであり、インフォームド・コンセント文の例である。</p>
+<div class="float">
+<img src="Research%20design/Informed.png" style="width:70.0%" alt="インフォームド・コンセント例" />
+<div class="figcaption">インフォームド・コンセント例</div>
+</div>
+<p>アンケートのデザインは主に以下のプロセスを経る。</p>
 <ol style="list-style-type: decimal">
-<li>Mapping = aes() 内に、 color = categ_varと指定することで、categ_var変数のカテゴリに基づき色分けする。</li>
-<li>facet_grid() や facet_wrap() を用いる。</li>
+<li>質問トピックを決める</li>
+<li>質問と回答方式を決める</li>
+<li>ワーディングを決める</li>
+<li>質問の順番を決める</li>
+<li>アンケートのレイアウトや装丁を決める</li>
+<li>プレ調査の実施</li>
+<li>アンケート（本調査）の実施</li>
 </ol>
-<p>まず、(1) の図内での色分け方法は、以下のようなコマンドで実行できる。</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="二変数間の関係の要約.html#cb149-1" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(diamonds, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price, <span class="at">color =</span> cut))</span>
-<span id="cb149-2"><a href="二変数間の関係の要約.html#cb149-2" tabindex="-1"></a>p4 <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb149-3"><a href="二変数間の関係の要約.html#cb149-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;カラット&quot;</span>, <span class="at">y =</span> <span class="st">&quot;価格&quot;</span>, <span class="at">color =</span> <span class="st">&quot;カット&quot;</span>,</span>
-<span id="cb149-4"><a href="二変数間の関係の要約.html#cb149-4" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;散布図 2: カット別、カラット：価格&quot;</span>)</span></code></pre></div>
-<p><img src="mktres_lecture_files/figure-html/plotcolor-1.png" width="672" /></p>
-<p>このように、<code>mapping = aes()</code> 内にて色付けに関する引数を設定することで散布図内の観測値を色分けできる。ただし、ここで重要なのは、<code>color =</code>という引数では、カテゴリ変数を指定すべきであり、色そのもの（例えば、redやblue）を指定するものではないということである。しかしながら、散布図 2のように多くのカテゴリが含まれる場合には、この可視化の方法だと逆に見にくいかもしれない。そこで、以下の方法を紹介する。<code>facet_wrap()</code> を用いた図の作成では、散布図 2のように color 引数を指定する必要はなく、p3 を再利用できる。<code>geom_point()</code> で散布図作成の指示を与えたあとに、<code>facet_wrap()</code> のレイヤーを重ねる指示を与えれば、散布図 3が作成される。</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="二変数間の関係の要約.html#cb150-1" tabindex="-1"></a>p3 <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>cut) <span class="sc">+</span></span>
-<span id="cb150-2"><a href="二変数間の関係の要約.html#cb150-2" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;カラット&quot;</span>, <span class="at">y =</span> <span class="st">&quot;価格&quot;</span>,</span>
-<span id="cb150-3"><a href="二変数間の関係の要約.html#cb150-3" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;散布図 3: カット別、カラット：価格&quot;</span>)</span></code></pre></div>
-<p><img src="mktres_lecture_files/figure-html/plotfacet-1.png" width="672" /></p>
-<p>散布図 3をみると、基本的にはカラット数と価格には正の相関があるものの、カットの質が低い（例、Fair）場合にはばらつきが大きいことがうかがえる。</p>
-<p>これまでに学んだdplyrによるデータ処理方法をパイプ演算子でつなげることで、特定の群のみを対象にした図示化も容易になる。ここでは例として、1.00カラット以上と未満とで分けて、それぞれのヒストグラムを作成してみる。</p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="二変数間の関係の要約.html#cb151-1" tabindex="-1"></a>p5 <span class="ot">&lt;-</span> diamonds <span class="sc">%&gt;%</span> </span>
-<span id="cb151-2"><a href="二変数間の関係の要約.html#cb151-2" tabindex="-1"></a>  <span class="fu">filter</span>(carat <span class="sc">&gt;=</span> <span class="fl">1.0</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb151-3"><a href="二変数間の関係の要約.html#cb151-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> price))</span>
-<span id="cb151-4"><a href="二変数間の関係の要約.html#cb151-4" tabindex="-1"></a>p5 <span class="sc">+</span> <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
-<span id="cb151-5"><a href="二変数間の関係の要約.html#cb151-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;価格&quot;</span>, <span class="at">y =</span> <span class="st">&quot;頻度&quot;</span>,</span>
-<span id="cb151-6"><a href="二変数間の関係の要約.html#cb151-6" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;ヒストグラム:1.00カラット以上&quot;</span>)</span></code></pre></div>
-<p><img src="mktres_lecture_files/figure-html/pipegg-1.png" width="672" /></p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="二変数間の関係の要約.html#cb152-1" tabindex="-1"></a>p6 <span class="ot">&lt;-</span> diamonds <span class="sc">%&gt;%</span> </span>
-<span id="cb152-2"><a href="二変数間の関係の要約.html#cb152-2" tabindex="-1"></a>  <span class="fu">filter</span>(carat <span class="sc">&lt;</span> <span class="fl">1.0</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb152-3"><a href="二変数間の関係の要約.html#cb152-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> price))</span>
-<span id="cb152-4"><a href="二変数間の関係の要約.html#cb152-4" tabindex="-1"></a>p6 <span class="sc">+</span> <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
-<span id="cb152-5"><a href="二変数間の関係の要約.html#cb152-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;価格&quot;</span>, <span class="at">y =</span> <span class="st">&quot;頻度&quot;</span>,</span>
-<span id="cb152-6"><a href="二変数間の関係の要約.html#cb152-6" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;ヒストグラム:1.00カラット未満&quot;</span>)</span></code></pre></div>
-<p><img src="mktres_lecture_files/figure-html/pipegg-2.png" width="672" /></p>
-<p>Rで図を作成したら保存（出力）したいと考えることも多いだろう。日本語を使っていない図はggsaveを使い簡単に保存できる。具体的には、まず、作成した図そのもの（図示化のためのggplot() オブジェクトではない）をオブジェクトとして定義（例、plot1）する。ggsaveの使用例は以下の様になる (以下は見本コード)。</p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="二変数間の関係の要約.html#cb153-1" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">filename =</span> <span class="st">&quot;plot1.pdf&quot;</span>, </span>
-<span id="cb153-2"><a href="二変数間の関係の要約.html#cb153-2" tabindex="-1"></a> <span class="at">plot =</span> plot1, <span class="at">width =</span> <span class="dv">10</span>, <span class="at">height =</span> <span class="dv">5</span>, <span class="at">units =</span> <span class="st">&quot;cm&quot;</span>)</span></code></pre></div>
-<p>日本語を含む頭の場合、<code>quartz()</code> を用いた以下の手順を経て図を保存する。
-1. quartz()で作図デバイスを起動する。
-2. 作図デバイスを開いたまま、Rstudio内で図を表示する。
-3. dev.off()という指示で作図デバイスを閉じることで図が保存される。</p>
-<p>また、Rstudio内のplotタブから、クリック-バイ-クリックで実行することも可能である（Export -&gt; Save as Image/ Save as PDF -&gt; Directory -&gt; File name）。</p>
+<p>上記のステップに対し、ここではまず質問と回答方式について説明する。なお質問トピックは、研究課題に深く関わるため、本資料にてすでに議論されている内容を参照してほしい。アンケートでは、主に自由回答式質問、選択肢型質問、尺度型質問、といった方式の質問が用いられる。自由回答式質問は、回答者が自身の言葉で自由に回答できる質問であり、回答に関する事前の選択肢は設定されていないタイプの質問である。回答者は、このような質問に対して一言で簡潔に回答するか、詳細に長く回答するかなど、回答方法に裁量を持つことになる。例えば、「出身はどちらですか？」という問いに対して回答者は、「東京都」と都道府県レベルで答えることも、「東京都町田市」と市区町村レベルで答えることも可能である。また、典型的な自由回答式質問の例として、理由や動機を問う設問がある。例えば「なぜ、この航空会社を選びましたか？」といった質問に対して回答者は「機内食」のように一言で回答することも、長い文章を用いて回答することも可能である。選択肢型質問は、回答者に質問に対する回答のための2つ以上の選択肢を与え、その選択肢から択一させるものである。例えば、回答者の特定のサービスの利用経験について「1. はい、2. いいえ」からいずれかを選ばせたり、学歴について複数の選択肢から一つを選ばせるというものがこのタイプの質問に該当する。</p>
+<p>一方で尺度型質問は、消費者による企業への態度や満足などを捉えるためにマーケティング分野で広く用いられている質問方式である。ここでは、ある質問に対する点数を回答者に選ばせることで、その質問で捉えようとしている性向の程度を測るものである。尺度の形成方法としては、グラフィックを用いるもの、項目別に評価するものなどが存在するがここでは、マーケティング領域で広く用いられている項目別評価尺度について説明する。項目別評価尺度においてよく用いられる尺度はリッカート尺度とSemantic differential (SD) 法と呼ばれる尺度である。リッカート尺度では、調査者は回答者に文章を提示し、回答者がその文章の内容にどの程度同意するかについて情報を得る。設問では、「全くそう思わない,…,とてもそう思う」や「全くあてはまらない,…,とても良くあてはまる」という選択肢について5点尺度や7点尺度で回答させることが多い。以下は、7点のリッカート尺度による質問の例である。</p>
+<div class="float">
+<img src="Research%20design/question.png" style="width:70.0%" alt="リッカート尺度例" />
+<div class="figcaption">リッカート尺度例</div>
+</div>
+<p>一方でSD法は、両極の意味を持つ一連の尺度を用いて、回答者の評価を得る方法である。例えば、「冷たい-温かい」や、「弱い-強い」というような対極にある言葉を両極に設定して、5点や7点尺度によって回答を得る方法が一般的である。以下は、7点のSD法による質問の例である。</p>
+<div class="float">
+<img src="Research%20design/question2.png" style="width:70.0%" alt="SD尺度例" />
+<div class="figcaption">SD尺度例</div>
+</div>
+<p>マーケティングにおける研究では、アンケートを通じて、顧客満足や企業態度などの抽象度の高い構成概念を捉えようと試みることも多い（南・小野, 2010）。その場合、研究者は複数の質問項目を用いてひとつの概念を捉えるが、このような項目の扱いには、専門的な知識や先行研究による知見が必要になる。例えば、2010年代以降よく用いられる概念に、消費者によるブランドエンゲージメントがある。ブランドエンゲージメントは「消費者が特定のブランドをどの程度自分自身の一部のように大事に捉えているか」を表す概念である (Sprott et al., 2009, p. 92)。このような抽象的な概念は多面的な視点から包括的に捉えるが多く、例えば Sprott et al. (2009) では、以下の8つの質問項目を用いて、ブランドエンゲージメントを捉えていた。</p>
+<ul>
+<li>I have a special bond with this brand.
+<ul>
+<li>私はこのブランドと特別なつながりを持っている。</li>
+</ul></li>
+<li>I consider this brand to be a part of myself.
+<ul>
+<li>私はこのブランドを自分の一部として考える。</li>
+</ul></li>
+<li>I often feel a personal connection between this brand and myself.
+<ul>
+<li>私はこのブランドと自分自身の間に個人的な関係を感じる。</li>
+</ul></li>
+<li>Part of me is defined by this brand in my life.
+<ul>
+<li>私の人生の一部はこのブランドによって規定されている。</li>
+</ul></li>
+<li>I feel as if I have a close personal connection with this brand I most prefer.
+<ul>
+<li>私が最も好きなこのブランドとは、まるで個人的な関係を持っているかのように感じる。</li>
+</ul></li>
+<li>I can identify with this brand in my life.
+<ul>
+<li>私の人生において、このブランドに共感できる。</li>
+</ul></li>
+<li>There are links between this brand and how I view myself.
+<ul>
+<li>このブランドと私自身との間には繋がりがある。</li>
+</ul></li>
+<li>This brand is an important indication of who I am.
+<ul>
+<li>このブランドは、私がどういう人間かを示す重要なものである。</li>
+</ul></li>
+</ul>
+<p>このことから、研究者は、包括的かつ多面的な概念を、より具体的な複数の質問を使って様々な側面から捉えようとしていることが伺える。このような構成概念を用いた分析では、概念を構成する項目の合計値や算術平均を用いて、ひとつ合成変数を作成することでその後の分析に用いる場合や、共分散構造分析（Covariance-based Structural Equation Modeling: CB-SEM）という高度な手法を用いることがある。しかし、本書では共分散構造分析は扱わないため、別のテキスト等を参照してほしい。また、複数項目によって構成概念を捉える場合、それらの項目が十分に似ているか（共通の概念に寄与しているか）をチェックする必要がある。そのようなチェックにおいては、探索的因子分析や確認的因子分析が用いられる。探索的因子分析については、本書の後半で扱う。一方で、確認的因子分析は、通常共分散構造分析の一種として扱われることが多い手法なので本書では扱わない。</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="データの可視化.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="参考文献-4.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="記述的リサーチデザイン.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="質問におけるワーディング.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -402,7 +382,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/05-Visualization.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/03-dataSurvey.Rmd",
 "text": "Edit"
 },
 "history": {
