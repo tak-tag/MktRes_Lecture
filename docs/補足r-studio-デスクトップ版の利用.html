@@ -23,7 +23,7 @@
 <meta name="author" content="Takumi Tagashira" />
 
 
-<meta name="date" content="2023-08-25" />
+<meta name="date" content="2023-08-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -278,13 +278,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">2.2</span> （補足）R studio デスクトップ版の利用<a href="補足r-studio-デスクトップ版の利用.html#補足r-studio-デスクトップ版の利用" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Posit cloud のフリーアカウントには、利用可能な時間やデータ容量に制限が存在する。自身の利用スタイルを鑑みて、Posit cloudのフリープランでは不十分である場合には、有料版へのアップグレードやDesktop版のインストールによって対応する必要がある。ここでは、 R studio Desktop の利用について紹介する。</p>
 <p>R studioをオフライン環境で使う場合には、R と R studioの両方をインストールする必要がある。Rは以下のサイト（<a href="http://cran.ism.ac.jp/" class="uri">http://cran.ism.ac.jp/</a>）等からダウンロードし,インストールが可能である。ソフトウェアには、Windows用，Mac用，Linux用があり、ユーザー自身の環境に適したバージョンを選択してほしい。</p>
-<p>R studio のインストールは、以下のリンクから “Download” ボタンをクリックすることで始まる（<a href="https://posit.co/downloads/" class="uri">https://posit.co/downloads/</a>）。なお、特別な事情がない限り、無料版で十分分析が可能になる。
+<p>R studio のインストールは、以下のリンクから “Download” ボタンをクリックすることで始まる（<a href="https://posit.co/downloads/" class="uri">https://posit.co/downloads/</a>）。なお、特別な事情がない限り、無料版で十分分析が可能である。
 無料版のダウンロードが完了したら、指示に従いインストールを実施する。その際の設定はすべてデフォルトで構わない。</p>
 <div class="float">
 <img src="Intro/download.png" style="width:70.0%" alt="Rstudio Desktop インストール" />
 <div class="figcaption">Rstudio Desktop インストール</div>
 </div>
-<p>ただし、WindowsでのRおよびR studioのインストールには注意が必要である。特に、Rを用いる講義を受け持っていると、新たなパッケージのインストールで問題が生じるなどのトラブルが頻発する。これらの問題点に調べると、(1) 文字コードによる文字化けの問題、(2) ユーザーアカウントのホームディレクトリ名に日本語（全角）が利用されていること、(3) Rのライブラリが(勝手に) One drive 上に作成されることが原因であることが多かった。これに対して、 R の version 4.20以降からは、UTF-8の文字コードに対応したり、デフォルトでのRのインストール場所の変更（One drive上でない）が行われたりと、問題の改善が図られている。自身のホームディレクトリの名前が全角文字であるときは、ホームディレクトリ以外のローカルディレクトリを設定したほうが良い。この点に関する対応には、三重大学の奥村先生によって以下のウェブサイトに説明が記載されている（<a href="https://okumuralab.org/~okumura/stat/R-win.html" class="uri">https://okumuralab.org/~okumura/stat/R-win.html</a>）。</p>
+<p>ただし、WindowsでのRおよびR studioのインストールには注意が必要である。特に、Rを用いる講義を受け持っていると、新たなパッケージのインストールができないなどのトラブルが頻発する。これらの問題点に調べると、(1) 文字コードによる文字化けの問題、(2) ユーザーアカウントのホームディレクトリ名に日本語（全角）が利用されていること、(3) Rのライブラリが(勝手に) One drive 上に作成されることが原因であることが多かった。これに対して、 R の version 4.20以降からは、UTF-8の文字コードに対応したり、デフォルトでのRのインストール場所の変更（One drive上でない）が行われたりと、問題の改善が図られている。自身のホームディレクトリの名前が全角文字であるときは、ホームディレクトリ以外のローカルディレクトリを設定したほうが良い。この点に関する対応には、三重大学の奥村先生によって以下のウェブサイトに説明が記載されている（<a href="https://okumuralab.org/~okumura/stat/R-win.html" class="uri">https://okumuralab.org/~okumura/stat/R-win.html</a>）。</p>
 </div>
             </section>
 
@@ -341,7 +341,8 @@ gitbook.start({
 },
 "toc": {
 "collapse": "subsection"
-}
+},
+"plugins": "jekyll-sitemap"
 });
 });
 </script>
