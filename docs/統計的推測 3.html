@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>8.5 参考文献 | マーケティングリサーチ講義ノート</title>
-  <meta name="description" content="8.5 参考文献 | マーケティングリサーチ講義ノート" />
+  <title>7.2 統計的推測 | マーケティングリサーチ講義ノート</title>
+  <meta name="description" content="7.2 統計的推測 | マーケティングリサーチ講義ノート" />
   <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="8.5 参考文献 | マーケティングリサーチ講義ノート" />
+  <meta property="og:title" content="7.2 統計的推測 | マーケティングリサーチ講義ノート" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.github.io.git" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="8.5 参考文献 | マーケティングリサーチ講義ノート" />
+  <meta name="twitter:title" content="7.2 統計的推測 | マーケティングリサーチ講義ノート" />
   
   
   
@@ -23,15 +23,15 @@
 <meta name="author" content="Takumi Tagashira" />
 
 
-<meta name="date" content="2023-09-03" />
+<meta name="date" content="2023-08-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="重回帰モデル2.html"/>
-<link rel="next" href="回帰分析上の工夫紹介.html"/>
+<link rel="prev" href="確率モデル期待値と分散.html"/>
+<link rel="next" href="点推定.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -274,22 +274,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="参考文献-6" class="section level2 hasAnchor" number="8.5">
-<h2><span class="header-section-number">8.5</span> 参考文献<a href="参考文献-6.html#参考文献-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>秋山裕（2018）「Rによる計量経済学 第2版」，オーム社.</p>
-<p>西山慶彦・新谷元嗣・川口大司・奥井亮（2019）「計量経済学」，有斐閣.</p>
-<p>Nishikawa, H., Schreier, M., Fuchs, C., &amp; Ogawa, S. (2017). The Value of Marketing Crowdsourced New Products as Such: Evidence from Two Randomized Field Experiments. <em>Journal of Marketing Research</em>, 54(4), 525-539.</p>
-<p>Wooldridge, J. (2013) <em>Introductory Econometrics A Modern Approach</em>,Cengage Learning.</p>
-
+<div id="統計的推測" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> 統計的推測<a href="統計的推測.html#統計的推測" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>前節で述べた通り、我々は研究の対象となる集団全体ではなく、その一部から情報を取得し分析を行う。このとき、その集団全体を母集団、母集団から抽出した一部を標本と呼ぶ。統計的な分析においては、確率分布を用いて母集団をモデル化し、標本をその確率分布に従う確率変数とみなすことで母集団と標本の関係を捉える。そのため、データ分析は標本を対象とするものの、分析者の関心は、母集団の特徴である母数（parameter）についてであることが多い。母集団の平均（<span class="math inline">\(\mu\)</span>）や分散（<span class="math inline">\(\sigma^2\)</span>）は母数の代表例である。しかし、母数は通常未知であり直接知ることはできないため、標本の情報を用いて母集団の特徴について推測する。このプロセスを統計的推測と呼ぶ。統計的推測を行うためには、原則として母集団からの無作為標本抽出（random sampling）が必要になる。統計的推測では、互いに独立に同一の分布に従う（Identically Independently Distributed: IID）ような標本が好ましく、無作為標本は、IIDを満たすことが知られている。</p>
+<p>統計的推測においては、「推定」、「統計量」、「推定量」、「推定値」などの似たような言葉が利用されるが、これらはそれぞれ異なる意味を持つ。推定とは、標本の情報に基づき母数について把握しようとする作業そのものを示す。一方で、標本として得られるデータに基づき計算できる値（計算式）を一般的に統計量というのだが、その中でも特に推定に用いる統計量を推定量という。そして推定値は、推定量についてデータから求めた実際の計算値を表す。また、推定には「点推定」と「区間推定」がある。点推定とは、未知の母数について１つの数値に基づいて推定する方法である。例えば、標本平均は母平均（<span class="math inline">\(\mu\)</span>）を点推定するための推定量である。一方で区間推定は、未知の母数を一定の確率で含む区間を推定する方法である。これは、点推定では捉えきれない統計的誤差を考慮して区間を推定する方法であり、母平均の信頼区間の測定は区間推定の代表例である。</p>
 </div>
-<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="重回帰モデル2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="回帰分析上の工夫紹介.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="確率モデル期待値と分散.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="点推定.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -320,7 +316,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/07-reg.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/06-stat.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -338,7 +334,8 @@ gitbook.start({
 },
 "toc": {
 "collapse": "subsection"
-}
+},
+"plugins": "jekyll-sitemap"
 });
 });
 </script>

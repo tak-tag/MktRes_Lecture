@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>8.5 参考文献 | マーケティングリサーチ講義ノート</title>
-  <meta name="description" content="8.5 参考文献 | マーケティングリサーチ講義ノート" />
+  <title>7.5 補足（いくつかの確率分布の関係性） | マーケティングリサーチ講義ノート</title>
+  <meta name="description" content="7.5 補足（いくつかの確率分布の関係性） | マーケティングリサーチ講義ノート" />
   <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="8.5 参考文献 | マーケティングリサーチ講義ノート" />
+  <meta property="og:title" content="7.5 補足（いくつかの確率分布の関係性） | マーケティングリサーチ講義ノート" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.github.io.git" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="8.5 参考文献 | マーケティングリサーチ講義ノート" />
+  <meta name="twitter:title" content="7.5 補足（いくつかの確率分布の関係性） | マーケティングリサーチ講義ノート" />
   
   
   
@@ -23,15 +23,15 @@
 <meta name="author" content="Takumi Tagashira" />
 
 
-<meta name="date" content="2023-09-03" />
+<meta name="date" content="2023-08-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="重回帰モデル2.html"/>
-<link rel="next" href="回帰分析上の工夫紹介.html"/>
+<link rel="prev" href="推定量もまた確率変数.html"/>
+<link rel="next" href="区間推定.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -274,22 +274,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="参考文献-6" class="section level2 hasAnchor" number="8.5">
-<h2><span class="header-section-number">8.5</span> 参考文献<a href="参考文献-6.html#参考文献-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>秋山裕（2018）「Rによる計量経済学 第2版」，オーム社.</p>
-<p>西山慶彦・新谷元嗣・川口大司・奥井亮（2019）「計量経済学」，有斐閣.</p>
-<p>Nishikawa, H., Schreier, M., Fuchs, C., &amp; Ogawa, S. (2017). The Value of Marketing Crowdsourced New Products as Such: Evidence from Two Randomized Field Experiments. <em>Journal of Marketing Research</em>, 54(4), 525-539.</p>
-<p>Wooldridge, J. (2013) <em>Introductory Econometrics A Modern Approach</em>,Cengage Learning.</p>
-
+<div id="補足いくつかの確率分布の関係性" class="section level2 hasAnchor" number="7.5">
+<h2><span class="header-section-number">7.5</span> 補足（いくつかの確率分布の関係性）<a href="補足いくつかの確率分布の関係性.html#補足いくつかの確率分布の関係性" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>統計的な分析の際によく用いられる確率分布として、正規分布、カイ二乗分布、t分布、F分布間の関係性について簡単に紹介する。なお、各分布の確率密度関数などは記載しないため、関心のある読者は参考文献を参照してほしい。</p>
+<div id="正規分布" class="section level3 hasAnchor" number="7.5.1">
+<h3><span class="header-section-number">7.5.1</span> 正規分布<a href="補足いくつかの確率分布の関係性.html#正規分布" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>正規分布は、様々な分布の基準として用いられる重要な分布である。期待値を中心に左右対称であり「ベルカーブ」と言われる形状を持つ。また、平均0、分散1の正規分布は特に標準正規分布と言われ、正規母集団からの無作為標本の標本平均等の分布を特定する際などに用いられる。</p>
 </div>
-<!-- </div> -->
+<div id="カイ二乗分布" class="section level3 hasAnchor" number="7.5.2">
+<h3><span class="header-section-number">7.5.2</span> カイ二乗分布<a href="補足いくつかの確率分布の関係性.html#カイ二乗分布" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>標準正規分布からの無作為標本の二乗和はカイ二乗分布に従う。カイ二乗分布は、正規母集団からの無作為標本の不偏標本分散の分布を特定する際などに用いられる。</p>
+</div>
+<div id="t分布" class="section level3 hasAnchor" number="7.5.3">
+<h3><span class="header-section-number">7.5.3</span> t分布<a href="補足いくつかの確率分布の関係性.html#t分布" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>標準正規分布とカイ二乗分布の比はt分布に従う。t分布は、正規母集団からの無作為標本による標本平均と不偏標本分散の比の分布を特定する際などに用いられる。</p>
+</div>
+<div id="f分布" class="section level3 hasAnchor" number="7.5.4">
+<h3><span class="header-section-number">7.5.4</span> F分布<a href="補足いくつかの確率分布の関係性.html#f分布" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>カイ二乗分布の比はF分布に従う。F分布は、異なる正規母集団からの無作為標本の不偏標本分散の比の分布を特定する際などに用いられる。</p>
+</div>
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="重回帰モデル2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="回帰分析上の工夫紹介.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="推定量もまた確率変数.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="区間推定.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -320,7 +331,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/07-reg.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/06-stat.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -338,7 +349,8 @@ gitbook.start({
 },
 "toc": {
 "collapse": "subsection"
-}
+},
+"plugins": "jekyll-sitemap"
 });
 });
 </script>

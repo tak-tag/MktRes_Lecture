@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>8.5 参考文献 | マーケティングリサーチ講義ノート</title>
-  <meta name="description" content="8.5 参考文献 | マーケティングリサーチ講義ノート" />
+  <title>7.6 区間推定 | マーケティングリサーチ講義ノート</title>
+  <meta name="description" content="7.6 区間推定 | マーケティングリサーチ講義ノート" />
   <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="8.5 参考文献 | マーケティングリサーチ講義ノート" />
+  <meta property="og:title" content="7.6 区間推定 | マーケティングリサーチ講義ノート" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.github.io.git" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="8.5 参考文献 | マーケティングリサーチ講義ノート" />
+  <meta name="twitter:title" content="7.6 区間推定 | マーケティングリサーチ講義ノート" />
   
   
   
@@ -23,15 +23,15 @@
 <meta name="author" content="Takumi Tagashira" />
 
 
-<meta name="date" content="2023-09-03" />
+<meta name="date" content="2023-08-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="重回帰モデル2.html"/>
-<link rel="next" href="回帰分析上の工夫紹介.html"/>
+<link rel="prev" href="補足いくつかの確率分布の関係性.html"/>
+<link rel="next" href="統計的仮説検定.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -274,22 +274,157 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="参考文献-6" class="section level2 hasAnchor" number="8.5">
-<h2><span class="header-section-number">8.5</span> 参考文献<a href="参考文献-6.html#参考文献-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>秋山裕（2018）「Rによる計量経済学 第2版」，オーム社.</p>
-<p>西山慶彦・新谷元嗣・川口大司・奥井亮（2019）「計量経済学」，有斐閣.</p>
-<p>Nishikawa, H., Schreier, M., Fuchs, C., &amp; Ogawa, S. (2017). The Value of Marketing Crowdsourced New Products as Such: Evidence from Two Randomized Field Experiments. <em>Journal of Marketing Research</em>, 54(4), 525-539.</p>
-<p>Wooldridge, J. (2013) <em>Introductory Econometrics A Modern Approach</em>,Cengage Learning.</p>
-
+<div id="区間推定" class="section level2 hasAnchor" number="7.6">
+<h2><span class="header-section-number">7.6</span> 区間推定<a href="区間推定.html#区間推定" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>点推定の節で示した通り、推定値と未知パラメータの間には、ずれ（誤差）がある。標本平均の様に好ましい性質（不偏性や一致性）を持つ推定量であっても、計算の結果示された一つの推定値がどの程度信頼できるものなのかはわからない。そこで区間推定という、未知パラメータ（母平均等）を一定の確率（信頼水準）で含む区間を計算する方法を用いて、統計的な誤差を加味した母数への検討を試みる。区間推定においては、「信頼水準zz%で、xx以上、yy以下という区間は真の母数を含む」という区間[xx, yy]を調べる。このような区間は信頼区間（confidence interval）と呼ばれ、多くの統計分析において用いられている。</p>
+<p>Rで信頼区間を求める事自体は難しくない。最も手間のかからない方法としては、<code>t.test()</code>（詳細は後述）の分析結果を用いて、<code>conf.int()</code>によって信頼区間が計算できる。信頼区間の計算を実行するために、倉田・星野（2011, p.248）で提示されている以下の電球の製品寿命に関する例を考える。ある製品（電球）の寿命は平均1700（時間）である。企業は性能を改良するために新型の電球が開発したが、新型化に伴い製品寿命も変化したのかについては不明である。ただし、この製品の寿命は新型も旧型のものも正規分布に従い、その標準偏差は <span class="math inline">\(\sigma=\)</span> 180（時間）であると仮定する。
+工場で生産された新型製品を16個無作為に選びその寿命を計測した所、以下の結果を得た。</p>
+<table>
+<colgroup>
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td align="right">1873</td>
+<td align="right">1685</td>
+<td align="right">2275</td>
+<td align="right">1760</td>
+<td align="right">1769</td>
+<td align="right">2176</td>
+<td align="right">1748</td>
+<td align="right">1760</td>
+<td align="right">1994</td>
+<td align="right">1473</td>
+<td align="right">1715</td>
+<td align="right">1771</td>
+<td align="right">1784</td>
+<td align="right">1684</td>
+<td align="right">2038</td>
+<td align="right">1850</td>
+</tr>
+</tbody>
+</table>
+<p>このデータは、平均が <span class="math inline">\(\small \mu\)</span>、分散が <span class="math inline">\(\small 180^2\)</span> である正規分布（<span class="math inline">\(\small N(\mu, \sigma^2=180^2)\)</span> と表記する）からの無作為標本 <span class="math inline">\(X_1,..., X_{16}\)</span>の実現値とみなすことができる。なお、このデータの標本平均は1,835（時間）、不偏標本標準偏差は 200である。このデータに基づく、新型電球寿命の期待値に関する95% 信頼区間（95%の確率で真の母数を含む区間）は<code>t.test()</code> 関数を用いると以下の様に求まる（ただし後述するが、この方法はこの例に対しては適切ではない）。</p>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="区間推定.html#cb159-1" tabindex="-1"></a>bulb <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1873</span>, <span class="dv">1685</span>, <span class="dv">2275</span>, <span class="dv">1760</span>, <span class="dv">1769</span>, <span class="dv">2176</span>, <span class="dv">1748</span>, <span class="dv">1760</span>, <span class="dv">1994</span>, <span class="dv">1473</span>, <span class="dv">1715</span>, <span class="dv">1771</span>, <span class="dv">1784</span>, <span class="dv">1684</span>, <span class="dv">2038</span>, <span class="dv">1850</span>)</span>
+<span id="cb159-2"><a href="区間推定.html#cb159-2" tabindex="-1"></a></span>
+<span id="cb159-3"><a href="区間推定.html#cb159-3" tabindex="-1"></a>bulb_ci <span class="ot">&lt;-</span> <span class="fu">t.test</span>(bulb) <span class="co">#t検定の実施と格納</span></span>
+<span id="cb159-4"><a href="区間推定.html#cb159-4" tabindex="-1"></a>bulb_ci<span class="sc">$</span>conf.int <span class="co">#信頼区間の出力（デフォルトで95%信頼水準）</span></span></code></pre></div>
+<pre><code>## [1] 1728.235 1941.140
+## attr(,&quot;conf.level&quot;)
+## [1] 0.95</code></pre>
+<p>出力されている <code>[1] 1728.235 1941.140</code> が信頼区間、<code>## attr(,"conf.level") ## [1] 0.95</code> が今回計算に用いられた信頼水準（confidence level）（もしくは信頼係数（confidence coefficient）ともいう）である。 分析の結果、95%の確率で真の新製品寿命期待値が 1728.2 から 1941.1 の間に含まれることがわかった。したがって、どうやら新製品寿命は平均的に旧型製品（1,700）よりも長そうである。では、ここで示された区間がどのように計算され、どのようなことを意味するのだろうか。以下では、一度電球の例から離れ、もう少し一般的な形で信頼区間の導出や解釈を説明する。</p>
+<p>はじめに、標準正規分布に基づくある区間の確率の求め方を説明する。 <span class="math inline">\(Z_1,Z_2,...,Z_n\)</span> は、N(0, 1) （標準正規分布）に従う母集団からの無作為標本とする。このとき、標準正規分布がある区間 [<span class="math inline">\(-\infty,~z_\alpha\)</span>] をとる確率は、以下の式および図のように示すことができる<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a>。なお、<span class="math inline">\(\small z_\alpha\)</span> は、確率<span class="math inline">\(\small \alpha\)</span> に対応する標準正規分布上の上側確率 <span class="math inline">\(\small \alpha\)</span> 点とする。このとき、この分布における <span class="math inline">\(\small z_\alpha\)</span> 以下（以上）の範囲を取る確率は 1 <span class="math inline">\(\small -\alpha\)</span>（<span class="math inline">\(\small \alpha\)</span>） である。</p>
+<p><span class="math display">\[
+P(Z\leq z_\alpha) = \int^{z_\alpha}_{-\infty}~f(z)~dz =\int^{z_\alpha}_{-\infty}~\frac{1}{\sqrt{2\pi}}\exp\left(-\frac{z^2}{2}\right)~ dz = 1-\alpha
+\]</span></p>
+<div class="float">
+<img src="stat/norm_onetail.png" style="width:70.0%" alt="標準正規分布と確率計算" />
+<div class="figcaption">標準正規分布と確率計算</div>
 </div>
-<!-- </div> -->
+<p>同様に、以下のような関係も捉えることができる。この場合、斜線部で示されている範囲の確率は両側合わせて <span class="math inline">\(\small \alpha\)</span> であり、その内側の確率は 1 <span class="math inline">\(\small - \alpha\)</span> である。</p>
+<p><span class="math display">\[
+P(-z_{\alpha/2} \leq Z\leq z_{\alpha/2}) = \int^{z_{\alpha/2}}_{-z_{\alpha/2}}~f(z)~dz = 1-\alpha
+\]</span></p>
+<div class="float">
+<img src="stat/norm_twotails.png" style="width:70.0%" alt="標準正規分布と両側確率" />
+<div class="figcaption">標準正規分布と両側確率</div>
+</div>
+<p>上述の関係を、区間推定に応用するために、あるデータの標本平均に関する議論を捉える。標準正規分布に従う確率変数は、正規分布に従う確率変数を標準化することで得ることができる。ここで、<span class="math inline">\(\small X_1,...,X_n\)</span> を、期待値 <span class="math inline">\(\small \mu\)</span>、分散 <span class="math inline">\(\small \sigma^2\)</span> の正規分布に従う母集団からの無作為標本とする。これまで学んだ標準化および標本平均の特性から、以下の通り、標本平均を標準化したものは標準正規分布に従うことがわかる。</p>
+<p><span class="math display">\[
+\frac{\bar{X}-\mu}{\sqrt{\sigma^2/n}}\sim N(0,1)
+\]</span>
+このことから、先述の標準正規分布における確率計算の関係を応用し、以下を得る。</p>
+<p><span class="math display">\[
+P\left(-z_{\alpha/2}\leq \frac{\bar{X}-\mu}{\sqrt{\sigma^2/n}}\leq z_{\alpha/2}\right)=1-\alpha
+\]</span></p>
+<p>上記の式に基づき、未知の母平均 <span class="math inline">\(\small \mu\)</span> についての区間として整理すると、以下の式を得る。</p>
+<p><span class="math display">\[
+P\left(\bar{X}-z_{\alpha/2}\cdot \frac{\sigma}{\sqrt{n}}\leq \mu \leq \bar{X}+z_{\alpha/2}\cdot \frac{\sigma}{\sqrt{n}}\right)=1-\alpha
+\]</span>
+したがって、区間 [<span class="math inline">\(\small \bar{X}\pm z_{\alpha/2}\cdot \sigma/\sqrt{n}\)</span>] は、確率 <span class="math inline">\(\small 1-\alpha\)</span> で未知の母平均 <span class="math inline">\(\small \mu\)</span> を含むと解釈できる。また、上記の関係から任意の確率 <span class="math inline">\(\alpha\)</span> を指定することで、区間の上限と下限（<span class="math inline">\(\pm z_{\alpha/2}\)</span>）の具体的な値を（統計学テキスト巻末などに記載されている）標準正規分布表などから求めることができる。 そして、このような区間を「信頼区間」といい、信頼区間の計算にて仮定された確率 <span class="math inline">\(\small 1-\alpha\)</span> を「信頼水準」もしくは「信頼係数」という。信頼係数は、信頼区間の計算のために研究者によって事前に選択される。慣習としては、90%, 95%や99% (<span class="math inline">\(\small \alpha =\)</span> 0.10, 0.05, 0.01)を用いる事が多い。なお、信頼係数を大きくすると、信頼区間も広くなる。</p>
+<p>上記の区間推定は母分散 <span class="math inline">\(\sigma^2\)</span> が既知である場合に計算可能であるが、多くの場合母分散は未知である。そのような場合には、自由度 n-1 の「t分布」を用いて、両端の確率 <span class="math inline">\(\small \alpha\)</span> 点を <span class="math inline">\(\small t_{\alpha/2}(n-1)\)</span> とする信頼区間を求める。<span class="math inline">\(N(\mu,\sigma^2)\)</span> に従う母集団からの無作為標本を考えるが、今回は母分散が未知である場合を仮定する。このような場合は、母分散 <span class="math inline">\(\small \sigma^2\)</span> のかわりに母分散の不偏推定量である不偏標本分散 <span class="math inline">\(\small s^2\)</span> を用いた以下の統計量 <em>t</em> をもとに信頼区間を計算する。このとき、統計量 <em>t</em> は自由度 n-1 の <em>t</em> 分布に従うことが知られている（t分布に関する詳細および証明は省略）。</p>
+<p><span class="math display">\[
+t=\frac{\bar{X}-\mu}{\sqrt{s^2/n}}\sim t(n-1)
+\]</span></p>
+<p>ここで、先述の標準正規分布に基づくある区間の確率計算と同様の計算を、自由度 <span class="math inline">\(\small n-1\)</span> のt分布に基づき実行すると、以下のような確率と区間の関係に書き換えることができる。</p>
+<p><span class="math display">\[
+P\left(-t_{\alpha/2}(n-1)\leq \frac{\bar{X}-\mu}{s^2/n}\leq t_{\alpha/2}(n-1)\right)=1-\alpha
+\]</span></p>
+<p>上記の式に基づき、未知の母平均 <span class="math inline">\(\small \mu\)</span> についての区間として整理すると、以下の式を得る。</p>
+<p><span class="math display">\[
+P\left(\bar{X}-t_{\alpha/2}(n-1)\cdot \frac{s}{\sqrt{n}}\leq \mu \leq \bar{X}+t_{\alpha/2}(n-1)\cdot \frac{s}{\sqrt{n}}\right)=1-\alpha
+\]</span></p>
+<p>信頼区間を求めるための手順は標準正規分布の場合もt分布の場合も同様だが、標準正規分布のかわりに <em>t</em> 分布を用いた場合、特定の確率に対応する閾値が変わることが知られている（<span class="math inline">\(\small z_{\alpha/2}\neq t_{\alpha/2}(n-1)\)</span>）。 <em>t</em>分布は、左右対称であり標準正規分布よりもテールが厚いという特徴を持つが、自由度が大きくなると正規分布に近づくことが知られている。標準正規分布と、自由度の異なる <em>t</em> 分布との関係は以下のように図示化できる。自由度（df）3の <em>t</em> 分布よりも自由度20の <em>t</em> 分布のほうが標準正規分布に近い形状であることが伺える。</p>
+<p><img src="mktres_lecture_files/figure-html/normandt-1.png" width="672" /></p>
+<p>標準正規分布と <em>t</em> 分布によってある確率に対応する閾値が異なるということは、ある信頼水準に対応する信頼区間も仮定する分布によって異なるということである。新型電球の例では正規分布を仮定しているため、標準正規分布により信頼区間を求める。
+先述の通り、標準正規分布に基づく信頼区間は以下のように示すことができる。</p>
+<p><span class="math display">\[
+\bar{X}\pm z_{\alpha/2}\cdot \sigma/\sqrt{n}
+\]</span>
+このとき、仮定より <span class="math inline">\(\small \bar{X}=1835\)</span>, <span class="math inline">\(\sigma=180\)</span> であることがわかっている。また、慣習より95%信頼水準を仮定すると、確率 <span class="math inline">\(\small \alpha = 0.05\)</span>となる。そのため、区間推定の計算で必要な要素のうち現時点で不明なのは、 <span class="math inline">\(z_{\alpha/2}=z_{0.025}\)</span>の値である。この値は、任意の確率に対応する区間の閾値を表している。今回の場合、分布が左右対称の分布であり正負どちらか一方の値さえ分かればよいため、閾値（<span class="math inline">\(z_{0.025}\)</span>）以上の区間を取る確率が2.5%になるような閾値に着目する。このような閾値は、Rによって以下のように求める（なお先述の通り、統計学教科書に掲載されている分布表を使っても同様の数値を求めることができる）。</p>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="区間推定.html#cb161-1" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.025</span>, <span class="at">lower.tail=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## [1] 1.959964</code></pre>
+<p>これにより、計算に必要な情報が揃ったため、以下の要領で信頼区間を出力できる。</p>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="区間推定.html#cb163-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(bulb)</span>
+<span id="cb163-2"><a href="区間推定.html#cb163-2" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.025</span>, <span class="at">lower.tail=</span><span class="cn">FALSE</span>)</span>
+<span id="cb163-3"><a href="区間推定.html#cb163-3" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(bulb)</span>
+<span id="cb163-4"><a href="区間推定.html#cb163-4" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="dv">180</span></span>
+<span id="cb163-5"><a href="区間推定.html#cb163-5" tabindex="-1"></a><span class="co">#信頼区間の計算</span></span>
+<span id="cb163-6"><a href="区間推定.html#cb163-6" tabindex="-1"></a>upper <span class="ot">&lt;-</span> xbar<span class="sc">+</span>z<span class="sc">*</span>(sigma<span class="sc">/</span><span class="fu">sqrt</span>(n))</span>
+<span id="cb163-7"><a href="区間推定.html#cb163-7" tabindex="-1"></a>lower <span class="ot">&lt;-</span> xbar<span class="sc">-</span>z<span class="sc">*</span>(sigma<span class="sc">/</span><span class="fu">sqrt</span>(n))</span>
+<span id="cb163-8"><a href="区間推定.html#cb163-8" tabindex="-1"></a><span class="co">#結果のまとめと出力</span></span>
+<span id="cb163-9"><a href="区間推定.html#cb163-9" tabindex="-1"></a>ci.bulb <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(lower,upper),<span class="at">nrow=</span><span class="dv">1</span>)</span>
+<span id="cb163-10"><a href="区間推定.html#cb163-10" tabindex="-1"></a><span class="fu">colnames</span>(ci.bulb) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;ci.lower&quot;</span>, <span class="st">&quot;ci.upper&quot;</span>)</span>
+<span id="cb163-11"><a href="区間推定.html#cb163-11" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(ci.bulb, <span class="at">caption =</span> <span class="st">&quot;Bulb data CI（95%）&quot;</span>, <span class="at">align =</span> <span class="st">&quot;cc&quot;</span>)</span></code></pre></div>
+<table>
+<caption>(#tab:ci_bulb)Bulb data CI（95%）</caption>
+<thead>
+<tr class="header">
+<th align="center">ci.lower</th>
+<th align="center">ci.upper</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1746.489</td>
+<td align="center">1922.886</td>
+</tr>
+</tbody>
+</table>
+<p>分析の結果、新型製品の平均寿命に関する95%信頼区間は、標準正規分布と <em>t</em> 分布どちらの分布を仮定しても旧型の平均1700（時間）を含まず、それよりも大きい値を取るものであった。したがって、新型製品は製品寿命の面においても95%の確率で旧型製品よりも優れていると考えられる。</p>
+<p>では、この95%信頼区間は、そもそもどのように解釈すべきだろうか。結論から述べると、95%信頼区間の直感的解釈については以下のように説明できる：</p>
+<p>“「母集団からサンプルを取り平均値の95%信頼区間を構築する」という手順を100回繰り返すと考える。95%という信頼水準（確率）が示していることは、計算された区間が100回に95回は母数を含むということである。言い換えると、今回得た標本平均に基づき計算された信頼区間がはずれ（真の母数を含まない区間）である可能性が5%存在するということである。”</p>
+<p>95%信頼区間の解釈として、「分析対象としている母数の値がこの区間の値をとる確率が95%である」という旨の説明を行う人がいるが、これは<span class="math inline">\(\color{red}{\text{誤り}}\)</span>である。確率的な議論を母数に適応するのは適切ではない。確率的に変動するのはあくまで区間の両端である点を理解しなければならない。なぜならば、<span class="math inline">\(\small \bar{X}\)</span> が確率変数であるため、そこから計算される区間の両端もまた確率変数となるためである（岩田，1996）。ここで示されている信頼水準は、計算された区間が真の母数を含んでいる確率である。つまり、信頼水準は、サンプルを収集し、信頼区間を求めるという「手順そのものに対する信頼度」を表す指標であると解釈できる。</p>
+<p>また、分析の結果、<code>t.test</code> によって出力された信頼区間よりも短い区間を得た。これは、<em>t</em> 分布のほうがテールが厚く、中心より遠い値を取る確率密度が高いことから、95%水準における臨界値が標準正規分布に比べて大きくなるためである。また、<em>t</em> 分布の自由度が大きくなるにつれ、正規分布との差が小さくなる。</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="7">
+<li id="fn7"><p>ただし、標準正規分布の確率密度関数 <span class="math inline">\(\small f(z)\)</span> は、<span class="math inline">\(\small 1/\sqrt{2\pi}\exp\left(-z^2/2\right)\)</span> だと知られている。<a href="区間推定.html#fnref7" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="重回帰モデル2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="回帰分析上の工夫紹介.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="補足いくつかの確率分布の関係性.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="統計的仮説検定.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -320,7 +455,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/07-reg.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/06-stat.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -338,7 +473,8 @@ gitbook.start({
 },
 "toc": {
 "collapse": "subsection"
-}
+},
+"plugins": "jekyll-sitemap"
 });
 });
 </script>
