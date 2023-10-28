@@ -23,7 +23,7 @@
 <meta name="author" content="Takumi Tagashira" />
 
 
-<meta name="date" content="2023-09-06" />
+<meta name="date" content="2023-10-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -293,7 +293,7 @@ E(y_i|D_i=0)=\alpha+\beta x_i
 <div class="figcaption">ダミー変数関係図</div>
 </div>
 <p>ダミー変数を説明変数に含む回帰分析をRで実行することはとても簡単である。<code>lm()</code> 関数内のモデル定義において、カテゴリ変数を含めば良いだけである。Characterという文字列情報のデータ型で示されているカテゴリ変数を用いると、自動でダミー変数化して、回帰分析を実行してくれる。</p>
-<p>例えば、本章で使っている firmdata19 を使って分析を行ってみる。具体的には、営業利益率（営業利益/売上）が小売産業に属する企業とそれ以外で異なるかを分析する。しかし、データセット上にこの分類に対応するカテゴリー変数は存在しないため、以下のように、“Retail Stores, NEC” もしくは “Supermarket Chains” のどちらかに含まれる企業であれば1、それ以外であれば0を取るカテゴリー変数（<code>format</code>）を作成する。<code>%in%</code> は「含まれる」という意味の演算子であり、以下の<code>mutate</code> でのコマンドでは、事前に作成した <code>Retail</code> を参照し、<code>ind_en</code> で観察されるカテゴリーが <code>Retail</code> に当てはまるかをチェックしている。</p>
+<p>例えば、本章で使っている firmdata19 を使って分析を行ってみる。具体的には、営業利益率（営業利益/売上）が小売産業に属する企業とそれ以外で異なるかを分析する。しかし、データセット上にこの分類に対応するカテゴリー変数は存在しないため、以下のように、“Retail Stores, NEC” もしくは “Supermarket Chains” のどちらかに含まれる企業であれば1、それ以外であれば0を取るカテゴリー変数（<code>format</code>）を作成する。<code>%in%</code> は二つのベクトル間の要素の一致を確認するための演算子で、下記<code>mutate</code>コマンドでは、<code>ind_en</code> 列に書かれている情報が <code>retail</code> リストに「含まれる」か否かをチェックしている。そのため、以下コマンドでは、事前に作成した <code>retail</code> を参照し、<code>ind_en</code> で観察されるカテゴリーが <code>retail</code> に当てはまれば、<code>"Retail"</code>を、そうでなければ、<code>"Others"</code> を返すように指示していることになる。</p>
 <div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="ダミー変数.html#cb203-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb203-2"><a href="ダミー変数.html#cb203-2" tabindex="-1"></a><span class="co">#産業名を特定したオブジェクト&quot;Retail&quot;の作成</span></span>
 <span id="cb203-3"><a href="ダミー変数.html#cb203-3" tabindex="-1"></a>retail <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Retail Stores, NEC&quot;</span>, <span class="st">&quot;Supermarket Chains&quot;</span>)</span>
