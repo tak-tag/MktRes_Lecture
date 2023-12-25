@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>9.5 （おまけ）分析結果のまとめ・出力上の工夫 | マーケティングリサーチ講義ノート</title>
-  <meta name="description" content="9.5 （おまけ）分析結果のまとめ・出力上の工夫 | マーケティングリサーチ講義ノート" />
+  <title>3.3 研究課題（問い）の設定 | マーケティングリサーチ講義ノート</title>
+  <meta name="description" content="3.3 研究課題（問い）の設定 | マーケティングリサーチ講義ノート" />
   <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="9.5 （おまけ）分析結果のまとめ・出力上の工夫 | マーケティングリサーチ講義ノート" />
+  <meta property="og:title" content="3.3 研究課題（問い）の設定 | マーケティングリサーチ講義ノート" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.github.io.git" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="9.5 （おまけ）分析結果のまとめ・出力上の工夫 | マーケティングリサーチ講義ノート" />
+  <meta name="twitter:title" content="3.3 研究課題（問い）の設定 | マーケティングリサーチ講義ノート" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="対数線形.html"/>
-<link rel="next" href="参考文献-7.html"/>
+<link rel="prev" href="リサーチデザインと論文の構成.html"/>
+<link rel="next" href="問題と分析をつなげる仮説の提示.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -278,481 +278,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="おまけ分析結果のまとめ出力上の工夫" class="section level2 hasAnchor" number="9.5">
-<h2><span class="header-section-number">9.5</span> （おまけ）分析結果のまとめ・出力上の工夫<a href="おまけ分析結果のまとめ出力上の工夫.html#おまけ分析結果のまとめ出力上の工夫" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>これまで本書では、分析結果について、Rで出力されるものをそのまま示していた。しかしながら、Rでの出力結果をレポートや論文にベタ貼りすることは、可読性の低下につながるため好ましくない。論文やレポート執筆の際には、Rで出力された結果から表を作成することが必要になるのだが、Excelなどのスプレッドシートに一つ一つの値をコピー・アンド・ペースト（コピペ）して表を作成していく方法は、操作ミスによる間違いの可能性が高まることと、作業プロセスを記録できない上に、何より面倒くさい。そこで、分析結果を読みやすく見た目も良い表の形式で楽に出力してくれるコマンドをR上で実行するした。そのために用いるパッケージは色々あるが、本書では <code>modelsummary</code> パッケージを 紹介する。以下のようにインストールして欲しい。</p>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb243-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;modelsummary&quot;</span>)</span></code></pre></div>
-<p>ここでは試しに、本節で実行した <code>fit_int</code>を <code>msummary()</code> 関数で出力する。Rstudio上で<code>msummary()</code> を実行すると、結果がコンソールではなく、Viewerに表示される。</p>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb244-1" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span>
-<span id="cb244-2"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb244-2" tabindex="-1"></a><span class="fu">msummary</span>(fit_int, <span class="at">statistic =</span> <span class="st">&#39;conf.int&#39;</span>)</span></code></pre></div>
-<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:center;">
- (1)
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-(Intercept)
-</td>
-<td style="text-align:center;">
-20326.588
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-[20111.797, 20541.378]
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-rd
-</td>
-<td style="text-align:center;">
-−51.872
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-[−52.433, −51.312]
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-promotion
-</td>
-<td style="text-align:center;">
-−191.431
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-[−193.505, −189.358]
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-rd × promotion
-</td>
-<td style="text-align:center;">
-0.498
-</td>
-</tr>
-<tr>
-<td style="text-align:left;box-shadow: 0px 1.5px">
-</td>
-<td style="text-align:center;box-shadow: 0px 1.5px">
-[0.493, 0.503]
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Num.Obs.
-</td>
-<td style="text-align:center;">
-221
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-R2
-</td>
-<td style="text-align:center;">
-0.994
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-R2 Adj.
-</td>
-<td style="text-align:center;">
-0.993
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-AIC
-</td>
-<td style="text-align:center;">
-1969.2
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-BIC
-</td>
-<td style="text-align:center;">
-1986.2
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Log.Lik.
-</td>
-<td style="text-align:center;">
-−979.617
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-RMSE
-</td>
-<td style="text-align:center;">
-20.36
-</td>
-</tr>
-</tbody>
-</table>
-<p>上記のように引数をほぼ指定せずとも（<code>statistic = 'conf.int'</code> は信頼区間を出力する引数。デフォルトでは標準誤差）、このような表形式で結果を出力することができる。引数を用いることで、研究者に都合の良い表なるよう編集可能であることもこの関数の利点である。例えば、不必要な情報があれば、以下のように表から削除することもできる。</p>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb245-1" tabindex="-1"></a><span class="fu">msummary</span>(fit_int, <span class="at">gof_omit =</span> <span class="st">&quot;Log.Lik.|AIC|BIC|RMSE&quot;</span>)</span></code></pre></div>
-<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:center;">
- (1)
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-(Intercept)
-</td>
-<td style="text-align:center;">
-20326.588
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-(108.978)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-rd
-</td>
-<td style="text-align:center;">
-−51.872
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-(0.284)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-promotion
-</td>
-<td style="text-align:center;">
-−191.431
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-(1.052)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-rd × promotion
-</td>
-<td style="text-align:center;">
-0.498
-</td>
-</tr>
-<tr>
-<td style="text-align:left;box-shadow: 0px 1.5px">
-</td>
-<td style="text-align:center;box-shadow: 0px 1.5px">
-(0.003)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Num.Obs.
-</td>
-<td style="text-align:center;">
-221
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-R2
-</td>
-<td style="text-align:center;">
-0.994
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-R2 Adj.
-</td>
-<td style="text-align:center;">
-0.993
-</td>
-</tr>
-</tbody>
-</table>
-<p>また、<code>msummary()</code> は二つ以上のモデルを並べて表示させる場合にも便利である。複数の分析結果を <code>list</code> としてまとめ以下のように出力できる。ここでは、交差項を用いた回帰モデルにおける中心化のありなしを併記し比較可能にする。更に、表示される変数名も調整する。</p>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb246-1" tabindex="-1"></a>var_nam <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;rd&quot;</span> <span class="ot">=</span> <span class="st">&quot;R&amp;D&quot;</span>, <span class="st">&quot;promotion&quot;</span> <span class="ot">=</span> <span class="st">&quot;Promotion&quot;</span>, <span class="st">&quot;rd:promotion&quot;</span> <span class="ot">=</span> <span class="st">&quot;R&amp;D * Promotion&quot;</span>,</span>
-<span id="cb246-2"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb246-2" tabindex="-1"></a>             <span class="st">&quot;rd_c&quot;</span> <span class="ot">=</span> <span class="st">&quot;R&amp;D_c&quot;</span>, <span class="st">&quot;promotion_c&quot;</span> <span class="ot">=</span> <span class="st">&quot;Promotion_c&quot;</span>, <span class="st">&quot;rd_c:promotion_c&quot;</span> <span class="ot">=</span> <span class="st">&quot;R&amp;D_c * Promotion_c&quot;</span>,</span>
-<span id="cb246-3"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb246-3" tabindex="-1"></a>             <span class="st">&quot;(Intercept)&quot;</span> <span class="ot">=</span> <span class="st">&quot;定数項&quot;</span>)</span>
-<span id="cb246-4"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb246-4" tabindex="-1"></a>Int <span class="ot">&lt;-</span> <span class="fu">list</span>() </span>
-<span id="cb246-5"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb246-5" tabindex="-1"></a>Int[[<span class="st">&quot;Without centering&quot;</span>]] <span class="ot">&lt;-</span> fit_int</span>
-<span id="cb246-6"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb246-6" tabindex="-1"></a>Int[[<span class="st">&quot;With centering&quot;</span>]] <span class="ot">&lt;-</span> fit_int_c</span>
-<span id="cb246-7"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb246-7" tabindex="-1"></a></span>
-<span id="cb246-8"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb246-8" tabindex="-1"></a><span class="fu">msummary</span>(Int, </span>
-<span id="cb246-9"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb246-9" tabindex="-1"></a>         <span class="at">coef_map =</span> var_nam,</span>
-<span id="cb246-10"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb246-10" tabindex="-1"></a>         <span class="at">title =</span> <span class="st">&quot;Comparing Interaction Models&quot;</span>,</span>
-<span id="cb246-11"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb246-11" tabindex="-1"></a>         <span class="at">notes =</span> <span class="st">&quot;Values in [ ] show 95% confidence intervals&quot;</span>,</span>
-<span id="cb246-12"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb246-12" tabindex="-1"></a>         <span class="at">stars =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb246-13"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb246-13" tabindex="-1"></a>         <span class="at">statistic =</span> <span class="st">&#39;conf.int&#39;</span>, <span class="at">conf_level =</span> .<span class="dv">95</span>,</span>
-<span id="cb246-14"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb246-14" tabindex="-1"></a>         <span class="at">gof_omit =</span> <span class="st">&quot;Log.Lik.|AIC|BIC|RMSE&quot;</span>)</span></code></pre></div>
-<table style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;" class="table">
-<caption>
-<span id="tab:modelcomparison">Table 9.1: </span>Comparing Interaction Models
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:center;">
-Without centering
-</th>
-<th style="text-align:center;">
-With centering
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-R&amp;D
-</td>
-<td style="text-align:center;">
-−51.872***
-</td>
-<td style="text-align:center;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-[−52.433, −51.312]
-</td>
-<td style="text-align:center;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Promotion
-</td>
-<td style="text-align:center;">
-−191.431***
-</td>
-<td style="text-align:center;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-[−193.505, −189.358]
-</td>
-<td style="text-align:center;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-R&amp;D * Promotion
-</td>
-<td style="text-align:center;">
-0.498***
-</td>
-<td style="text-align:center;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-[0.493, 0.503]
-</td>
-<td style="text-align:center;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-R&amp;D_c
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-−0.918***
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-[−0.941, −0.894]
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Promotion_c
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-0.690***
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-[0.612, 0.769]
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-R&amp;D_c * Promotion_c
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-0.498***
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-[0.493, 0.503]
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-定数項
-</td>
-<td style="text-align:center;">
-20326.588***
-</td>
-<td style="text-align:center;">
-382.278***
-</td>
-</tr>
-<tr>
-<td style="text-align:left;box-shadow: 0px 1.5px">
-</td>
-<td style="text-align:center;box-shadow: 0px 1.5px">
-[20111.797, 20541.378]
-</td>
-<td style="text-align:center;box-shadow: 0px 1.5px">
-[379.293, 385.263]
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Num.Obs.
-</td>
-<td style="text-align:center;">
-221
-</td>
-<td style="text-align:center;">
-221
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-R2
-</td>
-<td style="text-align:center;">
-0.994
-</td>
-<td style="text-align:center;">
-0.994
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-R2 Adj.
-</td>
-<td style="text-align:center;">
-0.993
-</td>
-<td style="text-align:center;">
-0.993
-</td>
-</tr>
-</tbody>
-<tfoot>
-<tr>
-<td style="padding: 0; " colspan="100%">
-<sup></sup> + p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001
-</td>
-</tr>
-<tr>
-<td style="padding: 0; " colspan="100%">
-<sup></sup> Values in [ ] show 95% confidence intervals
-</td>
-</tr>
-</tfoot>
-</table>
-<p>対外的に分析結果を共有する場合には、このような分析結果をViewer上ではなく、文書ファイル等に貼り付けたいと考えることも多いだろう。<code>msummary()</code> 関数では、引数を変更することで、出力形式を変更することも可能である。そのうえで、本書が最もおすすめする方法が、Latex形式での表の出力と、それを用いたLatexによる文書作成である。</p>
-<p>Latex（ラテック or レイテック）は、ソースファイルにコマンドと文章を記載していきながらpdfを出力することで文書を作成するためのツールである。Latexは、数式や表の入力が簡単であり、出力結果もきれいであることや、文書フォーマットについて細かく気にせず文書を作成できるという利点がある。そのため、定量的な分析を伴う文書を作成するのに適したツールである。逆に短所としては、ソースコードの入力や、コンピュータ内へのLatex用環境構築に関する手間がかかるという点が挙げられる。しかし近年では、ウェブブラウザ上でLatexを動かせる “Overleaf” というサービスも普及し、環境構築による問題は解決されている。本書では、LatexやOverleafの詳細や設定方法については割愛するが、基本的にはOverleafの活用をおすすめするので、以下のリンクを参照して欲しい（<a href="https://dreamer-uma.com/overleaf/" class="uri">https://dreamer-uma.com/overleaf/</a>）。特に、卒業論文や修士論文に取り組む学生にとって、Overleafによってウェブ上にファイルを保管できることは非常に重要な利点となるだろう（毎年少なくない学生が論文のファイル保管ミスやノートPCの故障などのトラブルに見舞われるのを観察している）。</p>
-<p>先程の交差項比較の表について、<code>output = "latex"</code> と引数を設定することで、出力形式を変更する。</p>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb247-1" tabindex="-1"></a><span class="fu">msummary</span>(Int, </span>
-<span id="cb247-2"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb247-2" tabindex="-1"></a>         <span class="at">title =</span> <span class="st">&quot;Comparing Interaction Models&quot;</span>,</span>
-<span id="cb247-3"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb247-3" tabindex="-1"></a>         <span class="at">notes =</span> <span class="st">&quot;Values in [ ] show 95% confidence intervals&quot;</span>,</span>
-<span id="cb247-4"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb247-4" tabindex="-1"></a>         <span class="at">stars =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb247-5"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb247-5" tabindex="-1"></a>         <span class="at">statistic =</span> <span class="st">&#39;conf.int&#39;</span>, <span class="at">conf_level =</span> .<span class="dv">95</span>,</span>
-<span id="cb247-6"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb247-6" tabindex="-1"></a>         <span class="at">gof_omit =</span> <span class="st">&quot;Log.Lik.|AIC|BIC|RMSE&quot;</span>, <span class="at">output=</span> <span class="st">&quot;latex&quot;</span>)</span></code></pre></div>
-<p>これにより出力される結果のうち、<code>\begin{table}</code> から <code>\end{table}</code> までのコード内容をそのままlatexにコピペし、コンパイル（文書出力）をすれば、以下のような表が出力される<a href="#fn15" class="footnote-ref" id="fnref15"><sup>15</sup></a>。</p>
-<div class="float">
-<img src="reg/textable.png" alt="Latex出力例" />
-<div class="figcaption">Latex出力例</div>
-</div>
-<p>いくらLatexが便利だと言っても、マーケティング分野においてはマイクロソフトWordによって文書を作成している教員や研究者も多い。そのため、指導教官や共同研究者との兼ね合いでLatexやOverleafを使えないという場合もある。そのため、もしどうしてもスプレッド形式で表を作成・編集したいと考えるのであれば、Googleスプレッドシートの拡張機能を利用するのが良いだろう。Google スプレッドシートに対応した “Spread-Latex”（<a href="https://workspace.google.com/marketplace/app/spreadlatex/218144906748" class="uri">https://workspace.google.com/marketplace/app/spreadlatex/218144906748</a>） というアドオンによって、Latexコードで記載された表のソースコードをスプレッドシートに変換することができる。この拡張機能を利用すれば、ウェブブラウザで開いたGoogle スプレッドシート上に<code>msummary()</code> によって出力された Latex コードを貼り付け、いくつかのクリック操作をするだけで、Latexコードからスプレッドシート型の表に変換できる。その後、少しの微調整（消えていないコードの削除など）を行うと、以下のような表を得る。</p>
-<div class="float">
-<img src="reg/spreadtable.png" alt="Google スプレッドシート出力例" />
-<div class="figcaption">Google スプレッドシート出力例</div>
-</div>
-<p>もしExcelで作業を行いたい場合には、このGoogleスプレッドシートに変換された表をExcelにコピペすれば良い。しかしながら、2023年現在ではこのアドオンの更新は続いているが、今後デベロッパーがどのように対応するかは不明であるため、これはあくまで一時的な対応策にとどめておくことが賢明かもしれない。</p>
-<p>以上のように、既存のパッケージやサービスを用いることで、少ない労力で分析結果を表にまとめ、出力することが可能になる。ここで紹介した以外にも有力なパッケージがあるので、関心のある人は色々と調べて、自分にあったやり方を探してみて欲しい。</p>
+<div id="question" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> 研究課題（問い）の設定<a href="question.html#question" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>研究は、「問いを立てる」ことから始まる。「問いを立てる」というと、自身の疑問を提示することであり「そんなのは簡単だ」と感じる人もいるかもしれない。しかし、本資料は研究課題（研究上の問い）として、特に実証的に検証可能な問いに着目し、「問いを立てるのはなかなか難しい」という立場を取る。研究者は問いをただ闇雲に思いつくままに述べればいいわけではない。なぜならば、研究課題はその後のリサーチデザイン設計にも深く関わることになるためである。言い換えると、リサーチデザインは、自身の立てた研究課題にきちんと回答できるように設計すべきである。自身の立てた研究課題とその後のリサーチデザインや議論との一貫性を保つことは存外難しく、多くの人にとっては何度か失敗を繰り返しながら学ぶものになる。また、本節で説明する「実務的課題」と「研究課題」との関係は、（意思決定者のサポートとしての）企業におけるマーケティングリサーチにおいても重要になる。クライアントが抱える実務的課題に対して効果的な助言（含意）を提供するためには、直面する実務的課題に則した研究課題の設定が必要になる。そのため、本節の内容は企業におけるマーケティングリサーチ課題の設計方法としても役立つと考えられる。</p>
+<p>マーケティング研究における問いを適切に立てるためには、「実務的課題」と「研究課題」という二つの異なる課題のタイプが存在することを理解すべきである。この2つの課題弁別は、前章で説明したマーケティングに関わる二つの視点に準拠するものである。実務的課題とは、マーケティングに関する意思決定についての課題であり、主に意思決定者が何をすべきなのかを捉えている。例えば、ある企業における製品の市場シェアが減少していたとする。ここで、「どうればよいのか？」という問いは典型的な実務的課題だと考える。また、たとえ具体的な方策に着目した問いを立てたとしても、例えば、「モバイル広告を実施すべきか？」や「どうすればオムニチャネル化を推進できるか？」といった問いも実務的課題だといえる。マーケティングに興味を持つ学生の場合、このような実務的課題に関連する、問題を解決するための手段やアイデアを扱うことに慣れているかもしれない。しかし、これら問いに直接的に答えることが必ずしも研究にはならないということを理解する必要がある。</p>
+<p>一方で研究課題（ここでは特に実証的な研究課題）とは、実証的に検証可能なものであり、現実社会で何が起きているのかについて、定量/定性的調査を通じて得た情報を用いて結論を提示できる問いを指す。例えば、「ファストリテイリングは何年から有明倉庫を稼働させたか？」という問いは、事実を調べることで回答できる。また、「新しいパッケージデザインは以前のものよりも消費者の購買意図を高めるか？」という問いも研究課題の例であり、消費者を対象とした実験調査によって回答可能である。多くの場合前者のような問いは単純すぎて研究課題として利用されない。問いの価値は、3.2節で説明したように、その問いに答えることでどのような含意が得られるか、という視点から substantive と theoreticalの両側面から評価される。</p>
+<p>ここで本資料が強調したいのは、研究の実行においては研究課題の提示が絶対に必要なのだが、我々が経営学という応用学問領域に属している以上、実務的課題も重要だという点である。マーケティングにおいては多くの場合、社会や実務で起こっている問題に対し何らかの示唆を与える研究を行うことが求められる。そのため、研究のための研究ではなく、社会や実務への含意を見いだせるような研究が重視される傾向にある。つまり我々にとっては実務的課題も重要になるものの、先述の通り実務的課題のままでは研究課題として機能しない。そこで、実務的課題を実証的研究課題に変換することが求められる。問いの変換方法として、ここでは浅野・矢内（2018）で提示されている二つの方法について取り上げる<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>。</p>
+<p>第一の方法が、「参照枠組みを変える」という方法である。具体的には、実務的課題から議論の対象となる主体を特定し、彼/彼女らの評価について情報を収集する形に問いを変換するような方法だと言える。例えば、「企業は環境負荷に配慮されたチョコ製品を販売すべきか？」という実務的課題を考える。このとき例えば、企業が販売したチョコ製品を購入する主体である既存顧客を、問いの中心となる主体として設定することで、「既存顧客のチョコ製品選択に対し、企業による環境対応の有無は影響を与えるか？」という問いに変換することができる。この変換後の問いであれば、既存顧客へのアンケート等でデータを集め実証可能であるため、研究課題として機能すると考えられる。同様の問いを特定の企業活動に限定しない形で提示するならば、例えば「企業の環境、社会・ガバナンス（ESG）活動はチョコレート菓子市場における消費者の購買意図を向上させるのか？」という問いも設定可能である。</p>
+<p>第二の方法は、「背後に想定されている暗黙の前提を問う」というものである。これは、実務的問いの背後に暗黙的に仮定されている理屈やメカニズムに自覚的になり、それ自体を問うものである。例えば、「どうすればオムニチャネル化を推進できるか（or すべきか）？」という実務的課題があったと考える。この問いの背後には、「オムニチャネル化が企業成果に好ましい影響を与えるはずだ」という暗黙の前提が置かれているかもしれない。オムニチャネルに限らず、多くのビジネス書などで話題になる戦略では、このような成果に対する暗黙の前提が置かれ、その用語だけが独り歩きして流行ることも散見される。では「そもそもオムニチャネル化は本当に企業成果に影響があるのかだろうか」、もしあるのだとすれば「どのような成果に対して影響があるのか」という問いは、暗黙の前提を問うものであり、非常に素朴だが重要な研究課題である。これに関連する研究として、「オムニチャネル化（チャネル間統合）は小売企業の売上成長率に影響するのか？」（Cao and Li, 2015）や「オムニチャネル化（チャネル間統合）は小売企業の費用効率性に影響するのか？」（Tagashira and Minami, 2019）といった研究課題が実際に扱われ、論文化されている。</p>
+<p>暗黙の前提を捉えた別の具体的な研究例として、Lim et al. （2020） による、顧客満足度が成果へ与える影響について捉えた論文が挙げられる。顧客満足度はマーケティングにおいて非常に重要視される概念である。顧客満足度の企業にとっての重要性は、顧客満足度が高まることによって顧客による再購買が増え、企業のマーケティング費用が効率化される、というロジックによって説明されてきた。しかしながらそれは本当だろうか、というのが Lim et al. （2020） の研究課題である。Lim et al.（2020）の結果が気になる場合はぜひ論文を読んでみて欲しい。このように暗黙の前提を問うような研究課題の設定は、非常に素朴な問いになるがそれだけに、もしそれが既存研究で未解決である場合には大きな理論的貢献につながる可能性を持つ。</p>
+<p>本節では、研究課題の設定について説明した。本講義で扱う研究課題は、検証可能であり実務的課題とは異なるものであるという点を理解してほしい。また、次章（4.1節）ではリサーチデザインと研究課題との関連について説明しているため、そちらも合わせて研究課題設計について理解してほしい。次節では自ら立てた問いと整合的な議論を提示するための理論や仮説構築について説明する。</p>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="15">
-<li id="fn15"><p>なお、Latexにおいては % 記号によってコメントアウトされるため、ソースコード内にある場合には、バックスラッシュを用いる調整が必要になる。<a href="おまけ分析結果のまとめ出力上の工夫.html#fnref15" class="footnote-back">↩︎</a></p></li>
+<ol start="2">
+<li id="fn2"><p>浅野・矢内（2018）では、規範的議論と実証的議論との対比で以下の内容を提示している。規範的議論に関心がある場合は、浅野・矢内（2018）を参照してほしい。<a href="question.html#fnref2" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
@@ -760,8 +300,8 @@ R2 Adj.
           </div>
         </div>
       </div>
-<a href="対数線形.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="参考文献-7.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="リサーチデザインと論文の構成.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="問題と分析をつなげる仮説の提示.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -792,7 +332,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/08-reg2.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/02-Researchdesign.Rmd",
 "text": "Edit"
 },
 "history": {
