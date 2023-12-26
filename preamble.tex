@@ -1,0 +1,12 @@
+\usepackage{booktabs}
+\usepackage{float}
+\let\origfigure\figure
+\let\endorigfigure\endfigure
+\renewenvironment{figure}[1][2] {
+    \expandafter\origfigure\expandafter[H]
+} {
+    \endorigfigure
+}
+% include_headersで指定していたusepackage文をこちらに書いておく
+\usepackage{zxjatype} 
+\usepackage[ipa]{zxjafont}
