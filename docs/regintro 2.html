@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>マーケティングリサーチ講義ノート</title>
-  <meta name="description" content="マーケティングリサーチ講義ノート" />
+  <title>Chapter 8 回帰分析 | マーケティングリサーチ講義ノート</title>
+  <meta name="description" content="Chapter 8 回帰分析 | マーケティングリサーチ講義ノート" />
   <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="マーケティングリサーチ講義ノート" />
+  <meta property="og:title" content="Chapter 8 回帰分析 | マーケティングリサーチ講義ノート" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.git" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="マーケティングリサーチ講義ノート" />
+  <meta name="twitter:title" content="Chapter 8 回帰分析 | マーケティングリサーチ講義ノート" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="rusage.html"/>
+<link rel="prev" href="参考文献-5.html"/>
+<link rel="next" href="回帰モデル概要.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -278,32 +278,133 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">マーケティングリサーチ講義ノート</h1>
-<h2 class="subtitle"><em>Rを使ったリサーチ基礎固め</em></h2>
-<p class="author"><em>Takumi Tagashira</em></p>
-<p class="date"><em>2023-12-26</em></p>
-</div>
-<div id="はじめに本資料について" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">Chapter 1</span> はじめに（本資料について）<a href="index.html#はじめに本資料について" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>本資料は神戸大学経営学部で開講されている「経営データ分析（マーケティング）」および、一橋大学商学部で開講されている「マーケティングリサーチ」の講義ノートである。本講義では、定量的な分析手法のマーケティングリサーチ文脈への応用と、R (R studio) を用いた分析の実行法を紹介する。これにより、読者が本書を通じてリサーチに従事するための基礎を固めることを期待する。なお、本資料は基礎的な統計的・計量経済学的分析手法をマーケティング領域に応用することに焦点を合わせているため、統計学、計量経済学の理論そのものや、より発展的な分析手法については他の講義や著書で学習することを求める。</p>
-<p>本資料は、経営学・商学分野の大学院修士・博士および共修で参加している大学学部生レベルの学生を主な読者層として想定し作成している。特に、修士論文や卒業論文執筆のために、マーケティング分野にて初めて学術的な論文を書く学生に向けた内容を意識して構成されている。そのため、マーケティング領域で頻繁に用いられる手法の紹介だけではなく、学術的な研究を進めるための考え方についても言及している。また、本講義の履修者はこれまで講義で基礎的な統計学・計量経済学の講義を履修していることが想定されている。このような特徴を持つ本資料の目的は以下のようにまとめることができる。</p>
-<ol style="list-style-type: decimal">
-<li><p>マーケティング領域における研究の全体像を理解する。</p></li>
-<li><p>基本的な分析手法についての結果を適切に解釈できるようになる。</p></li>
-<li><p>基礎的な分析手法を実行する能力を習得する。</p></li>
-</ol>
-<p>筆者は、これらの目的が研究者として定量的な実証分析を実行し論文を書くことに加え、実務的な観点からも重要になると期待している。上記の目標を達成することで、リサーチプロセスをブラックボックスとして捉え、「調査会社がこう言ってたからこれが正しい」という態度で調査・分析を依頼、理解することを避けられると考えている。これを読んでいる読者の中には、現在または将来管理者としてマーケティングリサーチプロジェクトに関わる人もいるだろう。その場合リサーチの全体像を理解し、各プロセスについても理解する必要がある。また、リサーチそのものは他社にアウトソースすることもあるだろう。その場合であっても、調査会社が提出した結果をきちんと理解する必要がある。したがって、統計的な分析手法についての理解が必要になるのである。加えて、もしあなたが小規模な組織に所属しているのであれば、分析作業も自分でできたほうが良いかもしれない。その場合実際にソフトウェア上でデータを扱って分析作業をこなす能力も必要になる。上記の目的は、これらの実務的重要性も有していると考える。</p>
-<p>本資料の構成は以下の通りである。まず<a href="rusage.html#rusage">2</a>章 では、Rおよび R studioの概要及び基本的な操作方法について説明する。本資料ではフリーソフトウェアである R (R studio環境)を用いるため、実際の分析作業に移る前に各自操作に慣れてほしい。続いて前半部（<a href="design.html#design">3</a>章と<a href="survey.html#survey">4</a>章）では、研究プロセスや論文の構成について学ぶ。特に<a href="design.html#design">3</a>章は本資料の特色を表しており、分析方法やRの操作方法だけでなく「なんのために分析を実行するのか？」という問いに着目する。前半部では、リサーチ過程の全体像と論文の構成を始点とし、研究課題の設定や理論・仮説の役割に加えて、アンケート調査票設計について学ぶ。一方後半部分（5章以降）ではR studioを用いて、データ処理や統計的仮説検定、回帰分析について学ぶ。その後、マーケティングで広く用いられている手法として、クラスター分析、因子分析等を学ぶ。なお、<a href="regintro.html#regintro">8</a> 章と <a href="regtechnic.html#regtechnic">9</a> 章で使用する企業データセットは、一橋大学社会科学高等研究院の松本行平先生の協力のもと、収集している。</p>
-
+<div id="regintro" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">Chapter 8</span> 回帰分析<a href="regintro.html#regintro" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>本章では、変数間の関係を捉える回帰分析について、そのモデルの基礎と統計的推測に基づく解釈を説明する。回帰分析結果から得られる含意は、「予測」と「検証」の二つに大別することができる。その上で特に本書では、「検証」という側面、特に「研究上関心のある説明変数の係数の解釈」を重視する立場を取る。立場が異なれば、回帰分析上何を重視するかという観点も異なるため、特に回帰分析による予測に関心のある読者においては別の図書を参照してほしい。</p>
+<p>なお、本節では、<code>MktRes_firmdata.xlsx</code>という企業データを用いた分析を行う。次節に移る前に以下の要領でデータを読み込んでほしい。</p>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="regintro.html#cb184-1" tabindex="-1"></a>firmdata <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">&quot;data/MktRes_firmdata.xlsx&quot;</span>)</span></code></pre></div>
+<p>このデータは、小売・サービス分野の企業約160社（企業数は年によって異なる）に関する2010年から2019年までの財務データである（計1440件）。このデータは、日本生産性本部における顧客満足度調査の対象になっている企業リストを作成し、その企業の中から金融領域の企業や、データを入手できなかった一部の企業を教育的意図から排除したものである。したがって、日本の小売・サービス分野において全国的に知名度のある代表的な企業の財務データ（の一部）だと考えられる。</p>
+<p>なお、本データには以下の変数が含まれており、データ内の単位は従業員数（人）を除き百万円である。</p>
+<ul>
+<li>fyear: 決算年</li>
+<li>legalname: 企業名</li>
+<li>ind_en: 日経業種名（英文）</li>
+<li>parent:親会社名（もしあれば）</li>
+<li>fiscal_month: 決算月</li>
+<li>current_liability: 流動負債</li>
+<li>ltloans: 長期借入金</li>
+<li>total_liability: 負債合計</li>
+<li>current_assets: 流動資産</li>
+<li>ppent: 有形固定資産</li>
+<li>total_assets: 資産合計</li>
+<li>net_assets_per_capital: 純資産合計／資本合計</li>
+<li>sales: 売上高</li>
+<li>sga: 販売費及び一般管理費</li>
+<li>operating_profit: 営業利益</li>
+<li>net_profit: 当期純利益</li>
+<li>pnet_profit: 親会社株主に帰属する当期純利益（連結）／当期利益（単独）</li>
+<li>re: 利益剰余金</li>
+<li>adv: 広告・宣伝費</li>
+<li>labor_cost: 人件費</li>
+<li>rd: 研究開発費</li>
+<li>other_sg: その他販売費及び一般管理費</li>
+<li>emp: 期末従業員数</li>
+<li>temp: 平均臨時従業員数</li>
+<li>tempratio: temp/(emp+temp)</li>
+<li>indgrowth: 産業成長率</li>
+<li>adint: 広告集中率（adv/sales）</li>
+<li>rdint: 研究集中率（rd/sales）</li>
+<li>mkexp: (sga - rd) / sales</li>
+<li>op: operating_profit / sales</li>
+<li>roa: pnet_profit / total_assets</li>
+</ul>
+<p>本データセットは、複数年にわたる複数サンプルからのデータであり、一般的にこのような構造のデータをパネルデータという。パネルデータの分析は本講義の範囲外なので、本章では主に、2019年のデータ抽出し、クロスセクショナルデータとして用いる。以下の様に全データから2019年の情報を抽出してほしい。</p>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="regintro.html#cb185-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb185-2"><a href="regintro.html#cb185-2" tabindex="-1"></a></span>
+<span id="cb185-3"><a href="regintro.html#cb185-3" tabindex="-1"></a>firmdata19 <span class="ot">&lt;-</span> firmdata <span class="sc">%&gt;%</span> </span>
+<span id="cb185-4"><a href="regintro.html#cb185-4" tabindex="-1"></a>  <span class="fu">filter</span>(fyear <span class="sc">==</span> <span class="dv">2019</span>)</span></code></pre></div>
+<p>データを用いた分析を行う場合、取得したデータの記述統計や分布を確認する必要がある。本来であれば研究上重要な変数を対象にデータの特徴を整理するが、ここでは複数の変数の特徴を一括で整理、図示化する方法を提示する。この方法では、<code>GGally</code>というパッケージの<code>ggpairs()</code>という関数を用いるため、以下のようにパッケージをダウンロードしてほしい。</p>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="regintro.html#cb186-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;GGally&quot;</span>)</span></code></pre></div>
+<p><code>firmdata19</code> データセットから、例として四つの変数を抽出して、ggpairsを実行する。これにより、各変数のヒストグラム（密度形式）と、それぞれの変数間の相関係数と散布図が同図内で示されている。また、<code>ggpairs()</code>内の引数設定によって様々な図示形式を指定できるため、興味のある人は調べてみてほしい。</p>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="regintro.html#cb187-1" tabindex="-1"></a>firmdata19 <span class="sc">%&gt;%</span> </span>
+<span id="cb187-2"><a href="regintro.html#cb187-2" tabindex="-1"></a>  <span class="fu">select</span>(sales, mkexp, emp, operating_profit) <span class="sc">%&gt;%</span> </span>
+<span id="cb187-3"><a href="regintro.html#cb187-3" tabindex="-1"></a>GGally<span class="sc">::</span><span class="fu">ggpairs</span>()<span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;ggpairs example&quot;</span>)</span></code></pre></div>
+<p><img src="mktres_lecture_files/figure-html/ggpairs-1.png" width="672" /></p>
+<p>なお、記述統計については既出の <code>summary()</code>関数にデータフレームを指定することで、データセット全体の記述統計を出力する。ここでは例として先程と同じ変数の記述統計を以下のように出力してみる。</p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="regintro.html#cb188-1" tabindex="-1"></a>ds1 <span class="ot">&lt;-</span> firmdata19 <span class="sc">%&gt;%</span> </span>
+<span id="cb188-2"><a href="regintro.html#cb188-2" tabindex="-1"></a>  <span class="fu">select</span>(sales, mkexp, emp, operating_profit) <span class="sc">%&gt;%</span> </span>
+<span id="cb188-3"><a href="regintro.html#cb188-3" tabindex="-1"></a>  <span class="fu">summary</span>()</span>
+<span id="cb188-4"><a href="regintro.html#cb188-4" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(ds1, <span class="at">align =</span> <span class="st">&quot;cccc&quot;</span>)</span></code></pre></div>
+<table>
+<colgroup>
+<col width="4%" />
+<col width="23%" />
+<col width="23%" />
+<col width="22%" />
+<col width="25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="center">sales</th>
+<th align="center">mkexp</th>
+<th align="center">emp</th>
+<th align="center">operating_profit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"></td>
+<td align="center">Min. : 11333</td>
+<td align="center">Min. :0.01137</td>
+<td align="center">Min. : 163</td>
+<td align="center">Min. :-40469</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="center">1st Qu.: 186830</td>
+<td align="center">1st Qu.:0.16714</td>
+<td align="center">1st Qu.: 3488</td>
+<td align="center">1st Qu.: 7788</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="center">Median : 464450</td>
+<td align="center">Median :0.25508</td>
+<td align="center">Median : 7825</td>
+<td align="center">Median : 24824</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="center">Mean :1194513</td>
+<td align="center">Mean :0.29894</td>
+<td align="center">Mean : 20156</td>
+<td align="center">Mean : 80811</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="center">3rd Qu.:1164243</td>
+<td align="center">3rd Qu.:0.37438</td>
+<td align="center">3rd Qu.: 24464</td>
+<td align="center">3rd Qu.: 63026</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="center">Max. :9878866</td>
+<td align="center">Max. :0.75650</td>
+<td align="center">Max. :160227</td>
+<td align="center">Max. :656163</td>
+</tr>
+</tbody>
+</table>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="rusage.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="参考文献-5.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="回帰モデル概要.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -334,7 +435,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/index.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/07-reg.Rmd",
 "text": "Edit"
 },
 "history": {
