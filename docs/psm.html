@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2.5 R スクリプトのすゝめ | マーケティングリサーチ講義ノート</title>
-  <meta name="description" content="2.5 R スクリプトのすゝめ | マーケティングリサーチ講義ノート" />
+  <title>Chapter 12 価格感度測定 | マーケティングリサーチ講義ノート</title>
+  <meta name="description" content="Chapter 12 価格感度測定 | マーケティングリサーチ講義ノート" />
   <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2.5 R スクリプトのすゝめ | マーケティングリサーチ講義ノート" />
+  <meta property="og:title" content="Chapter 12 価格感度測定 | マーケティングリサーチ講義ノート" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.git" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2.5 R スクリプトのすゝめ | マーケティングリサーチ講義ノート" />
+  <meta name="twitter:title" content="Chapter 12 価格感度測定 | マーケティングリサーチ講義ノート" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="rの基本操作.html"/>
-<link rel="next" href="本章のまとめ.html"/>
+<link rel="prev" href="ポジショニングと知覚マップfactor.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -278,43 +278,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="r-スクリプトのすゝめ" class="section level2 hasAnchor" number="2.5">
-<h2><span class="header-section-number">2.5</span> R スクリプトのすゝめ<a href="r-スクリプトのすゝめ.html#r-スクリプトのすゝめ" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Rstudio環境で作業を行う際には、Consoleに直接コマンドを入力するのではなく、‘.R’ という拡張子のファイルを使って、「Rスクリプト」を作成することを勧める。RスクリプトはRでの分析に対応しRコマンドの集まりとして記されるファイルであり、SourceエディタからRスクリプトに記載されたコマンドを、Consoleを通じて実行する。</p>
-<p>Rスクリプトを用いることの重要性は、コマンドの修正可能性と、分析の再現性という二点から理解できる。まず修正可能性として、そもそもコマンドを書くうえでは大小様々な誤りが付き物である。このような間違いに対応し適宜修正を加えていくためには、実行するコマンドを一つ一つ console に直接記載するのではなく、Rスクリプトとして分析過程を記録し、その内容に基づき記載、修正を加えることが好ましい。</p>
-<p>第二に再現性においては、Rスクリプトとしてデータ整形・分析のプロセスを文書ファイルとして保存しておくことで研究者自身もしくは第三者が分析を再現することが可能になる。これは研究プロセスの客観性を高め、分析結果の信頼性を高めるために非常に重要な要素である。</p>
-<p>これらに加え、Rスクリプトの利用は研究者個人の研究遂行上の利点もある。自身が行った研究であっても分析の細部に関しては時間経過とともに忘れてしまうものである。その際に、Rスクリプトによる分析プロセスの追跡可能性が役に立つ。また、同様の分析を再度別データで実施する場合も、既存のRスクリプトを応用することで効率的に分析が可能になる。これらに加え、共同研究において他の研究者と分析プロセスを共有する場合にもRスクリプトが役に立つ。</p>
-<div id="rスクリプトを書く" class="section level3 hasAnchor" number="2.5.1">
-<h3><span class="header-section-number">2.5.1</span> Rスクリプトを書く<a href="r-スクリプトのすゝめ.html#rスクリプトを書く" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>先述のRスクリプトの利点を活かすために、Rスクリプトの作成においては、いつ作成されたなんのためのファイルなのか、そしてファイル内に記載されているコマンドがどのような意図によるものなのかがわかるように書くべきである。そのための重要になるのがコメント機能である。一つの行の中で#記号よりも後ろの部分はコメントとして処理（コメントアウト）される。この機能を使い、コメントで自然言語による説明を加えることで、コマンドの説明や意図等、自分や他人がスクリプトを見返して内容を理解できるようにする。例えば、Xという変数の平均値を求める場合、以下のようにRスクリプトを書くようにする。</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="r-スクリプトのすゝめ.html#cb45-1" tabindex="-1"></a><span class="co">#Xの平均値を求める。</span></span>
-<span id="cb45-2"><a href="r-スクリプトのすゝめ.html#cb45-2" tabindex="-1"></a><span class="fu">mean</span>(X)</span></code></pre></div>
-<p>Rスクリプトは、Rstudioの左上にある+ボタンから新規作成可能である。ここでは試しに、新規Rスクリプトを作成し、“mktg01.R” という名前で保存してほしい。保存したRスクリプトはファイルから開くことができる。“mktg01.R”ファイルを作成したら、試しに以下のコマンドを書き込み、実行してほしい。Rスクリプトからコマンドを実行する際には、コマンド記入後、Rスクリプト上で実行したい行にカーソルを合わせた状態でcommand (control) + Return (Enter)を入力する。もう一度同じキーを押すと、2行目のコマンドが実行される。これらを実行することで、Rコンソール上に、下記と同じ結果が出ていることを確認してほしい。なお、コマンドを記入の際には、こまめに command (control) + s により保存することを心がけるようにしてほしい。</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="r-スクリプトのすゝめ.html#cb46-1" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">9</span></span>
-<span id="cb46-2"><a href="r-スクリプトのすゝめ.html#cb46-2" tabindex="-1"></a><span class="fu">sqrt</span>(a)</span></code></pre></div>
-<pre><code>## [1] 3</code></pre>
-<p>また、Rスクリプトを作成する際には、ファイルの冒頭に以下の説明を書き込む習慣をつけると後々見返すときに便利である。</p>
-<ul>
-<li>ファイル名</li>
-<li>目的</li>
-<li>作成者</li>
-<li>作成日</li>
-<li>最新更新日</li>
-</ul>
-<p>例えば、上記の内容とコマンドを含めた “mktg01.R” ファイルは、以下のようになる。</p>
-<div class="float">
-<img src="Intro/Rscript1.png" style="width:70.0%" alt="Rスクリプト例" />
-<div class="figcaption">Rスクリプト例</div>
+<div id="psm" class="section level1 hasAnchor" number="12">
+<h1><span class="header-section-number">Chapter 12</span> 価格感度測定<a href="psm.html#psm" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>鋭意制作中（講義スライドを参照してください）。ごめんなさい。</p>
+
 </div>
-</div>
-</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="rの基本操作.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="本章のまとめ.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="ポジショニングと知覚マップfactor.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -345,7 +340,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/01-Rusage.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/11-psm.Rmd",
 "text": "Edit"
 },
 "history": {
