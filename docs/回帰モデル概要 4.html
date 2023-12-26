@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>8.1 回帰モデル概要 | マーケティングリサーチ講義ノート</title>
+  <meta name="description" content="8.1 回帰モデル概要 | マーケティングリサーチ講義ノート" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="8.1 回帰モデル概要 | マーケティングリサーチ講義ノート" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.github.io.git" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="8.1 回帰モデル概要 | マーケティングリサーチ講義ノート" />
+  
+  
+  
+
+<meta name="author" content="Takumi Tagashira" />
+
+
+<meta name="date" content="2023-12-26" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="回帰分析.html"/>
+<link rel="next" href="回帰分析における推定と検定.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Marketing Research Lecture Note</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> はじめに（本資料について）</a></li>
+<li class="chapter" data-level="2" data-path="r-と-r-studioに慣れる.html"><a href="r-と-r-studioに慣れる.html"><i class="fa fa-check"></i><b>2</b> R と R studioに慣れる</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="posit-cloudを始める.html"><a href="posit-cloudを始める.html"><i class="fa fa-check"></i><b>2.1</b> Posit cloudを始める</a></li>
+<li class="chapter" data-level="2.2" data-path="補足r-studio-デスクトップ版の利用.html"><a href="補足r-studio-デスクトップ版の利用.html"><i class="fa fa-check"></i><b>2.2</b> （補足）R studio デスクトップ版の利用</a></li>
+<li class="chapter" data-level="2.3" data-path="補足デスクトップ版の利用とプロジェクト機能.html"><a href="補足デスクトップ版の利用とプロジェクト機能.html"><i class="fa fa-check"></i><b>2.3</b> （補足）デスクトップ版の利用とプロジェクト機能</a></li>
+<li class="chapter" data-level="2.4" data-path="rの基本操作.html"><a href="rの基本操作.html"><i class="fa fa-check"></i><b>2.4</b> Rの基本操作</a></li>
+<li class="chapter" data-level="2.5" data-path="r-スクリプトのすゝめ.html"><a href="r-スクリプトのすゝめ.html"><i class="fa fa-check"></i><b>2.5</b> R スクリプトのすゝめ</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="r-スクリプトのすゝめ.html"><a href="r-スクリプトのすゝめ.html#rスクリプトを書く"><i class="fa fa-check"></i><b>2.5.1</b> Rスクリプトを書く</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="本章のまとめ.html"><a href="本章のまとめ.html"><i class="fa fa-check"></i><b>2.6</b> 本章のまとめ</a></li>
+<li class="chapter" data-level="2.7" data-path="参考文献.html"><a href="参考文献.html"><i class="fa fa-check"></i><b>2.7</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="リサーチデザイン.html"><a href="リサーチデザイン.html"><i class="fa fa-check"></i><b>3</b> リサーチデザイン</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="マーケティング実務とリサーチ.html"><a href="マーケティング実務とリサーチ.html"><i class="fa fa-check"></i><b>3.1</b> マーケティング実務とリサーチ</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="マーケティング実務とリサーチ.html"><a href="マーケティング実務とリサーチ.html#実務とリサーチの異なる視点"><i class="fa fa-check"></i><b>3.1.1</b> 実務とリサーチの異なる視点</a></li>
+<li class="chapter" data-level="3.1.2" data-path="マーケティング実務とリサーチ.html"><a href="マーケティング実務とリサーチ.html#実務とリサーチの分離"><i class="fa fa-check"></i><b>3.1.2</b> 実務とリサーチの分離</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="リサーチデザインと論文の構成.html"><a href="リサーチデザインと論文の構成.html"><i class="fa fa-check"></i><b>3.2</b> リサーチデザインと論文の構成</a></li>
+<li class="chapter" data-level="3.3" data-path="question.html"><a href="question.html"><i class="fa fa-check"></i><b>3.3</b> 研究課題（問い）の設定</a></li>
+<li class="chapter" data-level="3.4" data-path="問題と分析をつなげる仮説の提示.html"><a href="問題と分析をつなげる仮説の提示.html"><i class="fa fa-check"></i><b>3.4</b> 問題と分析をつなげる仮説の提示</a></li>
+<li class="chapter" data-level="3.5" data-path="学術的研究のための留意点.html"><a href="学術的研究のための留意点.html"><i class="fa fa-check"></i><b>3.5</b> 学術的研究のための留意点</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="学術的研究のための留意点.html"><a href="学術的研究のための留意点.html#マーケティング研究と科学哲学"><i class="fa fa-check"></i><b>3.5.1</b> マーケティング研究と科学哲学</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="研究における理論の利用と精緻化.html"><a href="研究における理論の利用と精緻化.html"><i class="fa fa-check"></i><b>3.6</b> 研究における理論の利用と精緻化</a></li>
+<li class="chapter" data-level="3.7" data-path="参考文献-1.html"><a href="参考文献-1.html"><i class="fa fa-check"></i><b>3.7</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="データの種類とアンケートデザイン.html"><a href="データの種類とアンケートデザイン.html"><i class="fa fa-check"></i><b>4</b> データの種類とアンケートデザイン</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="記述的リサーチデザイン.html"><a href="記述的リサーチデザイン.html"><i class="fa fa-check"></i><b>4.1</b> 記述的リサーチデザイン</a></li>
+<li class="chapter" data-level="4.2" data-path="アンケート設計.html"><a href="アンケート設計.html"><i class="fa fa-check"></i><b>4.2</b> アンケート設計</a></li>
+<li class="chapter" data-level="4.3" data-path="質問におけるワーディング.html"><a href="質問におけるワーディング.html"><i class="fa fa-check"></i><b>4.3</b> 質問におけるワーディング</a></li>
+<li class="chapter" data-level="4.4" data-path="アンケートデザイン.html"><a href="アンケートデザイン.html"><i class="fa fa-check"></i><b>4.4</b> アンケートデザイン</a></li>
+<li class="chapter" data-level="4.5" data-path="参考文献-2.html"><a href="参考文献-2.html"><i class="fa fa-check"></i><b>4.5</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="データ処理と顧客関係管理crm.html"><a href="データ処理と顧客関係管理crm.html"><i class="fa fa-check"></i><b>5</b> データ処理と顧客関係管理（CRM）</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="データの読み込み.html"><a href="データの読み込み.html"><i class="fa fa-check"></i><b>5.1</b> データの読み込み</a></li>
+<li class="chapter" data-level="5.2" data-path="データの整形.html"><a href="データの整形.html"><i class="fa fa-check"></i><b>5.2</b> データの整形</a></li>
+<li class="chapter" data-level="5.3" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html"><i class="fa fa-check"></i><b>5.3</b> 統計的検定を用いない顧客分析</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html#データの構造変化とソート"><i class="fa fa-check"></i><b>5.3.1</b> データの構造変化とソート</a></li>
+<li class="chapter" data-level="5.3.2" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html#データ結合"><i class="fa fa-check"></i><b>5.3.2</b> データ結合</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="おまけ-wide型とlong型データセット.html"><a href="おまけ-wide型とlong型データセット.html"><i class="fa fa-check"></i><b>5.4</b> (おまけ) Wide型とLong型データセット</a></li>
+<li class="chapter" data-level="5.5" data-path="参考文献-3.html"><a href="参考文献-3.html"><i class="fa fa-check"></i><b>5.5</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="データの要約と可視化.html"><a href="データの要約と可視化.html"><i class="fa fa-check"></i><b>6</b> データの要約と可視化</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="記述統計.html"><a href="記述統計.html"><i class="fa fa-check"></i><b>6.1</b> 記述統計</a></li>
+<li class="chapter" data-level="6.2" data-path="カテゴリ変数の要約.html"><a href="カテゴリ変数の要約.html"><i class="fa fa-check"></i><b>6.2</b> カテゴリ変数の要約</a></li>
+<li class="chapter" data-level="6.3" data-path="データの可視化.html"><a href="データの可視化.html"><i class="fa fa-check"></i><b>6.3</b> データの可視化</a></li>
+<li class="chapter" data-level="6.4" data-path="二変数間の関係の要約.html"><a href="二変数間の関係の要約.html"><i class="fa fa-check"></i><b>6.4</b> 二変数間の関係の要約</a></li>
+<li class="chapter" data-level="6.5" data-path="参考文献-4.html"><a href="参考文献-4.html"><i class="fa fa-check"></i><b>6.5</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="基礎統計学復習.html"><a href="基礎統計学復習.html"><i class="fa fa-check"></i><b>7</b> 基礎統計学復習</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="確率モデル期待値と分散.html"><a href="確率モデル期待値と分散.html"><i class="fa fa-check"></i><b>7.1</b> 確率モデル、期待値と分散</a></li>
+<li class="chapter" data-level="7.2" data-path="統計的推測.html"><a href="統計的推測.html"><i class="fa fa-check"></i><b>7.2</b> 統計的推測</a></li>
+<li class="chapter" data-level="7.3" data-path="点推定.html"><a href="点推定.html"><i class="fa fa-check"></i><b>7.3</b> 点推定</a></li>
+<li class="chapter" data-level="7.4" data-path="推定量もまた確率変数.html"><a href="推定量もまた確率変数.html"><i class="fa fa-check"></i><b>7.4</b> 推定量もまた確率変数</a></li>
+<li class="chapter" data-level="7.5" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html"><i class="fa fa-check"></i><b>7.5</b> 補足（いくつかの確率分布の関係性）</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#正規分布"><i class="fa fa-check"></i><b>7.5.1</b> 正規分布</a></li>
+<li class="chapter" data-level="7.5.2" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#カイ二乗分布"><i class="fa fa-check"></i><b>7.5.2</b> カイ二乗分布</a></li>
+<li class="chapter" data-level="7.5.3" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#t分布"><i class="fa fa-check"></i><b>7.5.3</b> t分布</a></li>
+<li class="chapter" data-level="7.5.4" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#f分布"><i class="fa fa-check"></i><b>7.5.4</b> F分布</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="区間推定.html"><a href="区間推定.html"><i class="fa fa-check"></i><b>7.6</b> 区間推定</a></li>
+<li class="chapter" data-level="7.7" data-path="統計的仮説検定.html"><a href="統計的仮説検定.html"><i class="fa fa-check"></i><b>7.7</b> 統計的仮説検定</a></li>
+<li class="chapter" data-level="7.8" data-path="平均値に関するその他の検定.html"><a href="平均値に関するその他の検定.html"><i class="fa fa-check"></i><b>7.8</b> 平均値に関するその他の検定</a></li>
+<li class="chapter" data-level="7.9" data-path="分散分析.html"><a href="分散分析.html"><i class="fa fa-check"></i><b>7.9</b> 分散分析</a></li>
+<li class="chapter" data-level="7.10" data-path="参考文献-5.html"><a href="参考文献-5.html"><i class="fa fa-check"></i><b>7.10</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="回帰分析.html"><a href="回帰分析.html"><i class="fa fa-check"></i><b>8</b> 回帰分析</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="回帰モデル概要.html"><a href="回帰モデル概要.html"><i class="fa fa-check"></i><b>8.1</b> 回帰モデル概要</a></li>
+<li class="chapter" data-level="8.2" data-path="回帰分析における推定と検定.html"><a href="回帰分析における推定と検定.html"><i class="fa fa-check"></i><b>8.2</b> 回帰分析における推定と検定</a></li>
+<li class="chapter" data-level="8.3" data-path="重回帰モデル1.html"><a href="重回帰モデル1.html"><i class="fa fa-check"></i><b>8.3</b> 重回帰モデル1</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="重回帰モデル1.html"><a href="重回帰モデル1.html#重回帰モデル概要"><i class="fa fa-check"></i><b>8.3.1</b> 重回帰モデル概要</a></li>
+<li class="chapter" data-level="8.3.2" data-path="重回帰モデル1.html"><a href="重回帰モデル1.html#重回帰分析におけるモデル適合度"><i class="fa fa-check"></i><b>8.3.2</b> 重回帰分析におけるモデル適合度</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="重回帰モデル2.html"><a href="重回帰モデル2.html"><i class="fa fa-check"></i><b>8.4</b> 重回帰モデル2</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="重回帰モデル2.html"><a href="重回帰モデル2.html#回帰係数の解釈"><i class="fa fa-check"></i><b>8.4.1</b> 回帰係数の解釈</a></li>
+<li class="chapter" data-level="8.4.2" data-path="重回帰モデル2.html"><a href="重回帰モデル2.html#重回帰モデルにおける変数選択"><i class="fa fa-check"></i><b>8.4.2</b> 重回帰モデルにおける変数選択</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="参考文献-6.html"><a href="参考文献-6.html"><i class="fa fa-check"></i><b>8.5</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="回帰分析上の工夫紹介.html"><a href="回帰分析上の工夫紹介.html"><i class="fa fa-check"></i><b>9</b> 回帰分析上の工夫紹介</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="ダミー変数.html"><a href="ダミー変数.html"><i class="fa fa-check"></i><b>9.1</b> ダミー変数</a></li>
+<li class="chapter" data-level="9.2" data-path="交差項.html"><a href="交差項.html"><i class="fa fa-check"></i><b>9.2</b> 交差項</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="交差項.html"><a href="交差項.html#傾きダミー"><i class="fa fa-check"></i><b>9.2.1</b> 傾きダミー</a></li>
+<li class="chapter" data-level="9.2.2" data-path="交差項.html"><a href="交差項.html#量的変数同士の交差項"><i class="fa fa-check"></i><b>9.2.2</b> 量的変数同士の交差項</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="係数比較.html"><a href="係数比較.html"><i class="fa fa-check"></i><b>9.3</b> 係数比較</a></li>
+<li class="chapter" data-level="9.4" data-path="対数線形.html"><a href="対数線形.html"><i class="fa fa-check"></i><b>9.4</b> 対数線形</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="対数線形.html"><a href="対数線形.html#需要の価格弾力性追加説明"><i class="fa fa-check"></i><b>9.4.1</b> 需要の価格弾力性追加説明</a></li>
+<li class="chapter" data-level="9.4.2" data-path="対数線形.html"><a href="対数線形.html#対数線形の推定と検定"><i class="fa fa-check"></i><b>9.4.2</b> 対数線形の推定と検定</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="おまけ分析結果のまとめ出力上の工夫.html"><a href="おまけ分析結果のまとめ出力上の工夫.html"><i class="fa fa-check"></i><b>9.5</b> （おまけ）分析結果のまとめ・出力上の工夫</a></li>
+<li class="chapter" data-level="9.6" data-path="参考文献-7.html"><a href="参考文献-7.html"><i class="fa fa-check"></i><b>9.6</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="セグメントとクラスター分析.html"><a href="セグメントとクラスター分析.html"><i class="fa fa-check"></i><b>10</b> セグメントとクラスター分析</a></li>
+<li class="chapter" data-level="11" data-path="ポジショニングと知覚マップ.html"><a href="ポジショニングと知覚マップ.html"><i class="fa fa-check"></i><b>11</b> ポジショニングと知覚マップ</a></li>
+<li class="chapter" data-level="12" data-path="価格感度測定.html"><a href="価格感度測定.html"><i class="fa fa-check"></i><b>12</b> 価格感度測定</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">マーケティングリサーチ講義ノート</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="回帰モデル概要" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> 回帰モデル概要<a href="回帰モデル概要.html#回帰モデル概要" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>本章では、二変数間の関係について「予測」と「検証」の二点からより深掘りしていく方法を紹介する。マーケティングを実行する企業の立場に立てば、マーケティングに関連する方策や投資を導入することで成果（売上や利益）を向上させたいと考えるだろう。しかしながら、マーケティングの施策により得られる成果や、そのために投入される労働力、金銭、時間などの資源は、採用する施策案により異なる。そのため、企業も闇雲に意思決定を行うわけには行かず、その意思決定によって、どの程度の成果の向上を見込めるかの予測ができると良い。最も基本的な予測の形式は、ある説明変数（先行要因）が被説明変数（成果）に対してどのような影響を与えるのかを特定し、それに基づき予測値を算出するという方法である。</p>
+<p>二変数間の関係を捉える分析手法として6章では相関係数を紹介した。相関係数は二変数間の線形関係を表す -1から 1 の値を取る指標である。 しかしながら、相関係数は線形関係の強さ（どれだけデータが直線上に近く分布しているか）を表しているものの、示されている直線の切片や傾きといった線形関数の特徴は捉えられない。例えば、下図の二つのデータは異なる切片と傾きを有しているが、相関係数は等しくなるはずである。</p>
+<div class="float">
+<img src="reg/cor.png" style="width:70.0%" alt="相関と線形関係" />
+<div class="figcaption">相関と線形関係</div>
+</div>
+<p>ここで、二つの異なる変数 <span class="math inline">\(y,~x\)</span> の関係を <span class="math inline">\(\small y=f(x)\)</span> のように<span class="math inline">\(y\)</span>を<span class="math inline">\(x\)</span>の関数（<span class="math inline">\(f(x)\)</span>）で示すというアイディアで分析を行う。このとき <span class="math inline">\(y\)</span> を「被説明変数（Explained variable）もしくは従属変数（dependent variable）」、<span class="math inline">\(x\)</span> を「説明変数（Explaining variable）もしくは独立変数（independent variable）」という。そして、被説明変数と説明変数の関係を特定化した式のことを一般的に回帰モデルという。最も基本的な関数型の特定方法は以下のような一次関数による特定化である。</p>
+<p><span class="math display">\[
+y=\beta_0+\beta_1x
+\]</span>
+このとき、<span class="math inline">\(\small \beta_0\)</span> は切片、<span class="math inline">\(\small \beta_1\)</span> は傾きを表す係数であり、回帰係数と呼ばれる。</p>
+<p>回帰モデルは線形の関係を捉えているものの、実際にデータを入手し散布図を作成すると、以下のように、直線とは異なる結果を得る。そのため、上記のモデルは正確な表現でないことがわかる。</p>
+<p><img src="mktres_lecture_files/figure-html/scatterplot-1.png" width="672" /></p>
+<p>分析者がデータとして得る情報は、<span class="math inline">\(y\)</span> や <span class="math inline">\(x\)</span> の実現値であり、回帰モデルの切片や傾きの値は直接はわからない。そこで、モデルで捉えた直線と実現値のズレを考え、得たデータから回帰モデルのパラメータ（係数）を推定するという方針をとる。モデルで捉えた直線による（係数の推定値に基づく）<span class="math inline">\(y\)</span> と<span class="math inline">\(x\)</span> の関係は、<span class="math inline">\(\small x=x_i\)</span> のとき、<span class="math inline">\(y_i\)</span> の予測値である<span class="math inline">\(\small \hat{y}_i\)</span>（ワイハット）と、係数の推定値 <span class="math inline">\(\small \hat{\beta}_0\)</span>、 <span class="math inline">\(\small \hat{\beta}_1\)</span> を用いて以下のように定義できる。</p>
+<p><span class="math display">\[
+\hat{y}_i=\hat{\beta}_0+ \hat{\beta}_1 x_i
+\]</span></p>
+<p>係数の推定値 <span class="math inline">\(\small \hat{\beta}_0\)</span> と <span class="math inline">\(\small \hat{\beta}_1\)</span> を求めるための計算方法は、（最尤法や積率法など）いくつかあるものの、本書では最小二乗法（Ordinary least square: OLS）という方法に着目し紹介する。OLS推定量（OLS Estimator: OLSE）の求め方の直感は、以下の図の通り、観測値と回帰直線間の距離の合計（残差平方和）を最小にするように計算される。</p>
+<div class="float">
+<img src="reg/ols.png" style="width:70.0%" alt="OLSE概要" />
+<div class="figcaption">OLSE概要</div>
+</div>
+<p>予測値のモデルで示されているのは、データを分析した結果求めたOLSEに基づく説明変数 <span class="math inline">\(x_i\)</span> と、<span class="math inline">\(\small \hat{y}_i\)</span> との関係である。<span class="math inline">\(\small \hat{y}_i\)</span> は被説明変数 <span class="math inline">\(y_i\)</span> の「予測値（predicted value）」や「理論値（fitted value）」と呼ばれるものであり、<span class="math inline">\(y_i\)</span> の観測値とは異なる値であることに注意が必要である。このとき、観測値と予測値のズレ（<span class="math inline">\(\small y_i-\hat{y}_i\)</span>）を「残差（residual）」という。OLSは残差を <span class="math inline">\(\hat{u}_i\)</span> とし、以下で示される、残差平方和（二乗和）を最小にするように推定量を求める方法である。なお、OLSEの計算仮定については、秋山（2018）が詳しく説明をしてくれている。</p>
+<p><span class="math display">\[
+\sum_{i=1}^n\hat{u}_i^2=\sum_{i=1}^n(y_i-\hat{y}_i)^2=\sum_{i=1}^n\left(\hat{y}_i-(\hat{\beta}_0+ \hat{\beta}_1 x_i)\right)^2
+\]</span>
+これを解くと、以下のような推定量を得る。
+<span class="math display">\[
+\hat{\beta}_0=\bar{y}-\hat{\beta}_1\bar{x}
+\]</span></p>
+<p><span class="math display">\[
+\hat{\beta}_1=\frac{\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y})}{\sum_{i=1}^n(x_i-\bar{x})^2}
+\]</span></p>
+<p>Rによる回帰分析は、<code>lm()</code>という関数（linear model）を用いて簡単に実行できる。この関数内では、<code>lm(y ~ x, data = df)</code> という要領で、説明変数と被説明変数を <span class="math inline">\(\sim\)</span>（チルダ）で繋いでモデルを指定する。例えば、先程の企業データにおける2019年の観測を用いて、従業員数と売上高の関係について分析するためには、以下のように分析を実行する。</p>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="回帰モデル概要.html#cb189-1" tabindex="-1"></a>reg1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(sales <span class="sc">~</span> emp, <span class="at">data =</span> firmdata19)</span>
+<span id="cb189-2"><a href="回帰モデル概要.html#cb189-2" tabindex="-1"></a><span class="fu">coef</span>(reg1)</span></code></pre></div>
+<pre><code>## (Intercept)         emp 
+## 22809.67863    58.13194</code></pre>
+<p>分析の結果、定数項（Intercept）は 22809.7 で、傾きは 58.1 であることがわかった。つまり、従業員数を一単位増やすと、売上高が58.1（百万円）増えることを示唆している。仮に従業員数が10人であれば、売上高の「予測値」は以下のように計算できる。</p>
+<p><span class="math display">\[
+22809.7+58.1\times 10=23390.7
+\]</span></p>
+<p>回帰分析によって被説明変数の予測値を計算が可能なことを説明したが、この予測値は実際の観測値とは異なる。では、ここで求められた予測値はどのように解釈できるものなのだろうか。それを理解するために、残差と予測値に関する以下の四つの性質を紹介する。</p>
+<ol style="list-style-type: decimal">
+<li>残差の和は0：</li>
+</ol>
+<p><span class="math display">\[
+\sum_{i=1}^n\hat{u}_i=0
+\]</span></p>
+<ol start="2" style="list-style-type: decimal">
+<li>残差と説明変数の積和は0：</li>
+</ol>
+<p><span class="math display">\[
+\sum_{i=1}^n　x_i\hat{u}_i=0
+\]</span></p>
+<ul>
+<li>1と2より：</li>
+</ul>
+<p><span class="math display">\[
+\sum_{i=1}^n　\hat{y}_i\hat{u}_i=0
+\]</span></p>
+<ol start="3" style="list-style-type: decimal">
+<li>予測値の平均と観測値の平均は等しい:</li>
+</ol>
+<p><span class="math display">\[
+\bar{y}=\bar{\hat{y}}
+\]</span></p>
+<ol start="4" style="list-style-type: decimal">
+<li>回帰直線は（<span class="math inline">\(\bar{x}, \bar{y}\)</span>）の座標を通る:</li>
+</ol>
+<p><span class="math display">\[
+\bar{y}=\hat{\beta}_0+\hat{\beta}_1\bar{x}
+\]</span>
+つまりOLSでは、回帰直線と各観測値のプラス方向のズレとマイナス方向のズレが釣り合う（残差の和が0）ような予測を行っている。その上で、予測値は、説明変数 <span class="math inline">\(x\)</span> が与えられたとき、被説明変数が「平均的に」どんな値を取るのかを示していると解釈できる。回帰モデルと平均との関係については次節で確率的側面からより詳しく説明を加える。</p>
+<p>回帰分析による予測による精度を調べるために、分析したモデルがどの程度被説名変数全体の分散を説明しているかという指標によってモデルの適合度を測る。一般的には、決定係数（<span class="math inline">\(\small R^2\)</span>）という指標によってモデル適合度が示される。<span class="math inline">\(\small R^2\)</span> は以下のように定義される。</p>
+<p><span class="math display">\[
+R^2=1-\frac{\sum(y_i-\hat{y}_i)^2}{\sum(y_i-\bar{y})^2}=\frac{\sum(\hat{y}_i-\bar{y})^2}{\sum(y_i-\bar{y})^2}
+\]</span></p>
+<p>この指標は、被説明変数の分散を説明変数がどの程度説明するかの割合を表しており、0以上1以下の値を取る。例えば <span class="math inline">\(\small R^2\)</span> が0.80であるならば、被説名変数の変動の80%をモデルが説明しているということになる。そのため、<span class="math inline">\(\small R^2\)</span> は、回帰モデルの説明力として解釈される。しかしながら、予測という目的に対して近年は、機械学習などの発展的な手法が応用される事が多く、<span class="math inline">\(\small R^2\)</span> を軸に予測を行うことは少なくなってきている。</p>
+<p>また、予測ではなく説明変数の効果（係数）についての検証や解釈に関心がある場合、回帰分析における <span class="math inline">\(\small R^2\)</span> の重要性は低くなる。特に、ビジネス分野における研究では、係数の推定や検定に焦点をあわせることが多い。本書においても、予測よりも係数に関する検証を重視する立場を取る。社会科学領域での分析では、<span class="math inline">\(\small R^2\)</span> が低くなることは珍しくない。そんな中で、「<span class="math inline">\(\small R^2\)</span> が低いからその回帰分析結果は意味がない」ということにはならない。研究者の目的が、関心のある変数同士（例、市場志向と企業成果）の関係性（有意性や影響の強さ）を検証したいというものである場合、仮に <span class="math inline">\(\small R^2\)</span> が低くても、きちんと両変数の関係を分析できる調査設計や分析を実行しているならば、その検証は有意義なものになる。つまりここで強調したいのは、係数の検証や解釈を重視して研究を行う場合、「<span class="math inline">\(\small R^2\)</span> がいくつ以上（以下）だから良い（ダメ）」という議論は目的と整合的ではなく、重要ではなくなるということである。
+本節では、OLSを中心にデータから回帰係数を推定するプロセスに目を向け、予測値と決定係数について紹介した。しかしながら、先述の通り我々は多くの場合特定の変数が成果変数に与える影響の検証に関心がある。次節では確率的な視点から理論的に回帰分析を理解する事により、回帰分析の結果の解釈についてより詳しく学ぶ。</p>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="回帰分析.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="回帰分析における推定と検定.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/07-reg.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

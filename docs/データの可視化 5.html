@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6.3 データの可視化 | マーケティングリサーチ講義ノート</title>
+  <meta name="description" content="6.3 データの可視化 | マーケティングリサーチ講義ノート" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6.3 データの可視化 | マーケティングリサーチ講義ノート" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.github.io.git" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6.3 データの可視化 | マーケティングリサーチ講義ノート" />
+  
+  
+  
+
+<meta name="author" content="Takumi Tagashira" />
+
+
+<meta name="date" content="2023-12-26" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="カテゴリ変数の要約.html"/>
+<link rel="next" href="二変数間の関係の要約.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Marketing Research Lecture Note</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> はじめに（本資料について）</a></li>
+<li class="chapter" data-level="2" data-path="r-と-r-studioに慣れる.html"><a href="r-と-r-studioに慣れる.html"><i class="fa fa-check"></i><b>2</b> R と R studioに慣れる</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="posit-cloudを始める.html"><a href="posit-cloudを始める.html"><i class="fa fa-check"></i><b>2.1</b> Posit cloudを始める</a></li>
+<li class="chapter" data-level="2.2" data-path="補足r-studio-デスクトップ版の利用.html"><a href="補足r-studio-デスクトップ版の利用.html"><i class="fa fa-check"></i><b>2.2</b> （補足）R studio デスクトップ版の利用</a></li>
+<li class="chapter" data-level="2.3" data-path="補足デスクトップ版の利用とプロジェクト機能.html"><a href="補足デスクトップ版の利用とプロジェクト機能.html"><i class="fa fa-check"></i><b>2.3</b> （補足）デスクトップ版の利用とプロジェクト機能</a></li>
+<li class="chapter" data-level="2.4" data-path="rの基本操作.html"><a href="rの基本操作.html"><i class="fa fa-check"></i><b>2.4</b> Rの基本操作</a></li>
+<li class="chapter" data-level="2.5" data-path="r-スクリプトのすゝめ.html"><a href="r-スクリプトのすゝめ.html"><i class="fa fa-check"></i><b>2.5</b> R スクリプトのすゝめ</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="r-スクリプトのすゝめ.html"><a href="r-スクリプトのすゝめ.html#rスクリプトを書く"><i class="fa fa-check"></i><b>2.5.1</b> Rスクリプトを書く</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="本章のまとめ.html"><a href="本章のまとめ.html"><i class="fa fa-check"></i><b>2.6</b> 本章のまとめ</a></li>
+<li class="chapter" data-level="2.7" data-path="参考文献.html"><a href="参考文献.html"><i class="fa fa-check"></i><b>2.7</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="リサーチデザイン.html"><a href="リサーチデザイン.html"><i class="fa fa-check"></i><b>3</b> リサーチデザイン</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="マーケティング実務とリサーチ.html"><a href="マーケティング実務とリサーチ.html"><i class="fa fa-check"></i><b>3.1</b> マーケティング実務とリサーチ</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="マーケティング実務とリサーチ.html"><a href="マーケティング実務とリサーチ.html#実務とリサーチの異なる視点"><i class="fa fa-check"></i><b>3.1.1</b> 実務とリサーチの異なる視点</a></li>
+<li class="chapter" data-level="3.1.2" data-path="マーケティング実務とリサーチ.html"><a href="マーケティング実務とリサーチ.html#実務とリサーチの分離"><i class="fa fa-check"></i><b>3.1.2</b> 実務とリサーチの分離</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="リサーチデザインと論文の構成.html"><a href="リサーチデザインと論文の構成.html"><i class="fa fa-check"></i><b>3.2</b> リサーチデザインと論文の構成</a></li>
+<li class="chapter" data-level="3.3" data-path="question.html"><a href="question.html"><i class="fa fa-check"></i><b>3.3</b> 研究課題（問い）の設定</a></li>
+<li class="chapter" data-level="3.4" data-path="問題と分析をつなげる仮説の提示.html"><a href="問題と分析をつなげる仮説の提示.html"><i class="fa fa-check"></i><b>3.4</b> 問題と分析をつなげる仮説の提示</a></li>
+<li class="chapter" data-level="3.5" data-path="学術的研究のための留意点.html"><a href="学術的研究のための留意点.html"><i class="fa fa-check"></i><b>3.5</b> 学術的研究のための留意点</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="学術的研究のための留意点.html"><a href="学術的研究のための留意点.html#マーケティング研究と科学哲学"><i class="fa fa-check"></i><b>3.5.1</b> マーケティング研究と科学哲学</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="研究における理論の利用と精緻化.html"><a href="研究における理論の利用と精緻化.html"><i class="fa fa-check"></i><b>3.6</b> 研究における理論の利用と精緻化</a></li>
+<li class="chapter" data-level="3.7" data-path="参考文献-1.html"><a href="参考文献-1.html"><i class="fa fa-check"></i><b>3.7</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="データの種類とアンケートデザイン.html"><a href="データの種類とアンケートデザイン.html"><i class="fa fa-check"></i><b>4</b> データの種類とアンケートデザイン</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="記述的リサーチデザイン.html"><a href="記述的リサーチデザイン.html"><i class="fa fa-check"></i><b>4.1</b> 記述的リサーチデザイン</a></li>
+<li class="chapter" data-level="4.2" data-path="アンケート設計.html"><a href="アンケート設計.html"><i class="fa fa-check"></i><b>4.2</b> アンケート設計</a></li>
+<li class="chapter" data-level="4.3" data-path="質問におけるワーディング.html"><a href="質問におけるワーディング.html"><i class="fa fa-check"></i><b>4.3</b> 質問におけるワーディング</a></li>
+<li class="chapter" data-level="4.4" data-path="アンケートデザイン.html"><a href="アンケートデザイン.html"><i class="fa fa-check"></i><b>4.4</b> アンケートデザイン</a></li>
+<li class="chapter" data-level="4.5" data-path="参考文献-2.html"><a href="参考文献-2.html"><i class="fa fa-check"></i><b>4.5</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="データ処理と顧客関係管理crm.html"><a href="データ処理と顧客関係管理crm.html"><i class="fa fa-check"></i><b>5</b> データ処理と顧客関係管理（CRM）</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="データの読み込み.html"><a href="データの読み込み.html"><i class="fa fa-check"></i><b>5.1</b> データの読み込み</a></li>
+<li class="chapter" data-level="5.2" data-path="データの整形.html"><a href="データの整形.html"><i class="fa fa-check"></i><b>5.2</b> データの整形</a></li>
+<li class="chapter" data-level="5.3" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html"><i class="fa fa-check"></i><b>5.3</b> 統計的検定を用いない顧客分析</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html#データの構造変化とソート"><i class="fa fa-check"></i><b>5.3.1</b> データの構造変化とソート</a></li>
+<li class="chapter" data-level="5.3.2" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html#データ結合"><i class="fa fa-check"></i><b>5.3.2</b> データ結合</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="おまけ-wide型とlong型データセット.html"><a href="おまけ-wide型とlong型データセット.html"><i class="fa fa-check"></i><b>5.4</b> (おまけ) Wide型とLong型データセット</a></li>
+<li class="chapter" data-level="5.5" data-path="参考文献-3.html"><a href="参考文献-3.html"><i class="fa fa-check"></i><b>5.5</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="データの要約と可視化.html"><a href="データの要約と可視化.html"><i class="fa fa-check"></i><b>6</b> データの要約と可視化</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="記述統計.html"><a href="記述統計.html"><i class="fa fa-check"></i><b>6.1</b> 記述統計</a></li>
+<li class="chapter" data-level="6.2" data-path="カテゴリ変数の要約.html"><a href="カテゴリ変数の要約.html"><i class="fa fa-check"></i><b>6.2</b> カテゴリ変数の要約</a></li>
+<li class="chapter" data-level="6.3" data-path="データの可視化.html"><a href="データの可視化.html"><i class="fa fa-check"></i><b>6.3</b> データの可視化</a></li>
+<li class="chapter" data-level="6.4" data-path="二変数間の関係の要約.html"><a href="二変数間の関係の要約.html"><i class="fa fa-check"></i><b>6.4</b> 二変数間の関係の要約</a></li>
+<li class="chapter" data-level="6.5" data-path="参考文献-4.html"><a href="参考文献-4.html"><i class="fa fa-check"></i><b>6.5</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="基礎統計学復習.html"><a href="基礎統計学復習.html"><i class="fa fa-check"></i><b>7</b> 基礎統計学復習</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="確率モデル期待値と分散.html"><a href="確率モデル期待値と分散.html"><i class="fa fa-check"></i><b>7.1</b> 確率モデル、期待値と分散</a></li>
+<li class="chapter" data-level="7.2" data-path="統計的推測.html"><a href="統計的推測.html"><i class="fa fa-check"></i><b>7.2</b> 統計的推測</a></li>
+<li class="chapter" data-level="7.3" data-path="点推定.html"><a href="点推定.html"><i class="fa fa-check"></i><b>7.3</b> 点推定</a></li>
+<li class="chapter" data-level="7.4" data-path="推定量もまた確率変数.html"><a href="推定量もまた確率変数.html"><i class="fa fa-check"></i><b>7.4</b> 推定量もまた確率変数</a></li>
+<li class="chapter" data-level="7.5" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html"><i class="fa fa-check"></i><b>7.5</b> 補足（いくつかの確率分布の関係性）</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#正規分布"><i class="fa fa-check"></i><b>7.5.1</b> 正規分布</a></li>
+<li class="chapter" data-level="7.5.2" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#カイ二乗分布"><i class="fa fa-check"></i><b>7.5.2</b> カイ二乗分布</a></li>
+<li class="chapter" data-level="7.5.3" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#t分布"><i class="fa fa-check"></i><b>7.5.3</b> t分布</a></li>
+<li class="chapter" data-level="7.5.4" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#f分布"><i class="fa fa-check"></i><b>7.5.4</b> F分布</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="区間推定.html"><a href="区間推定.html"><i class="fa fa-check"></i><b>7.6</b> 区間推定</a></li>
+<li class="chapter" data-level="7.7" data-path="統計的仮説検定.html"><a href="統計的仮説検定.html"><i class="fa fa-check"></i><b>7.7</b> 統計的仮説検定</a></li>
+<li class="chapter" data-level="7.8" data-path="平均値に関するその他の検定.html"><a href="平均値に関するその他の検定.html"><i class="fa fa-check"></i><b>7.8</b> 平均値に関するその他の検定</a></li>
+<li class="chapter" data-level="7.9" data-path="分散分析.html"><a href="分散分析.html"><i class="fa fa-check"></i><b>7.9</b> 分散分析</a></li>
+<li class="chapter" data-level="7.10" data-path="参考文献-5.html"><a href="参考文献-5.html"><i class="fa fa-check"></i><b>7.10</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="回帰分析.html"><a href="回帰分析.html"><i class="fa fa-check"></i><b>8</b> 回帰分析</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="回帰モデル概要.html"><a href="回帰モデル概要.html"><i class="fa fa-check"></i><b>8.1</b> 回帰モデル概要</a></li>
+<li class="chapter" data-level="8.2" data-path="回帰分析における推定と検定.html"><a href="回帰分析における推定と検定.html"><i class="fa fa-check"></i><b>8.2</b> 回帰分析における推定と検定</a></li>
+<li class="chapter" data-level="8.3" data-path="重回帰モデル1.html"><a href="重回帰モデル1.html"><i class="fa fa-check"></i><b>8.3</b> 重回帰モデル1</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="重回帰モデル1.html"><a href="重回帰モデル1.html#重回帰モデル概要"><i class="fa fa-check"></i><b>8.3.1</b> 重回帰モデル概要</a></li>
+<li class="chapter" data-level="8.3.2" data-path="重回帰モデル1.html"><a href="重回帰モデル1.html#重回帰分析におけるモデル適合度"><i class="fa fa-check"></i><b>8.3.2</b> 重回帰分析におけるモデル適合度</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="重回帰モデル2.html"><a href="重回帰モデル2.html"><i class="fa fa-check"></i><b>8.4</b> 重回帰モデル2</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="重回帰モデル2.html"><a href="重回帰モデル2.html#回帰係数の解釈"><i class="fa fa-check"></i><b>8.4.1</b> 回帰係数の解釈</a></li>
+<li class="chapter" data-level="8.4.2" data-path="重回帰モデル2.html"><a href="重回帰モデル2.html#重回帰モデルにおける変数選択"><i class="fa fa-check"></i><b>8.4.2</b> 重回帰モデルにおける変数選択</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="参考文献-6.html"><a href="参考文献-6.html"><i class="fa fa-check"></i><b>8.5</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="回帰分析上の工夫紹介.html"><a href="回帰分析上の工夫紹介.html"><i class="fa fa-check"></i><b>9</b> 回帰分析上の工夫紹介</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="ダミー変数.html"><a href="ダミー変数.html"><i class="fa fa-check"></i><b>9.1</b> ダミー変数</a></li>
+<li class="chapter" data-level="9.2" data-path="交差項.html"><a href="交差項.html"><i class="fa fa-check"></i><b>9.2</b> 交差項</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="交差項.html"><a href="交差項.html#傾きダミー"><i class="fa fa-check"></i><b>9.2.1</b> 傾きダミー</a></li>
+<li class="chapter" data-level="9.2.2" data-path="交差項.html"><a href="交差項.html#量的変数同士の交差項"><i class="fa fa-check"></i><b>9.2.2</b> 量的変数同士の交差項</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="係数比較.html"><a href="係数比較.html"><i class="fa fa-check"></i><b>9.3</b> 係数比較</a></li>
+<li class="chapter" data-level="9.4" data-path="対数線形.html"><a href="対数線形.html"><i class="fa fa-check"></i><b>9.4</b> 対数線形</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="対数線形.html"><a href="対数線形.html#需要の価格弾力性追加説明"><i class="fa fa-check"></i><b>9.4.1</b> 需要の価格弾力性追加説明</a></li>
+<li class="chapter" data-level="9.4.2" data-path="対数線形.html"><a href="対数線形.html#対数線形の推定と検定"><i class="fa fa-check"></i><b>9.4.2</b> 対数線形の推定と検定</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="おまけ分析結果のまとめ出力上の工夫.html"><a href="おまけ分析結果のまとめ出力上の工夫.html"><i class="fa fa-check"></i><b>9.5</b> （おまけ）分析結果のまとめ・出力上の工夫</a></li>
+<li class="chapter" data-level="9.6" data-path="参考文献-7.html"><a href="参考文献-7.html"><i class="fa fa-check"></i><b>9.6</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="セグメントとクラスター分析.html"><a href="セグメントとクラスター分析.html"><i class="fa fa-check"></i><b>10</b> セグメントとクラスター分析</a></li>
+<li class="chapter" data-level="11" data-path="ポジショニングと知覚マップ.html"><a href="ポジショニングと知覚マップ.html"><i class="fa fa-check"></i><b>11</b> ポジショニングと知覚マップ</a></li>
+<li class="chapter" data-level="12" data-path="価格感度測定.html"><a href="価格感度測定.html"><i class="fa fa-check"></i><b>12</b> 価格感度測定</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">マーケティングリサーチ講義ノート</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="データの可視化" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> データの可視化<a href="データの可視化.html#データの可視化" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>本書でのデータの可視化では、主にtidyverse内に含まれる ggplot2 というパッケージを用いる。データは一般的に、円グラフ、折れ線グラフ、帯グラフなどの様々なグラフを用いて視覚化される。しかしなが本節では、主にヒストグラム、箱ひげ図、バイオリンプロットをRでの実行例とともに紹介する。これらの図は、量的変数の分布を視覚的に示すことについて優れた可視化の方法だと言える。ここでは、ggplot2に内包されている diamonds データを用いて可視化を学ぶ（tidyverseを起動することで自動的に ggplot2も起動されるため、このタイミングでtidyverseを起動していない場合には、必要に応じて <code>library(tidyverse)</code> によってパッケージを起動してほしい）。diamonds データについては以下のように確認できる。</p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="データの可視化.html#cb129-1" tabindex="-1"></a><span class="fu">head</span>(diamonds)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 10
+##   carat cut       color clarity depth table price     x     y     z
+##   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1  0.23 Ideal     E     SI2      61.5    55   326  3.95  3.98  2.43
+## 2  0.21 Premium   E     SI1      59.8    61   326  3.89  3.84  2.31
+## 3  0.23 Good      E     VS1      56.9    65   327  4.05  4.07  2.31
+## 4  0.29 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63
+## 5  0.31 Good      J     SI2      63.3    58   335  4.34  4.35  2.75
+## 6  0.24 Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48</code></pre>
+<p>なお、Macのデスクトップ版でggplot2等を使うと日本語が文字化けするので、Macユーザーは別途以下のコマンドを実行する必要がある。</p>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="データの可視化.html#cb131-1" tabindex="-1"></a><span class="do">##For mac users</span></span>
+<span id="cb131-2"><a href="データの可視化.html#cb131-2" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_gray</span>(<span class="at">base_size =</span> <span class="dv">10</span>, <span class="at">base_family =</span> <span class="st">&quot;HiraMinProN-W3&quot;</span>))</span></code></pre></div>
+<p>本書の可視化では、まず、ggplot2の <code>ggplot()</code> 関数を用いて図示化のためのオブジェクトを作成する。この関数では、以下の引数を指定する。</p>
+<ul>
+<li>data: 可視化に用いるデータフレームの指定</li>
+<li>mapping: データから抽出する変数と画面に表示される図との関係の指定
+<ul>
+<li>mapping内で、<code>aes()</code> 関数（aesthetics）で視覚化に用いる変数とプロット要素間の接続を図ることも多い。</li>
+</ul></li>
+</ul>
+<p>ggplot関数で作成された図示化オブジェクトには、着目するデータと変数が特定されている。続いて、ggplot()で作られたオブジェクトに対して、geom (geometry) 用いてグラフィックの層(layer)を加えることで図を作成する。このプロセスでは、<code>geom_point()</code> による散布図や、<code>geom_histogram()</code> によるヒストグラムなど、具体的な図表のタイプに対応する関数を利用することで、図を作成できる。また、geomに関する関数以降に <code>labs()</code> というラベルに関する関数を追加することで、図に必要な情報を加筆することが可能になる。</p>
+<p>ggplot2を用いたデータ可視化の例として、まず本書はヒストグラムを描画する。ヒストグラムはデータの分布を離散的に示すものであり、連続変数を階級で分けて各階級の頻度を図示化する。一つの変数を扱った図なので、mapping引数ではひとつの変数を指定する。その上で作成した図示化オブジェクトに <code>geom_histogram()</code> を追加することでヒストグラムを描画する。以下では、ダイアモンドの価格の観測頻度についての可視化例である。価格の程度を離散的に区切り、その区切られた各範囲の価格を取る観測がデータ内にどれだけ存在するかを示している。</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="データの可視化.html#cb132-1" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(diamonds, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> price))</span>
+<span id="cb132-2"><a href="データの可視化.html#cb132-2" tabindex="-1"></a>p1 <span class="sc">+</span> <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
+<span id="cb132-3"><a href="データの可視化.html#cb132-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;価格&quot;</span>, <span class="at">y =</span> <span class="st">&quot;頻度&quot;</span>,</span>
+<span id="cb132-4"><a href="データの可視化.html#cb132-4" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;ヒストグラム1: ダイアモンド価格&quot;</span>)</span></code></pre></div>
+<p><img src="mktres_lecture_files/figure-html/histogram-1.png" width="672" /></p>
+<p>なお、縦軸を確率密度(density)に変えるときは、geom_density()を用いる。その際、fillという引数を設定すると、密度を範囲に色を塗ることができる (なお、“p1” というオブジェクトは再利用できるので、再びggplot()によって指定する必要はない)。</p>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="データの可視化.html#cb133-1" tabindex="-1"></a>p1 <span class="sc">+</span> <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">&quot;black&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb133-2"><a href="データの可視化.html#cb133-2" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;価格&quot;</span>, <span class="at">y =</span> <span class="st">&quot;頻度&quot;</span>,</span>
+<span id="cb133-3"><a href="データの可視化.html#cb133-3" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;ヒストグラム2: ダイアモンド価格（geom_density）&quot;</span>)</span></code></pre></div>
+<p><img src="mktres_lecture_files/figure-html/density-1.png" width="672" /></p>
+<p>箱ひげ図は、四分位数と四分位範囲等を図示化したもの。四分位数はデータを4等分する区切りの値であり、第一四分位はQ1、第二四分位はQ2、第三四分位はQ3、最大値はQ4で示される。四分位範囲はQ3-Q1の範囲で示されるものである。ここでは、Cutの質（Fair, Good, Very Good, Premium, Ideal）ごとに価格の分布を比べるため、複数の箱ひげ図を並べる例を提示する。</p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="データの可視化.html#cb134-1" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(diamonds, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> cut, <span class="at">y =</span> price))</span>
+<span id="cb134-2"><a href="データの可視化.html#cb134-2" tabindex="-1"></a>p2 <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb134-3"><a href="データの可視化.html#cb134-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Cutの質&quot;</span>, <span class="at">y =</span> <span class="st">&quot;価格&quot;</span>,</span>
+<span id="cb134-4"><a href="データの可視化.html#cb134-4" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;箱ひげ図1: ダイアモンド価格&quot;</span>)</span></code></pre></div>
+<p><img src="mktres_lecture_files/figure-html/boxplot-1.png" width="672" /></p>
+<p>箱ひげ図を作成すると、ひげの上下に点が表示されることがある（上図では上部が太線のように見えている）。これは、外れ値の候補として全体の分布から離れて存在する観測値が示されている。ここで示される外れ値の候補は、Q1よりも四分位範囲<span class="math inline">\(\times 1.5\times 1.5\)</span> 以上小さい、ないしは、Q3よりも四分位範囲<span class="math inline">\(\times 1.5\times 1.5\)</span> 以上大きいかで特定される。外れ値がある場合、入力ミスなどのエラーではないか、異質な観測値でないか、を検討、確認することが必要になる。</p>
+<p>バイオリンプロットは、箱ひげ図よりももう少し詳しくデータの分布を確認できる図である。ggplot2では、<code>geom_violin()</code> を用いる。例えば、先程の箱ひげ図をバイオリンプロットで示すと、以下のようになる。以下の図は、バイオリンプロット内に箱ひげ図を示すことでよりわかりやすい図を作成するように工夫している。</p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="データの可視化.html#cb135-1" tabindex="-1"></a>p2 <span class="sc">+</span> <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
+<span id="cb135-2"><a href="データの可視化.html#cb135-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">&quot;gray&quot;</span>, <span class="at">width =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb135-3"><a href="データの可視化.html#cb135-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Cutの質&quot;</span>, <span class="at">y =</span> <span class="st">&quot;価格&quot;</span>,</span>
+<span id="cb135-4"><a href="データの可視化.html#cb135-4" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;バイオリンプロット: ダイアモンド価格&quot;</span>)</span></code></pre></div>
+<p><img src="mktres_lecture_files/figure-html/ciolin-1.png" width="672" /></p>
+<p>バイオリンプロットで横に広がっているところは、ヒストグラムで言う山が高いところを意味しており、そこに多くのデータが集まっていることを示している。</p>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="カテゴリ変数の要約.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="二変数間の関係の要約.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/05-Visualization.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
