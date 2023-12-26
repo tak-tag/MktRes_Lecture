@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3.1 マーケティング実務とリサーチ | マーケティングリサーチ講義ノート</title>
-  <meta name="description" content="3.1 マーケティング実務とリサーチ | マーケティングリサーチ講義ノート" />
+  <title>5.2 データの整形 | マーケティングリサーチ講義ノート</title>
+  <meta name="description" content="5.2 データの整形 | マーケティングリサーチ講義ノート" />
   <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3.1 マーケティング実務とリサーチ | マーケティングリサーチ講義ノート" />
+  <meta property="og:title" content="5.2 データの整形 | マーケティングリサーチ講義ノート" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.github.io.git" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3.1 マーケティング実務とリサーチ | マーケティングリサーチ講義ノート" />
+  <meta name="twitter:title" content="5.2 データの整形 | マーケティングリサーチ講義ノート" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="リサーチデザイン.html"/>
-<link rel="next" href="リサーチデザインと論文の構成.html"/>
+<link rel="prev" href="データの読み込み.html"/>
+<link rel="next" href="統計的検定を用いない顧客分析.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -278,42 +278,81 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="マーケティング実務とリサーチ" class="section level2 hasAnchor" number="3.1">
-<h2><span class="header-section-number">3.1</span> マーケティング実務とリサーチ<a href="マーケティング実務とリサーチ.html#マーケティング実務とリサーチ" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="実務とリサーチの異なる視点" class="section level3 hasAnchor" number="3.1.1">
-<h3><span class="header-section-number">3.1.1</span> 実務とリサーチの異なる視点<a href="マーケティング実務とリサーチ.html#実務とリサーチの異なる視点" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>経営学部や商学部などに在籍している学生であれば、「マーケティング」に関する様々な講義や教科書に触れているだろう。しかしながら、その際にそれらの講義や教科書がどのような視点でマーケティングを捉え、議論しているのかに注意することが重要になる。マーケティングを議論する際には、（1）マーケティング意思決定者の視点と、（2）マーケティングリサーチャーの視点が存在する。マーケティング意思決定者の視点からは、マーケティングに関する意思決定を行い、実行することを目的に議論が行われる。「マーケティング・マネジメント」はこの視点の典型的な領域である。ここでは、意思決定のサポートするための既存のフレームワークを紹介することが多い。例えば、マーケティングで紹介される4Ps（Product, Price, Promotion, Place）や、STP（Segmentation, Targeting, Positioning）などは、意思決定や実行を手助けするための指針となることを目的としている。そのために、提示される議論や枠組みの精緻さよりも実務的有用性が優先されることも多い。</p>
-<p>第二に、マーケティングリサーチャーの視点では、マーケティングや消費者、顧客に関連する信頼度の高い情報や知識を得ることを目的に議論が行われる。「マーケティングリサーチ」や「マーケティングサイエンス」はこの視点の典型的な領域である。マーケティングに関する研究では、既存の知識を疑ったり、不足している知識を発見し補う事を求める。そのうえで、学術的研究の場合には発見物による一般化可能性を、企業での研究では自社顧客への深い理解を求めることが多い。そのため、この視点では議論されている内容の精緻さや文書内の論理的一貫性が優先される。</p>
-<p>企業内におけるマーケティング実務においては当然マーケティング意思決定者の視点が優先されるわけだが、マーケティングリサーチもこれと無関係ではない。企業内におけるマーケティングリサーチは、実務的な意思決定を助けるために実施される（Malhotra, 2019）。マーケティング意思決定者は通常、マーケティングに関する実務的課題（<a href="question.html#question">3.3</a>節参照）を抱えておりそれを解決したいと考えている。しかしながら、意思決定者は闇雲にマーケティング戦略や戦術を決定すれば良いわけではなく、市場や消費者、既存顧客などに関する情報をもとにより効果的な方策を模索している。企業としてのマーケティングリサーチでは、（1）実務的課題から必要な情報（研究課題）の特定化、（2）情報（調査結果）の提供、を通じてマーケティング意思決定者をサポートすることが期待される。</p>
-<p>マーケティング実務においては、「どうするべきか」という行動に即した問いや規範的な議論が注視されるが、「どうするべきか」という規範的な問いに直接的に答えるようにリサーチを設計することは避けたほうが良い。そのためにも、「リサーチの結果に基づく含意として実務的な指針が導かれる」ということを意識すると実務的にも関連性の高いリサーチを設計しやすい。</p>
-<p>例えば、「どのような広告内容を採用するのが良いか」という問いに対して直接的に答えるリサーチを計画するのは好ましくない。この問いが問題である理由はいくつか存在する。第一に、これは分析手法においても説明するが、リサーチにより正確に未来を予測することは不可能である。そのため、「こうすべき」という規範的な回答は基本的に避けたほうが良い。規範的な問いに対しては、研究の結果得た知識をもとに議論を行うことで得る「実務的含意」に基づき迫ることが好ましい。なお、企業内での研究ではもちろんだが、学術的な研究においても結果から得る実務的含意はとても重要である。マーケティングに関する研究は社会科学の応用領域である。そのため、我々が行っている研究およびその結果がどのように社会や実務につながるのかについて、研究者は意識的になる必要がある。</p>
-<p>第二に、問題設定が不明確である点についても問題を指摘することができる。何を良しとするかの基準が明確ではなく、消費者が商品に対して覚えてくれる（想起集合に入る）ことや、好意を抱く（態度形成）、買いたいと思う（購買意図の形成）に加え、実際に買う（選択）など、何を目的とするのかが明確でなく、何をもって「良い広告」とするのかが漠然としている。同様に、広告設計において企業が調整できる内容も様々ある。広告内で用いるメッセージや、有名人利用の有無から、広告内で用いる文字のフォントやサイズまで、色々なものを選択しなければならない。このように、「何と何の関係を捉えようとしているのか」が曖昧であることも上記の問いの問題点である。学生の中には、「網羅的かつ包括的にこの問題を捉えたい」という志のもと、上記のような曖昧な問いを採用するケースも散見される。しかしながら基本的には、曖昧な問いからなにか明確な回答を得ることは困難である。つまり、包括性の名のもとにこのような問いを設計してしまうと、結局は実務的にも何も言えない結果しか得ることができないことに注意が必要である。</p>
-<p>本節のこれまでの内容をまとめると、「実務的課題と研究課題は別物だが、研究によって得る実務的含意は重要である。」と言える。企業内でのマーケティングリサーチは意思決定者をサポートするために実行される（Malhotra, 2019）。そのため、リサーチ結果が意思決定者に指示を与えるわけではないということに注意が必要である。以下の図（a）のように、実務家が直面している課題に対していきなり解決策を求めようとすると、個人や組織の勘や経験、思いつきに頼ることになる。このような意思決定を避けようとするのが、基本的なマーケティング・マネジメントの考え方である。そこで、直面している問題の背後に存在する理由について推察し、どのような情報を得る（問いに答える）ことができればその理由が正しいか否かを理解できるのかを考えることがまず必要になる。つまり、問題の背後にある何らかのメカニズムについて仮説を構築し、その仮説自体を検証するための問いを考えることが重要になる。その後、どうやったらその問いに答えるための方法を考察・実行し、得た結果を知見として整理する。ここでもう一つ重要になるのが、研究結果として得る情報自体は必ずしも直接的な解決策にはならないという点である。研究上の問いは、あくまで問題の背後にあるなんらかのメカニズムを捉えていた。そのため、研究の結果得られるのは、メカニズム対する何らかの知識である。研究者は得た結果に基づき、「このようなメカニズムがなりたっているという前提で考えるならば、実務としてはこのような方法が好ましいのではないか」という提案を考察することが好ましい。下記図（b）は、実務的含意と問題設定の関係について示したものである。</p>
-<div class="float">
-<img src="Research%20design/implication.png" style="width:70.0%" alt="実務課題と実務的含意" />
-<div class="figcaption">実務課題と実務的含意</div>
-</div>
-<p>上記の問題設定について、ソーシャルメディアにおける炎上（以下、炎上）を例に取り考えてみる。例えば、「炎上に直面した企業はどのように対応すれば良いか？」というのは曖昧な実務的課題であるといえる。上述の原則から考えると、この問いに直接的に答えるような研究は避けるべきである。そこで、炎上と言っても様々な論点が存在するが、ここではマーケティングらしく、炎上における消費者の行動もついてもう少し考えてみる。企業の立場から炎上を鑑みると、自社への批判が拡大することで、成果を損ねることを懸念するだろう。しかしながら、炎上した企業に対する批判をする人々と擁護する人々による議論の拡大によって広告機会につながるという主張も存在する（Sholz and Smith, 2019）。しかしながら、消費者によるソーシャルメディア上での発言と、（購買などの）オフラインでのプライベートな行動との間には一貫性があるのだろうか？政治的な文脈では、2016年のアメリカ大統領選挙においては、ソーシャルメディア上ではトランプ前大統領を批判するが、実際には彼に投票した隠れ支持者が存在したことが話題になった（Enns et al., 2017）。このようなオンラインとオフラインの一貫しない行動を炎上の文脈に置き換えれば、「ソーシャルメディア上では文句を言うのに、その企業の製品・サービスを買う個人」と考えられる。</p>
-<p>そこで、（a）炎上の文脈における隠れ支持者（ソーシャルメディア上で企業に対して批判を行うが、実際にはその企業の製品を買う人）はいるのだろうか？そして、（b）もしいるのであればその行動はどのようなメカニズムで説明できるのだろうか？という問いを考える。これら２つの問いは、（a）同じ情報（炎上）に対して、異なる文脈（ソーシャルメディアと購買）において異質な反応が見られるのか、（b）その異質な行動の先行要因は何か、というようなより具体的な問題として捉えることで、検証可能になると考えられる。ちなみに、異なる文脈における実際の消費者行動を追跡するのは非常に難しく、現実的な調査手段として消費者へのアンケート調査が有効になるかもしれない。</p>
-<p>Tagashira et al. (2023) による消費者へのアンケート調査を利用した未刊行論文内では、功利主義（utilitarianism）的倫理観の高い個人においては、炎上を起こした企業を批判するツイートを拡散したり、自身で投稿する意図が高い一方で、その企業の製品を購入する意図も高いことが示された。そのため、物事の善悪を出来事の結果生じる自身や社会にとっての利益や福祉に基づき判断する傾向のある人は、「文句を言うが買う」という傾向が強いことがわかった。一方で、形式主義（formalism）傾向の強い個人は、ソーシャルメディア上での拡散や投稿意図は低いものの、当該企業への購買意図も低いことがわかった。つまり物事の善悪を、出来事の結果に関わらず行動そのものが原理原則から考えて良いか悪いかに基づき判断する人々は、ソーシャルメディア上では活発に発言しないが、その企業の製品・サービスを買う可能性が下がると言える。これらの結果そのものは、「どのような消費者がどんな行動を取りやすいか」という情報を示しており、実務的な提案そのものではないことを理解してほしい。しかしながら、この情報からという実務的に有効そうな施策を推測することは可能である。例えば、企業がソーシャルメディア上の批判を沈静化させたい場合、本結果に基づけば、功利主義的な人が騒いでいる可能性が高いために、消費者ないしは社会的な便益に働きかけるようなアプローチが有効になるかもしれない。一方で、批判せずに購買から遠ざかってしまう消費者を食い止めたいと企業が考えるのであれば、倫理的な原則に基づく謝罪や説明、対応を示すほうが良いかもしれない。このような、研究結果から推察・議論できる何らかの提案を「実務的含意」と呼ぶ。</p>
-<p>ただし、実務的含意として述べられている方策の有効性自体は検証していないことには注意が必要である。例えば、「企業は消費者や社会への便益を向上させるような対応やメッセージを発信すべきか？」という実務的課題に着目するならば、「消費者や社会への便益を向上させるような対策やメッセージが功利主義的な傾向の強い個人による批判的な投稿や拡散を阻害するのか？」という研究課題を扱うことが考えられる。研究は一問一答が基本的な構造であり、ある研究を達成したことによって生じた新たな問いはまた別の研究によって回答することが重要になる。なお、学術的な論文であってもマーケティング領域においてはこの実務的含意を議論することが求められるため、研究者志望の大学院生もこの点を十分に理解することが求められる。</p>
-</div>
-<div id="実務とリサーチの分離" class="section level3 hasAnchor" number="3.1.2">
-<h3><span class="header-section-number">3.1.2</span> 実務とリサーチの分離<a href="マーケティング実務とリサーチ.html#実務とリサーチの分離" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>マーケティング研究を通じた実務的意思決定への知見の提供では、同一企業内で調査・分析を実施する場合もあれば、調査会社等にそれらをアウトソースする場合もある。いずれの場合においても、企業活動のためにマーケティング研究を実施する際には、「マネジメントとリサーチの分離」が重要になる。マーケティング実務に関する調査分析を行う場合、研究を発注する主体でありマネジメントを主な仕事とする「クライアント」と、それを受け研究に従事する「リサーチャー」が存在する。リサーチャーは、クライアントが直面している実務的問題に基づき研究課題を設計し、調査や分析を実行する。そしてその研究成果をレポートにまとめ、クライアントに報告する必要がある。</p>
-<p>リサーチャーは、レポート執筆において「ありのままを書く」必要がある。具体的には研究方法、結果、結論について正確に記述し情報を提供しなければならない。データや結果の改ざんは重大な研究不正である。企業におけるリサーチであっても読み手であるクライアントが期待する、または望んでいる結果にレポートの内容を書き換えてはいけない。しかしこの問題は、個人の倫理観だけではなく、リサーチャーとクライアントを取り巻く環境にも関係して論じられるべき問題である。例えば、クライアントにとっては特定のマーケティング戦略（例、モバイル広告）を実行し成果をあげることに自身の出世や昇給がかかっており、モバイル広告がその企業にとって有益であるというエビデンスを「欲しがっている」かもしれない。その上で、リサーチャーによる調査と分析の結果、モバイル広告による成果の向上が確認されなかった場合を仮定する。このとき、クライアントとリサーチャーの間に利害関係がなければ、「ありのまま」を伝えるのは難しくないかもしれない。しかしながら、もしこのクライアントがリサーチャーの直属の上司であるならばどうだろうか。ひどい場合であれば、クライアントの不利になる結果を提示したとしてリサーチャーが悪い評価を受けるかもしれないし、客観的な評価に影響がなくても、個人的な反感を買うかもしれない。もしくは、リサーチャー自身がこのような可能性を危惧し、「ありのまま」を伝えることに躊躇してしまうこともあるだろう。大前提として、研究結果に基づき（クライアントとリサーチャーどちらも）従業員の評価を行うことは避けるべき問題であり、研究結果は研究結果として受け入れることが重要である。しかしながら、人間である以上このような正論では割り切れない部分も出てくるかもしれない。そのため、クライアントとは利害関係のないリサーチャーに研究を発注することが何より重要であり、クライアント側の組織においても研究結果に基づき人事的評価を行わないという前提やルール作りが必要になる。これらが満たされていないと、クライアントにとって都合の良い結果を求めることで適切な研究が設計されなかったり、不利な研究結果受け入れないといった行動を取る誘因がクライアント側に存在することになる。</p>
-<p>上記の例は、企業内における利害関係を捉えたものであるが、学術的研究においても注意が必要である。自身の経験や知識に基づいて、「このマーケティング戦略は効果があるはずだ」や「この戦略の有用性を示したい」と考えている場合、意識的もしくは無意識的に自身の都合の良い方法や結果を選別してしまうかもしれない。また、研究者が企業との共同研究に従事している場合には、先述のクライアントとリサーチャーの関係と同様の問題に直面するかもしれない。そのため、あなたが企業、学術どちらの研究に従事するとしても、マネジメントとリサーチとを分離し、研究結果をありのままに記述、報告できる状況を整えることが何より重要である。</p>
-<!-- ## 研究におけるマーケティング的視点 -->
-<!-- 前節では、マーケティング実務におけるリサーチの役割と、実務とリサーチをきちんと分離することの重要性を述べた。 -->
-</div>
+<div id="データの整形" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> データの整形<a href="データの整形.html#データの整形" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>データの整形には、tidyverseパッケージ群に含まれるdplyrというパッケージを用いる。しかしながら、tidyverseのインストール・起動しておけばdplyrも利用できるため、特に心配する必要はない。dplyr には、いくつもの便利な関数がふくまれているが、本節では主に以下の関数および機能を紹介する。</p>
+<ol style="list-style-type: decimal">
+<li>summarize()</li>
+<li>mutate()</li>
+<li>filter()</li>
+<li>select()</li>
+<li>arrange()</li>
+<li>パイプ演算子 %&gt;%</li>
+</ol>
+<p>summarize は、ある変数の平均値や標準偏差などの記述統計量を計算することができる関数である。例えば、dataというデータセットに含まれる var_name という変数の平均値を計算し、それを M という変数名として定義する場合、以下のコマンドを用いる（以下のコマンドは見本コードである）。</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="データの整形.html#cb59-1" tabindex="-1"></a><span class="fu">summarize</span>(data, <span class="at">M =</span> <span class="fu">mean</span>(var_name))</span></code></pre></div>
+<p>mutate は、データセットに引数内で指定した定義の変数（列）を追加する関数である。例えば、dataというデータセットに対し、definition で定義した変数をnew_varとして追加するには、以下のコマンドを用いる（以下は見本コードである）。実際にdefinitionを定義する場合には、様々な関数や論理式を利用する必要がある。例えば、“new_var = var1/100” という定義を用いれば、var1を1/100倍した値をnew_varとして定義することになる。また、“new_var = var1 – mean(var1)”という定義を用いれば、var1の観測値からvar1の平均値を引いた値をnew_varとしている。なお、このような操作化を一般的に「中心化」と呼ぶ。</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="データの整形.html#cb60-1" tabindex="-1"></a><span class="fu">mutate</span>(data, <span class="at">new_var =</span> definition)</span></code></pre></div>
+<p>mutate関数の利用においては、条件分岐を用いた変数の作成を行うこともある。そのように、研究者がある変数の値に応じて異なる値を変数を作成するときには、mutate内で、ifelse()関数を用いるのが良い。ifelse() 内の第一引数は条件、第二引数は条件が満たされたときの処理、第三引数は条件が満たされないときの処理をそれぞれ表す。なお、特定の条件の指定には “==” （同値）, “&gt;=”（以上）, “&lt;=”（以下） を使う。具体的には、var1 が2ならば1をとり、それ以外であれば０をとるという条件でnew_varを作成するという指示は、以下のようになる（以下は見本コードである）。</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="データの整形.html#cb61-1" tabindex="-1"></a><span class="fu">mutate</span>(data, <span class="at">new_var =</span> <span class="fu">ifelse</span>(var1 <span class="sc">==</span> <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span></code></pre></div>
+<p>filter関数は、データから特定の条件に合致する行だけ取り出す場合に用いる関数である。例えば、男性（gender == “male”）のサンプル情報のみ抽出したい場合には以下のような指示になる。</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="データの整形.html#cb62-1" tabindex="-1"></a><span class="fu">filter</span>(data, gender <span class="sc">==</span> <span class="st">&quot;male&quot;</span>)</span></code></pre></div>
+<p>なお、特定の条件以外のものを指定したいときは、 という論理式 “!=” (not equal) を使う。男性以外の行を選ぶための指示は、以下の通りになる。</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="データの整形.html#cb63-1" tabindex="-1"></a><span class="fu">filter</span>(data, gender <span class="sc">!=</span> <span class="st">&quot;male&quot;</span>)</span></code></pre></div>
+<p>select関数は、特定の変数（列）を選んで新たなデータフレームを作成することができる関数である。例えば、dataというデータセットから、var1、var2、var3 という変数（列）を抽出して、data2というdataframeとして定義するには、以下のような指示になる。</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="データの整形.html#cb64-1" tabindex="-1"></a>data2<span class="ot">&lt;-</span> <span class="fu">select</span>(data, var1, var2, var3)</span></code></pre></div>
+<p>反対に、取り除きたい変数を指定するときには、以下のように “-” を使う。</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="データの整形.html#cb65-1" tabindex="-1"></a>data2<span class="ot">&lt;-</span> <span class="fu">select</span>(data, <span class="sc">-</span>var1)</span></code></pre></div>
+<p>列の指定方法には、いくつかのやり方が存在する。並んでいる列をまとめて指定するときは:（コロン）を使う。例えば、var1からvar5までの列をまとめて抽出し、それをdata2として定義するのは以下のようにできる。</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="データの整形.html#cb66-1" tabindex="-1"></a>data2<span class="ot">&lt;-</span> <span class="fu">select</span>(data, var1<span class="sc">:</span>var5)</span></code></pre></div>
+<p>また、tidyverseのstarts_with()（ends_with()）を使うことで、変数名の冒頭（末尾）が特定の文字列から始まる変数を指定するようなことも可能である。例えば、“v” という文字から始まる変数を取り出すための指示は、いかのようになる。</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="データの整形.html#cb67-1" tabindex="-1"></a>data3<span class="ot">&lt;-</span> <span class="fu">select</span>(data, <span class="fu">starts_with</span>(<span class="st">&quot;v&quot;</span>))</span></code></pre></div>
+<p>arrangeは、データの並べかえを可能にする関数である。例えば、以下ではvar1の値が小さい順（昇順）に並べ替えるような指示を示す。一方で、降順にする場合は、desc(var1)と引数を指定する必要がある。</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="データの整形.html#cb68-1" tabindex="-1"></a>data2 <span class="ot">&lt;-</span> <span class="fu">arrange</span>(data, var1) </span>
+<span id="cb68-2"><a href="データの整形.html#cb68-2" tabindex="-1"></a>data2 <span class="ot">&lt;-</span> <span class="fu">arrange</span>(data, <span class="fu">desc</span>(var1)) </span></code></pre></div>
+<p>また、tidyverse環境において、変数名を変更することも、rename() 関数で可能になる。</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="データの整形.html#cb69-1" tabindex="-1"></a>data3 <span class="ot">&lt;-</span> <span class="fu">rename</span>(data2, <span class="at">var1 =</span> sales)</span></code></pre></div>
+<p>Tidyverse 内の dplyr を使うことでパイプ演算子（%&gt;%）が使える（ショートカット: Command (control) + Shift + m）。パイプ演算子は、左側の処理結果を演算子右側の関数の第一引数として利用するための指示である。たとえば、以下のコマンドではまず <span class="math inline">\(\small 10-6\)</span> が計算され、その結果である “4” が <code>sqrt()</code> の引数として利用される（sqrt(4) は 2）。</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="データの整形.html#cb70-1" tabindex="-1"></a>(<span class="dv">10-6</span>) <span class="sc">%&gt;%</span> <span class="fu">sqrt</span>()</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<p>パイプ演算子は、複数のデータ操作処理を連続して行う際に便利である。例えば、顧客の情報を含むデータセット(data)から、男性に該当する情報のみを抽出し、var1(例、購買額)についてのランキングを作成したうえでいくつかの変数を含んだデータセット（new_data）を作成する場合を考える。その際に実行すべき作業とそれらに対応する関数は以下のように示すことができる。</p>
+<ol style="list-style-type: decimal">
+<li>男性の情報だけ抜き出す(filter)</li>
+<li>Var1の値について降順に並べ替える(arrange)</li>
+<li>第一位から最下位までの順位を割り当てた　ranking 変数を作る(mutate)</li>
+<li>var1 , var2, var3, var4, orderだけ残し(select) new_dataとして定義する</li>
+</ol>
+<p>上記の作業を一気に行うためのコードをパイプ演算子を使わずに書くと以下の様になる（以下は見本コード）。</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="データの整形.html#cb72-1" tabindex="-1"></a>new_data <span class="ot">&lt;-</span> <span class="fu">select</span>(</span>
+<span id="cb72-2"><a href="データの整形.html#cb72-2" tabindex="-1"></a>　<span class="fu">mutate</span>(</span>
+<span id="cb72-3"><a href="データの整形.html#cb72-3" tabindex="-1"></a>　　<span class="fu">arrange</span>(</span>
+<span id="cb72-4"><a href="データの整形.html#cb72-4" tabindex="-1"></a>　　　<span class="fu">filter</span>(data, gender <span class="sc">==</span> <span class="st">&quot;male&quot;</span>),</span>
+<span id="cb72-5"><a href="データの整形.html#cb72-5" tabindex="-1"></a>　　　<span class="fu">desc</span>(var1)),</span>
+<span id="cb72-6"><a href="データの整形.html#cb72-6" tabindex="-1"></a>　　　<span class="at">ranking =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">n</span>()),</span>
+<span id="cb72-7"><a href="データの整形.html#cb72-7" tabindex="-1"></a>　 var1, var2, var3, var4, order)</span></code></pre></div>
+<p>パイプ演算子を使わない場合、先に実行する処理が内側に来ており、一見して何を行っているのか理解するのが難しい。一方でパイプ演算子を使い、左側の処理結果を演算子右側の関数の第一引数として利用すると、以下のように書き換えることができる。</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="データの整形.html#cb73-1" tabindex="-1"></a>new_data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb73-2"><a href="データの整形.html#cb73-2" tabindex="-1"></a> <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="st">&quot;male&quot;</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb73-3"><a href="データの整形.html#cb73-3" tabindex="-1"></a> <span class="fu">arrange</span>(<span class="fu">desc</span>(var1)) <span class="sc">%&gt;%</span></span>
+<span id="cb73-4"><a href="データの整形.html#cb73-4" tabindex="-1"></a> <span class="fu">mutate</span>(<span class="at">ranking =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">n</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb73-5"><a href="データの整形.html#cb73-5" tabindex="-1"></a> <span class="fu">select</span>(var1, var2, var3, var4, order)</span></code></pre></div>
+<p>パイプ演算子の利用により、各関数の処理を一つの行で示せる。また、処理の順番通りに関数を記載することが可能なので、コードの記述容易性と可読性の両方が高まる。また、パイプ演算子による操作は次の関数の第一引数以外に反映されることも可能である。第一引数以外の引数に左側の処理結果を反映させる際には、該当する箇所に “.” （ドット）を使う。たとえば、<span class="math inline">\(\small 10-2\)</span>の計算結果を用いて2から8の偶数で構成されるベクトルを返すためのコードは以下のように書くことができる。</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="データの整形.html#cb74-1" tabindex="-1"></a>(<span class="dv">10-2</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb74-2"><a href="データの整形.html#cb74-2" tabindex="-1"></a>  <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">2</span>, <span class="at">to =</span> ., <span class="at">by =</span> <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 2 4 6 8</code></pre>
+<p>データの整形・処理作業が終わったら、そのデータを自身のコンピュータ内のストレージに保存したいと考えるかもしれない。Rでは、外部への書き出しという形でデータを保存することが可能である。例えば、df という名前のデータフレームをnew_dataというファイル名で、dataというディレクトリにcsv形式を用いて保存するためには、以下のようなコードを用いる（以下は見本コード）。また、csv以外にもファイル形式は選択可能であり、例えばRのデータ形式(.Rds)で保存する場合には、“#Rds” 以降のコードを用いる。</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="データの整形.html#cb76-1" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_csv</span>(df, <span class="at">path =</span> <span class="st">&quot;data/new_data.csv&quot;</span>)</span>
+<span id="cb76-2"><a href="データの整形.html#cb76-2" tabindex="-1"></a></span>
+<span id="cb76-3"><a href="データの整形.html#cb76-3" tabindex="-1"></a><span class="co">#Rds</span></span>
+<span id="cb76-4"><a href="データの整形.html#cb76-4" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_rds</span>(df, <span class="at">path =</span> <span class="st">&quot;data/new_data.Rds&quot;</span>)</span></code></pre></div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="リサーチデザイン.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="リサーチデザインと論文の構成.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="データの読み込み.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="統計的検定を用いない顧客分析.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -344,7 +383,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/02-Researchdesign.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/04-datahandling.Rmd",
 "text": "Edit"
 },
 "history": {
