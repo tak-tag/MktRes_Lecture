@@ -86,7 +86,7 @@ cluster
 ポジショニングと知覚マップfactor
 psm
 psmrunning
-マーケティングにおける価格概念price_concept
+price_concept
 psmに関する既存研究
 受容価格に関する知見
 内的参照価格に関する知見
