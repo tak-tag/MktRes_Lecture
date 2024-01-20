@@ -85,3 +85,11 @@ regtechnic
 cluster
 ポジショニングと知覚マップfactor
 psm
+psmrunning
+マーケティングにおける価格概念price_concept
+psmに関する既存研究
+受容価格に関する知見
+内的参照価格に関する知見
+受容価格帯と内的参照価格帯の応用とpsm
+集計方法に関する注意点
+参考文献-8

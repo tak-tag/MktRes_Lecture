@@ -23,7 +23,7 @@
 <meta name="author" content="Takumi Tagashira" />
 
 
-<meta name="date" content="2023-12-26" />
+<meta name="date" content="2024-01-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -257,7 +257,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="10" data-path="cluster.html"><a href="cluster.html"><i class="fa fa-check"></i><b>10</b> セグメントとクラスター分析</a></li>
 <li class="chapter" data-level="11" data-path="ポジショニングと知覚マップfactor.html"><a href="ポジショニングと知覚マップfactor.html"><i class="fa fa-check"></i><b>11</b> ポジショニングと知覚マップ{factor}</a></li>
-<li class="chapter" data-level="12" data-path="psm.html"><a href="psm.html"><i class="fa fa-check"></i><b>12</b> 価格感度測定</a></li>
+<li class="chapter" data-level="12" data-path="psm.html"><a href="psm.html"><i class="fa fa-check"></i><b>12</b> 価格感度測定 (PSM)</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="psmrunning.html"><a href="psmrunning.html"><i class="fa fa-check"></i><b>12.1</b> PSMの実行と結果</a></li>
+<li class="chapter" data-level="12.2" data-path="マーケティングにおける価格概念price_concept.html"><a href="マーケティングにおける価格概念price_concept.html"><i class="fa fa-check"></i><b>12.2</b> マーケティングにおける価格概念{price_concept}</a></li>
+<li class="chapter" data-level="12.3" data-path="psmに関する既存研究.html"><a href="psmに関する既存研究.html"><i class="fa fa-check"></i><b>12.3</b> PSMに関する既存研究</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="psmに関する既存研究.html"><a href="psmに関する既存研究.html#受容価格に関する知見"><i class="fa fa-check"></i><b>12.3.1</b> 受容価格に関する知見</a></li>
+<li class="chapter" data-level="12.3.2" data-path="psmに関する既存研究.html"><a href="psmに関する既存研究.html#内的参照価格に関する知見"><i class="fa fa-check"></i><b>12.3.2</b> 内的参照価格に関する知見</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="受容価格帯と内的参照価格帯の応用とpsm.html"><a href="受容価格帯と内的参照価格帯の応用とpsm.html"><i class="fa fa-check"></i><b>12.4</b> 受容価格帯と内的参照価格帯の応用とPSM</a></li>
+<li class="chapter" data-level="12.5" data-path="集計方法に関する注意点.html"><a href="集計方法に関する注意点.html"><i class="fa fa-check"></i><b>12.5</b> 集計方法に関する注意点</a></li>
+<li class="chapter" data-level="12.6" data-path="参考文献-8.html"><a href="参考文献-8.html"><i class="fa fa-check"></i><b>12.6</b> 参考文献</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -282,19 +294,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1 class="title">マーケティングリサーチ講義ノート</h1>
 <h2 class="subtitle"><em>Rを使ったリサーチ基礎固め</em></h2>
 <p class="author"><em>Takumi Tagashira</em></p>
-<p class="date"><em>2023-12-26</em></p>
+<p class="date"><em>2024-01-21</em></p>
 </div>
 <div id="はじめに本資料について" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">Chapter 1</span> はじめに（本資料について）<a href="index.html#はじめに本資料について" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>本資料は神戸大学経営学部で開講されている「経営データ分析（マーケティング）」および、一橋大学商学部で開講されている「マーケティングリサーチ」の講義ノートである。本講義では、定量的な分析手法のマーケティングリサーチ文脈への応用と、R (R studio) を用いた分析の実行法を紹介する。これにより、読者が本書を通じてリサーチに従事するための基礎を固めることを期待する。なお、本資料は基礎的な統計的・計量経済学的分析手法をマーケティング領域に応用することに焦点を合わせているため、統計学、計量経済学の理論そのものや、より発展的な分析手法については他の講義や著書で学習することを求める。</p>
-<p>本資料は、経営学・商学分野の大学院修士・博士および共修で参加している大学学部生レベルの学生を主な読者層として想定し作成している。特に、修士論文や卒業論文執筆のために、マーケティング分野にて初めて学術的な論文を書く学生に向けた内容を意識して構成されている。そのため、マーケティング領域で頻繁に用いられる手法の紹介だけではなく、学術的な研究を進めるための考え方についても言及している。また、本講義の履修者はこれまで講義で基礎的な統計学・計量経済学の講義を履修していることが想定されている。このような特徴を持つ本資料の目的は以下のようにまとめることができる。</p>
+<p>本資料は、経営学・商学分野の大学学部上級および大学院修士レベルの学生を主な読者層として想定し作成している。特に、修士論文や卒業論文執筆のために、マーケティング分野にて初めて学術的な論文を書く学生に向けた内容を意識して構成されている。そのため、マーケティング領域で頻繁に用いられる手法の紹介だけではなく、学術的な研究を進めるための考え方についても言及している。また、本講義の履修者はこれまで講義で基礎的な統計学・計量経済学の講義を履修していることが想定されている。このような特徴を持つ本資料の目的は以下のようにまとめることができる。</p>
 <ol style="list-style-type: decimal">
 <li><p>マーケティング領域における研究の全体像を理解する。</p></li>
 <li><p>基本的な分析手法についての結果を適切に解釈できるようになる。</p></li>
 <li><p>基礎的な分析手法を実行する能力を習得する。</p></li>
 </ol>
 <p>筆者は、これらの目的が研究者として定量的な実証分析を実行し論文を書くことに加え、実務的な観点からも重要になると期待している。上記の目標を達成することで、リサーチプロセスをブラックボックスとして捉え、「調査会社がこう言ってたからこれが正しい」という態度で調査・分析を依頼、理解することを避けられると考えている。これを読んでいる読者の中には、現在または将来管理者としてマーケティングリサーチプロジェクトに関わる人もいるだろう。その場合リサーチの全体像を理解し、各プロセスについても理解する必要がある。また、リサーチそのものは他社にアウトソースすることもあるだろう。その場合であっても、調査会社が提出した結果をきちんと理解する必要がある。したがって、統計的な分析手法についての理解が必要になるのである。加えて、もしあなたが小規模な組織に所属しているのであれば、分析作業も自分でできたほうが良いかもしれない。その場合実際にソフトウェア上でデータを扱って分析作業をこなす能力も必要になる。上記の目的は、これらの実務的重要性も有していると考える。</p>
-<p>本資料の構成は以下の通りである。まず<a href="rusage.html#rusage">2</a>章 では、Rおよび R studioの概要及び基本的な操作方法について説明する。本資料ではフリーソフトウェアである R (R studio環境)を用いるため、実際の分析作業に移る前に各自操作に慣れてほしい。続いて前半部（<a href="design.html#design">3</a>章と<a href="survey.html#survey">4</a>章）では、研究プロセスや論文の構成について学ぶ。特に<a href="design.html#design">3</a>章は本資料の特色を表しており、分析方法やRの操作方法だけでなく「なんのために分析を実行するのか？」という問いに着目する。前半部では、リサーチ過程の全体像と論文の構成を始点とし、研究課題の設定や理論・仮説の役割に加えて、アンケート調査票設計について学ぶ。一方後半部分（5章以降）ではR studioを用いて、データ処理（<a href="handling.html#handling">5</a>章）や統計的仮説検定（<a href="test.html#test">7</a>章）、回帰分析（<a href="regintro.html#regintro">8</a>章）について学ぶ。その後、マーケティングで広く用いられている手法として、価格感度測定（<a href="psm.html#psm">12</a>章）、クラスター分析（<a href="cluster.html#cluster">10</a>章）、因子分析（<a href="#factor"><strong>??</strong></a>章）を学ぶ。なお、<a href="regintro.html#regintro">8</a> 章と <a href="regtechnic.html#regtechnic">9</a> 章で使用する企業データセットは、一橋大学社会科学高等研究院の松本行平先生の協力のもと、収集している。</p>
+<p>本資料の構成は以下の通りである。まず<a href="rusage.html#rusage">2</a>章 では、Rおよび R studioの概要及び基本的な操作方法について説明する。本資料ではフリーソフトウェアである R (R studio環境)を用いるため、実際の分析作業に移る前に各自操作に慣れてほしい。続いて前半部（<a href="design.html#design">3</a>章と<a href="survey.html#survey">4</a>章）では、研究プロセスや論文の構成について学ぶ。特に<a href="design.html#design">3</a>章は本資料の特色を表しており、分析方法やRの操作方法だけでなく「なんのために分析を実行するのか？」という問いに着目する。前半部では、リサーチ過程の全体像と論文の構成を始点とし、研究課題の設定や理論・仮説の役割に加えて、アンケート調査票設計について学ぶ。一方後半部分（5章以降）ではR studioを用いて、データ処理（<a href="handling.html#handling">5</a>章）や統計的仮説検定（<a href="test.html#test">7</a>章）、回帰分析（<a href="regintro.html#regintro">8</a>章）について学ぶ。その後、マーケティングで広く用いられている手法として、価格感度測定（<a href="psm.html#psm">12</a>章）、クラスター分析（<a href="cluster.html#cluster">10</a>章）、因子分析（<a href="#factor"><strong>??</strong></a>章）を学ぶ。</p>
 
 </div>
             </section>

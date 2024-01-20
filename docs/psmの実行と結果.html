@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>12.1 PSMの実行と結果 | マーケティングリサーチ講義ノート</title>
+  <meta name="description" content="12.1 PSMの実行と結果 | マーケティングリサーチ講義ノート" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="12.1 PSMの実行と結果 | マーケティングリサーチ講義ノート" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.git" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="12.1 PSMの実行と結果 | マーケティングリサーチ講義ノート" />
+  
+  
+  
+
+<meta name="author" content="Takumi Tagashira" />
+
+
+<meta name="date" content="2024-01-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="psm.html"/>
+<link rel="next" href="マーケティングにおける価格概念price_concept.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Marketing Research Lecture Note</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> はじめに（本資料について）</a></li>
+<li class="chapter" data-level="2" data-path="rusage.html"><a href="rusage.html"><i class="fa fa-check"></i><b>2</b> R と R studioに慣れる</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="posit-cloudを始める.html"><a href="posit-cloudを始める.html"><i class="fa fa-check"></i><b>2.1</b> Posit cloudを始める</a></li>
+<li class="chapter" data-level="2.2" data-path="補足r-studio-デスクトップ版の利用.html"><a href="補足r-studio-デスクトップ版の利用.html"><i class="fa fa-check"></i><b>2.2</b> （補足）R studio デスクトップ版の利用</a></li>
+<li class="chapter" data-level="2.3" data-path="補足デスクトップ版の利用とプロジェクト機能.html"><a href="補足デスクトップ版の利用とプロジェクト機能.html"><i class="fa fa-check"></i><b>2.3</b> （補足）デスクトップ版の利用とプロジェクト機能</a></li>
+<li class="chapter" data-level="2.4" data-path="rの基本操作.html"><a href="rの基本操作.html"><i class="fa fa-check"></i><b>2.4</b> Rの基本操作</a></li>
+<li class="chapter" data-level="2.5" data-path="r-スクリプトのすゝめ.html"><a href="r-スクリプトのすゝめ.html"><i class="fa fa-check"></i><b>2.5</b> R スクリプトのすゝめ</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="r-スクリプトのすゝめ.html"><a href="r-スクリプトのすゝめ.html#rスクリプトを書く"><i class="fa fa-check"></i><b>2.5.1</b> Rスクリプトを書く</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="本章のまとめ.html"><a href="本章のまとめ.html"><i class="fa fa-check"></i><b>2.6</b> 本章のまとめ</a></li>
+<li class="chapter" data-level="2.7" data-path="参考文献.html"><a href="参考文献.html"><i class="fa fa-check"></i><b>2.7</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="design.html"><a href="design.html"><i class="fa fa-check"></i><b>3</b> リサーチデザイン</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="マーケティング実務とリサーチ.html"><a href="マーケティング実務とリサーチ.html"><i class="fa fa-check"></i><b>3.1</b> マーケティング実務とリサーチ</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="マーケティング実務とリサーチ.html"><a href="マーケティング実務とリサーチ.html#実務とリサーチの異なる視点"><i class="fa fa-check"></i><b>3.1.1</b> 実務とリサーチの異なる視点</a></li>
+<li class="chapter" data-level="3.1.2" data-path="マーケティング実務とリサーチ.html"><a href="マーケティング実務とリサーチ.html#実務とリサーチの分離"><i class="fa fa-check"></i><b>3.1.2</b> 実務とリサーチの分離</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="リサーチデザインと論文の構成.html"><a href="リサーチデザインと論文の構成.html"><i class="fa fa-check"></i><b>3.2</b> リサーチデザインと論文の構成</a></li>
+<li class="chapter" data-level="3.3" data-path="question.html"><a href="question.html"><i class="fa fa-check"></i><b>3.3</b> 研究課題（問い）の設定</a></li>
+<li class="chapter" data-level="3.4" data-path="問題と分析をつなげる仮説の提示.html"><a href="問題と分析をつなげる仮説の提示.html"><i class="fa fa-check"></i><b>3.4</b> 問題と分析をつなげる仮説の提示</a></li>
+<li class="chapter" data-level="3.5" data-path="学術的研究のための留意点.html"><a href="学術的研究のための留意点.html"><i class="fa fa-check"></i><b>3.5</b> 学術的研究のための留意点</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="学術的研究のための留意点.html"><a href="学術的研究のための留意点.html#マーケティング研究と科学哲学"><i class="fa fa-check"></i><b>3.5.1</b> マーケティング研究と科学哲学</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="研究における理論の利用と精緻化.html"><a href="研究における理論の利用と精緻化.html"><i class="fa fa-check"></i><b>3.6</b> 研究における理論の利用と精緻化</a></li>
+<li class="chapter" data-level="3.7" data-path="参考文献-1.html"><a href="参考文献-1.html"><i class="fa fa-check"></i><b>3.7</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="survey.html"><a href="survey.html"><i class="fa fa-check"></i><b>4</b> データの種類とアンケートデザイン</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="記述的リサーチデザイン.html"><a href="記述的リサーチデザイン.html"><i class="fa fa-check"></i><b>4.1</b> 記述的リサーチデザイン</a></li>
+<li class="chapter" data-level="4.2" data-path="アンケート設計.html"><a href="アンケート設計.html"><i class="fa fa-check"></i><b>4.2</b> アンケート設計</a></li>
+<li class="chapter" data-level="4.3" data-path="質問におけるワーディング.html"><a href="質問におけるワーディング.html"><i class="fa fa-check"></i><b>4.3</b> 質問におけるワーディング</a></li>
+<li class="chapter" data-level="4.4" data-path="アンケートデザイン.html"><a href="アンケートデザイン.html"><i class="fa fa-check"></i><b>4.4</b> アンケートデザイン</a></li>
+<li class="chapter" data-level="4.5" data-path="参考文献-2.html"><a href="参考文献-2.html"><i class="fa fa-check"></i><b>4.5</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="handling.html"><a href="handling.html"><i class="fa fa-check"></i><b>5</b> データ処理と顧客関係管理（CRM）</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="データの読み込み.html"><a href="データの読み込み.html"><i class="fa fa-check"></i><b>5.1</b> データの読み込み</a></li>
+<li class="chapter" data-level="5.2" data-path="データの整形.html"><a href="データの整形.html"><i class="fa fa-check"></i><b>5.2</b> データの整形</a></li>
+<li class="chapter" data-level="5.3" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html"><i class="fa fa-check"></i><b>5.3</b> 統計的検定を用いない顧客分析</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html#データの構造変化とソート"><i class="fa fa-check"></i><b>5.3.1</b> データの構造変化とソート</a></li>
+<li class="chapter" data-level="5.3.2" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html#データ結合"><i class="fa fa-check"></i><b>5.3.2</b> データ結合</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="おまけ-wide型とlong型データセット.html"><a href="おまけ-wide型とlong型データセット.html"><i class="fa fa-check"></i><b>5.4</b> (おまけ) Wide型とLong型データセット</a></li>
+<li class="chapter" data-level="5.5" data-path="参考文献-3.html"><a href="参考文献-3.html"><i class="fa fa-check"></i><b>5.5</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="データの要約と可視化.html"><a href="データの要約と可視化.html"><i class="fa fa-check"></i><b>6</b> データの要約と可視化</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="記述統計.html"><a href="記述統計.html"><i class="fa fa-check"></i><b>6.1</b> 記述統計</a></li>
+<li class="chapter" data-level="6.2" data-path="カテゴリ変数の要約.html"><a href="カテゴリ変数の要約.html"><i class="fa fa-check"></i><b>6.2</b> カテゴリ変数の要約</a></li>
+<li class="chapter" data-level="6.3" data-path="データの可視化.html"><a href="データの可視化.html"><i class="fa fa-check"></i><b>6.3</b> データの可視化</a></li>
+<li class="chapter" data-level="6.4" data-path="二変数間の関係の要約.html"><a href="二変数間の関係の要約.html"><i class="fa fa-check"></i><b>6.4</b> 二変数間の関係の要約</a></li>
+<li class="chapter" data-level="6.5" data-path="参考文献-4.html"><a href="参考文献-4.html"><i class="fa fa-check"></i><b>6.5</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="test.html"><a href="test.html"><i class="fa fa-check"></i><b>7</b> 基礎統計学復習</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="確率モデル期待値と分散.html"><a href="確率モデル期待値と分散.html"><i class="fa fa-check"></i><b>7.1</b> 確率モデル、期待値と分散</a></li>
+<li class="chapter" data-level="7.2" data-path="統計的推測.html"><a href="統計的推測.html"><i class="fa fa-check"></i><b>7.2</b> 統計的推測</a></li>
+<li class="chapter" data-level="7.3" data-path="点推定.html"><a href="点推定.html"><i class="fa fa-check"></i><b>7.3</b> 点推定</a></li>
+<li class="chapter" data-level="7.4" data-path="推定量もまた確率変数.html"><a href="推定量もまた確率変数.html"><i class="fa fa-check"></i><b>7.4</b> 推定量もまた確率変数</a></li>
+<li class="chapter" data-level="7.5" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html"><i class="fa fa-check"></i><b>7.5</b> 補足（いくつかの確率分布の関係性）</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#正規分布"><i class="fa fa-check"></i><b>7.5.1</b> 正規分布</a></li>
+<li class="chapter" data-level="7.5.2" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#カイ二乗分布"><i class="fa fa-check"></i><b>7.5.2</b> カイ二乗分布</a></li>
+<li class="chapter" data-level="7.5.3" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#t分布"><i class="fa fa-check"></i><b>7.5.3</b> t分布</a></li>
+<li class="chapter" data-level="7.5.4" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#f分布"><i class="fa fa-check"></i><b>7.5.4</b> F分布</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="区間推定.html"><a href="区間推定.html"><i class="fa fa-check"></i><b>7.6</b> 区間推定</a></li>
+<li class="chapter" data-level="7.7" data-path="統計的仮説検定.html"><a href="統計的仮説検定.html"><i class="fa fa-check"></i><b>7.7</b> 統計的仮説検定</a></li>
+<li class="chapter" data-level="7.8" data-path="平均値に関するその他の検定.html"><a href="平均値に関するその他の検定.html"><i class="fa fa-check"></i><b>7.8</b> 平均値に関するその他の検定</a></li>
+<li class="chapter" data-level="7.9" data-path="分散分析.html"><a href="分散分析.html"><i class="fa fa-check"></i><b>7.9</b> 分散分析</a></li>
+<li class="chapter" data-level="7.10" data-path="参考文献-5.html"><a href="参考文献-5.html"><i class="fa fa-check"></i><b>7.10</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="regintro.html"><a href="regintro.html"><i class="fa fa-check"></i><b>8</b> 回帰分析</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="回帰モデル概要.html"><a href="回帰モデル概要.html"><i class="fa fa-check"></i><b>8.1</b> 回帰モデル概要</a></li>
+<li class="chapter" data-level="8.2" data-path="回帰分析における推定と検定.html"><a href="回帰分析における推定と検定.html"><i class="fa fa-check"></i><b>8.2</b> 回帰分析における推定と検定</a></li>
+<li class="chapter" data-level="8.3" data-path="重回帰モデル1.html"><a href="重回帰モデル1.html"><i class="fa fa-check"></i><b>8.3</b> 重回帰モデル1</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="重回帰モデル1.html"><a href="重回帰モデル1.html#重回帰モデル概要"><i class="fa fa-check"></i><b>8.3.1</b> 重回帰モデル概要</a></li>
+<li class="chapter" data-level="8.3.2" data-path="重回帰モデル1.html"><a href="重回帰モデル1.html#重回帰分析におけるモデル適合度"><i class="fa fa-check"></i><b>8.3.2</b> 重回帰分析におけるモデル適合度</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="重回帰モデル2.html"><a href="重回帰モデル2.html"><i class="fa fa-check"></i><b>8.4</b> 重回帰モデル2</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="重回帰モデル2.html"><a href="重回帰モデル2.html#回帰係数の解釈"><i class="fa fa-check"></i><b>8.4.1</b> 回帰係数の解釈</a></li>
+<li class="chapter" data-level="8.4.2" data-path="重回帰モデル2.html"><a href="重回帰モデル2.html#重回帰モデルにおける変数選択"><i class="fa fa-check"></i><b>8.4.2</b> 重回帰モデルにおける変数選択</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="参考文献-6.html"><a href="参考文献-6.html"><i class="fa fa-check"></i><b>8.5</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="regtechnic.html"><a href="regtechnic.html"><i class="fa fa-check"></i><b>9</b> 回帰分析上の工夫紹介</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="ダミー変数.html"><a href="ダミー変数.html"><i class="fa fa-check"></i><b>9.1</b> ダミー変数</a></li>
+<li class="chapter" data-level="9.2" data-path="交差項.html"><a href="交差項.html"><i class="fa fa-check"></i><b>9.2</b> 交差項</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="交差項.html"><a href="交差項.html#傾きダミー"><i class="fa fa-check"></i><b>9.2.1</b> 傾きダミー</a></li>
+<li class="chapter" data-level="9.2.2" data-path="交差項.html"><a href="交差項.html#量的変数同士の交差項"><i class="fa fa-check"></i><b>9.2.2</b> 量的変数同士の交差項</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="係数比較.html"><a href="係数比較.html"><i class="fa fa-check"></i><b>9.3</b> 係数比較</a></li>
+<li class="chapter" data-level="9.4" data-path="対数線形.html"><a href="対数線形.html"><i class="fa fa-check"></i><b>9.4</b> 対数線形</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="対数線形.html"><a href="対数線形.html#需要の価格弾力性追加説明"><i class="fa fa-check"></i><b>9.4.1</b> 需要の価格弾力性追加説明</a></li>
+<li class="chapter" data-level="9.4.2" data-path="対数線形.html"><a href="対数線形.html#対数線形の推定と検定"><i class="fa fa-check"></i><b>9.4.2</b> 対数線形の推定と検定</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="おまけ分析結果のまとめ出力上の工夫.html"><a href="おまけ分析結果のまとめ出力上の工夫.html"><i class="fa fa-check"></i><b>9.5</b> （おまけ）分析結果のまとめ・出力上の工夫</a></li>
+<li class="chapter" data-level="9.6" data-path="参考文献-7.html"><a href="参考文献-7.html"><i class="fa fa-check"></i><b>9.6</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="cluster.html"><a href="cluster.html"><i class="fa fa-check"></i><b>10</b> セグメントとクラスター分析</a></li>
+<li class="chapter" data-level="11" data-path="ポジショニングと知覚マップfactor.html"><a href="ポジショニングと知覚マップfactor.html"><i class="fa fa-check"></i><b>11</b> ポジショニングと知覚マップ{factor}</a></li>
+<li class="chapter" data-level="12" data-path="psm.html"><a href="psm.html"><i class="fa fa-check"></i><b>12</b> 価格感度測定 (PSM)</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="psmの実行と結果.html"><a href="psmの実行と結果.html"><i class="fa fa-check"></i><b>12.1</b> PSMの実行と結果</a></li>
+<li class="chapter" data-level="12.2" data-path="マーケティングにおける価格概念price_concept.html"><a href="マーケティングにおける価格概念price_concept.html"><i class="fa fa-check"></i><b>12.2</b> マーケティングにおける価格概念{price_concept}</a></li>
+<li class="chapter" data-level="12.3" data-path="psmに関する既存研究.html"><a href="psmに関する既存研究.html"><i class="fa fa-check"></i><b>12.3</b> PSMに関する既存研究</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="psmに関する既存研究.html"><a href="psmに関する既存研究.html#受容価格に関する知見"><i class="fa fa-check"></i><b>12.3.1</b> 受容価格に関する知見</a></li>
+<li class="chapter" data-level="12.3.2" data-path="psmに関する既存研究.html"><a href="psmに関する既存研究.html#内的参照価格に関する知見"><i class="fa fa-check"></i><b>12.3.2</b> 内的参照価格に関する知見</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="受容価格帯と内的参照価格帯の応用とpsm.html"><a href="受容価格帯と内的参照価格帯の応用とpsm.html"><i class="fa fa-check"></i><b>12.4</b> 受容価格帯と内的参照価格帯の応用とPSM</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">マーケティングリサーチ講義ノート</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="psmの実行と結果" class="section level2 hasAnchor" number="12.1">
+<h2><span class="header-section-number">12.1</span> PSMの実行と結果<a href="psmの実行と結果.html#psmの実行と結果" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>価格は、マーケティング意思決定者が調整する重要なマーケティング戦術要因（4Ps）のひとつである。価格は4Psの中で唯一企業にとっての収入を生む要因であり、製品の需要量やイメージにも関連する重要な意思決定項目である。消費者の視点にたてば、価格は自身の予算成約のもとその製品が購入に値するかを判断する定量的かつ認知的な情報であると同時に、品質や高級感を推測するための心理的影響を持つ情報としても機能する。マーケティング意思決定者は、製品のマーケティング戦略や目標と一貫するように価格を設定する必要があるが、どれぐらいの価格で販売すれば、消費者が安い/高いと感じるのかを事前に把握したいと考えるだろう。このような背景のもと、PSMは、消費者の心理的側面を踏まえた価格に関する含意の提示を目的としている。</p>
+<p>PSM では、４つの質問項目を用いて消費者の価格に対する認識を捉える。なお、質問においては、消費者の価格への知覚について知りたい対象を特定化する事が重要に有る。例えば、具体的な設問の前に、製品の画像や情報を提示することで、回答者が参照する製品やサービスを特定化することが求められる。</p>
+<ol style="list-style-type: decimal">
+<li>（ある製品に対して）安すぎて買わない価格</li>
+</ol>
+<ul>
+<li>例：「（この製品を買う［サービスを利用する]のに）価格がいくらより低いと、買うには安すぎて品質に不安を感じますか？; （回答）〇〇円」</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>安いと感じる価格</li>
+</ol>
+<ul>
+<li>例：「（この製品を買う［サービスを利用する]のに）価格がいくら以下だと、安いと感じますか？; （回答）〇〇円」</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>高いと感じる価格</li>
+</ol>
+<ul>
+<li>例：「（この製品を買う［サービスを利用する]のに）価格がいくら以上だと、高いと感じますか？; （回答）〇〇円」</li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li>高すぎて買わない価格</li>
+</ol>
+<ul>
+<li>例：「（この製品を買う［サービスを利用する]のに）価格がいくら以上だと、買うには高すぎると感じますか？; （回答）〇〇円」</li>
+</ul>
+<p>なお、これらの回答の回答によって得た４つ価格は、<span class="math inline">\(4 &gt; 3 &gt; 2 &gt; 1\)</span> という関係が成り立っている必要がある。これらの質問への回答により得たデータは、以下の図のように回答者ベースのデータである。</p>
+<div class="float">
+<img src="psm/customer_based.png" style="width:70.0%" alt="標準正規分布と確率計算" />
+<div class="figcaption">標準正規分布と確率計算</div>
+</div>
+<p>PSMでは、上記のデータから各価格レンジ（以下の例では、x円以下形式）に対して、安すぎる、安い、高い、高すぎる、と感じる人がどの程度いるかを集計し、価格ベースのデータに変換し、分析を行う。</p>
+<div class="float">
+<img src="psm/price_based.png" style="width:70.0%" alt="標準正規分布と確率計算" />
+<div class="figcaption">標準正規分布と確率計算</div>
+</div>
+<p>上記の質問によって得た回答を用いて、分析を行うが、Rでは、“pricesensitivitymeter” というパッケージの <code>psm_analysis()</code>という関数を用いることで分析を実行できる。なお、価格ベースデータへの集計もこのパッケージにおいて行ってくれる。</p>
+<p>分析の実行に際し、このパッケージをインストールし、起動する。</p>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="psmの実行と結果.html#cb248-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;pricesensitivitymeter&quot;</span>)</span>
+<span id="cb248-2"><a href="psmの実行と結果.html#cb248-2" tabindex="-1"></a><span class="fu">library</span>(pricesensitivitymeter)</span>
+<span id="cb248-3"><a href="psmの実行と結果.html#cb248-3" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<p>続いて、“psm_ex.csv” という演習用データを読み込み、<code>psm_ex</code> として定義する。</p>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="psmの実行と結果.html#cb249-1" tabindex="-1"></a>psm_ex <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/psm_ex.csv&quot;</span>, <span class="at">na =</span> <span class="st">&quot;.&quot;</span>)</span>
+<span id="cb249-2"><a href="psmの実行と結果.html#cb249-2" tabindex="-1"></a><span class="fu">head</span>(psm_ex)</span></code></pre></div>
+<pre><code>##    tch   ch   ex  tex
+## 1  963 1016 1242 1318
+## 2  866 1082 1272 1303
+## 3  795  824 1290 1297
+## 4  812  933 1211 1335
+## 5 1026  818 1228 1289
+## 6  912  987 1195 1395</code></pre>
+<p>このデータは、ある製品への価格について、安すぎる（tch）、安い（ch）、高い（ex）、高すぎる（tex）という上記4つの価格認識について、250人の消費者から回答を得た（とする）人工データである。分析の実行においては以下のように、<code>psm_analysis()</code> という関数において、<code>toocheap</code>、<code>cheap</code>、<code>expensive</code>、<code>tooexpensive</code>という引数を用いて、データセットにおけるどの変数がPSMで用いる価格情報に対応するのかを指示する必要がある。</p>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="psmの実行と結果.html#cb251-1" tabindex="-1"></a>output_psm <span class="ot">&lt;-</span> <span class="fu">psm_analysis</span>(</span>
+<span id="cb251-2"><a href="psmの実行と結果.html#cb251-2" tabindex="-1"></a>  <span class="at">toocheap =</span> <span class="st">&quot;tch&quot;</span>,</span>
+<span id="cb251-3"><a href="psmの実行と結果.html#cb251-3" tabindex="-1"></a>  <span class="at">cheap =</span> <span class="st">&quot;ch&quot;</span>,</span>
+<span id="cb251-4"><a href="psmの実行と結果.html#cb251-4" tabindex="-1"></a>  <span class="at">expensive =</span> <span class="st">&quot;ex&quot;</span>,</span>
+<span id="cb251-5"><a href="psmの実行と結果.html#cb251-5" tabindex="-1"></a>  <span class="at">tooexpensive =</span> <span class="st">&quot;tex&quot;</span>,</span>
+<span id="cb251-6"><a href="psmの実行と結果.html#cb251-6" tabindex="-1"></a>  <span class="at">data =</span> psm_ex</span>
+<span id="cb251-7"><a href="psmの実行と結果.html#cb251-7" tabindex="-1"></a>)</span>
+<span id="cb251-8"><a href="psmの実行と結果.html#cb251-8" tabindex="-1"></a></span>
+<span id="cb251-9"><a href="psmの実行と結果.html#cb251-9" tabindex="-1"></a><span class="fu">summary</span>(output_psm)</span></code></pre></div>
+<pre><code>## Van Westendorp Price Sensitivity Meter Analysis
+## 
+## Accepted Price Range: 923 - 1253 
+## Indifference Price Point: 1101 
+## Optimal Price Point: 1058 
+## 
+## ---
+## 157 cases with individual price preferences were analyzed (unweighted data).
+## Total data set consists of 250 cases. Analysis was limited to cases with transitive price preferences.
+## (Removed: n = 93 / 37% of data)</code></pre>
+<p><code>psm_analysis()</code> の実行結果として、Accepted price range（受容価格域）、Indifference price point（無差別価格）、Optimal price point（最適価格）が提示される。今回の分析の結果を見れば、受容価格域は <code>923-1253</code>、無差別価格は <code>1101</code>、最適価格は <code>1058</code> であることがうかがえる。受容価格域とは、安すぎると感じる人と高すぎると感じる人が少ない価格域を表している。 また無差別価格とは、高いと感じる人と安いと感じる人がつりあっていて、高くもなく安くもない価格である。一方で最適価格とは、高すぎたり安すぎたりして買わないという人が最も少ない価格である。</p>
+<p>また、PSMでは分析結果を図示化する慣習もあるが、これも <code>psm_plot()</code> という関数を用いて、ggplot 形式のコマンドで簡単に出力できる。</p>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="psmの実行と結果.html#cb253-1" tabindex="-1"></a><span class="fu">psm_plot</span>(output_psm) <span class="sc">+</span></span>
+<span id="cb253-2"><a href="psmの実行と結果.html#cb253-2" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb253-3"><a href="psmの実行と結果.html#cb253-3" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Price&quot;</span>,</span>
+<span id="cb253-4"><a href="psmの実行と結果.html#cb253-4" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Share of Respondents (0-1)&quot;</span>,</span>
+<span id="cb253-5"><a href="psmの実行と結果.html#cb253-5" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Price Sensitivity Meter Plot&quot;</span>,</span>
+<span id="cb253-6"><a href="psmの実行と結果.html#cb253-6" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;Shaded area: range of acceptable prices</span><span class="sc">\n</span><span class="st">Data: Randomly generated&quot;</span>) <span class="sc">+</span></span>
+<span id="cb253-7"><a href="psmの実行と結果.html#cb253-7" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="mktres_lecture_files/figure-html/psm_figure-1.png" width="672" /></p>
+<p>上記の図では、受容価格価格域、無差別価格、最適価格というそれぞれの結果が、“too cheap”（安すぎる）曲線、“too expensive”（高すぎる）曲線、“not cheap”（安いと思わない）曲線、“not expensive”（高いと思わない）曲線の交点によって導かれていることがうかがえる。これらのPSMの基本的な枠組みを踏まえ、これらの結果の背景にはどのような理論があるのか、という点について次節以降で詳しく述べる。</p>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="psm.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="マーケティングにおける価格概念price_concept.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/11-psm.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

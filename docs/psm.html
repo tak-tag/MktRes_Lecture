@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 12 価格感度測定 | マーケティングリサーチ講義ノート</title>
-  <meta name="description" content="Chapter 12 価格感度測定 | マーケティングリサーチ講義ノート" />
+  <title>Chapter 12 価格感度測定 (PSM) | マーケティングリサーチ講義ノート</title>
+  <meta name="description" content="Chapter 12 価格感度測定 (PSM) | マーケティングリサーチ講義ノート" />
   <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 12 価格感度測定 | マーケティングリサーチ講義ノート" />
+  <meta property="og:title" content="Chapter 12 価格感度測定 (PSM) | マーケティングリサーチ講義ノート" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.git" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 12 価格感度測定 | マーケティングリサーチ講義ノート" />
+  <meta name="twitter:title" content="Chapter 12 価格感度測定 (PSM) | マーケティングリサーチ講義ノート" />
   
   
   
@@ -23,7 +23,7 @@
 <meta name="author" content="Takumi Tagashira" />
 
 
-<meta name="date" content="2023-12-26" />
+<meta name="date" content="2024-01-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="ポジショニングと知覚マップfactor.html"/>
-
+<link rel="next" href="psmrunning.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -257,7 +257,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="10" data-path="cluster.html"><a href="cluster.html"><i class="fa fa-check"></i><b>10</b> セグメントとクラスター分析</a></li>
 <li class="chapter" data-level="11" data-path="ポジショニングと知覚マップfactor.html"><a href="ポジショニングと知覚マップfactor.html"><i class="fa fa-check"></i><b>11</b> ポジショニングと知覚マップ{factor}</a></li>
-<li class="chapter" data-level="12" data-path="psm.html"><a href="psm.html"><i class="fa fa-check"></i><b>12</b> 価格感度測定</a></li>
+<li class="chapter" data-level="12" data-path="psm.html"><a href="psm.html"><i class="fa fa-check"></i><b>12</b> 価格感度測定 (PSM)</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="psmrunning.html"><a href="psmrunning.html"><i class="fa fa-check"></i><b>12.1</b> PSMの実行と結果</a></li>
+<li class="chapter" data-level="12.2" data-path="マーケティングにおける価格概念price_concept.html"><a href="マーケティングにおける価格概念price_concept.html"><i class="fa fa-check"></i><b>12.2</b> マーケティングにおける価格概念{price_concept}</a></li>
+<li class="chapter" data-level="12.3" data-path="psmに関する既存研究.html"><a href="psmに関する既存研究.html"><i class="fa fa-check"></i><b>12.3</b> PSMに関する既存研究</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="psmに関する既存研究.html"><a href="psmに関する既存研究.html#受容価格に関する知見"><i class="fa fa-check"></i><b>12.3.1</b> 受容価格に関する知見</a></li>
+<li class="chapter" data-level="12.3.2" data-path="psmに関する既存研究.html"><a href="psmに関する既存研究.html#内的参照価格に関する知見"><i class="fa fa-check"></i><b>12.3.2</b> 内的参照価格に関する知見</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="受容価格帯と内的参照価格帯の応用とpsm.html"><a href="受容価格帯と内的参照価格帯の応用とpsm.html"><i class="fa fa-check"></i><b>12.4</b> 受容価格帯と内的参照価格帯の応用とPSM</a></li>
+<li class="chapter" data-level="12.5" data-path="集計方法に関する注意点.html"><a href="集計方法に関する注意点.html"><i class="fa fa-check"></i><b>12.5</b> 集計方法に関する注意点</a></li>
+<li class="chapter" data-level="12.6" data-path="参考文献-8.html"><a href="参考文献-8.html"><i class="fa fa-check"></i><b>12.6</b> 参考文献</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -279,37 +291,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="psm" class="section level1 hasAnchor" number="12">
-<h1><span class="header-section-number">Chapter 12</span> 価格感度測定<a href="psm.html#psm" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>鋭意制作中（講義スライドを参照してください）。ごめんなさい。</p>
-
+<h1><span class="header-section-number">Chapter 12</span> 価格感度測定 (PSM)<a href="psm.html#psm" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>本章では、マーケティングにおける実務的意思決定により直接的に関わるマーケティング調査法について紹介する。特に、本講義では「消費者に受け入れられる価格」について洞察を得るための方法として、価格感度測定（Price Sensitivity Meter; PSM）という手法について説明する。PSMは、マーケティング戦術決定に役立つ調査・分析手法でありながら、高度な分析手法を用いないアンケート調査による簡便なアプローチとして広く実務的に用いられている手法である。本講義では、PSM の方法と結果の解釈に加えて、PSM に関する学術的背景についても説明することで、「PSM が何を明らかにしようとしているのか」という前提認識についても直感的に理解できるようになることを目的とする。そのために本章では、以下の順でPSMについての説明を行う。まず次節では、PSMでどのような情報を得ることができるのかを概観するため、PSMで用いる調査方法と、Rでの分析方法を紹介する。続いて、質問の背景に存在する価格概念について説明した後、PSMの背景に存在する学術的議論について簡単に触れる。</p>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-<a href="ポジショニングと知覚マップfactor.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="ポジショニングと知覚マップfactor.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="psmrunning.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
