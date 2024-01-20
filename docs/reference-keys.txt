@@ -83,7 +83,7 @@ regtechnic
 おまけ分析結果のまとめ出力上の工夫
 参考文献-7
 cluster
-ポジショニングと知覚マップfactor
+factor
 psm
 psmrunning
 price_concept
