@@ -5,6 +5,13 @@ tab:llnsimulation
 tab:errortypes
 tab:variablechoice
 tab:modelcomparison
+fig:psmfigure
+fig:LpHpfig
+fig:referenceprice
+fig:brcfig
+fig:acceptfig
+fig:psmfig
+fig:NSMfig
 はじめに本資料について
 rusage
 posit-cloudを始める

@@ -23,7 +23,7 @@
 <meta name="author" content="Takumi Tagashira" />
 
 
-<meta name="date" content="2024-01-21" />
+<meta name="date" content="2024-01-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -292,8 +292,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="psmrunning" class="section level2 hasAnchor" number="12.1">
 <h2><span class="header-section-number">12.1</span> PSMの実行と結果<a href="psmrunning.html#psmrunning" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>価格は、マーケティング意思決定者が調整する重要なマーケティング戦術要因（4Ps）のひとつである。価格は4Psの中で唯一企業にとっての収入を生む要因であり、製品の需要量やイメージにも関連する重要な意思決定項目である。消費者の視点にたてば、価格は自身の予算成約のもとその製品が購入に値するかを判断する定量的かつ認知的な情報であると同時に、品質や高級感を推測するための心理的影響を持つ情報としても機能する。マーケティング意思決定者は、製品のマーケティング戦略や目標と一貫するように価格を設定する必要があるが、どれぐらいの価格で販売すれば、消費者が安い/高いと感じるのかを事前に把握したいと考えるだろう。このような背景のもと、PSMは、消費者の心理的側面を踏まえた価格に関する含意の提示を目的としている。</p>
-<p>PSM では、４つの質問項目を用いて消費者の価格に対する認識を捉える。なお、質問においては、消費者の価格への知覚について知りたい対象を特定化する事が重要に有る。例えば、具体的な設問の前に、製品の画像や情報を提示することで、回答者が参照する製品やサービスを特定化することが求められる。</p>
+<p>価格は、マーケティング意思決定者が調整する重要なマーケティング戦術要因（4Ps）のひとつである。価格は4Psの中で唯一企業にとっての収入を生む要因であり、製品の需要量やイメージにも関連する重要な意思決定項目である。消費者の視点にたてば、価格は自身の予算制約のもとその製品が購入に値するかを判断する定量的かつ認知的な情報であると同時に、品質や高級感を推測するための心理的影響を持つ情報としても機能する。マーケティング意思決定者は、製品のマーケティング戦略や目標と一貫するように価格を設定する必要があるが、どれぐらいの価格で販売すれば、消費者が安い/高いと感じるのかを事前に把握したいと考えるだろう。このような背景のもと、PSMは、消費者の心理的側面を踏まえた価格に関する含意の提示を目的としている。</p>
+<p>PSM では、4つの質問項目を用いて消費者の価格に対する認識を捉える。なお、質問においては、消費者の価格に関する知覚について知りたい対象（製品やサービス）を特定化する必要がある。例えば、具体的な設問の前に、製品の画像や情報を提示することで、回答者が参照する製品やサービスを特定化することも有効になる。その上で、PSMでは以下の4つの質問によって調査を行う。</p>
 <ol style="list-style-type: decimal">
 <li>（ある製品に対して）安すぎて買わない価格</li>
 </ol>
@@ -318,18 +318,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>例：「（この製品を買う［サービスを利用する]のに）価格がいくら以上だと、買うには高すぎると感じますか？; （回答）〇〇円」</li>
 </ul>
-<p>なお、これらの回答の回答によって得た４つ価格は、<span class="math inline">\(4 &gt; 3 &gt; 2 &gt; 1\)</span> という関係が成り立っている必要がある。これらの質問への回答により得たデータは、以下の図のように回答者ベースのデータである。</p>
+<p>なお、これらの回答の回答によって得た４つ価格は、<span class="math inline">\(4 &gt; 3 &gt; 2 &gt; 1\)</span> という関係が成り立っている必要がある。これらの質問への回答により得たデータは、以下の図のように回答者ベースの構造をもつはずである。</p>
 <div class="float">
-<img src="psm/customer_based.png" style="width:70.0%" alt="標準正規分布と確率計算" />
-<div class="figcaption">標準正規分布と確率計算</div>
+<img src="psm/customer_based.png" style="width:70.0%" alt="アンケート元データ構造" />
+<div class="figcaption">アンケート元データ構造</div>
 </div>
-<p>PSMでは、上記のデータから各価格レンジ（以下の例では、x円以下形式）に対して、安すぎる、安い、高い、高すぎる、と感じる人がどの程度いるかを集計し、価格ベースのデータに変換し、分析を行う。</p>
+<p>PSMでは、上記のデータから各価格レンジ（以下の例では、x円以下形式）に対して、安すぎる、安い、高い、高すぎる、と感じる人がどの程度いるかを集計する。ある価格水準に対し、安い（高い）や安すぎる（高すぎる）と感じる回答者がどれだけいるのかという（相対）頻度を求めることで分析を行う。以下の表はPSMでの集計を簡単に示したデータ構造である。</p>
 <div class="float">
-<img src="psm/price_based.png" style="width:70.0%" alt="標準正規分布と確率計算" />
-<div class="figcaption">標準正規分布と確率計算</div>
+<img src="psm/price_based.png" style="width:70.0%" alt="PSM用データ構造" />
+<div class="figcaption">PSM用データ構造</div>
 </div>
-<p>上記の質問によって得た回答を用いて、分析を行うが、Rでは、“pricesensitivitymeter” というパッケージの <code>psm_analysis()</code>という関数を用いることで分析を実行できる。なお、価格ベースデータへの集計もこのパッケージにおいて行ってくれる。</p>
-<p>分析の実行に際し、このパッケージをインストールし、起動する。</p>
+<p>Rを用いた分析においては、自身でデータ構造の変換を行う必要はない。Rでは、“pricesensitivitymeter” というパッケージの <code>psm_analysis()</code>という関数を用いることで分析を実行できる。なお、PSM用データ構造への集計作業もこのパッケージにおいて行ってくれる。</p>
+<p>ここからは、実際にRを用いたPSMの実行手順を紹介する。まず分析の実行に際し、このパッケージをインストールし、起動する。</p>
 <div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="psmrunning.html#cb248-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;pricesensitivitymeter&quot;</span>)</span>
 <span id="cb248-2"><a href="psmrunning.html#cb248-2" tabindex="-1"></a><span class="fu">library</span>(pricesensitivitymeter)</span>
 <span id="cb248-3"><a href="psmrunning.html#cb248-3" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
@@ -343,7 +343,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4  812  933 1211 1335
 ## 5 1026  818 1228 1289
 ## 6  912  987 1195 1395</code></pre>
-<p>このデータは、ある製品への価格について、安すぎる（tch）、安い（ch）、高い（ex）、高すぎる（tex）という上記4つの価格認識について、250人の消費者から回答を得た（とする）人工データである。分析の実行においては以下のように、<code>psm_analysis()</code> という関数において、<code>toocheap</code>、<code>cheap</code>、<code>expensive</code>、<code>tooexpensive</code>という引数を用いて、データセットにおけるどの変数がPSMで用いる価格情報に対応するのかを指示する必要がある。</p>
+<p>このデータは、ある製品への価格について、安すぎる（tch）、安い（ch）、高い（ex）、高すぎる（tex）という上記4つの価格認識について、250人の消費者から回答を得た（と仮定する）人工データである。分析の実行においては以下のように、<code>psm_analysis()</code> という関数において、<code>toocheap</code>、<code>cheap</code>、<code>expensive</code>、<code>tooexpensive</code>という引数を用いて、データセットにおけるどの変数がPSMで用いる価格情報に対応するのかを指示する必要がある。</p>
 <div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="psmrunning.html#cb251-1" tabindex="-1"></a>output_psm <span class="ot">&lt;-</span> <span class="fu">psm_analysis</span>(</span>
 <span id="cb251-2"><a href="psmrunning.html#cb251-2" tabindex="-1"></a>  <span class="at">toocheap =</span> <span class="st">&quot;tch&quot;</span>,</span>
 <span id="cb251-3"><a href="psmrunning.html#cb251-3" tabindex="-1"></a>  <span class="at">cheap =</span> <span class="st">&quot;ch&quot;</span>,</span>
@@ -363,7 +363,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 157 cases with individual price preferences were analyzed (unweighted data).
 ## Total data set consists of 250 cases. Analysis was limited to cases with transitive price preferences.
 ## (Removed: n = 93 / 37% of data)</code></pre>
-<p><code>psm_analysis()</code> の実行結果として、Accepted price range（受容価格域）、Indifference price point（無差別価格）、Optimal price point（最適価格）が提示される。今回の分析の結果を見れば、受容価格域は <code>923-1253</code>、無差別価格は <code>1101</code>、最適価格は <code>1058</code> であることがうかがえる。受容価格域とは、安すぎると感じる人と高すぎると感じる人が少ない価格域を表している。 また無差別価格とは、高いと感じる人と安いと感じる人がつりあっていて、高くもなく安くもない価格である。一方で最適価格とは、高すぎたり安すぎたりして買わないという人が最も少ない価格である。</p>
+<p><code>psm_analysis()</code> の実行結果として、Accepted price range（受容価格域）、Indifference price point（無差別価格）、Optimal price point（最適価格）が提示される。今回の分析の結果を見れば、受容価格域は <code>923-1253</code>、無差別価格は <code>1101</code>、最適価格は <code>1058</code> である。受容価格域とは、安すぎると感じる人と高すぎると感じる人が少ない価格域を表している。 また無差別価格とは、高いと感じる人と安いと感じる人がつりあっていて、高くもなく安くもない価格である。一方で最適価格とは、高すぎたり安すぎたりして買わないという人が最も少ない（受容する人が最も多い）価格である。</p>
 <p>また、PSMでは分析結果を図示化する慣習もあるが、これも <code>psm_plot()</code> という関数を用いて、ggplot 形式のコマンドで簡単に出力できる。</p>
 <div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="psmrunning.html#cb253-1" tabindex="-1"></a><span class="fu">psm_plot</span>(output_psm) <span class="sc">+</span></span>
 <span id="cb253-2"><a href="psmrunning.html#cb253-2" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
@@ -372,8 +372,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb253-5"><a href="psmrunning.html#cb253-5" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Price Sensitivity Meter Plot&quot;</span>,</span>
 <span id="cb253-6"><a href="psmrunning.html#cb253-6" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;Shaded area: range of acceptable prices</span><span class="sc">\n</span><span class="st">Data: Randomly generated&quot;</span>) <span class="sc">+</span></span>
 <span id="cb253-7"><a href="psmrunning.html#cb253-7" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
-<p><img src="mktres_lecture_files/figure-html/psm_figure-1.png" width="672" /></p>
-<p>上記の図では、受容価格価格域、無差別価格、最適価格というそれぞれの結果が、“too cheap”（安すぎる）曲線、“too expensive”（高すぎる）曲線、“not cheap”（安いと思わない）曲線、“not expensive”（高いと思わない）曲線の交点によって導かれていることがうかがえる。これらのPSMの基本的な枠組みを踏まえ、これらの結果の背景にはどのような理論があるのか、という点について次節以降で詳しく述べる。</p>
+<div class="figure"><span style="display:block;" id="fig:psmfigure"></span>
+<img src="mktres_lecture_files/figure-html/psmfigure-1.png" alt="PSM Plot" width="672" />
+<p class="caption">
+Figure 12.1: PSM Plot
+</p>
+</div>
+<p>上記の図では、受容価格価格域、無差別価格、最適価格というそれぞれの結果が、“too cheap”（安すぎる）曲線、“too expensive”（高すぎる）曲線、“not cheap”（安いと感じない）曲線、“not expensive”（高いと感じない）曲線の交点によって導かれていることがうかがえる。次節以降では、これらの結果の背景にはどのような理論があるのかについて詳しく述べる。</p>
 </div>
             </section>
 
