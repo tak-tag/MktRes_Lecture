@@ -90,6 +90,7 @@ regtechnic
 おまけ分析結果のまとめ出力上の工夫
 参考文献-7
 cluster
+セグメンテーションとマーケティング意思決定
 factor
 psm
 psmrunning
