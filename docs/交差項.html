@@ -23,7 +23,7 @@
 <meta name="author" content="Takumi Tagashira" />
 
 
-<meta name="date" content="2024-02-24" />
+<meta name="date" content="2024-02-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -258,6 +258,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10" data-path="cluster.html"><a href="cluster.html"><i class="fa fa-check"></i><b>10</b> セグメントとクラスター分析</a>
 <ul>
 <li class="chapter" data-level="10.1" data-path="セグメンテーションとマーケティング意思決定.html"><a href="セグメンテーションとマーケティング意思決定.html"><i class="fa fa-check"></i><b>10.1</b> セグメンテーションとマーケティング意思決定</a></li>
+<li class="chapter" data-level="10.2" data-path="セグメンテーションの実行とクラスター分析.html"><a href="セグメンテーションの実行とクラスター分析.html"><i class="fa fa-check"></i><b>10.2</b> セグメンテーションの実行とクラスター分析</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="セグメンテーションの実行とクラスター分析.html"><a href="セグメンテーションの実行とクラスター分析.html#Hier"><i class="fa fa-check"></i><b>10.2.1</b> 階層的クラスター分析</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="k-means.html"><a href="k-means.html"><i class="fa fa-check"></i><b>10.3</b> 非階層的クラスター分析：K-means法</a></li>
+<li class="chapter" data-level="10.4" data-path="rによるクラスター分析の実行.html"><a href="rによるクラスター分析の実行.html"><i class="fa fa-check"></i><b>10.4</b> Rによるクラスター分析の実行</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="factor.html"><a href="factor.html"><i class="fa fa-check"></i><b>11</b> ポジショニングと知覚マップ</a></li>
 <li class="chapter" data-level="12" data-path="psm.html"><a href="psm.html"><i class="fa fa-check"></i><b>12</b> 価格感度測定 (PSM)</a>
@@ -488,7 +494,8 @@ y_i = \beta_0 + \beta_1 (x_i-\bar{x})+\beta_2(z_i-\bar{z})+\beta_3(x_i-\bar{x})\
 <span id="cb221-4"><a href="交差項.html#cb221-4" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;R&amp;D Investment&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Sales&quot;</span>)<span class="sc">+</span> </span>
 <span id="cb221-5"><a href="交差項.html#cb221-5" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">name =</span> <span class="st">&quot;Promotion level&quot;</span>, <span class="at">labels=</span>leg)</span></code></pre></div>
 <pre><code>## Scale for colour is already present.
-## Adding another scale for colour, which will replace the existing scale.</code></pre>
+## Adding another scale for colour, which will replace the existing
+## scale.</code></pre>
 <div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="交差項.html#cb223-1" tabindex="-1"></a>int_fig1</span></code></pre></div>
 <p><img src="mktres_lecture_files/figure-html/slopeHeadphone-1.png" width="672" /></p>
 <p>続いて、二つ目の方法を実行するために、以下の要領でパッケージをインストールしてほしい。<code>marginaleffects</code> は、<code>margins</code> や <code>emtrends</code> の機能を引き継ぎ、限界効果に関する計算結果を図示化するためのパッケージである<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a>。</p>

@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>10.2 セグメンテーションの実行とクラスター分析 | マーケティングリサーチ講義ノート</title>
+  <meta name="description" content="10.2 セグメンテーションの実行とクラスター分析 | マーケティングリサーチ講義ノート" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="10.2 セグメンテーションの実行とクラスター分析 | マーケティングリサーチ講義ノート" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.git" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="10.2 セグメンテーションの実行とクラスター分析 | マーケティングリサーチ講義ノート" />
+  
+  
+  
+
+<meta name="author" content="Takumi Tagashira" />
+
+
+<meta name="date" content="2024-02-28" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="セグメンテーションとマーケティング意思決定.html"/>
+<link rel="next" href="k-means.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Marketing Research Lecture Note</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> はじめに（本資料について）</a></li>
+<li class="chapter" data-level="2" data-path="rusage.html"><a href="rusage.html"><i class="fa fa-check"></i><b>2</b> R と R studioに慣れる</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="posit-cloudを始める.html"><a href="posit-cloudを始める.html"><i class="fa fa-check"></i><b>2.1</b> Posit cloudを始める</a></li>
+<li class="chapter" data-level="2.2" data-path="補足r-studio-デスクトップ版の利用.html"><a href="補足r-studio-デスクトップ版の利用.html"><i class="fa fa-check"></i><b>2.2</b> （補足）R studio デスクトップ版の利用</a></li>
+<li class="chapter" data-level="2.3" data-path="補足デスクトップ版の利用とプロジェクト機能.html"><a href="補足デスクトップ版の利用とプロジェクト機能.html"><i class="fa fa-check"></i><b>2.3</b> （補足）デスクトップ版の利用とプロジェクト機能</a></li>
+<li class="chapter" data-level="2.4" data-path="rの基本操作.html"><a href="rの基本操作.html"><i class="fa fa-check"></i><b>2.4</b> Rの基本操作</a></li>
+<li class="chapter" data-level="2.5" data-path="r-スクリプトのすゝめ.html"><a href="r-スクリプトのすゝめ.html"><i class="fa fa-check"></i><b>2.5</b> R スクリプトのすゝめ</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="r-スクリプトのすゝめ.html"><a href="r-スクリプトのすゝめ.html#rスクリプトを書く"><i class="fa fa-check"></i><b>2.5.1</b> Rスクリプトを書く</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="本章のまとめ.html"><a href="本章のまとめ.html"><i class="fa fa-check"></i><b>2.6</b> 本章のまとめ</a></li>
+<li class="chapter" data-level="2.7" data-path="参考文献.html"><a href="参考文献.html"><i class="fa fa-check"></i><b>2.7</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="design.html"><a href="design.html"><i class="fa fa-check"></i><b>3</b> リサーチデザイン</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="マーケティング実務とリサーチ.html"><a href="マーケティング実務とリサーチ.html"><i class="fa fa-check"></i><b>3.1</b> マーケティング実務とリサーチ</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="マーケティング実務とリサーチ.html"><a href="マーケティング実務とリサーチ.html#実務とリサーチの異なる視点"><i class="fa fa-check"></i><b>3.1.1</b> 実務とリサーチの異なる視点</a></li>
+<li class="chapter" data-level="3.1.2" data-path="マーケティング実務とリサーチ.html"><a href="マーケティング実務とリサーチ.html#実務とリサーチの分離"><i class="fa fa-check"></i><b>3.1.2</b> 実務とリサーチの分離</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="リサーチデザインと論文の構成.html"><a href="リサーチデザインと論文の構成.html"><i class="fa fa-check"></i><b>3.2</b> リサーチデザインと論文の構成</a></li>
+<li class="chapter" data-level="3.3" data-path="question.html"><a href="question.html"><i class="fa fa-check"></i><b>3.3</b> 研究課題（問い）の設定</a></li>
+<li class="chapter" data-level="3.4" data-path="問題と分析をつなげる仮説の提示.html"><a href="問題と分析をつなげる仮説の提示.html"><i class="fa fa-check"></i><b>3.4</b> 問題と分析をつなげる仮説の提示</a></li>
+<li class="chapter" data-level="3.5" data-path="学術的研究のための留意点.html"><a href="学術的研究のための留意点.html"><i class="fa fa-check"></i><b>3.5</b> 学術的研究のための留意点</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="学術的研究のための留意点.html"><a href="学術的研究のための留意点.html#マーケティング研究と科学哲学"><i class="fa fa-check"></i><b>3.5.1</b> マーケティング研究と科学哲学</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="研究における理論の利用と精緻化.html"><a href="研究における理論の利用と精緻化.html"><i class="fa fa-check"></i><b>3.6</b> 研究における理論の利用と精緻化</a></li>
+<li class="chapter" data-level="3.7" data-path="参考文献-1.html"><a href="参考文献-1.html"><i class="fa fa-check"></i><b>3.7</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="survey.html"><a href="survey.html"><i class="fa fa-check"></i><b>4</b> データの種類とアンケートデザイン</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="記述的リサーチデザイン.html"><a href="記述的リサーチデザイン.html"><i class="fa fa-check"></i><b>4.1</b> 記述的リサーチデザイン</a></li>
+<li class="chapter" data-level="4.2" data-path="アンケート設計.html"><a href="アンケート設計.html"><i class="fa fa-check"></i><b>4.2</b> アンケート設計</a></li>
+<li class="chapter" data-level="4.3" data-path="質問におけるワーディング.html"><a href="質問におけるワーディング.html"><i class="fa fa-check"></i><b>4.3</b> 質問におけるワーディング</a></li>
+<li class="chapter" data-level="4.4" data-path="アンケートデザイン.html"><a href="アンケートデザイン.html"><i class="fa fa-check"></i><b>4.4</b> アンケートデザイン</a></li>
+<li class="chapter" data-level="4.5" data-path="参考文献-2.html"><a href="参考文献-2.html"><i class="fa fa-check"></i><b>4.5</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="handling.html"><a href="handling.html"><i class="fa fa-check"></i><b>5</b> データ処理と顧客関係管理（CRM）</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="データの読み込み.html"><a href="データの読み込み.html"><i class="fa fa-check"></i><b>5.1</b> データの読み込み</a></li>
+<li class="chapter" data-level="5.2" data-path="データの整形.html"><a href="データの整形.html"><i class="fa fa-check"></i><b>5.2</b> データの整形</a></li>
+<li class="chapter" data-level="5.3" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html"><i class="fa fa-check"></i><b>5.3</b> 統計的検定を用いない顧客分析</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html#データの構造変化とソート"><i class="fa fa-check"></i><b>5.3.1</b> データの構造変化とソート</a></li>
+<li class="chapter" data-level="5.3.2" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html#データ結合"><i class="fa fa-check"></i><b>5.3.2</b> データ結合</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="おまけ-wide型とlong型データセット.html"><a href="おまけ-wide型とlong型データセット.html"><i class="fa fa-check"></i><b>5.4</b> (おまけ) Wide型とLong型データセット</a></li>
+<li class="chapter" data-level="5.5" data-path="参考文献-3.html"><a href="参考文献-3.html"><i class="fa fa-check"></i><b>5.5</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="データの要約と可視化.html"><a href="データの要約と可視化.html"><i class="fa fa-check"></i><b>6</b> データの要約と可視化</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="記述統計.html"><a href="記述統計.html"><i class="fa fa-check"></i><b>6.1</b> 記述統計</a></li>
+<li class="chapter" data-level="6.2" data-path="カテゴリ変数の要約.html"><a href="カテゴリ変数の要約.html"><i class="fa fa-check"></i><b>6.2</b> カテゴリ変数の要約</a></li>
+<li class="chapter" data-level="6.3" data-path="データの可視化.html"><a href="データの可視化.html"><i class="fa fa-check"></i><b>6.3</b> データの可視化</a></li>
+<li class="chapter" data-level="6.4" data-path="二変数間の関係の要約.html"><a href="二変数間の関係の要約.html"><i class="fa fa-check"></i><b>6.4</b> 二変数間の関係の要約</a></li>
+<li class="chapter" data-level="6.5" data-path="参考文献-4.html"><a href="参考文献-4.html"><i class="fa fa-check"></i><b>6.5</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="test.html"><a href="test.html"><i class="fa fa-check"></i><b>7</b> 基礎統計学復習</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="確率モデル期待値と分散.html"><a href="確率モデル期待値と分散.html"><i class="fa fa-check"></i><b>7.1</b> 確率モデル、期待値と分散</a></li>
+<li class="chapter" data-level="7.2" data-path="統計的推測.html"><a href="統計的推測.html"><i class="fa fa-check"></i><b>7.2</b> 統計的推測</a></li>
+<li class="chapter" data-level="7.3" data-path="点推定.html"><a href="点推定.html"><i class="fa fa-check"></i><b>7.3</b> 点推定</a></li>
+<li class="chapter" data-level="7.4" data-path="推定量もまた確率変数.html"><a href="推定量もまた確率変数.html"><i class="fa fa-check"></i><b>7.4</b> 推定量もまた確率変数</a></li>
+<li class="chapter" data-level="7.5" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html"><i class="fa fa-check"></i><b>7.5</b> 補足（いくつかの確率分布の関係性）</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#正規分布"><i class="fa fa-check"></i><b>7.5.1</b> 正規分布</a></li>
+<li class="chapter" data-level="7.5.2" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#カイ二乗分布"><i class="fa fa-check"></i><b>7.5.2</b> カイ二乗分布</a></li>
+<li class="chapter" data-level="7.5.3" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#t分布"><i class="fa fa-check"></i><b>7.5.3</b> t分布</a></li>
+<li class="chapter" data-level="7.5.4" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#f分布"><i class="fa fa-check"></i><b>7.5.4</b> F分布</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="区間推定.html"><a href="区間推定.html"><i class="fa fa-check"></i><b>7.6</b> 区間推定</a></li>
+<li class="chapter" data-level="7.7" data-path="統計的仮説検定.html"><a href="統計的仮説検定.html"><i class="fa fa-check"></i><b>7.7</b> 統計的仮説検定</a></li>
+<li class="chapter" data-level="7.8" data-path="平均値に関するその他の検定.html"><a href="平均値に関するその他の検定.html"><i class="fa fa-check"></i><b>7.8</b> 平均値に関するその他の検定</a></li>
+<li class="chapter" data-level="7.9" data-path="分散分析.html"><a href="分散分析.html"><i class="fa fa-check"></i><b>7.9</b> 分散分析</a></li>
+<li class="chapter" data-level="7.10" data-path="参考文献-5.html"><a href="参考文献-5.html"><i class="fa fa-check"></i><b>7.10</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="regintro.html"><a href="regintro.html"><i class="fa fa-check"></i><b>8</b> 回帰分析</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="回帰モデル概要.html"><a href="回帰モデル概要.html"><i class="fa fa-check"></i><b>8.1</b> 回帰モデル概要</a></li>
+<li class="chapter" data-level="8.2" data-path="回帰分析における推定と検定.html"><a href="回帰分析における推定と検定.html"><i class="fa fa-check"></i><b>8.2</b> 回帰分析における推定と検定</a></li>
+<li class="chapter" data-level="8.3" data-path="重回帰モデル1.html"><a href="重回帰モデル1.html"><i class="fa fa-check"></i><b>8.3</b> 重回帰モデル1</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="重回帰モデル1.html"><a href="重回帰モデル1.html#重回帰モデル概要"><i class="fa fa-check"></i><b>8.3.1</b> 重回帰モデル概要</a></li>
+<li class="chapter" data-level="8.3.2" data-path="重回帰モデル1.html"><a href="重回帰モデル1.html#重回帰分析におけるモデル適合度"><i class="fa fa-check"></i><b>8.3.2</b> 重回帰分析におけるモデル適合度</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="重回帰モデル2.html"><a href="重回帰モデル2.html"><i class="fa fa-check"></i><b>8.4</b> 重回帰モデル2</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="重回帰モデル2.html"><a href="重回帰モデル2.html#回帰係数の解釈"><i class="fa fa-check"></i><b>8.4.1</b> 回帰係数の解釈</a></li>
+<li class="chapter" data-level="8.4.2" data-path="重回帰モデル2.html"><a href="重回帰モデル2.html#重回帰モデルにおける変数選択"><i class="fa fa-check"></i><b>8.4.2</b> 重回帰モデルにおける変数選択</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="参考文献-6.html"><a href="参考文献-6.html"><i class="fa fa-check"></i><b>8.5</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="regtechnic.html"><a href="regtechnic.html"><i class="fa fa-check"></i><b>9</b> 回帰分析上の工夫紹介</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="ダミー変数.html"><a href="ダミー変数.html"><i class="fa fa-check"></i><b>9.1</b> ダミー変数</a></li>
+<li class="chapter" data-level="9.2" data-path="交差項.html"><a href="交差項.html"><i class="fa fa-check"></i><b>9.2</b> 交差項</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="交差項.html"><a href="交差項.html#傾きダミー"><i class="fa fa-check"></i><b>9.2.1</b> 傾きダミー</a></li>
+<li class="chapter" data-level="9.2.2" data-path="交差項.html"><a href="交差項.html#量的変数同士の交差項"><i class="fa fa-check"></i><b>9.2.2</b> 量的変数同士の交差項</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="係数比較.html"><a href="係数比較.html"><i class="fa fa-check"></i><b>9.3</b> 係数比較</a></li>
+<li class="chapter" data-level="9.4" data-path="対数線形.html"><a href="対数線形.html"><i class="fa fa-check"></i><b>9.4</b> 対数線形</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="対数線形.html"><a href="対数線形.html#需要の価格弾力性追加説明"><i class="fa fa-check"></i><b>9.4.1</b> 需要の価格弾力性追加説明</a></li>
+<li class="chapter" data-level="9.4.2" data-path="対数線形.html"><a href="対数線形.html#対数線形の推定と検定"><i class="fa fa-check"></i><b>9.4.2</b> 対数線形の推定と検定</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="おまけ分析結果のまとめ出力上の工夫.html"><a href="おまけ分析結果のまとめ出力上の工夫.html"><i class="fa fa-check"></i><b>9.5</b> （おまけ）分析結果のまとめ・出力上の工夫</a></li>
+<li class="chapter" data-level="9.6" data-path="参考文献-7.html"><a href="参考文献-7.html"><i class="fa fa-check"></i><b>9.6</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="cluster.html"><a href="cluster.html"><i class="fa fa-check"></i><b>10</b> セグメントとクラスター分析</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="セグメンテーションとマーケティング意思決定.html"><a href="セグメンテーションとマーケティング意思決定.html"><i class="fa fa-check"></i><b>10.1</b> セグメンテーションとマーケティング意思決定</a></li>
+<li class="chapter" data-level="10.2" data-path="セグメンテーションの実行とクラスター分析.html"><a href="セグメンテーションの実行とクラスター分析.html"><i class="fa fa-check"></i><b>10.2</b> セグメンテーションの実行とクラスター分析</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="セグメンテーションの実行とクラスター分析.html"><a href="セグメンテーションの実行とクラスター分析.html#Hier"><i class="fa fa-check"></i><b>10.2.1</b> 階層的クラスター分析</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="k-means.html"><a href="k-means.html"><i class="fa fa-check"></i><b>10.3</b> 非階層的クラスター分析：K-means法</a></li>
+<li class="chapter" data-level="10.4" data-path="rによるクラスター分析の実行.html"><a href="rによるクラスター分析の実行.html"><i class="fa fa-check"></i><b>10.4</b> Rによるクラスター分析の実行</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="factor.html"><a href="factor.html"><i class="fa fa-check"></i><b>11</b> ポジショニングと知覚マップ</a></li>
+<li class="chapter" data-level="12" data-path="psm.html"><a href="psm.html"><i class="fa fa-check"></i><b>12</b> 価格感度測定 (PSM)</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="psmrunning.html"><a href="psmrunning.html"><i class="fa fa-check"></i><b>12.1</b> PSMの実行と結果</a></li>
+<li class="chapter" data-level="12.2" data-path="price_concept.html"><a href="price_concept.html"><i class="fa fa-check"></i><b>12.2</b> マーケティングにおける価格概念</a></li>
+<li class="chapter" data-level="12.3" data-path="psmに関する既存研究.html"><a href="psmに関する既存研究.html"><i class="fa fa-check"></i><b>12.3</b> PSMに関する既存研究</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="psmに関する既存研究.html"><a href="psmに関する既存研究.html#受容価格に関する知見"><i class="fa fa-check"></i><b>12.3.1</b> 受容価格に関する知見</a></li>
+<li class="chapter" data-level="12.3.2" data-path="psmに関する既存研究.html"><a href="psmに関する既存研究.html#内的参照価格に関する知見"><i class="fa fa-check"></i><b>12.3.2</b> 内的参照価格に関する知見</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="受容価格帯と内的参照価格帯の応用とpsm.html"><a href="受容価格帯と内的参照価格帯の応用とpsm.html"><i class="fa fa-check"></i><b>12.4</b> 受容価格帯と内的参照価格帯の応用とPSM</a></li>
+<li class="chapter" data-level="12.5" data-path="集計方法に関する注意点.html"><a href="集計方法に関する注意点.html"><i class="fa fa-check"></i><b>12.5</b> 集計方法に関する注意点</a></li>
+<li class="chapter" data-level="12.6" data-path="参考文献-8.html"><a href="参考文献-8.html"><i class="fa fa-check"></i><b>12.6</b> 参考文献</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">マーケティングリサーチ講義ノート</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="セグメンテーションの実行とクラスター分析" class="section level2 hasAnchor" number="10.2">
+<h2><span class="header-section-number">10.2</span> セグメンテーションの実行とクラスター分析<a href="セグメンテーションの実行とクラスター分析.html#セグメンテーションの実行とクラスター分析" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>セグメンテーションでは、基準となる情報を選定し、その情報を用いて消費者の類型を発見する。その発見の方法として照井・佐藤（2023）では、(1) 経験、（2）クラスタリング、（3）潜在クラス、の3つの方法を紹介している。経験によるセグメンテーションでは、担当者の経験や既存のリサーチによる知見を参考に消費者を類型する。この方法は、十分な知識や経験が蓄積されており、基準となる情報が限定的かつ関連的である場合には有効になる。例えば、消費者の年齢がニーズと関連していることがわかっている場合、年齢に基づくセグメンテーションは特別な分析を介さずとも有効な手法となりうる。しかしながら、経験的な知見が不足している場合には、セグメンテーションの信頼性を損なうことに加えて、考慮すべき情報が複数ある場合には、情報処理が複雑になり、類型化が困難になる。クラスタリングによるセグメンテーションは、クラスター分析を用いたセグメンテーションである。基準となる情報を（多くの場合複数）選択し、その情報をもとに各観測の類似性を求めることで、類型化を行う。この方法は、多くの情報をセグメンテーションの基準として用いることができる点や、分析方法についての資料やソフトウェアが充実しているため、分析の実現可能性が高いという利点を持つ。本資料ではこのクラスター分析を中心に議論を進める。第三の潜在クラスによるセグメンテーションでは、潜在クラスモデルと呼ばれる統計モデルを用いた方法である。これは発展的な手法であり、セグメントに関する統計的推測も行えるという利点を持っている。また、この方法では消費者が確率的に複数のグループに属することも許容するため、より現実的な手法とも評価されている（照井・佐藤,2023）。しかしながら、この方法には相対的に多くのデータを必要とし、発展的な統計的知識が必要になる。本講義においては潜在クラスモデルを用いた手法は扱わない。</p>
+<p>本資料では、消費者や顧客のセグメントを発見するための方法としてクラスター分析を紹介する。クラスター分析は、2つ以上の基準となる情報（変数）に基づいて、対象または人を相互に排他的で網羅的なグループに分類するために使用される統計的手法である。クラスター分析にはいくつかのアプローチが存在するが、それらに共通するのはサンプル間の類似性を確認し、グループとして分割していくというプロセスを有しているということである。ここでは主に階層的クラスター分析と、被階層的クラスター分析を紹介する。階層的クラスター分析は類似する観測同士を段階的にまとめていき、グループ（クラスター）を形成していく方法である。一方で非階層的クラスター分析は、分析者の定めた前提のもと、非階層的にクラスターを形成する方法である。本資料ではおもに、これら2つのアプローチについて紹介する。</p>
+<div id="Hier" class="section level3 hasAnchor" number="10.2.1">
+<h3><span class="header-section-number">10.2.1</span> 階層的クラスター分析<a href="セグメンテーションの実行とクラスター分析.html#Hier" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>本節では、階層的クラスター分析について説明する。階層的クラスター分析では、データの中から類似している観測値を段階的にクラスターとしてまとめていき、最終的にすべてのデータが一つのクラスターになるまでそれを繰り返す方法である。</p>
+<p>このプロセスにおいて類似度は観測値同士の距離として測られる。距離の定義は色々とあるが、ここではユークリッド距離とマンハッタン距離を紹介する。ユークリッド距離は、観測値同士の各座標の差の二乗和の平方根であり、マンハッタン距離は観測値同士の各座標の差の絶対値の合計であるといえる。例えば、以下の図<a href="セグメンテーションの実行とクラスター分析.html#fig:distance">10.2</a> における2点をつなぐ赤い線がユークリッド距離、青い線がマンハッタン距離だといえる。本節では、実際の分析においても頻繁に用いられるユークリッド距離に焦点を合わせ、手法を紹介する。</p>
+<div class="figure"><span style="display:block;" id="fig:distance"></span>
+<img src="cluster/dis.jpg" alt="距離定義概要" width="60%" />
+<p class="caption">
+Figure 10.2: 距離定義概要
+</p>
+</div>
+<p>階層的クラスター分析では、<a href="セグメンテーションの実行とクラスター分析.html#fig:dendrogram">10.4</a> で示されているデンドログラム（樹形図）を得ることで、各観測が段階的に集約されていく様子が可視化される。例えば、図 <a href="セグメンテーションの実行とクラスター分析.html#fig:dendrogram">10.4</a>の左（1）では、6個の観測が3つのクラスターにまとめ・分類されている一方で右（2）では、2つのクラスターに集約されている事がわかる。これらの図を見ると、aはbと最も近く、cはdと最も近いことがうかがえる。また、aとbで構成されたクラスターは、cdクラスターとは近いが、efとは遠いことがうかがえる。このようなデンドログラムを得るプロセスに関する直感を以下で説明する。</p>
+<p>ここでは、以下の表<a href="セグメンテーションの実行とクラスター分析.html#tab:exampledata">10.1</a> で示されている、2つの変数（x, y）に関する6個のデータが与えられた場合を考える。この場合の各観測値は図 <a href="セグメンテーションの実行とクラスター分析.html#fig:distanceplot">10.3</a>のように示される。</p>
+<table>
+<caption>
+<span id="tab:exampledata">Table 10.1: </span>データ例
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+x
+</th>
+<th style="text-align:right;">
+y
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+c
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+e
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+</tbody>
+</table>
+<div class="figure"><span style="display:block;" id="fig:distanceplot"></span>
+<img src="mktres_lecture_files/figure-html/distanceplot-1.png" alt="階層的クラスター分析" width="672" />
+<p class="caption">
+Figure 10.3: 階層的クラスター分析
+</p>
+</div>
+<p>この時、各データ同士の類似度をユークリッド距離で測ることを考える。例えば、a と最も近いデータは b である。a と b の距離は、以下のように求まる。
+<span class="math display">\[
+\sqrt{(2-3)^2+(1-2)^2}=\sqrt{2}=1.414
+\]</span>
+同様に、c（e）と最も近いデータは d（f）であり、その類似度もユークリッド距離で求めることができる。これによって、各観測点から最も近い観測点同士を結びつける形で、初期段階のクラスター形成（図<a href="セグメンテーションの実行とクラスター分析.html#fig:dendrogram">10.4</a> 左に対応）が達成された。次に、まとめたクラスターと他の観測点もしくは他クラスターとの距離を計算し、より大きな（多くの観測点が含まれる）クラスターを形成する。例えば、（a, b）は（e, f）よりも（c, d）のほうが近いため、<a href="セグメンテーションの実行とクラスター分析.html#fig:distanceplot">10.3</a> に示されているように、（a, b, c, d）というクラスターとしてまとめる（合併する）ことができる（図<a href="セグメンテーションの実行とクラスター分析.html#fig:dendrogram">10.4</a> 右に対応）。このように段階的にデータをまとめていくと、最終的にはすべてのデータを一つのクラスターとしてまとめることができる。</p>
+<div class="figure"><span style="display:block;" id="fig:dendrogram"></span>
+<img src="mktres_lecture_files/figure-html/dendrogram-1.png" alt="デンドログラム" width="672" />
+<p class="caption">
+Figure 10.4: デンドログラム
+</p>
+</div>
+<p>図 <a href="セグメンテーションの実行とクラスター分析.html#fig:dendrogram">10.4</a>のようなデンドログラムでは一番下に、全観測値が表示される。横軸と平行の線は、クラスタとしての併合を意味しており、下でのつながりほど初期に併合されたクラスタである。そのため、最終的には（一番上では）すべてが一つのクラスタにまとまっていることがうかがえる。この時、デンドログラムも高さ（縦軸）は距離を示している。したがって、どの程度の離れ具合を許容するかによって何組でデータをまとめられるかが変わる。例えば図<a href="セグメンテーションの実行とクラスター分析.html#fig:dendrogram">10.4</a> では、高さを2に定めれば3つのクラスターにまとめることができ、4を設定すれば2つのクラスターにまとめることができる。</p>
+<p>階層的クラスター分析ではクラスター同士を段階的に合併させていくのだが、クラスター同士の類似性を測るための方法もいくつか存在するため、代表的なものを以下で紹介する。クラスター同士の距離の決め方として、図 <a href="セグメンテーションの実行とクラスター分析.html#fig:clusterdis">10.5</a> に示すように、最短距離法（Single linkage）、再遠距離法（Complete linkage）、ウォード法（Ward’s method）がある。この中で、最も用いられる方法がウォード法である。ウォード法は最小分散法とも祝え、クラスター内の平均までの二乗距離を最小化する方法である。</p>
+<div class="figure"><span style="display:block;" id="fig:clusterdis"></span>
+<img src="cluster/cluster_comb.jpg" alt="クラスター類似性測定手法"  />
+<p class="caption">
+Figure 10.5: クラスター類似性測定手法
+</p>
+</div>
+<p>ウォード方では、異なるクラスター間の類似性について、まずそれらを構成する観測値を一括にして捉えた仮のクラスターを形成し、そのまとめられたクラスター内の観測値同士の距離が近ければ（分散が小さければ）、一括のクラスター内の散らばりは小さいとして併合される。図 <a href="セグメンテーションの実行とクラスター分析.html#fig:wards">10.6</a>ではその直感的な概略図を示している。ウォード法ではこのようにクラスター間の類似性を分散の形式で測定することで段階的に併合するグループを決定していく。</p>
+<div class="figure"><span style="display:block;" id="fig:wards"></span>
+<img src="cluster/wards.jpg" alt="クラスター類似性測定手法"  />
+<p class="caption">
+Figure 10.6: クラスター類似性測定手法
+</p>
+</div>
+<p>階層的クラスター分析における、クラスター数の決定は分析者の判断に依存し、絶対的な基準は存在しない。しかしながら、多くの場合、分類の「効率性」と「有効性」のバランスから効果的なクラスター数が決定される。効率性は分類によってどれだけ多くの情報を説明できているかを表しており、より少ないクラスター数で多くのデータを説明できたほうが情報の集約による効果が大きいと考えられる。例えば、表 <a href="セグメンテーションの実行とクラスター分析.html#tab:exampledata">10.1</a> で示されているような6つのデータを6つのクラスターで説明しても、クラスター分析としては不適切だといえる。一方で、どの程度そのクラスター分析の結果が現実的に含意のある分類をできているか、を捉えたのが有効性である。効率性を意識しすぎて少ないクラスター数による分類を採用しても、あまりに大雑把過ぎる分類だと分析結果が有益にならない。例えば、図 <a href="セグメンテーションの実行とクラスター分析.html#fig:distanceplot">10.3</a> において、1つのクラスターで6個のデータを説明するよりも、2つか3つのクラスターで説明したほうがより直感的かつ実務的な含意を得ることができるかもしれない。このように、階層的クラスター分析は、クラスターがどのように形成されていくかの段階を示すことによって、おおよそどのようなクラスター分類を行うことが良さそうかを判断することにつながる。</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="セグメンテーションとマーケティング意思決定.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="k-means.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/09-cluster.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
