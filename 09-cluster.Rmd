@@ -244,7 +244,7 @@ fviz_nbclust(clus_cons, kmeans, method = "wss")
 ```
 
 図 \@ref(fig:conselbow) を確認すると、4もしくは5クラスターで傾きが小さくなっているように見える。ちなみに、5クラスターを採用したケースは、デンドログラムでは図\@ref(fig:factodendrogram2)のように示すことができる。
-```{r factodendrogram2, message=FALSE, warning=FALSE}
+```{r factodendrogram2, message=FALSE, warning=FALSE, fig.cap="5クラスターデンドログラム"}
 alt_Hier %>% 
   fviz_dend(k = 5, rect = TRUE,
             rect_border = TRUE) 

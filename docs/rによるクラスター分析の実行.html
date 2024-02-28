@@ -375,11 +375,16 @@ Figure 10.11: 4クラスターデンドログラム
 Figure 10.12: エルボー法結果
 </p>
 </div>
-<p>図 <a href="rによるクラスター分析の実行.html#fig:conselbow">10.12</a> を確認すると、4もしくは5クラスターで傾きが小さくなっているように見える。ちなみに、5クラスターを採用したケースは、デンドログラムでは図<a href="#fig:factodendrogram2"><strong>??</strong></a>のように示すことができる。</p>
+<p>図 <a href="rによるクラスター分析の実行.html#fig:conselbow">10.12</a> を確認すると、4もしくは5クラスターで傾きが小さくなっているように見える。ちなみに、5クラスターを採用したケースは、デンドログラムでは図<a href="rによるクラスター分析の実行.html#fig:factodendrogram2">10.13</a>のように示すことができる。</p>
 <div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="rによるクラスター分析の実行.html#cb253-1" tabindex="-1"></a>alt_Hier <span class="sc">%&gt;%</span> </span>
 <span id="cb253-2"><a href="rによるクラスター分析の実行.html#cb253-2" tabindex="-1"></a>  <span class="fu">fviz_dend</span>(<span class="at">k =</span> <span class="dv">5</span>, <span class="at">rect =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb253-3"><a href="rによるクラスター分析の実行.html#cb253-3" tabindex="-1"></a>            <span class="at">rect_border =</span> <span class="cn">TRUE</span>) </span></code></pre></div>
-<p><img src="mktres_lecture_files/figure-html/factodendrogram2-1.png" width="672" /></p>
+<div class="figure"><span style="display:block;" id="fig:factodendrogram2"></span>
+<img src="mktres_lecture_files/figure-html/factodendrogram2-1.png" alt="5クラスターデンドログラム" width="672" />
+<p class="caption">
+Figure 10.13: 5クラスターデンドログラム
+</p>
+</div>
 <!-- そこで、ハーティガンルールを用いてもう少し詳細にクラスター数について検討する。この分析においては、`useful` パッケージに含まれる `FitKMeans()` という関数を用いて以下のように結果を確認する。 -->
 <!-- ```{r hartigan} -->
 <!-- Clus1Best<- FitKMeans(clus_cons, max.clusters = 10, nstart = 3, seed = 123) -->
@@ -464,20 +469,20 @@ Figure 10.12: エルボー法結果
 ## [1] &quot;cluster&quot;      &quot;centers&quot;      &quot;totss&quot;        &quot;withinss&quot;     &quot;tot.withinss&quot;
 ## [6] &quot;betweenss&quot;    &quot;size&quot;         &quot;iter&quot;         &quot;ifault&quot;</code></pre>
 <p>分析の結果表示される <code>Cluster means:</code>では、分析に用いた変数に関する各クラスターごとの平均値が出力される。例えば、クラスター1は、ブランドスイッチ（q12_4）については高いが、価格志向（q13_3）については低いことがうかがえる。結果の下部へ移動し、<code>Within cluster sum of squares by cluster:</code>では、各クラスターの内部平方和（分散）が出力されている。その下の <code>between_SS / total_SS</code> は、全体の平方和に占めるクラスター間平方和の比率であり、全体の分散の何%を5つのクラスターが説明しているかを示している。</p>
-<p>以下では、上述の結果について、<code>factoextra::fviz_cluster()</code>によって図示化する。<a href="rによるクラスター分析の実行.html#fig:kmeansplot1">10.13</a> では、ブランドスイッチと価格志向のどちらも高い（低い）グループや、どちらか一方のみ高いグループに加え、価格志向は低いがブランドスイッチについては平均的というグループも確認できた。このように結果を図示化することで、解釈が容易になる。なお、4クラスターを採用した場合の結果については、<a href="rによるクラスター分析の実行.html#fig:kmeansplot2">10.14</a>で示されている。また、4クラスターでの分析を実行すると、<code>between_SS / total_SS =  65.6 %</code> という結果を得る。5クラスターモデルとは説明力の点で1%程度しか違いがないことがわかる。興味のある読者は自身で実行してみてほしい。</p>
+<p>以下では、上述の結果について、<code>factoextra::fviz_cluster()</code>によって図示化する。<a href="rによるクラスター分析の実行.html#fig:kmeansplot1">10.14</a> では、ブランドスイッチと価格志向のどちらも高い（低い）グループや、どちらか一方のみ高いグループに加え、価格志向は低いがブランドスイッチについては平均的というグループも確認できた。このように結果を図示化することで、解釈が容易になる。なお、4クラスターを採用した場合の結果については、<a href="rによるクラスター分析の実行.html#fig:kmeansplot2">10.15</a>で示されている。また、4クラスターでの分析を実行すると、<code>between_SS / total_SS =  65.6 %</code> という結果を得る。5クラスターモデルとは説明力の点で1%程度しか違いがないことがわかる。興味のある読者は自身で実行してみてほしい。</p>
 <div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="rによるクラスター分析の実行.html#cb256-1" tabindex="-1"></a><span class="fu">fviz_cluster</span>(K_shopping, <span class="at">data =</span> clus_cons, <span class="at">geom =</span> <span class="st">&quot;point&quot;</span>) <span class="sc">+</span></span>
 <span id="cb256-2"><a href="rによるクラスター分析の実行.html#cb256-2" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;k = 5&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Brand switching (Std. score)&quot;</span>, </span>
 <span id="cb256-3"><a href="rによるクラスター分析の実行.html#cb256-3" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Price orientation (Std. score)&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:kmeansplot1"></span>
 <img src="mktres_lecture_files/figure-html/kmeansplot1-1.png" alt="消費者価値観クラスター" width="672" />
 <p class="caption">
-Figure 10.13: 消費者価値観クラスター
+Figure 10.14: 消費者価値観クラスター
 </p>
 </div>
 <div class="figure"><span style="display:block;" id="fig:kmeansplot2"></span>
 <img src="mktres_lecture_files/figure-html/kmeansplot2-1.png" alt="4クラスターモデル図" width="672" />
 <p class="caption">
-Figure 10.14: 4クラスターモデル図
+Figure 10.15: 4クラスターモデル図
 </p>
 </div>
 <p>続いて、各クラスターに属する消費者についての情報を整理、検討する。ここでは、5クラスターモデルの結果に基づき、クラスター情報と元データとを結合する。以下の表 <a href="rによるクラスター分析の実行.html#tab:merged">10.2</a> に、元データにクラスター番号に関する変数が追加されている。</p>

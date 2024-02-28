@@ -18,6 +18,7 @@ fig:elbow
 fig:consdendrom
 fig:factodendrogram
 fig:conselbow
+fig:factodendrogram2
 fig:kmeansplot1
 fig:kmeansplot2
 tab:merged
