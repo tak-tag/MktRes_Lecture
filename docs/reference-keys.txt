@@ -23,6 +23,8 @@ fig:kmeansplot1
 fig:kmeansplot2
 tab:merged
 tab:clusSummary
+fig:perExp
+fig:luxurity
 fig:psmfigure
 fig:LpHpfig
 fig:referenceprice
@@ -116,6 +118,7 @@ k-means
 rによるクラスター分析の実行
 参考文献-8
 factor
+ポジショニングと知覚マップ概要
 psm
 psmrunning
 price_concept
