@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>11.3 Rによる因子分析の実行 | マーケティングリサーチ講義ノート</title>
+  <meta name="description" content="11.3 Rによる因子分析の実行 | マーケティングリサーチ講義ノート" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="11.3 Rによる因子分析の実行 | マーケティングリサーチ講義ノート" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.git" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="11.3 Rによる因子分析の実行 | マーケティングリサーチ講義ノート" />
+  
+  
+  
+
+<meta name="author" content="Takumi Tagashira" />
+
+
+<meta name="date" content="2024-03-03" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="因子分析概要.html"/>
+<link rel="next" href="アンケートデータと知覚マップ.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Marketing Research Lecture Note</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> はじめに（本資料について）</a></li>
+<li class="chapter" data-level="2" data-path="rusage.html"><a href="rusage.html"><i class="fa fa-check"></i><b>2</b> R と R studioに慣れる</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="posit-cloudを始める.html"><a href="posit-cloudを始める.html"><i class="fa fa-check"></i><b>2.1</b> Posit cloudを始める</a></li>
+<li class="chapter" data-level="2.2" data-path="補足r-studio-デスクトップ版の利用.html"><a href="補足r-studio-デスクトップ版の利用.html"><i class="fa fa-check"></i><b>2.2</b> （補足）R studio デスクトップ版の利用</a></li>
+<li class="chapter" data-level="2.3" data-path="補足デスクトップ版の利用とプロジェクト機能.html"><a href="補足デスクトップ版の利用とプロジェクト機能.html"><i class="fa fa-check"></i><b>2.3</b> （補足）デスクトップ版の利用とプロジェクト機能</a></li>
+<li class="chapter" data-level="2.4" data-path="rの基本操作.html"><a href="rの基本操作.html"><i class="fa fa-check"></i><b>2.4</b> Rの基本操作</a></li>
+<li class="chapter" data-level="2.5" data-path="r-スクリプトのすゝめ.html"><a href="r-スクリプトのすゝめ.html"><i class="fa fa-check"></i><b>2.5</b> R スクリプトのすゝめ</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="r-スクリプトのすゝめ.html"><a href="r-スクリプトのすゝめ.html#rスクリプトを書く"><i class="fa fa-check"></i><b>2.5.1</b> Rスクリプトを書く</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="本章のまとめ.html"><a href="本章のまとめ.html"><i class="fa fa-check"></i><b>2.6</b> 本章のまとめ</a></li>
+<li class="chapter" data-level="2.7" data-path="参考文献.html"><a href="参考文献.html"><i class="fa fa-check"></i><b>2.7</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="design.html"><a href="design.html"><i class="fa fa-check"></i><b>3</b> リサーチデザイン</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="マーケティング実務とリサーチ.html"><a href="マーケティング実務とリサーチ.html"><i class="fa fa-check"></i><b>3.1</b> マーケティング実務とリサーチ</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="マーケティング実務とリサーチ.html"><a href="マーケティング実務とリサーチ.html#実務とリサーチの異なる視点"><i class="fa fa-check"></i><b>3.1.1</b> 実務とリサーチの異なる視点</a></li>
+<li class="chapter" data-level="3.1.2" data-path="マーケティング実務とリサーチ.html"><a href="マーケティング実務とリサーチ.html#実務とリサーチの分離"><i class="fa fa-check"></i><b>3.1.2</b> 実務とリサーチの分離</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="リサーチデザインと論文の構成.html"><a href="リサーチデザインと論文の構成.html"><i class="fa fa-check"></i><b>3.2</b> リサーチデザインと論文の構成</a></li>
+<li class="chapter" data-level="3.3" data-path="question.html"><a href="question.html"><i class="fa fa-check"></i><b>3.3</b> 研究課題（問い）の設定</a></li>
+<li class="chapter" data-level="3.4" data-path="問題と分析をつなげる仮説の提示.html"><a href="問題と分析をつなげる仮説の提示.html"><i class="fa fa-check"></i><b>3.4</b> 問題と分析をつなげる仮説の提示</a></li>
+<li class="chapter" data-level="3.5" data-path="学術的研究のための留意点.html"><a href="学術的研究のための留意点.html"><i class="fa fa-check"></i><b>3.5</b> 学術的研究のための留意点</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="学術的研究のための留意点.html"><a href="学術的研究のための留意点.html#マーケティング研究と科学哲学"><i class="fa fa-check"></i><b>3.5.1</b> マーケティング研究と科学哲学</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="研究における理論の利用と精緻化.html"><a href="研究における理論の利用と精緻化.html"><i class="fa fa-check"></i><b>3.6</b> 研究における理論の利用と精緻化</a></li>
+<li class="chapter" data-level="3.7" data-path="参考文献-1.html"><a href="参考文献-1.html"><i class="fa fa-check"></i><b>3.7</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="survey.html"><a href="survey.html"><i class="fa fa-check"></i><b>4</b> データの種類とアンケートデザイン</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="記述的リサーチデザイン.html"><a href="記述的リサーチデザイン.html"><i class="fa fa-check"></i><b>4.1</b> 記述的リサーチデザイン</a></li>
+<li class="chapter" data-level="4.2" data-path="アンケート設計.html"><a href="アンケート設計.html"><i class="fa fa-check"></i><b>4.2</b> アンケート設計</a></li>
+<li class="chapter" data-level="4.3" data-path="質問におけるワーディング.html"><a href="質問におけるワーディング.html"><i class="fa fa-check"></i><b>4.3</b> 質問におけるワーディング</a></li>
+<li class="chapter" data-level="4.4" data-path="アンケートデザイン.html"><a href="アンケートデザイン.html"><i class="fa fa-check"></i><b>4.4</b> アンケートデザイン</a></li>
+<li class="chapter" data-level="4.5" data-path="参考文献-2.html"><a href="参考文献-2.html"><i class="fa fa-check"></i><b>4.5</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="handling.html"><a href="handling.html"><i class="fa fa-check"></i><b>5</b> データ処理と顧客関係管理（CRM）</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="データの読み込み.html"><a href="データの読み込み.html"><i class="fa fa-check"></i><b>5.1</b> データの読み込み</a></li>
+<li class="chapter" data-level="5.2" data-path="データの整形.html"><a href="データの整形.html"><i class="fa fa-check"></i><b>5.2</b> データの整形</a></li>
+<li class="chapter" data-level="5.3" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html"><i class="fa fa-check"></i><b>5.3</b> 統計的検定を用いない顧客分析</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html#データの構造変化とソート"><i class="fa fa-check"></i><b>5.3.1</b> データの構造変化とソート</a></li>
+<li class="chapter" data-level="5.3.2" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html#データ結合"><i class="fa fa-check"></i><b>5.3.2</b> データ結合</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="おまけ-wide型とlong型データセット.html"><a href="おまけ-wide型とlong型データセット.html"><i class="fa fa-check"></i><b>5.4</b> (おまけ) Wide型とLong型データセット</a></li>
+<li class="chapter" data-level="5.5" data-path="参考文献-3.html"><a href="参考文献-3.html"><i class="fa fa-check"></i><b>5.5</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="データの要約と可視化.html"><a href="データの要約と可視化.html"><i class="fa fa-check"></i><b>6</b> データの要約と可視化</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="記述統計.html"><a href="記述統計.html"><i class="fa fa-check"></i><b>6.1</b> 記述統計</a></li>
+<li class="chapter" data-level="6.2" data-path="カテゴリ変数の要約.html"><a href="カテゴリ変数の要約.html"><i class="fa fa-check"></i><b>6.2</b> カテゴリ変数の要約</a></li>
+<li class="chapter" data-level="6.3" data-path="データの可視化.html"><a href="データの可視化.html"><i class="fa fa-check"></i><b>6.3</b> データの可視化</a></li>
+<li class="chapter" data-level="6.4" data-path="二変数間の関係の要約.html"><a href="二変数間の関係の要約.html"><i class="fa fa-check"></i><b>6.4</b> 二変数間の関係の要約</a></li>
+<li class="chapter" data-level="6.5" data-path="参考文献-4.html"><a href="参考文献-4.html"><i class="fa fa-check"></i><b>6.5</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="test.html"><a href="test.html"><i class="fa fa-check"></i><b>7</b> 基礎統計学復習</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="確率モデル期待値と分散.html"><a href="確率モデル期待値と分散.html"><i class="fa fa-check"></i><b>7.1</b> 確率モデル、期待値と分散</a></li>
+<li class="chapter" data-level="7.2" data-path="統計的推測.html"><a href="統計的推測.html"><i class="fa fa-check"></i><b>7.2</b> 統計的推測</a></li>
+<li class="chapter" data-level="7.3" data-path="点推定.html"><a href="点推定.html"><i class="fa fa-check"></i><b>7.3</b> 点推定</a></li>
+<li class="chapter" data-level="7.4" data-path="推定量もまた確率変数.html"><a href="推定量もまた確率変数.html"><i class="fa fa-check"></i><b>7.4</b> 推定量もまた確率変数</a></li>
+<li class="chapter" data-level="7.5" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html"><i class="fa fa-check"></i><b>7.5</b> 補足（いくつかの確率分布の関係性）</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#正規分布"><i class="fa fa-check"></i><b>7.5.1</b> 正規分布</a></li>
+<li class="chapter" data-level="7.5.2" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#カイ二乗分布"><i class="fa fa-check"></i><b>7.5.2</b> カイ二乗分布</a></li>
+<li class="chapter" data-level="7.5.3" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#t分布"><i class="fa fa-check"></i><b>7.5.3</b> t分布</a></li>
+<li class="chapter" data-level="7.5.4" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#f分布"><i class="fa fa-check"></i><b>7.5.4</b> F分布</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="区間推定.html"><a href="区間推定.html"><i class="fa fa-check"></i><b>7.6</b> 区間推定</a></li>
+<li class="chapter" data-level="7.7" data-path="統計的仮説検定.html"><a href="統計的仮説検定.html"><i class="fa fa-check"></i><b>7.7</b> 統計的仮説検定</a></li>
+<li class="chapter" data-level="7.8" data-path="平均値に関するその他の検定.html"><a href="平均値に関するその他の検定.html"><i class="fa fa-check"></i><b>7.8</b> 平均値に関するその他の検定</a></li>
+<li class="chapter" data-level="7.9" data-path="分散分析.html"><a href="分散分析.html"><i class="fa fa-check"></i><b>7.9</b> 分散分析</a></li>
+<li class="chapter" data-level="7.10" data-path="参考文献-5.html"><a href="参考文献-5.html"><i class="fa fa-check"></i><b>7.10</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="regintro.html"><a href="regintro.html"><i class="fa fa-check"></i><b>8</b> 回帰分析</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="回帰モデル概要.html"><a href="回帰モデル概要.html"><i class="fa fa-check"></i><b>8.1</b> 回帰モデル概要</a></li>
+<li class="chapter" data-level="8.2" data-path="回帰分析における推定と検定.html"><a href="回帰分析における推定と検定.html"><i class="fa fa-check"></i><b>8.2</b> 回帰分析における推定と検定</a></li>
+<li class="chapter" data-level="8.3" data-path="重回帰モデル1.html"><a href="重回帰モデル1.html"><i class="fa fa-check"></i><b>8.3</b> 重回帰モデル1</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="重回帰モデル1.html"><a href="重回帰モデル1.html#重回帰モデル概要"><i class="fa fa-check"></i><b>8.3.1</b> 重回帰モデル概要</a></li>
+<li class="chapter" data-level="8.3.2" data-path="重回帰モデル1.html"><a href="重回帰モデル1.html#重回帰分析におけるモデル適合度"><i class="fa fa-check"></i><b>8.3.2</b> 重回帰分析におけるモデル適合度</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="重回帰モデル2.html"><a href="重回帰モデル2.html"><i class="fa fa-check"></i><b>8.4</b> 重回帰モデル2</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="重回帰モデル2.html"><a href="重回帰モデル2.html#回帰係数の解釈"><i class="fa fa-check"></i><b>8.4.1</b> 回帰係数の解釈</a></li>
+<li class="chapter" data-level="8.4.2" data-path="重回帰モデル2.html"><a href="重回帰モデル2.html#重回帰モデルにおける変数選択"><i class="fa fa-check"></i><b>8.4.2</b> 重回帰モデルにおける変数選択</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="参考文献-6.html"><a href="参考文献-6.html"><i class="fa fa-check"></i><b>8.5</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="regtechnic.html"><a href="regtechnic.html"><i class="fa fa-check"></i><b>9</b> 回帰分析上の工夫紹介</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="ダミー変数.html"><a href="ダミー変数.html"><i class="fa fa-check"></i><b>9.1</b> ダミー変数</a></li>
+<li class="chapter" data-level="9.2" data-path="交差項.html"><a href="交差項.html"><i class="fa fa-check"></i><b>9.2</b> 交差項</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="交差項.html"><a href="交差項.html#傾きダミー"><i class="fa fa-check"></i><b>9.2.1</b> 傾きダミー</a></li>
+<li class="chapter" data-level="9.2.2" data-path="交差項.html"><a href="交差項.html#量的変数同士の交差項"><i class="fa fa-check"></i><b>9.2.2</b> 量的変数同士の交差項</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="係数比較.html"><a href="係数比較.html"><i class="fa fa-check"></i><b>9.3</b> 係数比較</a></li>
+<li class="chapter" data-level="9.4" data-path="対数線形.html"><a href="対数線形.html"><i class="fa fa-check"></i><b>9.4</b> 対数線形</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="対数線形.html"><a href="対数線形.html#需要の価格弾力性追加説明"><i class="fa fa-check"></i><b>9.4.1</b> 需要の価格弾力性追加説明</a></li>
+<li class="chapter" data-level="9.4.2" data-path="対数線形.html"><a href="対数線形.html#対数線形の推定と検定"><i class="fa fa-check"></i><b>9.4.2</b> 対数線形の推定と検定</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="おまけ分析結果のまとめ出力上の工夫.html"><a href="おまけ分析結果のまとめ出力上の工夫.html"><i class="fa fa-check"></i><b>9.5</b> （おまけ）分析結果のまとめ・出力上の工夫</a></li>
+<li class="chapter" data-level="9.6" data-path="参考文献-7.html"><a href="参考文献-7.html"><i class="fa fa-check"></i><b>9.6</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="cluster.html"><a href="cluster.html"><i class="fa fa-check"></i><b>10</b> セグメントとクラスター分析</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="セグメンテーションとマーケティング意思決定.html"><a href="セグメンテーションとマーケティング意思決定.html"><i class="fa fa-check"></i><b>10.1</b> セグメンテーションとマーケティング意思決定</a></li>
+<li class="chapter" data-level="10.2" data-path="stpその後.html"><a href="stpその後.html"><i class="fa fa-check"></i><b>10.2</b> STPその後</a></li>
+<li class="chapter" data-level="10.3" data-path="セグメンテーションの実行とクラスター分析.html"><a href="セグメンテーションの実行とクラスター分析.html"><i class="fa fa-check"></i><b>10.3</b> セグメンテーションの実行とクラスター分析</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="セグメンテーションの実行とクラスター分析.html"><a href="セグメンテーションの実行とクラスター分析.html#Hier"><i class="fa fa-check"></i><b>10.3.1</b> 階層的クラスター分析</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="k-means.html"><a href="k-means.html"><i class="fa fa-check"></i><b>10.4</b> 非階層的クラスター分析：K-means法</a></li>
+<li class="chapter" data-level="10.5" data-path="rによるクラスター分析の実行.html"><a href="rによるクラスター分析の実行.html"><i class="fa fa-check"></i><b>10.5</b> Rによるクラスター分析の実行</a></li>
+<li class="chapter" data-level="10.6" data-path="参考文献-8.html"><a href="参考文献-8.html"><i class="fa fa-check"></i><b>10.6</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="factor.html"><a href="factor.html"><i class="fa fa-check"></i><b>11</b> 知覚マップと因子分析</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="ポジショニングと知覚マップ概要.html"><a href="ポジショニングと知覚マップ概要.html"><i class="fa fa-check"></i><b>11.1</b> ポジショニングと知覚マップ概要</a></li>
+<li class="chapter" data-level="11.2" data-path="因子分析概要.html"><a href="因子分析概要.html"><i class="fa fa-check"></i><b>11.2</b> 因子分析概要</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="因子分析概要.html"><a href="因子分析概要.html#因子分析の概要とモデルの構造"><i class="fa fa-check"></i><b>11.2.1</b> 因子分析の概要とモデルの構造</a></li>
+<li class="chapter" data-level="11.2.2" data-path="因子分析概要.html"><a href="因子分析概要.html#因子モデル"><i class="fa fa-check"></i><b>11.2.2</b> 2因子モデル</a></li>
+<li class="chapter" data-level="11.2.3" data-path="因子分析概要.html"><a href="因子分析概要.html#因子スコア"><i class="fa fa-check"></i><b>11.2.3</b> 因子スコア</a></li>
+<li class="chapter" data-level="11.2.4" data-path="因子分析概要.html"><a href="因子分析概要.html#小括"><i class="fa fa-check"></i><b>11.2.4</b> 小括</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="rによる因子分析の実行.html"><a href="rによる因子分析の実行.html"><i class="fa fa-check"></i><b>11.3</b> Rによる因子分析の実行</a></li>
+<li class="chapter" data-level="11.4" data-path="アンケートデータと知覚マップ.html"><a href="アンケートデータと知覚マップ.html"><i class="fa fa-check"></i><b>11.4</b> アンケートデータと知覚マップ</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="アンケートデータと知覚マップ.html"><a href="アンケートデータと知覚マップ.html#データ構造の変更"><i class="fa fa-check"></i><b>11.4.1</b> データ構造の変更</a></li>
+<li class="chapter" data-level="11.4.2" data-path="アンケートデータと知覚マップ.html"><a href="アンケートデータと知覚マップ.html#因子分析の実行"><i class="fa fa-check"></i><b>11.4.2</b> 因子分析の実行</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="参考文献-9.html"><a href="参考文献-9.html"><i class="fa fa-check"></i><b>11.5</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="psm.html"><a href="psm.html"><i class="fa fa-check"></i><b>12</b> 価格感度測定 (PSM)</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="psmrunning.html"><a href="psmrunning.html"><i class="fa fa-check"></i><b>12.1</b> PSMの実行と結果</a></li>
+<li class="chapter" data-level="12.2" data-path="price_concept.html"><a href="price_concept.html"><i class="fa fa-check"></i><b>12.2</b> マーケティングにおける価格概念</a></li>
+<li class="chapter" data-level="12.3" data-path="psmに関する既存研究.html"><a href="psmに関する既存研究.html"><i class="fa fa-check"></i><b>12.3</b> PSMに関する既存研究</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="psmに関する既存研究.html"><a href="psmに関する既存研究.html#受容価格に関する知見"><i class="fa fa-check"></i><b>12.3.1</b> 受容価格に関する知見</a></li>
+<li class="chapter" data-level="12.3.2" data-path="psmに関する既存研究.html"><a href="psmに関する既存研究.html#内的参照価格に関する知見"><i class="fa fa-check"></i><b>12.3.2</b> 内的参照価格に関する知見</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="受容価格帯と内的参照価格帯の応用とpsm.html"><a href="受容価格帯と内的参照価格帯の応用とpsm.html"><i class="fa fa-check"></i><b>12.4</b> 受容価格帯と内的参照価格帯の応用とPSM</a></li>
+<li class="chapter" data-level="12.5" data-path="集計方法に関する注意点.html"><a href="集計方法に関する注意点.html"><i class="fa fa-check"></i><b>12.5</b> 集計方法に関する注意点</a></li>
+<li class="chapter" data-level="12.6" data-path="参考文献-10.html"><a href="参考文献-10.html"><i class="fa fa-check"></i><b>12.6</b> 参考文献</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">マーケティングリサーチ講義ノート</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="rによる因子分析の実行" class="section level2 hasAnchor" number="11.3">
+<h2><span class="header-section-number">11.3</span> Rによる因子分析の実行<a href="rによる因子分析の実行.html#rによる因子分析の実行" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>本節では、スマートフォンに関する個人の価値観について捉えた架空のデータセットを用いて、Rでの因子分析実行方法を紹介する。因子分析の実行においては、以下の手順を経ることが多い：</p>
+<ol style="list-style-type: decimal">
+<li>データの特徴を確認</li>
+<li>因子数の決定（固有値とスクリープロット確認）</li>
+<li>因子分析の実行</li>
+<li>抽出された因子の解釈</li>
+<li>（必要ならば）因子スコアの計算と利用</li>
+</ol>
+<p>本節で使用するデータセットでは、「スマートフォンを買う際に、あなた自身がの重視していることについて教えて下さい。」という質問に対応する以下の項目を含んでいる。なお、すべての項目が7点のリッカート尺度で構成されている。</p>
+<ul>
+<li>V1: 複数のアプリを同時に快適に使える製品を買うことが大切である。</li>
+<li>V2: 見た目が洗練されている製品が好きだ。</li>
+<li>V3: スマートフォンは、他の機器との無線通信が快適に使用できるべきである。</li>
+<li>V4: 人目を引くデザインをしている製品が好きだ。</li>
+<li>V5: 操作の容易性はスマートフォンにおいて重要な要素ではない（逆転項目）</li>
+<li>V6: スマートフォンを買う上で最も重視することは、形状を含むデザインである。</li>
+</ul>
+<p>ただし、V5は値が高いほど重要性が低いことを意味する項目になっていることに注意が必要である。このような質問項目を、逆転項目（Reverse-coded item）と呼ばれ、分析の際に調整する必要がある。</p>
+<p>ここからは実際にRを用いて分析を行っていくが、そのために <code>psych</code>と<code>GPArotation</code> というパッケージを新たに使うため、以下の要領でインストールしてほしい。</p>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="rによる因子分析の実行.html#cb259-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;psych&quot;</span>)</span>
+<span id="cb259-2"><a href="rによる因子分析の実行.html#cb259-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;GPArotation&quot;</span>)</span></code></pre></div>
+<p>まずは、データとパッケージの読み込みを行う。なお、今回因子分析で用いる<code>psych::fa()</code> という関数は、指定されているデータセットすべての変数を参照し分析を行ってしまう。そのため、このタイミングで、分析の対象となる変数のみを取り出したデータセットを作成、定義する。そのうえで、以下のコードではV1からV6までの変数間の相関関係を確認している。表<a href="rによる因子分析の実行.html#tab:faData">11.1</a> を見ると、V1はV3、V5と正の相関が高く、V2はV4、V6と正の相関が高いことが伺える。</p>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="rによる因子分析の実行.html#cb260-1" tabindex="-1"></a>factor_exdata <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">&quot;data/factor_ex.xlsx&quot;</span>, <span class="at">na =</span> <span class="st">&quot;.&quot;</span>)</span>
+<span id="cb260-2"><a href="rによる因子分析の実行.html#cb260-2" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
+<span id="cb260-3"><a href="rによる因子分析の実行.html#cb260-3" tabindex="-1"></a><span class="fu">library</span>(GPArotation)</span>
+<span id="cb260-4"><a href="rによる因子分析の実行.html#cb260-4" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb260-5"><a href="rによる因子分析の実行.html#cb260-5" tabindex="-1"></a></span>
+<span id="cb260-6"><a href="rによる因子分析の実行.html#cb260-6" tabindex="-1"></a>factor_exdata<span class="sc">$</span>V5 <span class="ot">&lt;-</span> <span class="dv">8</span> <span class="sc">-</span> factor_exdata<span class="sc">$</span>V5</span>
+<span id="cb260-7"><a href="rによる因子分析の実行.html#cb260-7" tabindex="-1"></a><span class="fu">rownames</span>(factor_exdata) <span class="ot">&lt;-</span> factor_exdata<span class="sc">$</span>ID</span>
+<span id="cb260-8"><a href="rによる因子分析の実行.html#cb260-8" tabindex="-1"></a></span>
+<span id="cb260-9"><a href="rによる因子分析の実行.html#cb260-9" tabindex="-1"></a>factor_exdata2 <span class="ot">&lt;-</span> factor_exdata <span class="sc">%&gt;%</span> </span>
+<span id="cb260-10"><a href="rによる因子分析の実行.html#cb260-10" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>ID)</span>
+<span id="cb260-11"><a href="rによる因子分析の実行.html#cb260-11" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">summary</span>(factor_exdata2))</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+V1
+</th>
+<th style="text-align:left;">
+V2
+</th>
+<th style="text-align:left;">
+V3
+</th>
+<th style="text-align:left;">
+V4
+</th>
+<th style="text-align:left;">
+V5
+</th>
+<th style="text-align:left;">
+V6
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Min. :1.000
+</td>
+<td style="text-align:left;">
+Min. :2.0
+</td>
+<td style="text-align:left;">
+Min. :1.0
+</td>
+<td style="text-align:left;">
+Min. :2.0
+</td>
+<td style="text-align:left;">
+Min. :1.0
+</td>
+<td style="text-align:left;">
+Min. :2.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+1st Qu.:2.000
+</td>
+<td style="text-align:left;">
+1st Qu.:3.0
+</td>
+<td style="text-align:left;">
+1st Qu.:2.0
+</td>
+<td style="text-align:left;">
+1st Qu.:3.0
+</td>
+<td style="text-align:left;">
+1st Qu.:3.0
+</td>
+<td style="text-align:left;">
+1st Qu.:3.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Median :4.000
+</td>
+<td style="text-align:left;">
+Median :4.0
+</td>
+<td style="text-align:left;">
+Median :4.0
+</td>
+<td style="text-align:left;">
+Median :4.0
+</td>
+<td style="text-align:left;">
+Median :4.5
+</td>
+<td style="text-align:left;">
+Median :4.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Mean :3.933
+</td>
+<td style="text-align:left;">
+Mean :3.9
+</td>
+<td style="text-align:left;">
+Mean :4.1
+</td>
+<td style="text-align:left;">
+Mean :4.1
+</td>
+<td style="text-align:left;">
+Mean :4.5
+</td>
+<td style="text-align:left;">
+Mean :4.167
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+3rd Qu.:6.000
+</td>
+<td style="text-align:left;">
+3rd Qu.:5.0
+</td>
+<td style="text-align:left;">
+3rd Qu.:6.0
+</td>
+<td style="text-align:left;">
+3rd Qu.:5.0
+</td>
+<td style="text-align:left;">
+3rd Qu.:6.0
+</td>
+<td style="text-align:left;">
+3rd Qu.:4.750
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Max. :7.000
+</td>
+<td style="text-align:left;">
+Max. :7.0
+</td>
+<td style="text-align:left;">
+Max. :7.0
+</td>
+<td style="text-align:left;">
+Max. :7.0
+</td>
+<td style="text-align:left;">
+Max. :7.0
+</td>
+<td style="text-align:left;">
+Max. :7.000
+</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="rによる因子分析の実行.html#cb261-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">cor</span>(factor_exdata2), <span class="at">caption=</span><span class="st">&quot;相関行列&quot;</span>)</span></code></pre></div>
+<table>
+<caption>
+<span id="tab:faData">Table 11.1: </span>相関行列
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+V1
+</th>
+<th style="text-align:right;">
+V2
+</th>
+<th style="text-align:right;">
+V3
+</th>
+<th style="text-align:right;">
+V4
+</th>
+<th style="text-align:right;">
+V5
+</th>
+<th style="text-align:right;">
+V6
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+V1
+</td>
+<td style="text-align:right;">
+1.0000000
+</td>
+<td style="text-align:right;">
+-0.0532178
+</td>
+<td style="text-align:right;">
+0.8730902
+</td>
+<td style="text-align:right;">
+-0.0861622
+</td>
+<td style="text-align:right;">
+0.8576366
+</td>
+<td style="text-align:right;">
+0.0041681
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+V2
+</td>
+<td style="text-align:right;">
+-0.0532178
+</td>
+<td style="text-align:right;">
+1.0000000
+</td>
+<td style="text-align:right;">
+-0.1550200
+</td>
+<td style="text-align:right;">
+0.5722121
+</td>
+<td style="text-align:right;">
+-0.0197456
+</td>
+<td style="text-align:right;">
+0.6404649
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+V3
+</td>
+<td style="text-align:right;">
+0.8730902
+</td>
+<td style="text-align:right;">
+-0.1550200
+</td>
+<td style="text-align:right;">
+1.0000000
+</td>
+<td style="text-align:right;">
+-0.2477879
+</td>
+<td style="text-align:right;">
+0.7778480
+</td>
+<td style="text-align:right;">
+-0.0180688
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+V4
+</td>
+<td style="text-align:right;">
+-0.0861622
+</td>
+<td style="text-align:right;">
+0.5722121
+</td>
+<td style="text-align:right;">
+-0.2477879
+</td>
+<td style="text-align:right;">
+1.0000000
+</td>
+<td style="text-align:right;">
+0.0065819
+</td>
+<td style="text-align:right;">
+0.6404649
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+V5
+</td>
+<td style="text-align:right;">
+0.8576366
+</td>
+<td style="text-align:right;">
+-0.0197456
+</td>
+<td style="text-align:right;">
+0.7778480
+</td>
+<td style="text-align:right;">
+0.0065819
+</td>
+<td style="text-align:right;">
+1.0000000
+</td>
+<td style="text-align:right;">
+0.1364029
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+V6
+</td>
+<td style="text-align:right;">
+0.0041681
+</td>
+<td style="text-align:right;">
+0.6404649
+</td>
+<td style="text-align:right;">
+-0.0180688
+</td>
+<td style="text-align:right;">
+0.6404649
+</td>
+<td style="text-align:right;">
+0.1364029
+</td>
+<td style="text-align:right;">
+1.0000000
+</td>
+</tr>
+</tbody>
+</table>
+<p>続いて、スクリープロットを描画し、固有値を確認する。図<a href="rによる因子分析の実行.html#fig:screeplot">11.6</a> を確認すると、因子数が2から3へ増える際に大きく固有値が低下しており、3つめの因子の固有値も1を下回っている。そのため、前節で確認した判断基準から、2因子モデルを採用し、因子分析を実行する。</p>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="rによる因子分析の実行.html#cb262-1" tabindex="-1"></a>cor.exdata<span class="ot">&lt;-</span><span class="fu">cor</span>(factor_exdata2)</span>
+<span id="cb262-2"><a href="rによる因子分析の実行.html#cb262-2" tabindex="-1"></a></span>
+<span id="cb262-3"><a href="rによる因子分析の実行.html#cb262-3" tabindex="-1"></a><span class="fu">VSS.scree</span>(cor.exdata)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:screeplot"></span>
+<img src="mktres_lecture_files/figure-html/screeplot-1.png" alt="スマホデータスクリープロット" width="672" />
+<p class="caption">
+Figure 11.6: スマホデータスクリープロット
+</p>
+</div>
+<p>因子分析では、<code>psych::fa()</code> という関数を用いるのだが、この関数では引数として因子数（<code>nfactors =</code>）、回転（<code>rotate =</code>）とモデルの推定方法（<code>fm =</code>）を指定する。以下では、斜交（プロマックス）回転を用いた2因子モデルを最尤法（<code>ml</code>）で分析している。</p>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="rによる因子分析の実行.html#cb263-1" tabindex="-1"></a>fa<span class="ot">&lt;-</span><span class="fu">fa</span>(<span class="at">r =</span> factor_exdata2, <span class="at">nfactors=</span><span class="dv">2</span>,</span>
+<span id="cb263-2"><a href="rによる因子分析の実行.html#cb263-2" tabindex="-1"></a>        <span class="at">rotate =</span> <span class="st">&quot;promax&quot;</span>,<span class="at">fm=</span><span class="st">&quot;ml&quot;</span>)</span>
+<span id="cb263-3"><a href="rによる因子分析の実行.html#cb263-3" tabindex="-1"></a>fa</span></code></pre></div>
+<pre><code>## Factor Analysis using method =  ml
+## Call: fa(r = factor_exdata2, nfactors = 2, rotate = &quot;promax&quot;, fm = &quot;ml&quot;)
+## Standardized loadings (pattern matrix) based upon correlation matrix
+##      ML1   ML2   h2    u2 com
+## V1  0.97  0.00 0.94 0.063   1
+## V2 -0.02  0.75 0.56 0.437   1
+## V3  0.89 -0.12 0.83 0.174   1
+## V4 -0.06  0.78 0.62 0.378   1
+## V5  0.89  0.11 0.79 0.205   1
+## V6  0.08  0.83 0.69 0.309   1
+## 
+##                        ML1  ML2
+## SS loadings           2.54 1.89
+## Proportion Var        0.42 0.32
+## Cumulative Var        0.42 0.74
+## Proportion Explained  0.57 0.43
+## Cumulative Proportion 0.57 1.00
+## 
+##  With factor correlations of 
+##       ML1   ML2
+## ML1  1.00 -0.06
+## ML2 -0.06  1.00
+## 
+## Mean item complexity =  1
+## Test of the hypothesis that 2 factors are sufficient.
+## 
+## df null model =  15  with the objective function =  4.25 with Chi Square =  111.31
+## df of  the model are 4  and the objective function was  0.21 
+## 
+## The root mean square of the residuals (RMSR) is  0.03 
+## The df corrected root mean square of the residuals is  0.05 
+## 
+## The harmonic n.obs is  30 with the empirical chi square  0.65  with prob &lt;  0.96 
+## The total n.obs was  30  with Likelihood Chi Square =  5.21  with prob &lt;  0.27 
+## 
+## Tucker Lewis Index of factoring reliability =  0.95
+## RMSEA index =  0.095  and the 90 % confidence intervals are  0 0.314
+## BIC =  -8.39
+## Fit based upon off diagonal values = 1
+## Measures of factor score adequacy             
+##                                                    ML1  ML2
+## Correlation of (regression) scores with factors   0.98 0.92
+## Multiple R square of scores with factors          0.96 0.84
+## Minimum correlation of possible factor scores     0.92 0.68</code></pre>
+<p>分析を実行すると、いくつかの数値が表示される。<code>Standardized loadings</code>は、各変数に対する標準化された因子負荷量を表示している。 ML1（ML2）は、最尤法によって算出された因子1（因子2）の因子負荷量を示している。そのうえでML1（因子1） はV1, 3, 5に対して因子負荷量が大きくかつそれらが正である。また、M2（因子2）はV2, 4, 6に対して因子負荷量が大きくかつそれらが正であることが示されている。また、その下の<code>SS loadings</code> は因子負荷の二乗和、<code>Propotion Var</code> は各因子の寄与率（説明された分散比率）、<code>Cumulative Var</code> は累積寄与率、<code>Proportion Explained</code> は潜在因子で説明されている分散のうち、各因子が占める分散の比率を表している。これらを踏まえると、因子1は「マルチタスクの快適性」、「無線通信」、「操作容易性」に、因子2は「洗練された見た目」、「人目を引くデザイン」、「デザイン」に影響を与えるものであり、2つの因子で全体の約74%を説明していることになる。この結果を踏まえ、これら2つの因子が何を表しているかを解釈することになる。例えば、因子1は「使いやすさ」、因子2は「デザインの良さ」という名前をつけるかたちで、上記の結果を解釈する事ができる。</p>
+<p>Rを使うと簡単に、因子、観測変数と、因子負荷量との関係を図示化することもできる。<code>fa.diagram()</code>という関数をつかうのだが、これを用いると、高い因子負荷量を持つ因子からのみ矢印を引くように設定されている。<code>simple = FALSE</code> という引数を設定することで、複数の因子から線を引くことも可能であるが、図が複雑になり見にくくなる。そのため、デフォルトの設定で図示化を行うと、図<a href="rによる因子分析の実行.html#fig:factorplot">11.7</a> の通りの結果を得る。</p>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="rによる因子分析の実行.html#cb265-1" tabindex="-1"></a><span class="fu">fa.diagram</span>(fa)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:factorplot"></span>
+<img src="mktres_lecture_files/figure-html/factorplot-1.png" alt="図示化された因子モデル" width="672" />
+<p class="caption">
+Figure 11.7: 図示化された因子モデル
+</p>
+</div>
+<p>因子スコアは、因子分析の結果から抽出できる。<code>fa</code> でストアされた結果の場合、<code>fa$scores</code> と指示することで、因子スコアにアクセスできる。ここでは、因子スコアを元データに結合してみる。</p>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="rによる因子分析の実行.html#cb266-1" tabindex="-1"></a>fs <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(fa<span class="sc">$</span>scores)</span>
+<span id="cb266-2"><a href="rによる因子分析の実行.html#cb266-2" tabindex="-1"></a>factor_exdata2<span class="sc">$</span>rowname <span class="ot">&lt;-</span> <span class="fu">rownames</span>(factor_exdata2)</span>
+<span id="cb266-3"><a href="rによる因子分析の実行.html#cb266-3" tabindex="-1"></a>fs<span class="sc">$</span>rowname <span class="ot">&lt;-</span> <span class="fu">rownames</span>(fs)</span>
+<span id="cb266-4"><a href="rによる因子分析の実行.html#cb266-4" tabindex="-1"></a>factor_exdata2 <span class="ot">&lt;-</span> <span class="fu">left_join</span>(factor_exdata2, fs, <span class="at">by =</span> <span class="st">&quot;rowname&quot;</span>)</span>
+<span id="cb266-5"><a href="rによる因子分析の実行.html#cb266-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(factor_exdata2),<span class="at">caption =</span> <span class="st">&quot;結合後データ&quot;</span>)</span></code></pre></div>
+<table>
+<caption>
+<span id="tab:fascoremerge">Table 11.2: </span>結合後データ
+</caption>
+<thead>
+<tr>
+<th style="text-align:right;">
+V1
+</th>
+<th style="text-align:right;">
+V2
+</th>
+<th style="text-align:right;">
+V3
+</th>
+<th style="text-align:right;">
+V4
+</th>
+<th style="text-align:right;">
+V5
+</th>
+<th style="text-align:right;">
+V6
+</th>
+<th style="text-align:left;">
+rowname
+</th>
+<th style="text-align:right;">
+ML1
+</th>
+<th style="text-align:right;">
+ML2
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:right;">
+1.3106155
+</td>
+<td style="text-align:right;">
+-0.2896470
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:right;">
+-1.2878038
+</td>
+<td style="text-align:right;">
+-0.2073067
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:right;">
+1.1828544
+</td>
+<td style="text-align:right;">
+-0.7996332
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+0.1474225
+</td>
+<td style="text-align:right;">
+1.0035837
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:right;">
+-1.3907544
+</td>
+<td style="text-align:right;">
+-1.3067260
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:right;">
+0.9928111
+</td>
+<td style="text-align:right;">
+-0.2875982
+</td>
+</tr>
+</tbody>
+</table>
+<p>せっかくなので、今結合したデータを用いて、抽出された因子に基づくクラスター分析を実行してみる。まず、階層的クラスター分析を実施し、図<a href="rによる因子分析の実行.html#fig:fahier">11.8</a> を参照し、便宜的に3クラスターモデルを仮定する（エルボー法などは省略）。</p>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="rによる因子分析の実行.html#cb267-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;cluster&quot;</span>)</span>
+<span id="cb267-2"><a href="rによる因子分析の実行.html#cb267-2" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;factoextra&quot;</span>)</span>
+<span id="cb267-3"><a href="rによる因子分析の実行.html#cb267-3" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;useful&quot;</span>)</span>
+<span id="cb267-4"><a href="rによる因子分析の実行.html#cb267-4" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;ggrepel&quot;</span>)</span>
+<span id="cb267-5"><a href="rによる因子分析の実行.html#cb267-5" tabindex="-1"></a>ex_cluster <span class="ot">&lt;-</span> factor_exdata2 <span class="sc">%&gt;%</span> </span>
+<span id="cb267-6"><a href="rによる因子分析の実行.html#cb267-6" tabindex="-1"></a>  <span class="fu">select</span>(ML1, ML2)</span>
+<span id="cb267-7"><a href="rによる因子分析の実行.html#cb267-7" tabindex="-1"></a>Hier1 <span class="ot">&lt;-</span> <span class="fu">agnes</span>(ex_cluster, <span class="at">metric =</span> <span class="st">&quot;euclidian&quot;</span>, <span class="at">stand =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb267-8"><a href="rによる因子分析の実行.html#cb267-8" tabindex="-1"></a><span class="fu">pltree</span>(Hier1)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:fahier"></span>
+<img src="mktres_lecture_files/figure-html/fahier-1.png" alt="2因子に基づくデンドログラム" width="672" />
+<p class="caption">
+Figure 11.8: 2因子に基づくデンドログラム
+</p>
+</div>
+<p>ここでは3クラスターを仮定し、K-means法でクラスター分析を実施し、その結果を図示化する。なお、以下では図のみを載せるが、関心のある学生はクラスター分析の結果も出力してみてほしい。図<a href="rによる因子分析の実行.html#fig:faclusterplot">11.9</a> を見ると、デザインと使いやすさのどちらも求めている顧客層はおらず、使いやすさを重視している人たちはあまりデザインを重視していない事が伺える。一方でデザインと使いやすさの両方で低いスコアを有しているグループもあり、このグループの人たちはデザインと使いやすさの両方に対するスコアが低い。</p>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="rによる因子分析の実行.html#cb268-1" tabindex="-1"></a>cl_1<span class="ot">&lt;-</span> <span class="fu">kmeans</span>(ex_cluster,<span class="dv">3</span>)</span>
+<span id="cb268-2"><a href="rによる因子分析の実行.html#cb268-2" tabindex="-1"></a>clus_fa <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(cl_1<span class="sc">$</span>cluster)</span>
+<span id="cb268-3"><a href="rによる因子分析の実行.html#cb268-3" tabindex="-1"></a>clus_fa<span class="sc">$</span>rowname <span class="ot">&lt;-</span> <span class="fu">rownames</span>(clus_fa)</span>
+<span id="cb268-4"><a href="rによる因子分析の実行.html#cb268-4" tabindex="-1"></a>factor_exdata2 <span class="ot">&lt;-</span> <span class="fu">left_join</span>(factor_exdata2, clus_fa, <span class="at">by =</span> <span class="st">&quot;rowname&quot;</span>)</span>
+<span id="cb268-5"><a href="rによる因子分析の実行.html#cb268-5" tabindex="-1"></a>factor_exdata2<span class="sc">$</span>cl_1.cluster <span class="ot">&lt;-</span> <span class="fu">factor</span>(factor_exdata2<span class="sc">$</span>cl_1.cluster)</span>
+<span id="cb268-6"><a href="rによる因子分析の実行.html#cb268-6" tabindex="-1"></a></span>
+<span id="cb268-7"><a href="rによる因子分析の実行.html#cb268-7" tabindex="-1"></a></span>
+<span id="cb268-8"><a href="rによる因子分析の実行.html#cb268-8" tabindex="-1"></a><span class="do">##Visualizing the clusters with 2 factors</span></span>
+<span id="cb268-9"><a href="rによる因子分析の実行.html#cb268-9" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> factor_exdata2,</span>
+<span id="cb268-10"><a href="rによる因子分析の実行.html#cb268-10" tabindex="-1"></a>             <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> ML1, <span class="at">y =</span> ML2, <span class="at">color =</span> cl_1.cluster))</span>
+<span id="cb268-11"><a href="rによる因子分析の実行.html#cb268-11" tabindex="-1"></a>p1 <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb268-12"><a href="rによる因子分析の実行.html#cb268-12" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">rownames</span>(factor_exdata2))) <span class="sc">+</span></span>
+<span id="cb268-13"><a href="rによる因子分析の実行.html#cb268-13" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Ease of use&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Design&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:faclusterplot"></span>
+<img src="mktres_lecture_files/figure-html/faclusterplot-1.png" alt="2因子に基づくクラスター" width="672" />
+<p class="caption">
+Figure 11.9: 2因子に基づくクラスター
+</p>
+</div>
+<p>以上のように因子分析は、（1）データの確認、（2）因子数の決定、（3）因子分析の実行、（4）解釈と名前付け、（5）事後的な分析、というステップを経て実行される事が多い。特にマーケティングや消費者行動論の分野では、因子分析による因子の解釈で完結するのではなく、その後の分析に因子を活用する事が多い。また、本節では因子スコアを用いた事後分析を紹介したが、マーケティング領域においては高い因子負荷量を持つ項目のみを用いた「尺度得点」を用いることも多い。例えば、「使いやすさ（EoU）」を表す変数を、<span class="math inline">\(EoU_i=(V1_i+V3_i+V5_i)/3\)</span> という対応する変数の平均値によって定義する方法が。同様に、「デザインの良さ（Des）」は 、<span class="math inline">\(Des_i=(V2_i+V4_i+V6_i)/3\)</span> によって捉えられる。</p>
+<p>このような変数作成を行うと、平均値算出で用いた変数以外（例えば、使いやすさに対するV2, V4, V6）は影響を与えないと仮定してよいのか、という疑問が残るだろう。実際に、それはとても強い仮定である。このような疑問に対して統計的な判断を与えるのが、確認的因子分析というアプローチである。因子分析において、モデルに含まれていない変数の因子負荷量がゼロであるという仮定のもと、その仮定に基づくモデルとデータとの適合度を調べるような方法を確認的因子分析と呼ぶ。この方法については発展的な内容になるため本講義では割愛するが、2010年代前半ごろまではマーケティング領域で広く用いられていた手法である。</p>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="因子分析概要.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="アンケートデータと知覚マップ.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/10-positioning.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

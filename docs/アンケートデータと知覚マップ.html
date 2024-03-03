@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>11.4 アンケートデータと知覚マップ | マーケティングリサーチ講義ノート</title>
+  <meta name="description" content="11.4 アンケートデータと知覚マップ | マーケティングリサーチ講義ノート" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="11.4 アンケートデータと知覚マップ | マーケティングリサーチ講義ノート" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.git" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="11.4 アンケートデータと知覚マップ | マーケティングリサーチ講義ノート" />
+  
+  
+  
+
+<meta name="author" content="Takumi Tagashira" />
+
+
+<meta name="date" content="2024-03-03" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="rによる因子分析の実行.html"/>
+<link rel="next" href="参考文献-9.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Marketing Research Lecture Note</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> はじめに（本資料について）</a></li>
+<li class="chapter" data-level="2" data-path="rusage.html"><a href="rusage.html"><i class="fa fa-check"></i><b>2</b> R と R studioに慣れる</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="posit-cloudを始める.html"><a href="posit-cloudを始める.html"><i class="fa fa-check"></i><b>2.1</b> Posit cloudを始める</a></li>
+<li class="chapter" data-level="2.2" data-path="補足r-studio-デスクトップ版の利用.html"><a href="補足r-studio-デスクトップ版の利用.html"><i class="fa fa-check"></i><b>2.2</b> （補足）R studio デスクトップ版の利用</a></li>
+<li class="chapter" data-level="2.3" data-path="補足デスクトップ版の利用とプロジェクト機能.html"><a href="補足デスクトップ版の利用とプロジェクト機能.html"><i class="fa fa-check"></i><b>2.3</b> （補足）デスクトップ版の利用とプロジェクト機能</a></li>
+<li class="chapter" data-level="2.4" data-path="rの基本操作.html"><a href="rの基本操作.html"><i class="fa fa-check"></i><b>2.4</b> Rの基本操作</a></li>
+<li class="chapter" data-level="2.5" data-path="r-スクリプトのすゝめ.html"><a href="r-スクリプトのすゝめ.html"><i class="fa fa-check"></i><b>2.5</b> R スクリプトのすゝめ</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="r-スクリプトのすゝめ.html"><a href="r-スクリプトのすゝめ.html#rスクリプトを書く"><i class="fa fa-check"></i><b>2.5.1</b> Rスクリプトを書く</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="本章のまとめ.html"><a href="本章のまとめ.html"><i class="fa fa-check"></i><b>2.6</b> 本章のまとめ</a></li>
+<li class="chapter" data-level="2.7" data-path="参考文献.html"><a href="参考文献.html"><i class="fa fa-check"></i><b>2.7</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="design.html"><a href="design.html"><i class="fa fa-check"></i><b>3</b> リサーチデザイン</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="マーケティング実務とリサーチ.html"><a href="マーケティング実務とリサーチ.html"><i class="fa fa-check"></i><b>3.1</b> マーケティング実務とリサーチ</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="マーケティング実務とリサーチ.html"><a href="マーケティング実務とリサーチ.html#実務とリサーチの異なる視点"><i class="fa fa-check"></i><b>3.1.1</b> 実務とリサーチの異なる視点</a></li>
+<li class="chapter" data-level="3.1.2" data-path="マーケティング実務とリサーチ.html"><a href="マーケティング実務とリサーチ.html#実務とリサーチの分離"><i class="fa fa-check"></i><b>3.1.2</b> 実務とリサーチの分離</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="リサーチデザインと論文の構成.html"><a href="リサーチデザインと論文の構成.html"><i class="fa fa-check"></i><b>3.2</b> リサーチデザインと論文の構成</a></li>
+<li class="chapter" data-level="3.3" data-path="question.html"><a href="question.html"><i class="fa fa-check"></i><b>3.3</b> 研究課題（問い）の設定</a></li>
+<li class="chapter" data-level="3.4" data-path="問題と分析をつなげる仮説の提示.html"><a href="問題と分析をつなげる仮説の提示.html"><i class="fa fa-check"></i><b>3.4</b> 問題と分析をつなげる仮説の提示</a></li>
+<li class="chapter" data-level="3.5" data-path="学術的研究のための留意点.html"><a href="学術的研究のための留意点.html"><i class="fa fa-check"></i><b>3.5</b> 学術的研究のための留意点</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="学術的研究のための留意点.html"><a href="学術的研究のための留意点.html#マーケティング研究と科学哲学"><i class="fa fa-check"></i><b>3.5.1</b> マーケティング研究と科学哲学</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="研究における理論の利用と精緻化.html"><a href="研究における理論の利用と精緻化.html"><i class="fa fa-check"></i><b>3.6</b> 研究における理論の利用と精緻化</a></li>
+<li class="chapter" data-level="3.7" data-path="参考文献-1.html"><a href="参考文献-1.html"><i class="fa fa-check"></i><b>3.7</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="survey.html"><a href="survey.html"><i class="fa fa-check"></i><b>4</b> データの種類とアンケートデザイン</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="記述的リサーチデザイン.html"><a href="記述的リサーチデザイン.html"><i class="fa fa-check"></i><b>4.1</b> 記述的リサーチデザイン</a></li>
+<li class="chapter" data-level="4.2" data-path="アンケート設計.html"><a href="アンケート設計.html"><i class="fa fa-check"></i><b>4.2</b> アンケート設計</a></li>
+<li class="chapter" data-level="4.3" data-path="質問におけるワーディング.html"><a href="質問におけるワーディング.html"><i class="fa fa-check"></i><b>4.3</b> 質問におけるワーディング</a></li>
+<li class="chapter" data-level="4.4" data-path="アンケートデザイン.html"><a href="アンケートデザイン.html"><i class="fa fa-check"></i><b>4.4</b> アンケートデザイン</a></li>
+<li class="chapter" data-level="4.5" data-path="参考文献-2.html"><a href="参考文献-2.html"><i class="fa fa-check"></i><b>4.5</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="handling.html"><a href="handling.html"><i class="fa fa-check"></i><b>5</b> データ処理と顧客関係管理（CRM）</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="データの読み込み.html"><a href="データの読み込み.html"><i class="fa fa-check"></i><b>5.1</b> データの読み込み</a></li>
+<li class="chapter" data-level="5.2" data-path="データの整形.html"><a href="データの整形.html"><i class="fa fa-check"></i><b>5.2</b> データの整形</a></li>
+<li class="chapter" data-level="5.3" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html"><i class="fa fa-check"></i><b>5.3</b> 統計的検定を用いない顧客分析</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html#データの構造変化とソート"><i class="fa fa-check"></i><b>5.3.1</b> データの構造変化とソート</a></li>
+<li class="chapter" data-level="5.3.2" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html#データ結合"><i class="fa fa-check"></i><b>5.3.2</b> データ結合</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="おまけ-wide型とlong型データセット.html"><a href="おまけ-wide型とlong型データセット.html"><i class="fa fa-check"></i><b>5.4</b> (おまけ) Wide型とLong型データセット</a></li>
+<li class="chapter" data-level="5.5" data-path="参考文献-3.html"><a href="参考文献-3.html"><i class="fa fa-check"></i><b>5.5</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="データの要約と可視化.html"><a href="データの要約と可視化.html"><i class="fa fa-check"></i><b>6</b> データの要約と可視化</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="記述統計.html"><a href="記述統計.html"><i class="fa fa-check"></i><b>6.1</b> 記述統計</a></li>
+<li class="chapter" data-level="6.2" data-path="カテゴリ変数の要約.html"><a href="カテゴリ変数の要約.html"><i class="fa fa-check"></i><b>6.2</b> カテゴリ変数の要約</a></li>
+<li class="chapter" data-level="6.3" data-path="データの可視化.html"><a href="データの可視化.html"><i class="fa fa-check"></i><b>6.3</b> データの可視化</a></li>
+<li class="chapter" data-level="6.4" data-path="二変数間の関係の要約.html"><a href="二変数間の関係の要約.html"><i class="fa fa-check"></i><b>6.4</b> 二変数間の関係の要約</a></li>
+<li class="chapter" data-level="6.5" data-path="参考文献-4.html"><a href="参考文献-4.html"><i class="fa fa-check"></i><b>6.5</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="test.html"><a href="test.html"><i class="fa fa-check"></i><b>7</b> 基礎統計学復習</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="確率モデル期待値と分散.html"><a href="確率モデル期待値と分散.html"><i class="fa fa-check"></i><b>7.1</b> 確率モデル、期待値と分散</a></li>
+<li class="chapter" data-level="7.2" data-path="統計的推測.html"><a href="統計的推測.html"><i class="fa fa-check"></i><b>7.2</b> 統計的推測</a></li>
+<li class="chapter" data-level="7.3" data-path="点推定.html"><a href="点推定.html"><i class="fa fa-check"></i><b>7.3</b> 点推定</a></li>
+<li class="chapter" data-level="7.4" data-path="推定量もまた確率変数.html"><a href="推定量もまた確率変数.html"><i class="fa fa-check"></i><b>7.4</b> 推定量もまた確率変数</a></li>
+<li class="chapter" data-level="7.5" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html"><i class="fa fa-check"></i><b>7.5</b> 補足（いくつかの確率分布の関係性）</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#正規分布"><i class="fa fa-check"></i><b>7.5.1</b> 正規分布</a></li>
+<li class="chapter" data-level="7.5.2" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#カイ二乗分布"><i class="fa fa-check"></i><b>7.5.2</b> カイ二乗分布</a></li>
+<li class="chapter" data-level="7.5.3" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#t分布"><i class="fa fa-check"></i><b>7.5.3</b> t分布</a></li>
+<li class="chapter" data-level="7.5.4" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#f分布"><i class="fa fa-check"></i><b>7.5.4</b> F分布</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="区間推定.html"><a href="区間推定.html"><i class="fa fa-check"></i><b>7.6</b> 区間推定</a></li>
+<li class="chapter" data-level="7.7" data-path="統計的仮説検定.html"><a href="統計的仮説検定.html"><i class="fa fa-check"></i><b>7.7</b> 統計的仮説検定</a></li>
+<li class="chapter" data-level="7.8" data-path="平均値に関するその他の検定.html"><a href="平均値に関するその他の検定.html"><i class="fa fa-check"></i><b>7.8</b> 平均値に関するその他の検定</a></li>
+<li class="chapter" data-level="7.9" data-path="分散分析.html"><a href="分散分析.html"><i class="fa fa-check"></i><b>7.9</b> 分散分析</a></li>
+<li class="chapter" data-level="7.10" data-path="参考文献-5.html"><a href="参考文献-5.html"><i class="fa fa-check"></i><b>7.10</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="regintro.html"><a href="regintro.html"><i class="fa fa-check"></i><b>8</b> 回帰分析</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="回帰モデル概要.html"><a href="回帰モデル概要.html"><i class="fa fa-check"></i><b>8.1</b> 回帰モデル概要</a></li>
+<li class="chapter" data-level="8.2" data-path="回帰分析における推定と検定.html"><a href="回帰分析における推定と検定.html"><i class="fa fa-check"></i><b>8.2</b> 回帰分析における推定と検定</a></li>
+<li class="chapter" data-level="8.3" data-path="重回帰モデル1.html"><a href="重回帰モデル1.html"><i class="fa fa-check"></i><b>8.3</b> 重回帰モデル1</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="重回帰モデル1.html"><a href="重回帰モデル1.html#重回帰モデル概要"><i class="fa fa-check"></i><b>8.3.1</b> 重回帰モデル概要</a></li>
+<li class="chapter" data-level="8.3.2" data-path="重回帰モデル1.html"><a href="重回帰モデル1.html#重回帰分析におけるモデル適合度"><i class="fa fa-check"></i><b>8.3.2</b> 重回帰分析におけるモデル適合度</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="重回帰モデル2.html"><a href="重回帰モデル2.html"><i class="fa fa-check"></i><b>8.4</b> 重回帰モデル2</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="重回帰モデル2.html"><a href="重回帰モデル2.html#回帰係数の解釈"><i class="fa fa-check"></i><b>8.4.1</b> 回帰係数の解釈</a></li>
+<li class="chapter" data-level="8.4.2" data-path="重回帰モデル2.html"><a href="重回帰モデル2.html#重回帰モデルにおける変数選択"><i class="fa fa-check"></i><b>8.4.2</b> 重回帰モデルにおける変数選択</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="参考文献-6.html"><a href="参考文献-6.html"><i class="fa fa-check"></i><b>8.5</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="regtechnic.html"><a href="regtechnic.html"><i class="fa fa-check"></i><b>9</b> 回帰分析上の工夫紹介</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="ダミー変数.html"><a href="ダミー変数.html"><i class="fa fa-check"></i><b>9.1</b> ダミー変数</a></li>
+<li class="chapter" data-level="9.2" data-path="交差項.html"><a href="交差項.html"><i class="fa fa-check"></i><b>9.2</b> 交差項</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="交差項.html"><a href="交差項.html#傾きダミー"><i class="fa fa-check"></i><b>9.2.1</b> 傾きダミー</a></li>
+<li class="chapter" data-level="9.2.2" data-path="交差項.html"><a href="交差項.html#量的変数同士の交差項"><i class="fa fa-check"></i><b>9.2.2</b> 量的変数同士の交差項</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="係数比較.html"><a href="係数比較.html"><i class="fa fa-check"></i><b>9.3</b> 係数比較</a></li>
+<li class="chapter" data-level="9.4" data-path="対数線形.html"><a href="対数線形.html"><i class="fa fa-check"></i><b>9.4</b> 対数線形</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="対数線形.html"><a href="対数線形.html#需要の価格弾力性追加説明"><i class="fa fa-check"></i><b>9.4.1</b> 需要の価格弾力性追加説明</a></li>
+<li class="chapter" data-level="9.4.2" data-path="対数線形.html"><a href="対数線形.html#対数線形の推定と検定"><i class="fa fa-check"></i><b>9.4.2</b> 対数線形の推定と検定</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="おまけ分析結果のまとめ出力上の工夫.html"><a href="おまけ分析結果のまとめ出力上の工夫.html"><i class="fa fa-check"></i><b>9.5</b> （おまけ）分析結果のまとめ・出力上の工夫</a></li>
+<li class="chapter" data-level="9.6" data-path="参考文献-7.html"><a href="参考文献-7.html"><i class="fa fa-check"></i><b>9.6</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="cluster.html"><a href="cluster.html"><i class="fa fa-check"></i><b>10</b> セグメントとクラスター分析</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="セグメンテーションとマーケティング意思決定.html"><a href="セグメンテーションとマーケティング意思決定.html"><i class="fa fa-check"></i><b>10.1</b> セグメンテーションとマーケティング意思決定</a></li>
+<li class="chapter" data-level="10.2" data-path="stpその後.html"><a href="stpその後.html"><i class="fa fa-check"></i><b>10.2</b> STPその後</a></li>
+<li class="chapter" data-level="10.3" data-path="セグメンテーションの実行とクラスター分析.html"><a href="セグメンテーションの実行とクラスター分析.html"><i class="fa fa-check"></i><b>10.3</b> セグメンテーションの実行とクラスター分析</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="セグメンテーションの実行とクラスター分析.html"><a href="セグメンテーションの実行とクラスター分析.html#Hier"><i class="fa fa-check"></i><b>10.3.1</b> 階層的クラスター分析</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="k-means.html"><a href="k-means.html"><i class="fa fa-check"></i><b>10.4</b> 非階層的クラスター分析：K-means法</a></li>
+<li class="chapter" data-level="10.5" data-path="rによるクラスター分析の実行.html"><a href="rによるクラスター分析の実行.html"><i class="fa fa-check"></i><b>10.5</b> Rによるクラスター分析の実行</a></li>
+<li class="chapter" data-level="10.6" data-path="参考文献-8.html"><a href="参考文献-8.html"><i class="fa fa-check"></i><b>10.6</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="factor.html"><a href="factor.html"><i class="fa fa-check"></i><b>11</b> 知覚マップと因子分析</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="ポジショニングと知覚マップ概要.html"><a href="ポジショニングと知覚マップ概要.html"><i class="fa fa-check"></i><b>11.1</b> ポジショニングと知覚マップ概要</a></li>
+<li class="chapter" data-level="11.2" data-path="因子分析概要.html"><a href="因子分析概要.html"><i class="fa fa-check"></i><b>11.2</b> 因子分析概要</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="因子分析概要.html"><a href="因子分析概要.html#因子分析の概要とモデルの構造"><i class="fa fa-check"></i><b>11.2.1</b> 因子分析の概要とモデルの構造</a></li>
+<li class="chapter" data-level="11.2.2" data-path="因子分析概要.html"><a href="因子分析概要.html#因子モデル"><i class="fa fa-check"></i><b>11.2.2</b> 2因子モデル</a></li>
+<li class="chapter" data-level="11.2.3" data-path="因子分析概要.html"><a href="因子分析概要.html#因子スコア"><i class="fa fa-check"></i><b>11.2.3</b> 因子スコア</a></li>
+<li class="chapter" data-level="11.2.4" data-path="因子分析概要.html"><a href="因子分析概要.html#小括"><i class="fa fa-check"></i><b>11.2.4</b> 小括</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="rによる因子分析の実行.html"><a href="rによる因子分析の実行.html"><i class="fa fa-check"></i><b>11.3</b> Rによる因子分析の実行</a></li>
+<li class="chapter" data-level="11.4" data-path="アンケートデータと知覚マップ.html"><a href="アンケートデータと知覚マップ.html"><i class="fa fa-check"></i><b>11.4</b> アンケートデータと知覚マップ</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="アンケートデータと知覚マップ.html"><a href="アンケートデータと知覚マップ.html#データ構造の変更"><i class="fa fa-check"></i><b>11.4.1</b> データ構造の変更</a></li>
+<li class="chapter" data-level="11.4.2" data-path="アンケートデータと知覚マップ.html"><a href="アンケートデータと知覚マップ.html#因子分析の実行"><i class="fa fa-check"></i><b>11.4.2</b> 因子分析の実行</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="参考文献-9.html"><a href="参考文献-9.html"><i class="fa fa-check"></i><b>11.5</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="psm.html"><a href="psm.html"><i class="fa fa-check"></i><b>12</b> 価格感度測定 (PSM)</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="psmrunning.html"><a href="psmrunning.html"><i class="fa fa-check"></i><b>12.1</b> PSMの実行と結果</a></li>
+<li class="chapter" data-level="12.2" data-path="price_concept.html"><a href="price_concept.html"><i class="fa fa-check"></i><b>12.2</b> マーケティングにおける価格概念</a></li>
+<li class="chapter" data-level="12.3" data-path="psmに関する既存研究.html"><a href="psmに関する既存研究.html"><i class="fa fa-check"></i><b>12.3</b> PSMに関する既存研究</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="psmに関する既存研究.html"><a href="psmに関する既存研究.html#受容価格に関する知見"><i class="fa fa-check"></i><b>12.3.1</b> 受容価格に関する知見</a></li>
+<li class="chapter" data-level="12.3.2" data-path="psmに関する既存研究.html"><a href="psmに関する既存研究.html#内的参照価格に関する知見"><i class="fa fa-check"></i><b>12.3.2</b> 内的参照価格に関する知見</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="受容価格帯と内的参照価格帯の応用とpsm.html"><a href="受容価格帯と内的参照価格帯の応用とpsm.html"><i class="fa fa-check"></i><b>12.4</b> 受容価格帯と内的参照価格帯の応用とPSM</a></li>
+<li class="chapter" data-level="12.5" data-path="集計方法に関する注意点.html"><a href="集計方法に関する注意点.html"><i class="fa fa-check"></i><b>12.5</b> 集計方法に関する注意点</a></li>
+<li class="chapter" data-level="12.6" data-path="参考文献-10.html"><a href="参考文献-10.html"><i class="fa fa-check"></i><b>12.6</b> 参考文献</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">マーケティングリサーチ講義ノート</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="アンケートデータと知覚マップ" class="section level2 hasAnchor" number="11.4">
+<h2><span class="header-section-number">11.4</span> アンケートデータと知覚マップ<a href="アンケートデータと知覚マップ.html#アンケートデータと知覚マップ" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>本節では、消費者の製品に対する知覚を図示化する形で企業のポジショニングを可視化する知覚マップの作成プロセスを紹介する。消費者の知覚について理解するためには、消費者に関する（主にアンケートによる）データが必要である。しかしながら、企業のポジションは企業同士の相対的な位置を表している。そのため、消費者レベルで収集したデータを企業レベルに集計し、企業に関する結果として図示化する必要がある。本節で紹介する知覚マップの作成は以下の手順で構成される。</p>
+<ol style="list-style-type: decimal">
+<li>複数の製品属性を捉えた、いくつかの企業に対する評価アンケートを実施する（ただし、アンケート収集プロセスは本資料では省略）。</li>
+<li>消費者をサンプル（行）とするデータセットを、企業レベルの集計データ構造に変換する。</li>
+<li>各企業をサンプルとする因子分析を実行し、いくつかの因子を抽出する。</li>
+<li>抽出された各因子の因子に関する得点（因子スコアや尺度得点）をサンプル（企業）に割り当てる。</li>
+<li>2つの因子に関する得点の関係をプロットする。</li>
+</ol>
+<p>ここでは、7つのカフェチェーンに対する5つの項目について関して11人の消費者から回答を得たと想定する演習用データを用いる。ここでは、以下の5つの各項目に対して5点リッカート尺度を用いて回答を得ている。</p>
+<ol style="list-style-type: decimal">
+<li>提供されている飲み物の品質が高い</li>
+<li>提供されている食べ物の品質が高い</li>
+<li>この企業の店舗は気持ちよく過ごせる環境である</li>
+<li>この企業の店内は楽しい雰囲気に包まれている</li>
+<li>この企業の店内は魅力的である</li>
+</ol>
+<div id="データ構造の変更" class="section level3 hasAnchor" number="11.4.1">
+<h3><span class="header-section-number">11.4.1</span> データ構造の変更<a href="アンケートデータと知覚マップ.html#データ構造の変更" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>多くのテキスト等で紹介、共有されている知覚マップの作成方法やそこで利用されているデータは、すでに企業レベルで集計されている事が多い。しかしながら、消費者から複数の企業に対する複数属性についてのアンケートを取ると、多くの場合表<a href="アンケートデータと知覚マップ.html#tab:cafedata">11.3</a> のような構造を持つだろう。表<a href="アンケートデータと知覚マップ.html#tab:cafedata">11.3</a>では、“y1_1” と “y2_1” はそれぞれ企業1への質問1、企業1への質問2を表している。そのため、例えば、“y1_2” は企業2への質問1を表している。なお、照井・佐藤（2022）のように、新聞等ですでに公表されている企業レベルで集計された調査結果を利用する場合、本節で紹介するデータの変換作業は不要である。</p>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="アンケートデータと知覚マップ.html#cb269-1" tabindex="-1"></a>df_cafe <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">&quot;data/2021_cafeSurvey.xlsx&quot;</span>)</span>
+<span id="cb269-2"><a href="アンケートデータと知覚マップ.html#cb269-2" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(df_cafe), <span class="at">caption =</span> <span class="st">&quot;カフェデータ概要&quot;</span>)</span></code></pre></div>
+<table>
+<caption>
+<span id="tab:cafedata">Table 11.3: </span>カフェデータ概要
+</caption>
+<thead>
+<tr>
+<th style="text-align:right;">
+ID
+</th>
+<th style="text-align:right;">
+y1_1
+</th>
+<th style="text-align:right;">
+y2_1
+</th>
+<th style="text-align:right;">
+y3_1
+</th>
+<th style="text-align:right;">
+y4_1
+</th>
+<th style="text-align:right;">
+y5_1
+</th>
+<th style="text-align:right;">
+y1_2
+</th>
+<th style="text-align:right;">
+y2_2
+</th>
+<th style="text-align:right;">
+y3_2
+</th>
+<th style="text-align:right;">
+y4_2
+</th>
+<th style="text-align:right;">
+y5_2
+</th>
+<th style="text-align:right;">
+y1_3
+</th>
+<th style="text-align:right;">
+y2_3
+</th>
+<th style="text-align:right;">
+y3_3
+</th>
+<th style="text-align:right;">
+y4_3
+</th>
+<th style="text-align:right;">
+y5_3
+</th>
+<th style="text-align:right;">
+y1_4
+</th>
+<th style="text-align:right;">
+y2_4
+</th>
+<th style="text-align:right;">
+y3_4
+</th>
+<th style="text-align:right;">
+y4_4
+</th>
+<th style="text-align:right;">
+y5_4
+</th>
+<th style="text-align:right;">
+y1_5
+</th>
+<th style="text-align:right;">
+y2_5
+</th>
+<th style="text-align:right;">
+y3_5
+</th>
+<th style="text-align:right;">
+y4_5
+</th>
+<th style="text-align:right;">
+y5_5
+</th>
+<th style="text-align:right;">
+y1_6
+</th>
+<th style="text-align:right;">
+y2_6
+</th>
+<th style="text-align:right;">
+y3_6
+</th>
+<th style="text-align:right;">
+y4_6
+</th>
+<th style="text-align:right;">
+y5_6
+</th>
+<th style="text-align:right;">
+y1_7
+</th>
+<th style="text-align:right;">
+y2_7
+</th>
+<th style="text-align:right;">
+y3_7
+</th>
+<th style="text-align:right;">
+y4_7
+</th>
+<th style="text-align:right;">
+y5_7
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+</tbody>
+</table>
+<p>本資料では、知覚マップの作成についてデータ構造の変更から説明する。慣習としては、消費者についての平均値や合計をとって、製品<span class="math inline">\(\times\)</span>項目の構造を持ったデータに修正する。本節で紹介する方法は、一般的に 「wide型データ」から「long型データ」への変換と呼ばれる作業である。以下では、合計を使って集計する形でデータ構造の変換作業を行っている。</p>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="アンケートデータと知覚マップ.html#cb270-1" tabindex="-1"></a><span class="co">#IDについての情報は含まない形で、データをlong型に変える。</span></span>
+<span id="cb270-2"><a href="アンケートデータと知覚マップ.html#cb270-2" tabindex="-1"></a><span class="co">#&quot;names_to&quot; と &quot;values_to&quot; によって列名が定義される。</span></span>
+<span id="cb270-3"><a href="アンケートデータと知覚マップ.html#cb270-3" tabindex="-1"></a>data_reshaped <span class="ot">&lt;-</span> df_cafe <span class="sc">%&gt;%</span> </span>
+<span id="cb270-4"><a href="アンケートデータと知覚マップ.html#cb270-4" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>ID, <span class="at">names_to =</span> <span class="st">&quot;company&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;y&quot;</span>) </span>
+<span id="cb270-5"><a href="アンケートデータと知覚マップ.html#cb270-5" tabindex="-1"></a></span>
+<span id="cb270-6"><a href="アンケートデータと知覚マップ.html#cb270-6" tabindex="-1"></a><span class="co">#企業番号と変数をそれぞれ &quot;company&quot; と &quot;k&quot; として割り振る。</span></span>
+<span id="cb270-7"><a href="アンケートデータと知覚マップ.html#cb270-7" tabindex="-1"></a><span class="do">##&quot;str_extract&quot;によって正規表現を抽出</span></span>
+<span id="cb270-8"><a href="アンケートデータと知覚マップ.html#cb270-8" tabindex="-1"></a><span class="do">##&quot;parse_number&quot;によって特定の値を抽出</span></span>
+<span id="cb270-9"><a href="アンケートデータと知覚マップ.html#cb270-9" tabindex="-1"></a>data_reshaped <span class="ot">&lt;-</span> data_reshaped <span class="sc">%&gt;%</span> </span>
+<span id="cb270-10"><a href="アンケートデータと知覚マップ.html#cb270-10" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">k =</span> <span class="fu">str_extract</span>(company, <span class="st">&quot;y[0-9]&quot;</span>),</span>
+<span id="cb270-11"><a href="アンケートデータと知覚マップ.html#cb270-11" tabindex="-1"></a>         <span class="at">company =</span> <span class="fu">str_extract</span>(company, <span class="st">&quot;_[0-9]&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb270-12"><a href="アンケートデータと知覚マップ.html#cb270-12" tabindex="-1"></a>           <span class="fu">parse_number</span>())</span>
+<span id="cb270-13"><a href="アンケートデータと知覚マップ.html#cb270-13" tabindex="-1"></a></span>
+<span id="cb270-14"><a href="アンケートデータと知覚マップ.html#cb270-14" tabindex="-1"></a><span class="co">#&quot;k&quot;をwide型に変換し、変数の列を作成する。</span></span>
+<span id="cb270-15"><a href="アンケートデータと知覚マップ.html#cb270-15" tabindex="-1"></a>data_reshaped <span class="ot">&lt;-</span> data_reshaped <span class="sc">%&gt;%</span> </span>
+<span id="cb270-16"><a href="アンケートデータと知覚マップ.html#cb270-16" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">&quot;k&quot;</span>, <span class="at">values_from =</span> <span class="st">&quot;y&quot;</span>)</span>
+<span id="cb270-17"><a href="アンケートデータと知覚マップ.html#cb270-17" tabindex="-1"></a></span>
+<span id="cb270-18"><a href="アンケートデータと知覚マップ.html#cb270-18" tabindex="-1"></a><span class="co">#企業名の割振りと、企業レベルデータへの集計</span></span>
+<span id="cb270-19"><a href="アンケートデータと知覚マップ.html#cb270-19" tabindex="-1"></a>data_renamed <span class="ot">&lt;-</span> data_reshaped <span class="sc">%&gt;%</span></span>
+<span id="cb270-20"><a href="アンケートデータと知覚マップ.html#cb270-20" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">company =</span> <span class="fu">case_when</span>(</span>
+<span id="cb270-21"><a href="アンケートデータと知覚マップ.html#cb270-21" tabindex="-1"></a>    company <span class="sc">==</span><span class="dv">1</span> <span class="sc">~</span> <span class="st">&quot;A&quot;</span>,</span>
+<span id="cb270-22"><a href="アンケートデータと知覚マップ.html#cb270-22" tabindex="-1"></a>    company <span class="sc">==</span><span class="dv">2</span> <span class="sc">~</span> <span class="st">&quot;B&quot;</span>, </span>
+<span id="cb270-23"><a href="アンケートデータと知覚マップ.html#cb270-23" tabindex="-1"></a>    company <span class="sc">==</span><span class="dv">3</span> <span class="sc">~</span> <span class="st">&quot;C&quot;</span>, </span>
+<span id="cb270-24"><a href="アンケートデータと知覚マップ.html#cb270-24" tabindex="-1"></a>    company <span class="sc">==</span><span class="dv">4</span> <span class="sc">~</span> <span class="st">&quot;D&quot;</span>,</span>
+<span id="cb270-25"><a href="アンケートデータと知覚マップ.html#cb270-25" tabindex="-1"></a>    company <span class="sc">==</span><span class="dv">5</span> <span class="sc">~</span> <span class="st">&quot;E&quot;</span>,</span>
+<span id="cb270-26"><a href="アンケートデータと知覚マップ.html#cb270-26" tabindex="-1"></a>    company <span class="sc">==</span><span class="dv">6</span> <span class="sc">~</span> <span class="st">&quot;F&quot;</span>,</span>
+<span id="cb270-27"><a href="アンケートデータと知覚マップ.html#cb270-27" tabindex="-1"></a>    company <span class="sc">==</span><span class="dv">7</span> <span class="sc">~</span> <span class="st">&quot;G&quot;</span>,</span>
+<span id="cb270-28"><a href="アンケートデータと知覚マップ.html#cb270-28" tabindex="-1"></a>    <span class="cn">TRUE</span><span class="sc">~</span><span class="st">&quot;else&quot;</span></span>
+<span id="cb270-29"><a href="アンケートデータと知覚マップ.html#cb270-29" tabindex="-1"></a>  ))</span>
+<span id="cb270-30"><a href="アンケートデータと知覚マップ.html#cb270-30" tabindex="-1"></a></span>
+<span id="cb270-31"><a href="アンケートデータと知覚マップ.html#cb270-31" tabindex="-1"></a>brand_based <span class="ot">&lt;-</span> data_renamed <span class="sc">%&gt;%</span> </span>
+<span id="cb270-32"><a href="アンケートデータと知覚マップ.html#cb270-32" tabindex="-1"></a>  <span class="fu">group_by</span>(company) <span class="sc">%&gt;%</span> </span>
+<span id="cb270-33"><a href="アンケートデータと知覚マップ.html#cb270-33" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">q1_sum =</span> <span class="fu">sum</span>(y1), </span>
+<span id="cb270-34"><a href="アンケートデータと知覚マップ.html#cb270-34" tabindex="-1"></a>            <span class="at">q2_sum =</span> <span class="fu">sum</span>(y2),</span>
+<span id="cb270-35"><a href="アンケートデータと知覚マップ.html#cb270-35" tabindex="-1"></a>            <span class="at">q3_sum =</span> <span class="fu">sum</span>(y3), </span>
+<span id="cb270-36"><a href="アンケートデータと知覚マップ.html#cb270-36" tabindex="-1"></a>            <span class="at">q4_sum =</span> <span class="fu">sum</span>(y4),</span>
+<span id="cb270-37"><a href="アンケートデータと知覚マップ.html#cb270-37" tabindex="-1"></a>            <span class="at">q5_sum =</span> <span class="fu">sum</span>(y5)) <span class="sc">%&gt;%</span> </span>
+<span id="cb270-38"><a href="アンケートデータと知覚マップ.html#cb270-38" tabindex="-1"></a>  tibble<span class="sc">::</span><span class="fu">column_to_rownames</span>(<span class="at">var =</span> <span class="st">&quot;company&quot;</span>)</span>
+<span id="cb270-39"><a href="アンケートデータと知覚マップ.html#cb270-39" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(brand_based, <span class="at">caption =</span> <span class="st">&quot;変換後データ&quot;</span>) </span></code></pre></div>
+<table>
+<caption>
+<span id="tab:widetolong">Table 11.4: </span>変換後データ
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+q1_sum
+</th>
+<th style="text-align:right;">
+q2_sum
+</th>
+<th style="text-align:right;">
+q3_sum
+</th>
+<th style="text-align:right;">
+q4_sum
+</th>
+<th style="text-align:right;">
+q5_sum
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:right;">
+41
+</td>
+<td style="text-align:right;">
+46
+</td>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:right;">
+45
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:right;">
+37
+</td>
+<td style="text-align:right;">
+37
+</td>
+<td style="text-align:right;">
+38
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:right;">
+33
+</td>
+<td style="text-align:right;">
+38
+</td>
+<td style="text-align:right;">
+37
+</td>
+<td style="text-align:right;">
+34
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:right;">
+38
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:right;">
+39
+</td>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:right;">
+36
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+E
+</td>
+<td style="text-align:right;">
+39
+</td>
+<td style="text-align:right;">
+39
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:right;">
+35
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:right;">
+37
+</td>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:right;">
+39
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+39
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+G
+</td>
+<td style="text-align:right;">
+43
+</td>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+44
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="因子分析の実行" class="section level3 hasAnchor" number="11.4.2">
+<h3><span class="header-section-number">11.4.2</span> 因子分析の実行<a href="アンケートデータと知覚マップ.html#因子分析の実行" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>前述の通りデータ構造が企業レベルに変換できたら次は因子分析と図示化テクニックを使って知覚マップを作成する。以下では、簡単にそのプロセスを紹介する。まずはスクリープロットと固有値によって因子数を検討する。図<a href="アンケートデータと知覚マップ.html#fig:pmsscreeplot">11.10</a> によると、傾きの変化、固有値どちらの観点からも2因子を採用することにする。</p>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="アンケートデータと知覚マップ.html#cb271-1" tabindex="-1"></a>cor_b <span class="ot">&lt;-</span> <span class="fu">cor</span>(brand_based)</span>
+<span id="cb271-2"><a href="アンケートデータと知覚マップ.html#cb271-2" tabindex="-1"></a><span class="fu">VSS.scree</span>(cor_b)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:pmsscreeplot"></span>
+<img src="mktres_lecture_files/figure-html/pmsscreeplot-1.png" alt="カフェデータスクリープロット" width="672" />
+<p class="caption">
+Figure 11.10: カフェデータスクリープロット
+</p>
+</div>
+<p>続いて、2因子モデルで因子分析を実行し、因子を解釈する。分析の結果、1つ目の因子は問1、2, 3, 5に高い因子負荷量を持っている。一方で、2つ目の因子は、問4に高い因子負荷量を持っている。また、因子1よりは低いものの、問3についても高い因子負荷量を有している。そこで、因子1を製品と環境、因子2を店舗の雰囲気と名付けることとする。また着目すべきは、因子1は問4（この企業の店内は楽しい雰囲気に包まれている）に、因子2は問2（提供されている食べ物の品質が高い）に対して負の因子負荷量を持っていることである。そのため、因子1と2は、因子の値が高まると、これらそれぞれの観測変数が低くなると考えられる。消費者の知覚・評価の中で、これらの因子や項目の間になんらかのトレードオフ構造があるかもしれない。</p>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="アンケートデータと知覚マップ.html#cb272-1" tabindex="-1"></a>Perc_cafe <span class="ot">&lt;-</span> <span class="fu">fa</span>(<span class="at">r =</span> brand_based, <span class="at">nfactors =</span> <span class="dv">2</span>,</span>
+<span id="cb272-2"><a href="アンケートデータと知覚マップ.html#cb272-2" tabindex="-1"></a>     <span class="at">rotate =</span> <span class="st">&quot;promax&quot;</span>)</span>
+<span id="cb272-3"><a href="アンケートデータと知覚マップ.html#cb272-3" tabindex="-1"></a>Perc_cafe</span></code></pre></div>
+<pre><code>## Factor Analysis using method =  minres
+## Call: fa(r = brand_based, nfactors = 2, rotate = &quot;promax&quot;)
+## Standardized loadings (pattern matrix) based upon correlation matrix
+##          MR1   MR2   h2     u2 com
+## q1_sum  0.84  0.12 0.82 0.1825 1.0
+## q2_sum  1.04 -0.38 0.83 0.1694 1.3
+## q3_sum  0.58  0.52 0.91 0.0892 2.0
+## q4_sum -0.25  1.10 1.00 0.0023 1.1
+## q5_sum  0.67  0.44 0.93 0.0654 1.7
+## 
+##                        MR1  MR2
+## SS loadings           2.64 1.86
+## Proportion Var        0.53 0.37
+## Cumulative Var        0.53 0.90
+## Proportion Explained  0.59 0.41
+## Cumulative Proportion 0.59 1.00
+## 
+##  With factor correlations of 
+##     MR1 MR2
+## MR1 1.0 0.5
+## MR2 0.5 1.0
+## 
+## Mean item complexity =  1.4
+## Test of the hypothesis that 2 factors are sufficient.
+## 
+## df null model =  10  with the objective function =  5.54 with Chi Square =  19.39
+## df of  the model are 1  and the objective function was  0.02 
+## 
+## The root mean square of the residuals (RMSR) is  0 
+## The df corrected root mean square of the residuals is  0.01 
+## 
+## The harmonic n.obs is  7 with the empirical chi square  0  with prob &lt;  0.97 
+## The total n.obs was  7  with Likelihood Chi Square =  0.04  with prob &lt;  0.84 
+## 
+## Tucker Lewis Index of factoring reliability =  5.793
+## RMSEA index =  0  and the 90 % confidence intervals are  0 0.618
+## BIC =  -1.91
+## Fit based upon off diagonal values = 1
+## Measures of factor score adequacy             
+##                                                    MR1  MR2
+## Correlation of (regression) scores with factors   0.98 1.00
+## Multiple R square of scores with factors          0.96 1.00
+## Minimum correlation of possible factor scores     0.92 0.99</code></pre>
+<p>上記の因子を反映した知覚マップは図<a href="アンケートデータと知覚マップ.html#fig:pmcafe">11.11</a> で表されている。これを見ると、企業Aはどちらの因子についても高い評価を得ている事がわかる。一方で企業Cは、製品や環境については標準的な評価を得ているものの、雰囲気については評価がとても低くなっている。反対に、企業DやEのように、製品や環境について悪い評価を得ている企業も存在する。本節では簡単に図<a href="アンケートデータと知覚マップ.html#fig:pmcafe">11.11</a> についての紹介を行っているが、実際にレポートを書く際には、このような結果から得られる含意や実務的示唆について詳しく論じる必要があることに注意してほしい。</p>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="アンケートデータと知覚マップ.html#cb274-1" tabindex="-1"></a>fs2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(Perc_cafe<span class="sc">$</span>scores)</span>
+<span id="cb274-2"><a href="アンケートデータと知覚マップ.html#cb274-2" tabindex="-1"></a>brand_based <span class="ot">&lt;-</span> brand_based <span class="sc">%&gt;%</span> </span>
+<span id="cb274-3"><a href="アンケートデータと知覚マップ.html#cb274-3" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="at">var =</span> <span class="st">&quot;rowname&quot;</span>)</span>
+<span id="cb274-4"><a href="アンケートデータと知覚マップ.html#cb274-4" tabindex="-1"></a>fs2 <span class="ot">&lt;-</span> fs2 <span class="sc">%&gt;%</span> </span>
+<span id="cb274-5"><a href="アンケートデータと知覚マップ.html#cb274-5" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="at">var =</span> <span class="st">&quot;rowname&quot;</span>)</span>
+<span id="cb274-6"><a href="アンケートデータと知覚マップ.html#cb274-6" tabindex="-1"></a>brand_based2 <span class="ot">&lt;-</span> <span class="fu">left_join</span>(brand_based, fs2, <span class="at">by =</span> <span class="st">&quot;rowname&quot;</span>)</span>
+<span id="cb274-7"><a href="アンケートデータと知覚マップ.html#cb274-7" tabindex="-1"></a></span>
+<span id="cb274-8"><a href="アンケートデータと知覚マップ.html#cb274-8" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> brand_based2,</span>
+<span id="cb274-9"><a href="アンケートデータと知覚マップ.html#cb274-9" tabindex="-1"></a>             <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> MR1, <span class="at">y =</span> MR2))</span>
+<span id="cb274-10"><a href="アンケートデータと知覚マップ.html#cb274-10" tabindex="-1"></a>p1 <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb274-11"><a href="アンケートデータと知覚マップ.html#cb274-11" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">label =</span> rowname)) <span class="sc">+</span></span>
+<span id="cb274-12"><a href="アンケートデータと知覚マップ.html#cb274-12" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Atmosphere&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Product+environment&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:pmcafe"></span>
+<img src="mktres_lecture_files/figure-html/pmcafe-1.png" alt="カフェ知覚マップ" width="672" />
+<p class="caption">
+Figure 11.11: カフェ知覚マップ
+</p>
+</div>
+<p>本節では、データ構造の変換も含む知覚マップの作成手順について紹介した。このような方法により、「消費者が企業をどのように評価しているか」という観点から、自社や競合のポジションを把握する事ができる。また、この企業レベルでのデータに対して因子分析とクラスター分析を組み合わせることによって、図<a href="アンケートデータと知覚マップ.html#fig:cafeclusterplot">11.12</a> のような図を描画できる。この演習データの場合には少し意義が見出しづらいかもしれないが、図<a href="アンケートデータと知覚マップ.html#fig:cafeclusterplot">11.12</a>のような可視化はより明確な実務的含意につながりうる。具体的には、2つの因子間において類似する企業を特定することができ、市場の競争環境（特に誰が競合となりうるかなど）について可視化できると考えられる。</p>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="アンケートデータと知覚マップ.html#cb275-1" tabindex="-1"></a>cafe_cluster <span class="ot">&lt;-</span> brand_based2 <span class="sc">%&gt;%</span> </span>
+<span id="cb275-2"><a href="アンケートデータと知覚マップ.html#cb275-2" tabindex="-1"></a>  <span class="fu">column_to_rownames</span>(<span class="at">var =</span> <span class="st">&quot;rowname&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb275-3"><a href="アンケートデータと知覚マップ.html#cb275-3" tabindex="-1"></a>  <span class="fu">select</span>(MR1, MR2)</span>
+<span id="cb275-4"><a href="アンケートデータと知覚マップ.html#cb275-4" tabindex="-1"></a><span class="co">#事前の階層的クラスター分析等は省略</span></span>
+<span id="cb275-5"><a href="アンケートデータと知覚マップ.html#cb275-5" tabindex="-1"></a><span class="co">#便宜的に3クラスターを想定している</span></span>
+<span id="cb275-6"><a href="アンケートデータと知覚マップ.html#cb275-6" tabindex="-1"></a>cl_cafe<span class="ot">&lt;-</span> <span class="fu">kmeans</span>(cafe_cluster,<span class="dv">3</span>)</span>
+<span id="cb275-7"><a href="アンケートデータと知覚マップ.html#cb275-7" tabindex="-1"></a>clus_fa_cafe <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(cl_cafe<span class="sc">$</span>cluster)</span>
+<span id="cb275-8"><a href="アンケートデータと知覚マップ.html#cb275-8" tabindex="-1"></a>clus_fa_cafe<span class="sc">$</span>rowname <span class="ot">&lt;-</span> <span class="fu">rownames</span>(clus_fa_cafe)</span>
+<span id="cb275-9"><a href="アンケートデータと知覚マップ.html#cb275-9" tabindex="-1"></a>brand_based2 <span class="ot">&lt;-</span> <span class="fu">left_join</span>(brand_based2, clus_fa_cafe, <span class="at">by =</span> <span class="st">&quot;rowname&quot;</span>)</span>
+<span id="cb275-10"><a href="アンケートデータと知覚マップ.html#cb275-10" tabindex="-1"></a>brand_based2<span class="sc">$</span>cl_cafe.cluster <span class="ot">&lt;-</span> <span class="fu">factor</span>(brand_based2<span class="sc">$</span>cl_cafe.cluster)</span>
+<span id="cb275-11"><a href="アンケートデータと知覚マップ.html#cb275-11" tabindex="-1"></a></span>
+<span id="cb275-12"><a href="アンケートデータと知覚マップ.html#cb275-12" tabindex="-1"></a><span class="do">##Visualizing the clusters with 2 factors</span></span>
+<span id="cb275-13"><a href="アンケートデータと知覚マップ.html#cb275-13" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> brand_based2,</span>
+<span id="cb275-14"><a href="アンケートデータと知覚マップ.html#cb275-14" tabindex="-1"></a>             <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> MR1, <span class="at">y =</span> MR2, <span class="at">color =</span> cl_cafe.cluster))</span>
+<span id="cb275-15"><a href="アンケートデータと知覚マップ.html#cb275-15" tabindex="-1"></a>p1 <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb275-16"><a href="アンケートデータと知覚マップ.html#cb275-16" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">rownames</span>(brand_based2))) <span class="sc">+</span></span>
+<span id="cb275-17"><a href="アンケートデータと知覚マップ.html#cb275-17" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Atmosphere&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Product+environment&quot;</span>,</span>
+<span id="cb275-18"><a href="アンケートデータと知覚マップ.html#cb275-18" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">&quot;Cluster&quot;</span>,<span class="at">shape =</span> <span class="st">&quot;Cluster&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:cafeclusterplot"></span>
+<img src="mktres_lecture_files/figure-html/cafeclusterplot-1.png" alt="知覚マップ &amp; クラスター" width="672" />
+<p class="caption">
+Figure 11.12: 知覚マップ &amp; クラスター
+</p>
+</div>
+<p>因子分析は、複数の観測変数の背後にある潜在的な因子を捉えようとする手法である。マーケティングや消費者行動では、この潜在的な因子に基づく議論も多く、因子分析は非常に重要な手法の1つである。特に、因子分析を行って因子を特定するだけではなく、それを知覚マップとして図示化したり、クラスター分析と組み合わせた分析を行うことで実務的含意を含む発見につながることが期待される。</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="rによる因子分析の実行.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="参考文献-9.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/10-positioning.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
