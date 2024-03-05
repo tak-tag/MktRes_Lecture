@@ -369,7 +369,7 @@ z_i=b_1x_{1i}+b_2x_{2i}+b_3x_{3i}
 ##  with the empirical chi square  3.94  with prob &lt;  0.41 
 ## 
 ## Fit based upon off diagonal values = 0.98</code></pre>
-<p>続いて、項目間相関係数の固有ベクトルを計算し、それに固有値の平方根を乗じる。その結果、表<a href="#tab:check"><strong>??</strong></a> は（PC2については符号は異なるものの）上記の主成分分析の結果と一致している事がわかる。</p>
+<p>続いて、項目間相関係数の固有ベクトルを計算し、それに固有値の平方根を乗じる。その結果、表<a href="pcafa.html#tab:calculationcheck">11.5</a> は（PC2については符号は異なるものの）上記の主成分分析の結果と一致している事がわかる。</p>
 <div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="pcafa.html#cb278-1" tabindex="-1"></a><span class="co">#データの相関行列から固有値と固有ベクトルを抽出</span></span>
 <span id="cb278-2"><a href="pcafa.html#cb278-2" tabindex="-1"></a>cor_ex <span class="ot">&lt;-</span> <span class="fu">cor</span>(factor_exdata3)</span>
 <span id="cb278-3"><a href="pcafa.html#cb278-3" tabindex="-1"></a>eigen_list <span class="ot">&lt;-</span> <span class="fu">eigen</span>(cor_ex)</span>
