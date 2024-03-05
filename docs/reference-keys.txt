@@ -39,6 +39,8 @@ tab:widetolong
 fig:pmsscreeplot
 fig:pmcafe
 fig:cafeclusterplot
+fig:pcafig
+tab:calculationcheck
 fig:psmfigure
 fig:LpHpfig
 fig:referenceprice
@@ -138,10 +140,11 @@ factor
 因子モデル
 因子スコア
 小括
-rによる因子分析の実行
+faex
 アンケートデータと知覚マップ
 データ構造の変更
 因子分析の実行
+pcafa
 参考文献-9
 psm
 psmrunning
