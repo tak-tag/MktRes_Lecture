@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>10.5 Rによるクラスター分析の実行 | マーケティングリサーチ講義ノート</title>
   <meta name="description" content="10.5 Rによるクラスター分析の実行 | マーケティングリサーチ講義ノート" />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
 
   <meta property="og:title" content="10.5 Rによるクラスター分析の実行 | マーケティングリサーチ講義ノート" />
   <meta property="og:type" content="book" />
@@ -20,10 +20,9 @@
   
   
 
-<meta name="author" content="Takumi Tagashira" />
 
 
-<meta name="date" content="2024-03-05" />
+<meta name="date" content="2024-03-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -148,7 +147,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="rusage.html"><a href="rusage.html"><i class="fa fa-check"></i><b>2</b> R と R studioに慣れる</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="posit-cloudを始める.html"><a href="posit-cloudを始める.html"><i class="fa fa-check"></i><b>2.1</b> Posit cloudを始める</a></li>
-<li class="chapter" data-level="2.2" data-path="補足r-studio-デスクトップ版の利用.html"><a href="補足r-studio-デスクトップ版の利用.html"><i class="fa fa-check"></i><b>2.2</b> （補足）R studio デスクトップ版の利用</a></li>
+<li class="chapter" data-level="2.2" data-path="desktop.html"><a href="desktop.html"><i class="fa fa-check"></i><b>2.2</b> （補足）R studio デスクトップ版の利用</a></li>
 <li class="chapter" data-level="2.3" data-path="補足デスクトップ版の利用とプロジェクト機能.html"><a href="補足デスクトップ版の利用とプロジェクト機能.html"><i class="fa fa-check"></i><b>2.3</b> （補足）デスクトップ版の利用とプロジェクト機能</a></li>
 <li class="chapter" data-level="2.4" data-path="rの基本操作.html"><a href="rの基本操作.html"><i class="fa fa-check"></i><b>2.4</b> Rの基本操作</a></li>
 <li class="chapter" data-level="2.5" data-path="r-スクリプトのすゝめ.html"><a href="r-スクリプトのすゝめ.html"><i class="fa fa-check"></i><b>2.5</b> R スクリプトのすゝめ</a>
@@ -508,278 +507,122 @@ Figure 10.15: 4クラスターモデル図
 <p>続いて、各クラスターに属する消費者についての情報を整理、検討する。ここでは、5クラスターモデルの結果に基づき、クラスター情報と元データとを結合する。結合した結果として以下の表 <a href="rによるクラスター分析の実行.html#tab:merged">10.2</a> に、元データにクラスター番号に関する変数 <code>cluster_id</code> が追加されていることがわかる。</p>
 <div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="rによるクラスター分析の実行.html#cb257-1" tabindex="-1"></a>df_cons<span class="sc">$</span>cluster_id <span class="ot">&lt;-</span> <span class="fu">factor</span>(K_shopping<span class="sc">$</span>cluster)</span>
 <span id="cb257-2"><a href="rによるクラスター分析の実行.html#cb257-2" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(df_cons),<span class="at">caption =</span> <span class="st">&quot;結合データ&quot;</span>)</span></code></pre></div>
-<table>
-<caption>
-<span id="tab:merged">Table 10.2: </span>結合データ
-</caption>
+<table style="width:100%;">
+<caption><span id="tab:merged">Table 10.2: </span>結合データ</caption>
+<colgroup>
+<col width="8%" />
+<col width="7%" />
+<col width="7%" />
+<col width="6%" />
+<col width="6%" />
+<col width="10%" />
+<col width="3%" />
+<col width="6%" />
+<col width="7%" />
+<col width="8%" />
+<col width="14%" />
+<col width="13%" />
+</colgroup>
 <thead>
-<tr>
-<th style="text-align:right;">
-県番号
-</th>
-<th style="text-align:right;">
-q12_4
-</th>
-<th style="text-align:right;">
-q13_3
-</th>
-<th style="text-align:right;">
-性別
-</th>
-<th style="text-align:right;">
-年齢
-</th>
-<th style="text-align:right;">
-結婚有無
-</th>
-<th style="text-align:right;">
-q5
-</th>
-<th style="text-align:right;">
-q7_2
-</th>
-<th style="text-align:left;">
-Pref
-</th>
-<th style="text-align:left;">
-Gender
-</th>
-<th style="text-align:left;">
-MaritalSt.
-</th>
-<th style="text-align:left;">
-cluster_id
-</th>
+<tr class="header">
+<th align="right">県番号</th>
+<th align="right">q12_4</th>
+<th align="right">q13_3</th>
+<th align="right">性別</th>
+<th align="right">年齢</th>
+<th align="right">結婚有無</th>
+<th align="right">q5</th>
+<th align="right">q7_2</th>
+<th align="left">Pref</th>
+<th align="left">Gender</th>
+<th align="left">MaritalSt.</th>
+<th align="left">cluster_id</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:right;">
-13
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-38
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:left;">
-Hyogo
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:left;">
-Not Married
-</td>
-<td style="text-align:left;">
-5
-</td>
+<tr class="odd">
+<td align="right">13</td>
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">38</td>
+<td align="right">2</td>
+<td align="right">8</td>
+<td align="right">4</td>
+<td align="left">Hyogo</td>
+<td align="left">Female</td>
+<td align="left">Not Married</td>
+<td align="left">5</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-13
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-42
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-9
-</td>
-<td style="text-align:left;">
-Hyogo
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:left;">
-Not Married
-</td>
-<td style="text-align:left;">
-5
-</td>
+<tr class="even">
+<td align="right">13</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">42</td>
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">9</td>
+<td align="left">Hyogo</td>
+<td align="left">Male</td>
+<td align="left">Not Married</td>
+<td align="left">5</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-13
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-30
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:left;">
-Hyogo
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:left;">
-Married
-</td>
-<td style="text-align:left;">
-5
-</td>
+<tr class="odd">
+<td align="right">13</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">30</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">NA</td>
+<td align="left">Hyogo</td>
+<td align="left">Male</td>
+<td align="left">Married</td>
+<td align="left">5</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-13
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-33
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:left;">
-Hyogo
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:left;">
-Married
-</td>
-<td style="text-align:left;">
-4
-</td>
+<tr class="even">
+<td align="right">13</td>
+<td align="right">4</td>
+<td align="right">5</td>
+<td align="right">1</td>
+<td align="right">33</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">NA</td>
+<td align="left">Hyogo</td>
+<td align="left">Male</td>
+<td align="left">Married</td>
+<td align="left">4</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-28
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-25
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:left;">
-Tokyo
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:left;">
-Married
-</td>
-<td style="text-align:left;">
-3
-</td>
+<tr class="odd">
+<td align="right">28</td>
+<td align="right">3</td>
+<td align="right">3</td>
+<td align="right">1</td>
+<td align="right">25</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">10</td>
+<td align="left">Tokyo</td>
+<td align="left">Male</td>
+<td align="left">Married</td>
+<td align="left">3</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-28
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-32
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:left;">
-Tokyo
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:left;">
-Married
-</td>
-<td style="text-align:left;">
-3
-</td>
+<tr class="even">
+<td align="right">28</td>
+<td align="right">3</td>
+<td align="right">3</td>
+<td align="right">1</td>
+<td align="right">32</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">NA</td>
+<td align="left">Tokyo</td>
+<td align="left">Male</td>
+<td align="left">Married</td>
+<td align="left">3</td>
 </tr>
 </tbody>
 </table>
@@ -796,167 +639,79 @@ Married
 <span id="cb258-9"><a href="rによるクラスター分析の実行.html#cb258-9" tabindex="-1"></a>            <span class="at">Married_r =</span> <span class="fu">sum</span>(MaritalSt. <span class="sc">==</span> <span class="st">&quot;Married&quot;</span>)<span class="sc">/</span><span class="fu">n</span>())</span>
 <span id="cb258-10"><a href="rによるクラスター分析の実行.html#cb258-10" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(clus_summary, <span class="at">caption =</span> <span class="st">&quot;クラスターサマリー&quot;</span>)</span></code></pre></div>
 <table>
-<caption>
-<span id="tab:clusSummary">Table 10.3: </span>クラスターサマリー
-</caption>
+<caption><span id="tab:clusSummary">Table 10.3: </span>クラスターサマリー</caption>
+<colgroup>
+<col width="15%" />
+<col width="5%" />
+<col width="12%" />
+<col width="12%" />
+<col width="12%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+</colgroup>
 <thead>
-<tr>
-<th style="text-align:left;">
-cluster_id
-</th>
-<th style="text-align:right;">
-N
-</th>
-<th style="text-align:right;">
-Price_m
-</th>
-<th style="text-align:right;">
-Switch_m
-</th>
-<th style="text-align:right;">
-Age_m
-</th>
-<th style="text-align:right;">
-Male_r
-</th>
-<th style="text-align:right;">
-Tokyo_r
-</th>
-<th style="text-align:right;">
-Married_r
-</th>
+<tr class="header">
+<th align="left">cluster_id</th>
+<th align="right">N</th>
+<th align="right">Price_m</th>
+<th align="right">Switch_m</th>
+<th align="right">Age_m</th>
+<th align="right">Male_r</th>
+<th align="right">Tokyo_r</th>
+<th align="right">Married_r</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:right;">
-80
-</td>
-<td style="text-align:right;">
-5.000000
-</td>
-<td style="text-align:right;">
-2.150000
-</td>
-<td style="text-align:right;">
-42.61250
-</td>
-<td style="text-align:right;">
-0.5125000
-</td>
-<td style="text-align:right;">
-0.3500000
-</td>
-<td style="text-align:right;">
-0.5250000
-</td>
+<tr class="odd">
+<td align="left">1</td>
+<td align="right">80</td>
+<td align="right">5.000000</td>
+<td align="right">2.150000</td>
+<td align="right">42.61250</td>
+<td align="right">0.5125000</td>
+<td align="right">0.3500000</td>
+<td align="right">0.5250000</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:right;">
-298
-</td>
-<td style="text-align:right;">
-3.261745
-</td>
-<td style="text-align:right;">
-1.781879
-</td>
-<td style="text-align:right;">
-38.56040
-</td>
-<td style="text-align:right;">
-0.5134228
-</td>
-<td style="text-align:right;">
-0.3020134
-</td>
-<td style="text-align:right;">
-0.6107383
-</td>
+<tr class="even">
+<td align="left">2</td>
+<td align="right">298</td>
+<td align="right">3.261745</td>
+<td align="right">1.781879</td>
+<td align="right">38.56040</td>
+<td align="right">0.5134228</td>
+<td align="right">0.3020134</td>
+<td align="right">0.6107383</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:right;">
-760
-</td>
-<td style="text-align:right;">
-2.582895
-</td>
-<td style="text-align:right;">
-3.207895
-</td>
-<td style="text-align:right;">
-41.88816
-</td>
-<td style="text-align:right;">
-0.5065789
-</td>
-<td style="text-align:right;">
-0.2500000
-</td>
-<td style="text-align:right;">
-0.5618421
-</td>
+<tr class="odd">
+<td align="left">3</td>
+<td align="right">760</td>
+<td align="right">2.582895</td>
+<td align="right">3.207895</td>
+<td align="right">41.88816</td>
+<td align="right">0.5065789</td>
+<td align="right">0.2500000</td>
+<td align="right">0.5618421</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-4
-</td>
-<td style="text-align:right;">
-592
-</td>
-<td style="text-align:right;">
-3.447635
-</td>
-<td style="text-align:right;">
-4.123311
-</td>
-<td style="text-align:right;">
-43.79730
-</td>
-<td style="text-align:right;">
-0.4645270
-</td>
-<td style="text-align:right;">
-0.2432432
-</td>
-<td style="text-align:right;">
-0.4712838
-</td>
+<tr class="even">
+<td align="left">4</td>
+<td align="right">592</td>
+<td align="right">3.447635</td>
+<td align="right">4.123311</td>
+<td align="right">43.79730</td>
+<td align="right">0.4645270</td>
+<td align="right">0.2432432</td>
+<td align="right">0.4712838</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:right;">
-243
-</td>
-<td style="text-align:right;">
-1.699588
-</td>
-<td style="text-align:right;">
-1.777778
-</td>
-<td style="text-align:right;">
-34.91770
-</td>
-<td style="text-align:right;">
-0.5102881
-</td>
-<td style="text-align:right;">
-0.2304527
-</td>
-<td style="text-align:right;">
-0.6213992
-</td>
+<tr class="odd">
+<td align="left">5</td>
+<td align="right">243</td>
+<td align="right">1.699588</td>
+<td align="right">1.777778</td>
+<td align="right">34.91770</td>
+<td align="right">0.5102881</td>
+<td align="right">0.2304527</td>
+<td align="right">0.6213992</td>
 </tr>
 </tbody>
 </table>

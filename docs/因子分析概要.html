@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>11.2 因子分析概要 | マーケティングリサーチ講義ノート</title>
   <meta name="description" content="11.2 因子分析概要 | マーケティングリサーチ講義ノート" />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
 
   <meta property="og:title" content="11.2 因子分析概要 | マーケティングリサーチ講義ノート" />
   <meta property="og:type" content="book" />
@@ -20,10 +20,9 @@
   
   
 
-<meta name="author" content="Takumi Tagashira" />
 
 
-<meta name="date" content="2024-03-05" />
+<meta name="date" content="2024-03-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -148,7 +147,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="rusage.html"><a href="rusage.html"><i class="fa fa-check"></i><b>2</b> R と R studioに慣れる</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="posit-cloudを始める.html"><a href="posit-cloudを始める.html"><i class="fa fa-check"></i><b>2.1</b> Posit cloudを始める</a></li>
-<li class="chapter" data-level="2.2" data-path="補足r-studio-デスクトップ版の利用.html"><a href="補足r-studio-デスクトップ版の利用.html"><i class="fa fa-check"></i><b>2.2</b> （補足）R studio デスクトップ版の利用</a></li>
+<li class="chapter" data-level="2.2" data-path="desktop.html"><a href="desktop.html"><i class="fa fa-check"></i><b>2.2</b> （補足）R studio デスクトップ版の利用</a></li>
 <li class="chapter" data-level="2.3" data-path="補足デスクトップ版の利用とプロジェクト機能.html"><a href="補足デスクトップ版の利用とプロジェクト機能.html"><i class="fa fa-check"></i><b>2.3</b> （補足）デスクトップ版の利用とプロジェクト機能</a></li>
 <li class="chapter" data-level="2.4" data-path="rの基本操作.html"><a href="rの基本操作.html"><i class="fa fa-check"></i><b>2.4</b> Rの基本操作</a></li>
 <li class="chapter" data-level="2.5" data-path="r-スクリプトのすゝめ.html"><a href="r-スクリプトのすゝめ.html"><i class="fa fa-check"></i><b>2.5</b> R スクリプトのすゝめ</a>
@@ -327,7 +326,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>因子分析には大きく分けて1つのアプローチが存在する。第1に、探索的因子分析である。これは、複数の観測変数間の相関関係から、その背後にいくつ潜在的な因子を導入すれば観測変数間の関係をうまく説明できるのかを探索的に調査・分析する方法である。第2に、確認的因子分析である。これは、先行研究などに基づき、因子の数と因子負荷量について仮説的な構造を想定し、その構造をデータに基づき検証する方法である。この手法は、共分散構造分析と呼ばれる分析手法を応用したものである。これら2つのうち本講義では、探索的因子分析に焦点を合わせる。</p>
 <p>因子分析では、観測変数の値を規定するような、共通する潜在因子が存在すると考える。図<a href="因子分析概要.html#fig:factor">11.3</a> は、3つの観測変数と1つの潜在因子との関係を表す因子モデルを図示したものである。因子分析では観測変数間の相関を捉えており、観測変数間に高い相関があるということは、その背後に共通する因子があると考える。図<a href="因子分析概要.html#fig:factor">11.3</a> における <span class="math inline">\(f\)</span> は潜在因子、 <span class="math inline">\(x_j~(j=1,2,3)\)</span> は観測変数を表している。また、因子と変数の関連性は <span class="math inline">\(a_j\)</span> という因子負荷量で表現され、 <span class="math inline">\(e_j\)</span> は因子では説明できない変数のばらつきを表す独自因子と呼ばれる。図示化においては、一般的に観測変数は四角形、潜在因子と独自因子は円や楕円で表現される事が多い。</p>
 <div class="figure"><span style="display:block;" id="fig:factor"></span>
-<img src="factor/factor.jpg" alt="因子分析モデル"  />
+<img src="factor/factor.jpg" alt="因子分析モデル" width="1391" />
 <p class="caption">
 Figure 11.3: 因子分析モデル
 </p>
@@ -377,7 +376,7 @@ x_{ij}=\hat{x}_{ji}+\hat{e}_{ji}=\hat{a}_jf+\hat{x}_{ji}
 <p>この<span class="math inline">\(\boldsymbol{A^*}\)</span>と<span class="math inline">\(\boldsymbol{f^*}\)</span>もまた2因子モデルの解である。そのため、座標軸の変換についての不定性がうかがえる。因子分析の実行においては、この特徴を逆手にとり、解釈が容易になるよう（単純構造化した）軸を回転させることが可能になる。ここでいう単純構造とは各変数が1つの因子だけから強い影響を受け、他の因子からの影響が0に近くなるように見える構造を意味している。</p>
 <p>軸の回転の方法としては主に、直交回転と斜交回転という2つのアプローチが存在する。直交回転とは、因子負荷量行列に直交行列をかけた解のことである。この方法では、因子間に相関がないことを仮定している。直交回転法代表例がバリマックス回転である。一方で斜交回転は、直交ではない回転を表しており、因子間の相関を認める方法である。斜交回転法の代表例はプロマックス回転である。図<a href="因子分析概要.html#fig:rotate">11.4</a> は、川端ほか（2019 p.180）を参照した因子軸の回転について直感的に示した概要図である。回転なしの図では、すべての観測変数が <span class="math inline">\(f2\)</span> に同じような負荷を持っていることがうかがえる。一方で、直交回転では、直交である条件は守ったままではあるが、<span class="math inline">\(1\sim 4\)</span>はf1に高いがf2には低い値を取っていることがうかがえる。さらに斜交回転においては、軸の角度を自由に取ることができ、より単純構造化されていることがうかがえる。</p>
 <div class="figure"><span style="display:block;" id="fig:rotate"></span>
-<img src="factor/rotate.jpg" alt="因子軸の回転概要"  />
+<img src="factor/rotate.jpg" alt="因子軸の回転概要" width="2010" />
 <p class="caption">
 Figure 11.4: 因子軸の回転概要
 </p>

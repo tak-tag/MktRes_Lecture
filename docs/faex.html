@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>11.3 Rによる因子分析の実行 | マーケティングリサーチ講義ノート</title>
   <meta name="description" content="11.3 Rによる因子分析の実行 | マーケティングリサーチ講義ノート" />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
 
   <meta property="og:title" content="11.3 Rによる因子分析の実行 | マーケティングリサーチ講義ノート" />
   <meta property="og:type" content="book" />
@@ -20,10 +20,9 @@
   
   
 
-<meta name="author" content="Takumi Tagashira" />
 
 
-<meta name="date" content="2024-03-05" />
+<meta name="date" content="2024-03-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -148,7 +147,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="rusage.html"><a href="rusage.html"><i class="fa fa-check"></i><b>2</b> R と R studioに慣れる</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="posit-cloudを始める.html"><a href="posit-cloudを始める.html"><i class="fa fa-check"></i><b>2.1</b> Posit cloudを始める</a></li>
-<li class="chapter" data-level="2.2" data-path="補足r-studio-デスクトップ版の利用.html"><a href="補足r-studio-デスクトップ版の利用.html"><i class="fa fa-check"></i><b>2.2</b> （補足）R studio デスクトップ版の利用</a></li>
+<li class="chapter" data-level="2.2" data-path="desktop.html"><a href="desktop.html"><i class="fa fa-check"></i><b>2.2</b> （補足）R studio デスクトップ版の利用</a></li>
 <li class="chapter" data-level="2.3" data-path="補足デスクトップ版の利用とプロジェクト機能.html"><a href="補足デスクトップ版の利用とプロジェクト機能.html"><i class="fa fa-check"></i><b>2.3</b> （補足）デスクトップ版の利用とプロジェクト機能</a></li>
 <li class="chapter" data-level="2.4" data-path="rの基本操作.html"><a href="rの基本操作.html"><i class="fa fa-check"></i><b>2.4</b> Rの基本操作</a></li>
 <li class="chapter" data-level="2.5" data-path="r-スクリプトのすゝめ.html"><a href="r-スクリプトのすゝめ.html"><i class="fa fa-check"></i><b>2.5</b> R スクリプトのすゝめ</a>
@@ -355,332 +354,160 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb260-10"><a href="faex.html#cb260-10" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>ID)</span>
 <span id="cb260-11"><a href="faex.html#cb260-11" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">summary</span>(factor_exdata2))</span></code></pre></div>
 <table>
+<colgroup>
+<col width="3%" />
+<col width="17%" />
+<col width="15%" />
+<col width="15%" />
+<col width="15%" />
+<col width="15%" />
+<col width="17%" />
+</colgroup>
 <thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:left;">
-V1
-</th>
-<th style="text-align:left;">
-V2
-</th>
-<th style="text-align:left;">
-V3
-</th>
-<th style="text-align:left;">
-V4
-</th>
-<th style="text-align:left;">
-V5
-</th>
-<th style="text-align:left;">
-V6
-</th>
+<tr class="header">
+<th align="left"></th>
+<th align="left">V1</th>
+<th align="left">V2</th>
+<th align="left">V3</th>
+<th align="left">V4</th>
+<th align="left">V5</th>
+<th align="left">V6</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-Min. :1.000
-</td>
-<td style="text-align:left;">
-Min. :2.0
-</td>
-<td style="text-align:left;">
-Min. :1.0
-</td>
-<td style="text-align:left;">
-Min. :2.0
-</td>
-<td style="text-align:left;">
-Min. :1.0
-</td>
-<td style="text-align:left;">
-Min. :2.000
-</td>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">Min. :1.000</td>
+<td align="left">Min. :2.0</td>
+<td align="left">Min. :1.0</td>
+<td align="left">Min. :2.0</td>
+<td align="left">Min. :1.0</td>
+<td align="left">Min. :2.000</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-1st Qu.:2.000
-</td>
-<td style="text-align:left;">
-1st Qu.:3.0
-</td>
-<td style="text-align:left;">
-1st Qu.:2.0
-</td>
-<td style="text-align:left;">
-1st Qu.:3.0
-</td>
-<td style="text-align:left;">
-1st Qu.:3.0
-</td>
-<td style="text-align:left;">
-1st Qu.:3.000
-</td>
+<tr class="even">
+<td align="left"></td>
+<td align="left">1st Qu.:2.000</td>
+<td align="left">1st Qu.:3.0</td>
+<td align="left">1st Qu.:2.0</td>
+<td align="left">1st Qu.:3.0</td>
+<td align="left">1st Qu.:3.0</td>
+<td align="left">1st Qu.:3.000</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-Median :4.000
-</td>
-<td style="text-align:left;">
-Median :4.0
-</td>
-<td style="text-align:left;">
-Median :4.0
-</td>
-<td style="text-align:left;">
-Median :4.0
-</td>
-<td style="text-align:left;">
-Median :4.5
-</td>
-<td style="text-align:left;">
-Median :4.000
-</td>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">Median :4.000</td>
+<td align="left">Median :4.0</td>
+<td align="left">Median :4.0</td>
+<td align="left">Median :4.0</td>
+<td align="left">Median :4.5</td>
+<td align="left">Median :4.000</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-Mean :3.933
-</td>
-<td style="text-align:left;">
-Mean :3.9
-</td>
-<td style="text-align:left;">
-Mean :4.1
-</td>
-<td style="text-align:left;">
-Mean :4.1
-</td>
-<td style="text-align:left;">
-Mean :4.5
-</td>
-<td style="text-align:left;">
-Mean :4.167
-</td>
+<tr class="even">
+<td align="left"></td>
+<td align="left">Mean :3.933</td>
+<td align="left">Mean :3.9</td>
+<td align="left">Mean :4.1</td>
+<td align="left">Mean :4.1</td>
+<td align="left">Mean :4.5</td>
+<td align="left">Mean :4.167</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-3rd Qu.:6.000
-</td>
-<td style="text-align:left;">
-3rd Qu.:5.0
-</td>
-<td style="text-align:left;">
-3rd Qu.:6.0
-</td>
-<td style="text-align:left;">
-3rd Qu.:5.0
-</td>
-<td style="text-align:left;">
-3rd Qu.:6.0
-</td>
-<td style="text-align:left;">
-3rd Qu.:4.750
-</td>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">3rd Qu.:6.000</td>
+<td align="left">3rd Qu.:5.0</td>
+<td align="left">3rd Qu.:6.0</td>
+<td align="left">3rd Qu.:5.0</td>
+<td align="left">3rd Qu.:6.0</td>
+<td align="left">3rd Qu.:4.750</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-Max. :7.000
-</td>
-<td style="text-align:left;">
-Max. :7.0
-</td>
-<td style="text-align:left;">
-Max. :7.0
-</td>
-<td style="text-align:left;">
-Max. :7.0
-</td>
-<td style="text-align:left;">
-Max. :7.0
-</td>
-<td style="text-align:left;">
-Max. :7.000
-</td>
+<tr class="even">
+<td align="left"></td>
+<td align="left">Max. :7.000</td>
+<td align="left">Max. :7.0</td>
+<td align="left">Max. :7.0</td>
+<td align="left">Max. :7.0</td>
+<td align="left">Max. :7.0</td>
+<td align="left">Max. :7.000</td>
 </tr>
 </tbody>
 </table>
 <div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="faex.html#cb261-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">cor</span>(factor_exdata2), <span class="at">caption=</span><span class="st">&quot;相関行列&quot;</span>)</span></code></pre></div>
 <table>
-<caption>
-<span id="tab:faData">Table 11.1: </span>相関行列
-</caption>
+<caption><span id="tab:faData">Table 11.1: </span>相関行列</caption>
+<colgroup>
+<col width="4%" />
+<col width="15%" />
+<col width="15%" />
+<col width="15%" />
+<col width="15%" />
+<col width="15%" />
+<col width="15%" />
+</colgroup>
 <thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-V1
-</th>
-<th style="text-align:right;">
-V2
-</th>
-<th style="text-align:right;">
-V3
-</th>
-<th style="text-align:right;">
-V4
-</th>
-<th style="text-align:right;">
-V5
-</th>
-<th style="text-align:right;">
-V6
-</th>
+<tr class="header">
+<th align="left"></th>
+<th align="right">V1</th>
+<th align="right">V2</th>
+<th align="right">V3</th>
+<th align="right">V4</th>
+<th align="right">V5</th>
+<th align="right">V6</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-V1
-</td>
-<td style="text-align:right;">
-1.0000000
-</td>
-<td style="text-align:right;">
--0.0532178
-</td>
-<td style="text-align:right;">
-0.8730902
-</td>
-<td style="text-align:right;">
--0.0861622
-</td>
-<td style="text-align:right;">
-0.8576366
-</td>
-<td style="text-align:right;">
-0.0041681
-</td>
+<tr class="odd">
+<td align="left">V1</td>
+<td align="right">1.0000000</td>
+<td align="right">-0.0532178</td>
+<td align="right">0.8730902</td>
+<td align="right">-0.0861622</td>
+<td align="right">0.8576366</td>
+<td align="right">0.0041681</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-V2
-</td>
-<td style="text-align:right;">
--0.0532178
-</td>
-<td style="text-align:right;">
-1.0000000
-</td>
-<td style="text-align:right;">
--0.1550200
-</td>
-<td style="text-align:right;">
-0.5722121
-</td>
-<td style="text-align:right;">
--0.0197456
-</td>
-<td style="text-align:right;">
-0.6404649
-</td>
+<tr class="even">
+<td align="left">V2</td>
+<td align="right">-0.0532178</td>
+<td align="right">1.0000000</td>
+<td align="right">-0.1550200</td>
+<td align="right">0.5722121</td>
+<td align="right">-0.0197456</td>
+<td align="right">0.6404649</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-V3
-</td>
-<td style="text-align:right;">
-0.8730902
-</td>
-<td style="text-align:right;">
--0.1550200
-</td>
-<td style="text-align:right;">
-1.0000000
-</td>
-<td style="text-align:right;">
--0.2477879
-</td>
-<td style="text-align:right;">
-0.7778480
-</td>
-<td style="text-align:right;">
--0.0180688
-</td>
+<tr class="odd">
+<td align="left">V3</td>
+<td align="right">0.8730902</td>
+<td align="right">-0.1550200</td>
+<td align="right">1.0000000</td>
+<td align="right">-0.2477879</td>
+<td align="right">0.7778480</td>
+<td align="right">-0.0180688</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-V4
-</td>
-<td style="text-align:right;">
--0.0861622
-</td>
-<td style="text-align:right;">
-0.5722121
-</td>
-<td style="text-align:right;">
--0.2477879
-</td>
-<td style="text-align:right;">
-1.0000000
-</td>
-<td style="text-align:right;">
-0.0065819
-</td>
-<td style="text-align:right;">
-0.6404649
-</td>
+<tr class="even">
+<td align="left">V4</td>
+<td align="right">-0.0861622</td>
+<td align="right">0.5722121</td>
+<td align="right">-0.2477879</td>
+<td align="right">1.0000000</td>
+<td align="right">0.0065819</td>
+<td align="right">0.6404649</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-V5
-</td>
-<td style="text-align:right;">
-0.8576366
-</td>
-<td style="text-align:right;">
--0.0197456
-</td>
-<td style="text-align:right;">
-0.7778480
-</td>
-<td style="text-align:right;">
-0.0065819
-</td>
-<td style="text-align:right;">
-1.0000000
-</td>
-<td style="text-align:right;">
-0.1364029
-</td>
+<tr class="odd">
+<td align="left">V5</td>
+<td align="right">0.8576366</td>
+<td align="right">-0.0197456</td>
+<td align="right">0.7778480</td>
+<td align="right">0.0065819</td>
+<td align="right">1.0000000</td>
+<td align="right">0.1364029</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-V6
-</td>
-<td style="text-align:right;">
-0.0041681
-</td>
-<td style="text-align:right;">
-0.6404649
-</td>
-<td style="text-align:right;">
--0.0180688
-</td>
-<td style="text-align:right;">
-0.6404649
-</td>
-<td style="text-align:right;">
-0.1364029
-</td>
-<td style="text-align:right;">
-1.0000000
-</td>
+<tr class="even">
+<td align="left">V6</td>
+<td align="right">0.0041681</td>
+<td align="right">0.6404649</td>
+<td align="right">-0.0180688</td>
+<td align="right">0.6404649</td>
+<td align="right">0.1364029</td>
+<td align="right">1.0000000</td>
 </tr>
 </tbody>
 </table>
@@ -758,214 +585,86 @@ Figure 11.7: 図示化された因子モデル
 <span id="cb266-4"><a href="faex.html#cb266-4" tabindex="-1"></a>factor_exdata2 <span class="ot">&lt;-</span> <span class="fu">left_join</span>(factor_exdata2, fs, <span class="at">by =</span> <span class="st">&quot;rowname&quot;</span>)</span>
 <span id="cb266-5"><a href="faex.html#cb266-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(factor_exdata2),<span class="at">caption =</span> <span class="st">&quot;結合後データ&quot;</span>)</span></code></pre></div>
 <table>
-<caption>
-<span id="tab:fascoremerge">Table 11.2: </span>結合後データ
-</caption>
+<caption><span id="tab:fascoremerge">Table 11.2: </span>結合後データ</caption>
 <thead>
-<tr>
-<th style="text-align:right;">
-V1
-</th>
-<th style="text-align:right;">
-V2
-</th>
-<th style="text-align:right;">
-V3
-</th>
-<th style="text-align:right;">
-V4
-</th>
-<th style="text-align:right;">
-V5
-</th>
-<th style="text-align:right;">
-V6
-</th>
-<th style="text-align:left;">
-rowname
-</th>
-<th style="text-align:right;">
-ML1
-</th>
-<th style="text-align:right;">
-ML2
-</th>
+<tr class="header">
+<th align="right">V1</th>
+<th align="right">V2</th>
+<th align="right">V3</th>
+<th align="right">V4</th>
+<th align="right">V5</th>
+<th align="right">V6</th>
+<th align="left">rowname</th>
+<th align="right">ML1</th>
+<th align="right">ML2</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:right;">
-1.3106155
-</td>
-<td style="text-align:right;">
--0.2896470
-</td>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">3</td>
+<td align="right">6</td>
+<td align="right">4</td>
+<td align="right">6</td>
+<td align="right">4</td>
+<td align="left">1</td>
+<td align="right">1.3106155</td>
+<td align="right">-0.2896470</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:right;">
--1.2878038
-</td>
-<td style="text-align:right;">
--0.2073067
-</td>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">2</td>
+<td align="right">4</td>
+<td align="right">3</td>
+<td align="right">4</td>
+<td align="left">2</td>
+<td align="right">-1.2878038</td>
+<td align="right">-0.2073067</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:right;">
-1.1828544
-</td>
-<td style="text-align:right;">
--0.7996332
-</td>
+<tr class="odd">
+<td align="right">6</td>
+<td align="right">2</td>
+<td align="right">7</td>
+<td align="right">4</td>
+<td align="right">7</td>
+<td align="right">3</td>
+<td align="left">3</td>
+<td align="right">1.1828544</td>
+<td align="right">-0.7996332</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:left;">
-4
-</td>
-<td style="text-align:right;">
-0.1474225
-</td>
-<td style="text-align:right;">
-1.0035837
-</td>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">5</td>
+<td align="right">4</td>
+<td align="right">6</td>
+<td align="right">6</td>
+<td align="right">5</td>
+<td align="left">4</td>
+<td align="right">0.1474225</td>
+<td align="right">1.0035837</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:right;">
--1.3907544
-</td>
-<td style="text-align:right;">
--1.3067260
-</td>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="left">5</td>
+<td align="right">-1.3907544</td>
+<td align="right">-1.3067260</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:left;">
-6
-</td>
-<td style="text-align:right;">
-0.9928111
-</td>
-<td style="text-align:right;">
--0.2875982
-</td>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">3</td>
+<td align="right">6</td>
+<td align="right">4</td>
+<td align="right">6</td>
+<td align="right">4</td>
+<td align="left">6</td>
+<td align="right">0.9928111</td>
+<td align="right">-0.2875982</td>
 </tr>
 </tbody>
 </table>

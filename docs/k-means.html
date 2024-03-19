@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>10.4 非階層的クラスター分析：K-means法 | マーケティングリサーチ講義ノート</title>
   <meta name="description" content="10.4 非階層的クラスター分析：K-means法 | マーケティングリサーチ講義ノート" />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
 
   <meta property="og:title" content="10.4 非階層的クラスター分析：K-means法 | マーケティングリサーチ講義ノート" />
   <meta property="og:type" content="book" />
@@ -20,10 +20,9 @@
   
   
 
-<meta name="author" content="Takumi Tagashira" />
 
 
-<meta name="date" content="2024-03-05" />
+<meta name="date" content="2024-03-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -148,7 +147,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="rusage.html"><a href="rusage.html"><i class="fa fa-check"></i><b>2</b> R と R studioに慣れる</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="posit-cloudを始める.html"><a href="posit-cloudを始める.html"><i class="fa fa-check"></i><b>2.1</b> Posit cloudを始める</a></li>
-<li class="chapter" data-level="2.2" data-path="補足r-studio-デスクトップ版の利用.html"><a href="補足r-studio-デスクトップ版の利用.html"><i class="fa fa-check"></i><b>2.2</b> （補足）R studio デスクトップ版の利用</a></li>
+<li class="chapter" data-level="2.2" data-path="desktop.html"><a href="desktop.html"><i class="fa fa-check"></i><b>2.2</b> （補足）R studio デスクトップ版の利用</a></li>
 <li class="chapter" data-level="2.3" data-path="補足デスクトップ版の利用とプロジェクト機能.html"><a href="補足デスクトップ版の利用とプロジェクト機能.html"><i class="fa fa-check"></i><b>2.3</b> （補足）デスクトップ版の利用とプロジェクト機能</a></li>
 <li class="chapter" data-level="2.4" data-path="rの基本操作.html"><a href="rの基本操作.html"><i class="fa fa-check"></i><b>2.4</b> Rの基本操作</a></li>
 <li class="chapter" data-level="2.5" data-path="r-スクリプトのすゝめ.html"><a href="r-スクリプトのすゝめ.html"><i class="fa fa-check"></i><b>2.5</b> R スクリプトのすゝめ</a>
@@ -329,14 +328,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p>図 <a href="k-means.html#fig:kmeans1">10.7</a>と<a href="k-means.html#fig:kmeans2">10.8</a> はK-means法のプロセスに関する直感的説明を段階的に図示化したものである。ここでは、図 <a href="k-means.html#fig:kmeans1">10.7</a> (1) のようなデータに対し、3つのクラスター数を仮定した場合を考える（このプロセスは任意の <span class="math inline">\(k\)</span> 個のクラスターに対して適応可能）。</p>
 <div class="figure"><span style="display:block;" id="fig:kmeans1"></span>
-<img src="cluster/kmeans1.jpg" alt="K-means法直感１"  />
+<img src="cluster/kmeans1.jpg" alt="K-means法直感１" width="2044" />
 <p class="caption">
 Figure 10.7: K-means法直感１
 </p>
 </div>
 <p>まず初めに図<a href="k-means.html#fig:kmeans1">10.7</a> (2) に着目してほしい。ここでは、与えられたデータの空間に対して3つのクラスターセンター初期値（初期シードとも言う）をランダムにとる。次に各観測個体をそれぞれの最も近い初期センターに割り当てる形で3つのクラスターを作成する（図<a href="k-means.html#fig:kmeans1">10.7</a> (3)）。ここで、作成された3つのクラスター（の観測値）と、初期値とを比較し、適切に中心を表しているかを検討する（図<a href="k-means.html#fig:kmeans1">10.7</a> (4)）。例えば、図<a href="k-means.html#fig:kmeans1">10.7</a> (4) における赤いクラスターについてはもう少し右上の方向にセンターを移動したほうがいいかもしれない。このように、各クラスターの観測値に基づき、クラスターセンターが計算され、アップデートされる。</p>
 <div class="figure"><span style="display:block;" id="fig:kmeans2"></span>
-<img src="cluster/kmeans2.jpg" alt="K-means法直感２"  />
+<img src="cluster/kmeans2.jpg" alt="K-means法直感２" width="2642" />
 <p class="caption">
 Figure 10.8: K-means法直感２
 </p>

@@ -1,7 +1,9 @@
 --- 
 title: "マーケティングリサーチ講義ノート"
 subtitle: "Rを使ったリサーチ基礎固め"
-author: "Takumi Tagashira"
+author: 
+  - name: "田頭拓己"
+    affiliation: "神戸大学大学院経営学研究科"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook

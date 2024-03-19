@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 R と R studioに慣れる | マーケティングリサーチ講義ノート</title>
   <meta name="description" content="Chapter 2 R と R studioに慣れる | マーケティングリサーチ講義ノート" />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 R と R studioに慣れる | マーケティングリサーチ講義ノート" />
   <meta property="og:type" content="book" />
@@ -20,10 +20,9 @@
   
   
 
-<meta name="author" content="Takumi Tagashira" />
 
 
-<meta name="date" content="2024-03-05" />
+<meta name="date" content="2024-03-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -148,7 +147,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="rusage.html"><a href="rusage.html"><i class="fa fa-check"></i><b>2</b> R と R studioに慣れる</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="posit-cloudを始める.html"><a href="posit-cloudを始める.html"><i class="fa fa-check"></i><b>2.1</b> Posit cloudを始める</a></li>
-<li class="chapter" data-level="2.2" data-path="補足r-studio-デスクトップ版の利用.html"><a href="補足r-studio-デスクトップ版の利用.html"><i class="fa fa-check"></i><b>2.2</b> （補足）R studio デスクトップ版の利用</a></li>
+<li class="chapter" data-level="2.2" data-path="desktop.html"><a href="desktop.html"><i class="fa fa-check"></i><b>2.2</b> （補足）R studio デスクトップ版の利用</a></li>
 <li class="chapter" data-level="2.3" data-path="補足デスクトップ版の利用とプロジェクト機能.html"><a href="補足デスクトップ版の利用とプロジェクト機能.html"><i class="fa fa-check"></i><b>2.3</b> （補足）デスクトップ版の利用とプロジェクト機能</a></li>
 <li class="chapter" data-level="2.4" data-path="rの基本操作.html"><a href="rの基本操作.html"><i class="fa fa-check"></i><b>2.4</b> Rの基本操作</a></li>
 <li class="chapter" data-level="2.5" data-path="r-スクリプトのすゝめ.html"><a href="r-スクリプトのすゝめ.html"><i class="fa fa-check"></i><b>2.5</b> R スクリプトのすゝめ</a>
@@ -323,7 +322,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 2</span> R と R studioに慣れる<a href="rusage.html#rusage" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>R（あーる）は統計、データ解析、統計グラフ作成のためのオープンソースソフトウェアである。Rは以下のサイト（<a href="http://cran.ism.ac.jp/" class="uri">http://cran.ism.ac.jp/</a>）等からダウンロードし、インストールが可能である。ソフトウェアには、Windows用、Mac用、Linux用があり、ユーザー自身の環境に適したバージョンを選択してほしい。Rを用いる際には、多くの場合) R studio、Jupyter notebookや、Rコマンダーのようなユーザーインターフェイスが利用される。そしてRを使用する際には (Rコマンダーを使わないかぎりは) 基本的にソースコードを入力し計算、分析を行う。しかし、本講義においては後述する Cloud環境を利用するため、個人の意思でデスクトップ版をインストールする場合を除き、Rのインストールについては気にしなくて良い。</p>
 <p>Rを用いる際に最もよく使われる環境（アプリケーション）のひとつがR studioである。そのため、本講義においても基本的にはR studioを用いることを前提とするが、R studioをデスクトップにインストールし利用する場合には、Rそのものもインストールしておく必要があることに注意が必要である。R studioは現在、Positとも呼ばれており、以下のサイトからアクセスが可能である（<a href="https://posit.co/" class="uri">https://posit.co/</a>）。</p>
-<p>本講義では、Posit Cloudという、アカウント登録を行うことでブラウザ上でR studioを利用できる環境を勧める。R studio Desktop版 の利用においては、ディレクトリ設定などによってエラーが生じることが多々あり、個別のPC環境に合わせて対応、設定を行う必要がある。そのため、まとまった人数に対応する必要がある本講義においてはクラウド版を利用する。本講義を通じてRおよびR studioの使い方に慣れ、自身の研究や仕事等でデータ処理や分析を行う場合にはR studio デスクトップ版（通常はR studio IDEのフリーバージョンで十分）をインストールし、利用してほしい。もちろんはじめからデスクトップ版を利用してもらっても構わないが、その際には環境設定について色々と注意してほしい。「（補足）デスクトップ版の利用」という節にて、デスクトップ版の利用についての説明をしているため、関心のある読者は参照してみて欲しい。</p>
+<p>本講義では、Posit Cloudという、アカウント登録を行うことでブラウザ上でR studioを利用できる環境を勧める。R studio Desktop版 の利用においては、ディレクトリ設定などによってエラーが生じることが多々あり、個別のPC環境に合わせて対応、設定を行う必要がある。そのため、まとまった人数に対応する必要がある本講義においてはクラウド版を利用する。本講義を通じてRおよびR studioの使い方に慣れ、自身の研究や仕事等でデータ処理や分析を行う場合にはR studio デスクトップ版（通常はR studio IDEのフリーバージョンで十分）をインストールし、利用してほしい。もちろんはじめからデスクトップ版を利用してもらっても構わないが、その際には環境設定について色々と注意してほしい。本資料内では、第 <a href="desktop.html#desktop">2.2</a> 節にて、デスクトップ版の利用についての説明をしているため、関心のある読者は参照してみて欲しい。</p>
 </div>
             </section>
 

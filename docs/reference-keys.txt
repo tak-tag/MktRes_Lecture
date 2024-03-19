@@ -51,7 +51,7 @@ fig:NSMfig
 はじめに本資料について
 rusage
 posit-cloudを始める
-補足r-studio-デスクトップ版の利用
+desktop
 補足デスクトップ版の利用とプロジェクト機能
 rの基本操作
 r-スクリプトのすゝめ
