@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>11.4 アンケートデータと知覚マップ | マーケティングリサーチ講義ノート</title>
   <meta name="description" content="11.4 アンケートデータと知覚マップ | マーケティングリサーチ講義ノート" />
-  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="11.4 アンケートデータと知覚マップ | マーケティングリサーチ講義ノート" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2024-03-19" />
+<meta name="date" content="2024-05-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -51,15 +51,11 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
-<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -339,8 +335,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="データ構造の変更" class="section level3 hasAnchor" number="11.4.1">
 <h3><span class="header-section-number">11.4.1</span> データ構造の変更<a href="アンケートデータと知覚マップ.html#データ構造の変更" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>多くのテキスト等で紹介、共有されている知覚マップの作成方法やそこで利用されているデータは、すでに企業レベルで集計されている事が多い。しかしながら、消費者から複数の企業に対する複数属性についてのアンケートを取ると、多くの場合表<a href="アンケートデータと知覚マップ.html#tab:cafedata">11.3</a> のような構造を持つだろう。表<a href="アンケートデータと知覚マップ.html#tab:cafedata">11.3</a>では、“y1_1” と “y2_1” はそれぞれ企業1への質問1、企業1への質問2を表している。そのため、例えば、“y1_2” は企業2への質問1を表している。なお、照井・佐藤（2022）のように、新聞等ですでに公表されている企業レベルで集計された調査結果を利用する場合、本節で紹介するデータの変換作業は不要である。</p>
-<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="アンケートデータと知覚マップ.html#cb269-1" tabindex="-1"></a>df_cafe <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">&quot;data/2021_cafeSurvey.xlsx&quot;</span>)</span>
-<span id="cb269-2"><a href="アンケートデータと知覚マップ.html#cb269-2" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(df_cafe), <span class="at">caption =</span> <span class="st">&quot;カフェデータ概要&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="アンケートデータと知覚マップ.html#cb271-1" tabindex="-1"></a>df_cafe <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">&quot;data/2021_cafeSurvey.xlsx&quot;</span>)</span>
+<span id="cb271-2"><a href="アンケートデータと知覚マップ.html#cb271-2" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(df_cafe), <span class="at">caption =</span> <span class="st">&quot;カフェデータ概要&quot;</span>)</span></code></pre></div>
 <table style="width:100%;">
 <caption><span id="tab:cafedata">Table 11.3: </span>カフェデータ概要</caption>
 <colgroup>
@@ -653,45 +649,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>本資料では、知覚マップの作成についてデータ構造の変更から説明する。慣習としては、消費者についての平均値や合計をとって、製品<span class="math inline">\(\times\)</span>項目の構造を持ったデータに修正する。本節で紹介する方法は、一般的に 「wide型データ」から「long型データ」への変換と呼ばれる作業である。以下では、合計を使って集計する形でデータ構造の変換作業を行っている。</p>
-<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="アンケートデータと知覚マップ.html#cb270-1" tabindex="-1"></a><span class="co">#IDについての情報は含まない形で、データをlong型に変える。</span></span>
-<span id="cb270-2"><a href="アンケートデータと知覚マップ.html#cb270-2" tabindex="-1"></a><span class="co">#&quot;names_to&quot; と &quot;values_to&quot; によって列名が定義される。</span></span>
-<span id="cb270-3"><a href="アンケートデータと知覚マップ.html#cb270-3" tabindex="-1"></a>data_reshaped <span class="ot">&lt;-</span> df_cafe <span class="sc">%&gt;%</span> </span>
-<span id="cb270-4"><a href="アンケートデータと知覚マップ.html#cb270-4" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>ID, <span class="at">names_to =</span> <span class="st">&quot;company&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;y&quot;</span>) </span>
-<span id="cb270-5"><a href="アンケートデータと知覚マップ.html#cb270-5" tabindex="-1"></a></span>
-<span id="cb270-6"><a href="アンケートデータと知覚マップ.html#cb270-6" tabindex="-1"></a><span class="co">#企業番号と変数をそれぞれ &quot;company&quot; と &quot;k&quot; として割り振る。</span></span>
-<span id="cb270-7"><a href="アンケートデータと知覚マップ.html#cb270-7" tabindex="-1"></a><span class="do">##&quot;str_extract&quot;によって正規表現を抽出</span></span>
-<span id="cb270-8"><a href="アンケートデータと知覚マップ.html#cb270-8" tabindex="-1"></a><span class="do">##&quot;parse_number&quot;によって特定の値を抽出</span></span>
-<span id="cb270-9"><a href="アンケートデータと知覚マップ.html#cb270-9" tabindex="-1"></a>data_reshaped <span class="ot">&lt;-</span> data_reshaped <span class="sc">%&gt;%</span> </span>
-<span id="cb270-10"><a href="アンケートデータと知覚マップ.html#cb270-10" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">k =</span> <span class="fu">str_extract</span>(company, <span class="st">&quot;y[0-9]&quot;</span>),</span>
-<span id="cb270-11"><a href="アンケートデータと知覚マップ.html#cb270-11" tabindex="-1"></a>         <span class="at">company =</span> <span class="fu">str_extract</span>(company, <span class="st">&quot;_[0-9]&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb270-12"><a href="アンケートデータと知覚マップ.html#cb270-12" tabindex="-1"></a>           <span class="fu">parse_number</span>())</span>
-<span id="cb270-13"><a href="アンケートデータと知覚マップ.html#cb270-13" tabindex="-1"></a></span>
-<span id="cb270-14"><a href="アンケートデータと知覚マップ.html#cb270-14" tabindex="-1"></a><span class="co">#&quot;k&quot;をwide型に変換し、変数の列を作成する。</span></span>
-<span id="cb270-15"><a href="アンケートデータと知覚マップ.html#cb270-15" tabindex="-1"></a>data_reshaped <span class="ot">&lt;-</span> data_reshaped <span class="sc">%&gt;%</span> </span>
-<span id="cb270-16"><a href="アンケートデータと知覚マップ.html#cb270-16" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">&quot;k&quot;</span>, <span class="at">values_from =</span> <span class="st">&quot;y&quot;</span>)</span>
-<span id="cb270-17"><a href="アンケートデータと知覚マップ.html#cb270-17" tabindex="-1"></a></span>
-<span id="cb270-18"><a href="アンケートデータと知覚マップ.html#cb270-18" tabindex="-1"></a><span class="co">#企業名の割振りと、企業レベルデータへの集計</span></span>
-<span id="cb270-19"><a href="アンケートデータと知覚マップ.html#cb270-19" tabindex="-1"></a>data_renamed <span class="ot">&lt;-</span> data_reshaped <span class="sc">%&gt;%</span></span>
-<span id="cb270-20"><a href="アンケートデータと知覚マップ.html#cb270-20" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">company =</span> <span class="fu">case_when</span>(</span>
-<span id="cb270-21"><a href="アンケートデータと知覚マップ.html#cb270-21" tabindex="-1"></a>    company <span class="sc">==</span><span class="dv">1</span> <span class="sc">~</span> <span class="st">&quot;A&quot;</span>,</span>
-<span id="cb270-22"><a href="アンケートデータと知覚マップ.html#cb270-22" tabindex="-1"></a>    company <span class="sc">==</span><span class="dv">2</span> <span class="sc">~</span> <span class="st">&quot;B&quot;</span>, </span>
-<span id="cb270-23"><a href="アンケートデータと知覚マップ.html#cb270-23" tabindex="-1"></a>    company <span class="sc">==</span><span class="dv">3</span> <span class="sc">~</span> <span class="st">&quot;C&quot;</span>, </span>
-<span id="cb270-24"><a href="アンケートデータと知覚マップ.html#cb270-24" tabindex="-1"></a>    company <span class="sc">==</span><span class="dv">4</span> <span class="sc">~</span> <span class="st">&quot;D&quot;</span>,</span>
-<span id="cb270-25"><a href="アンケートデータと知覚マップ.html#cb270-25" tabindex="-1"></a>    company <span class="sc">==</span><span class="dv">5</span> <span class="sc">~</span> <span class="st">&quot;E&quot;</span>,</span>
-<span id="cb270-26"><a href="アンケートデータと知覚マップ.html#cb270-26" tabindex="-1"></a>    company <span class="sc">==</span><span class="dv">6</span> <span class="sc">~</span> <span class="st">&quot;F&quot;</span>,</span>
-<span id="cb270-27"><a href="アンケートデータと知覚マップ.html#cb270-27" tabindex="-1"></a>    company <span class="sc">==</span><span class="dv">7</span> <span class="sc">~</span> <span class="st">&quot;G&quot;</span>,</span>
-<span id="cb270-28"><a href="アンケートデータと知覚マップ.html#cb270-28" tabindex="-1"></a>    <span class="cn">TRUE</span><span class="sc">~</span><span class="st">&quot;else&quot;</span></span>
-<span id="cb270-29"><a href="アンケートデータと知覚マップ.html#cb270-29" tabindex="-1"></a>  ))</span>
-<span id="cb270-30"><a href="アンケートデータと知覚マップ.html#cb270-30" tabindex="-1"></a></span>
-<span id="cb270-31"><a href="アンケートデータと知覚マップ.html#cb270-31" tabindex="-1"></a>brand_based <span class="ot">&lt;-</span> data_renamed <span class="sc">%&gt;%</span> </span>
-<span id="cb270-32"><a href="アンケートデータと知覚マップ.html#cb270-32" tabindex="-1"></a>  <span class="fu">group_by</span>(company) <span class="sc">%&gt;%</span> </span>
-<span id="cb270-33"><a href="アンケートデータと知覚マップ.html#cb270-33" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">q1_sum =</span> <span class="fu">sum</span>(y1), </span>
-<span id="cb270-34"><a href="アンケートデータと知覚マップ.html#cb270-34" tabindex="-1"></a>            <span class="at">q2_sum =</span> <span class="fu">sum</span>(y2),</span>
-<span id="cb270-35"><a href="アンケートデータと知覚マップ.html#cb270-35" tabindex="-1"></a>            <span class="at">q3_sum =</span> <span class="fu">sum</span>(y3), </span>
-<span id="cb270-36"><a href="アンケートデータと知覚マップ.html#cb270-36" tabindex="-1"></a>            <span class="at">q4_sum =</span> <span class="fu">sum</span>(y4),</span>
-<span id="cb270-37"><a href="アンケートデータと知覚マップ.html#cb270-37" tabindex="-1"></a>            <span class="at">q5_sum =</span> <span class="fu">sum</span>(y5)) <span class="sc">%&gt;%</span> </span>
-<span id="cb270-38"><a href="アンケートデータと知覚マップ.html#cb270-38" tabindex="-1"></a>  tibble<span class="sc">::</span><span class="fu">column_to_rownames</span>(<span class="at">var =</span> <span class="st">&quot;company&quot;</span>)</span>
-<span id="cb270-39"><a href="アンケートデータと知覚マップ.html#cb270-39" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(brand_based, <span class="at">caption =</span> <span class="st">&quot;変換後データ&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="アンケートデータと知覚マップ.html#cb272-1" tabindex="-1"></a><span class="co">#IDについての情報は含まない形で、データをlong型に変える。</span></span>
+<span id="cb272-2"><a href="アンケートデータと知覚マップ.html#cb272-2" tabindex="-1"></a><span class="co">#&quot;names_to&quot; と &quot;values_to&quot; によって列名が定義される。</span></span>
+<span id="cb272-3"><a href="アンケートデータと知覚マップ.html#cb272-3" tabindex="-1"></a>data_reshaped <span class="ot">&lt;-</span> df_cafe <span class="sc">%&gt;%</span> </span>
+<span id="cb272-4"><a href="アンケートデータと知覚マップ.html#cb272-4" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>ID, <span class="at">names_to =</span> <span class="st">&quot;company&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;y&quot;</span>) </span>
+<span id="cb272-5"><a href="アンケートデータと知覚マップ.html#cb272-5" tabindex="-1"></a></span>
+<span id="cb272-6"><a href="アンケートデータと知覚マップ.html#cb272-6" tabindex="-1"></a><span class="co">#企業番号と変数をそれぞれ &quot;company&quot; と &quot;k&quot; として割り振る。</span></span>
+<span id="cb272-7"><a href="アンケートデータと知覚マップ.html#cb272-7" tabindex="-1"></a><span class="do">##&quot;str_extract&quot;によって正規表現を抽出</span></span>
+<span id="cb272-8"><a href="アンケートデータと知覚マップ.html#cb272-8" tabindex="-1"></a><span class="do">##&quot;parse_number&quot;によって特定の値を抽出</span></span>
+<span id="cb272-9"><a href="アンケートデータと知覚マップ.html#cb272-9" tabindex="-1"></a>data_reshaped <span class="ot">&lt;-</span> data_reshaped <span class="sc">%&gt;%</span> </span>
+<span id="cb272-10"><a href="アンケートデータと知覚マップ.html#cb272-10" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">k =</span> <span class="fu">str_extract</span>(company, <span class="st">&quot;y[0-9]&quot;</span>),</span>
+<span id="cb272-11"><a href="アンケートデータと知覚マップ.html#cb272-11" tabindex="-1"></a>         <span class="at">company =</span> <span class="fu">str_extract</span>(company, <span class="st">&quot;_[0-9]&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb272-12"><a href="アンケートデータと知覚マップ.html#cb272-12" tabindex="-1"></a>           <span class="fu">parse_number</span>())</span>
+<span id="cb272-13"><a href="アンケートデータと知覚マップ.html#cb272-13" tabindex="-1"></a></span>
+<span id="cb272-14"><a href="アンケートデータと知覚マップ.html#cb272-14" tabindex="-1"></a><span class="co">#&quot;k&quot;をwide型に変換し、変数の列を作成する。</span></span>
+<span id="cb272-15"><a href="アンケートデータと知覚マップ.html#cb272-15" tabindex="-1"></a>data_reshaped <span class="ot">&lt;-</span> data_reshaped <span class="sc">%&gt;%</span> </span>
+<span id="cb272-16"><a href="アンケートデータと知覚マップ.html#cb272-16" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">&quot;k&quot;</span>, <span class="at">values_from =</span> <span class="st">&quot;y&quot;</span>)</span>
+<span id="cb272-17"><a href="アンケートデータと知覚マップ.html#cb272-17" tabindex="-1"></a></span>
+<span id="cb272-18"><a href="アンケートデータと知覚マップ.html#cb272-18" tabindex="-1"></a><span class="co">#企業名の割振りと、企業レベルデータへの集計</span></span>
+<span id="cb272-19"><a href="アンケートデータと知覚マップ.html#cb272-19" tabindex="-1"></a>data_renamed <span class="ot">&lt;-</span> data_reshaped <span class="sc">%&gt;%</span></span>
+<span id="cb272-20"><a href="アンケートデータと知覚マップ.html#cb272-20" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">company =</span> <span class="fu">case_when</span>(</span>
+<span id="cb272-21"><a href="アンケートデータと知覚マップ.html#cb272-21" tabindex="-1"></a>    company <span class="sc">==</span><span class="dv">1</span> <span class="sc">~</span> <span class="st">&quot;A&quot;</span>,</span>
+<span id="cb272-22"><a href="アンケートデータと知覚マップ.html#cb272-22" tabindex="-1"></a>    company <span class="sc">==</span><span class="dv">2</span> <span class="sc">~</span> <span class="st">&quot;B&quot;</span>, </span>
+<span id="cb272-23"><a href="アンケートデータと知覚マップ.html#cb272-23" tabindex="-1"></a>    company <span class="sc">==</span><span class="dv">3</span> <span class="sc">~</span> <span class="st">&quot;C&quot;</span>, </span>
+<span id="cb272-24"><a href="アンケートデータと知覚マップ.html#cb272-24" tabindex="-1"></a>    company <span class="sc">==</span><span class="dv">4</span> <span class="sc">~</span> <span class="st">&quot;D&quot;</span>,</span>
+<span id="cb272-25"><a href="アンケートデータと知覚マップ.html#cb272-25" tabindex="-1"></a>    company <span class="sc">==</span><span class="dv">5</span> <span class="sc">~</span> <span class="st">&quot;E&quot;</span>,</span>
+<span id="cb272-26"><a href="アンケートデータと知覚マップ.html#cb272-26" tabindex="-1"></a>    company <span class="sc">==</span><span class="dv">6</span> <span class="sc">~</span> <span class="st">&quot;F&quot;</span>,</span>
+<span id="cb272-27"><a href="アンケートデータと知覚マップ.html#cb272-27" tabindex="-1"></a>    company <span class="sc">==</span><span class="dv">7</span> <span class="sc">~</span> <span class="st">&quot;G&quot;</span>,</span>
+<span id="cb272-28"><a href="アンケートデータと知覚マップ.html#cb272-28" tabindex="-1"></a>    <span class="cn">TRUE</span><span class="sc">~</span><span class="st">&quot;else&quot;</span></span>
+<span id="cb272-29"><a href="アンケートデータと知覚マップ.html#cb272-29" tabindex="-1"></a>  ))</span>
+<span id="cb272-30"><a href="アンケートデータと知覚マップ.html#cb272-30" tabindex="-1"></a></span>
+<span id="cb272-31"><a href="アンケートデータと知覚マップ.html#cb272-31" tabindex="-1"></a>brand_based <span class="ot">&lt;-</span> data_renamed <span class="sc">%&gt;%</span> </span>
+<span id="cb272-32"><a href="アンケートデータと知覚マップ.html#cb272-32" tabindex="-1"></a>  <span class="fu">group_by</span>(company) <span class="sc">%&gt;%</span> </span>
+<span id="cb272-33"><a href="アンケートデータと知覚マップ.html#cb272-33" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">q1_sum =</span> <span class="fu">sum</span>(y1), </span>
+<span id="cb272-34"><a href="アンケートデータと知覚マップ.html#cb272-34" tabindex="-1"></a>            <span class="at">q2_sum =</span> <span class="fu">sum</span>(y2),</span>
+<span id="cb272-35"><a href="アンケートデータと知覚マップ.html#cb272-35" tabindex="-1"></a>            <span class="at">q3_sum =</span> <span class="fu">sum</span>(y3), </span>
+<span id="cb272-36"><a href="アンケートデータと知覚マップ.html#cb272-36" tabindex="-1"></a>            <span class="at">q4_sum =</span> <span class="fu">sum</span>(y4),</span>
+<span id="cb272-37"><a href="アンケートデータと知覚マップ.html#cb272-37" tabindex="-1"></a>            <span class="at">q5_sum =</span> <span class="fu">sum</span>(y5)) <span class="sc">%&gt;%</span> </span>
+<span id="cb272-38"><a href="アンケートデータと知覚マップ.html#cb272-38" tabindex="-1"></a>  tibble<span class="sc">::</span><span class="fu">column_to_rownames</span>(<span class="at">var =</span> <span class="st">&quot;company&quot;</span>)</span>
+<span id="cb272-39"><a href="アンケートデータと知覚マップ.html#cb272-39" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(brand_based, <span class="at">caption =</span> <span class="st">&quot;変換後データ&quot;</span>) </span></code></pre></div>
 <table>
 <caption><span id="tab:widetolong">Table 11.4: </span>変換後データ</caption>
 <thead>
@@ -767,8 +763,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="因子分析の実行" class="section level3 hasAnchor" number="11.4.2">
 <h3><span class="header-section-number">11.4.2</span> 因子分析の実行<a href="アンケートデータと知覚マップ.html#因子分析の実行" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>前述の通りデータ構造が企業レベルに変換できたら次は因子分析と図示化テクニックを使って知覚マップを作成する。以下では、簡単にそのプロセスを紹介する。まずはスクリープロットと固有値によって因子数を検討する。図<a href="アンケートデータと知覚マップ.html#fig:pmsscreeplot">11.10</a> によると、傾きの変化、固有値どちらの観点からも2因子を採用することにする。</p>
-<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="アンケートデータと知覚マップ.html#cb271-1" tabindex="-1"></a>cor_b <span class="ot">&lt;-</span> <span class="fu">cor</span>(brand_based)</span>
-<span id="cb271-2"><a href="アンケートデータと知覚マップ.html#cb271-2" tabindex="-1"></a><span class="fu">VSS.scree</span>(cor_b)</span></code></pre></div>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="アンケートデータと知覚マップ.html#cb273-1" tabindex="-1"></a>cor_b <span class="ot">&lt;-</span> <span class="fu">cor</span>(brand_based)</span>
+<span id="cb273-2"><a href="アンケートデータと知覚マップ.html#cb273-2" tabindex="-1"></a><span class="fu">VSS.scree</span>(cor_b)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:pmsscreeplot"></span>
 <img src="mktres_lecture_files/figure-html/pmsscreeplot-1.png" alt="カフェデータスクリープロット" width="672" />
 <p class="caption">
@@ -776,9 +772,9 @@ Figure 11.10: カフェデータスクリープロット
 </p>
 </div>
 <p>続いて、2因子モデルで因子分析を実行し、因子を解釈する。分析の結果、1つ目の因子は問1、2, 3, 5に高い因子負荷量を持っている。一方で、2つ目の因子は、問4に高い因子負荷量を持っている。また、因子1よりは低いものの、問3についても高い因子負荷量を有している。そこで、因子1を製品と環境、因子2を店舗の雰囲気と名付けることとする。また着目すべきは、因子1は問4（この企業の店内は楽しい雰囲気に包まれている）に、因子2は問2（提供されている食べ物の品質が高い）に対して負の因子負荷量を持っていることである。そのため、因子1と2は、因子の値が高まると、これらそれぞれの観測変数が低くなると考えられる。消費者の知覚・評価の中で、これらの因子や項目の間になんらかのトレードオフ構造があるかもしれない。</p>
-<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="アンケートデータと知覚マップ.html#cb272-1" tabindex="-1"></a>Perc_cafe <span class="ot">&lt;-</span> <span class="fu">fa</span>(<span class="at">r =</span> brand_based, <span class="at">nfactors =</span> <span class="dv">2</span>,</span>
-<span id="cb272-2"><a href="アンケートデータと知覚マップ.html#cb272-2" tabindex="-1"></a>     <span class="at">rotate =</span> <span class="st">&quot;promax&quot;</span>)</span>
-<span id="cb272-3"><a href="アンケートデータと知覚マップ.html#cb272-3" tabindex="-1"></a>Perc_cafe</span></code></pre></div>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="アンケートデータと知覚マップ.html#cb274-1" tabindex="-1"></a>Perc_cafe <span class="ot">&lt;-</span> <span class="fu">fa</span>(<span class="at">r =</span> brand_based, <span class="at">nfactors =</span> <span class="dv">2</span>,</span>
+<span id="cb274-2"><a href="アンケートデータと知覚マップ.html#cb274-2" tabindex="-1"></a>     <span class="at">rotate =</span> <span class="st">&quot;promax&quot;</span>)</span>
+<span id="cb274-3"><a href="アンケートデータと知覚マップ.html#cb274-3" tabindex="-1"></a>Perc_cafe</span></code></pre></div>
 <pre><code>## Factor Analysis using method =  minres
 ## Call: fa(r = brand_based, nfactors = 2, rotate = &quot;promax&quot;)
 ## Standardized loadings (pattern matrix) based upon correlation matrix
@@ -823,18 +819,18 @@ Figure 11.10: カフェデータスクリープロット
 ## Multiple R square of scores with factors          0.96 1.00
 ## Minimum correlation of possible factor scores     0.92 0.99</code></pre>
 <p>上記の因子を反映した知覚マップは図<a href="アンケートデータと知覚マップ.html#fig:pmcafe">11.11</a> で表されている。これを見ると、企業Aはどちらの因子についても高い評価を得ている事がわかる。一方で企業Cは、製品や環境については標準的な評価を得ているものの、雰囲気については評価がとても低くなっている。反対に、企業DやEのように、製品や環境について悪い評価を得ている企業も存在する。本節では簡単に図<a href="アンケートデータと知覚マップ.html#fig:pmcafe">11.11</a> についての紹介を行っているが、実際にレポートを書く際には、このような結果から得られる含意や実務的示唆について詳しく論じる必要があることに注意してほしい。</p>
-<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="アンケートデータと知覚マップ.html#cb274-1" tabindex="-1"></a>fs2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(Perc_cafe<span class="sc">$</span>scores)</span>
-<span id="cb274-2"><a href="アンケートデータと知覚マップ.html#cb274-2" tabindex="-1"></a>brand_based <span class="ot">&lt;-</span> brand_based <span class="sc">%&gt;%</span> </span>
-<span id="cb274-3"><a href="アンケートデータと知覚マップ.html#cb274-3" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="at">var =</span> <span class="st">&quot;rowname&quot;</span>)</span>
-<span id="cb274-4"><a href="アンケートデータと知覚マップ.html#cb274-4" tabindex="-1"></a>fs2 <span class="ot">&lt;-</span> fs2 <span class="sc">%&gt;%</span> </span>
-<span id="cb274-5"><a href="アンケートデータと知覚マップ.html#cb274-5" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="at">var =</span> <span class="st">&quot;rowname&quot;</span>)</span>
-<span id="cb274-6"><a href="アンケートデータと知覚マップ.html#cb274-6" tabindex="-1"></a>brand_based2 <span class="ot">&lt;-</span> <span class="fu">left_join</span>(brand_based, fs2, <span class="at">by =</span> <span class="st">&quot;rowname&quot;</span>)</span>
-<span id="cb274-7"><a href="アンケートデータと知覚マップ.html#cb274-7" tabindex="-1"></a></span>
-<span id="cb274-8"><a href="アンケートデータと知覚マップ.html#cb274-8" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> brand_based2,</span>
-<span id="cb274-9"><a href="アンケートデータと知覚マップ.html#cb274-9" tabindex="-1"></a>             <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> MR1, <span class="at">y =</span> MR2))</span>
-<span id="cb274-10"><a href="アンケートデータと知覚マップ.html#cb274-10" tabindex="-1"></a>p1 <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb274-11"><a href="アンケートデータと知覚マップ.html#cb274-11" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">label =</span> rowname)) <span class="sc">+</span></span>
-<span id="cb274-12"><a href="アンケートデータと知覚マップ.html#cb274-12" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Atmosphere&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Product+environment&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="アンケートデータと知覚マップ.html#cb276-1" tabindex="-1"></a>fs2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(Perc_cafe<span class="sc">$</span>scores)</span>
+<span id="cb276-2"><a href="アンケートデータと知覚マップ.html#cb276-2" tabindex="-1"></a>brand_based <span class="ot">&lt;-</span> brand_based <span class="sc">%&gt;%</span> </span>
+<span id="cb276-3"><a href="アンケートデータと知覚マップ.html#cb276-3" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="at">var =</span> <span class="st">&quot;rowname&quot;</span>)</span>
+<span id="cb276-4"><a href="アンケートデータと知覚マップ.html#cb276-4" tabindex="-1"></a>fs2 <span class="ot">&lt;-</span> fs2 <span class="sc">%&gt;%</span> </span>
+<span id="cb276-5"><a href="アンケートデータと知覚マップ.html#cb276-5" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="at">var =</span> <span class="st">&quot;rowname&quot;</span>)</span>
+<span id="cb276-6"><a href="アンケートデータと知覚マップ.html#cb276-6" tabindex="-1"></a>brand_based2 <span class="ot">&lt;-</span> <span class="fu">left_join</span>(brand_based, fs2, <span class="at">by =</span> <span class="st">&quot;rowname&quot;</span>)</span>
+<span id="cb276-7"><a href="アンケートデータと知覚マップ.html#cb276-7" tabindex="-1"></a></span>
+<span id="cb276-8"><a href="アンケートデータと知覚マップ.html#cb276-8" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> brand_based2,</span>
+<span id="cb276-9"><a href="アンケートデータと知覚マップ.html#cb276-9" tabindex="-1"></a>             <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> MR1, <span class="at">y =</span> MR2))</span>
+<span id="cb276-10"><a href="アンケートデータと知覚マップ.html#cb276-10" tabindex="-1"></a>p1 <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb276-11"><a href="アンケートデータと知覚マップ.html#cb276-11" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">label =</span> rowname)) <span class="sc">+</span></span>
+<span id="cb276-12"><a href="アンケートデータと知覚マップ.html#cb276-12" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Atmosphere&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Product+environment&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:pmcafe"></span>
 <img src="mktres_lecture_files/figure-html/pmcafe-1.png" alt="カフェ知覚マップ" width="672" />
 <p class="caption">
@@ -842,24 +838,24 @@ Figure 11.11: カフェ知覚マップ
 </p>
 </div>
 <p>本節では、データ構造の変換も含む知覚マップの作成手順について紹介した。このような方法により、「消費者が企業をどのように評価しているか」という観点から、自社や競合のポジションを把握する事ができる。また、この企業レベルでのデータに対して因子分析とクラスター分析を組み合わせることによって、図<a href="アンケートデータと知覚マップ.html#fig:cafeclusterplot">11.12</a> のような図を描画できる。この演習データの場合には少し意義が見出しづらいかもしれないが、図<a href="アンケートデータと知覚マップ.html#fig:cafeclusterplot">11.12</a>のような可視化はより明確な実務的含意につながりうる。具体的には、2つの因子間において類似する企業を特定することができ、市場の競争環境（特に誰が競合となりうるかなど）について可視化できると考えられる。</p>
-<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="アンケートデータと知覚マップ.html#cb275-1" tabindex="-1"></a>cafe_cluster <span class="ot">&lt;-</span> brand_based2 <span class="sc">%&gt;%</span> </span>
-<span id="cb275-2"><a href="アンケートデータと知覚マップ.html#cb275-2" tabindex="-1"></a>  <span class="fu">column_to_rownames</span>(<span class="at">var =</span> <span class="st">&quot;rowname&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb275-3"><a href="アンケートデータと知覚マップ.html#cb275-3" tabindex="-1"></a>  <span class="fu">select</span>(MR1, MR2)</span>
-<span id="cb275-4"><a href="アンケートデータと知覚マップ.html#cb275-4" tabindex="-1"></a><span class="co">#事前の階層的クラスター分析等は省略</span></span>
-<span id="cb275-5"><a href="アンケートデータと知覚マップ.html#cb275-5" tabindex="-1"></a><span class="co">#便宜的に3クラスターを想定している</span></span>
-<span id="cb275-6"><a href="アンケートデータと知覚マップ.html#cb275-6" tabindex="-1"></a>cl_cafe<span class="ot">&lt;-</span> <span class="fu">kmeans</span>(cafe_cluster,<span class="dv">3</span>)</span>
-<span id="cb275-7"><a href="アンケートデータと知覚マップ.html#cb275-7" tabindex="-1"></a>clus_fa_cafe <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(cl_cafe<span class="sc">$</span>cluster)</span>
-<span id="cb275-8"><a href="アンケートデータと知覚マップ.html#cb275-8" tabindex="-1"></a>clus_fa_cafe<span class="sc">$</span>rowname <span class="ot">&lt;-</span> <span class="fu">rownames</span>(clus_fa_cafe)</span>
-<span id="cb275-9"><a href="アンケートデータと知覚マップ.html#cb275-9" tabindex="-1"></a>brand_based2 <span class="ot">&lt;-</span> <span class="fu">left_join</span>(brand_based2, clus_fa_cafe, <span class="at">by =</span> <span class="st">&quot;rowname&quot;</span>)</span>
-<span id="cb275-10"><a href="アンケートデータと知覚マップ.html#cb275-10" tabindex="-1"></a>brand_based2<span class="sc">$</span>cl_cafe.cluster <span class="ot">&lt;-</span> <span class="fu">factor</span>(brand_based2<span class="sc">$</span>cl_cafe.cluster)</span>
-<span id="cb275-11"><a href="アンケートデータと知覚マップ.html#cb275-11" tabindex="-1"></a></span>
-<span id="cb275-12"><a href="アンケートデータと知覚マップ.html#cb275-12" tabindex="-1"></a><span class="do">##Visualizing the clusters with 2 factors</span></span>
-<span id="cb275-13"><a href="アンケートデータと知覚マップ.html#cb275-13" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> brand_based2,</span>
-<span id="cb275-14"><a href="アンケートデータと知覚マップ.html#cb275-14" tabindex="-1"></a>             <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> MR1, <span class="at">y =</span> MR2, <span class="at">color =</span> cl_cafe.cluster))</span>
-<span id="cb275-15"><a href="アンケートデータと知覚マップ.html#cb275-15" tabindex="-1"></a>p1 <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb275-16"><a href="アンケートデータと知覚マップ.html#cb275-16" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">rownames</span>(brand_based2))) <span class="sc">+</span></span>
-<span id="cb275-17"><a href="アンケートデータと知覚マップ.html#cb275-17" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Atmosphere&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Product+environment&quot;</span>,</span>
-<span id="cb275-18"><a href="アンケートデータと知覚マップ.html#cb275-18" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">&quot;Cluster&quot;</span>,<span class="at">shape =</span> <span class="st">&quot;Cluster&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="アンケートデータと知覚マップ.html#cb277-1" tabindex="-1"></a>cafe_cluster <span class="ot">&lt;-</span> brand_based2 <span class="sc">%&gt;%</span> </span>
+<span id="cb277-2"><a href="アンケートデータと知覚マップ.html#cb277-2" tabindex="-1"></a>  <span class="fu">column_to_rownames</span>(<span class="at">var =</span> <span class="st">&quot;rowname&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb277-3"><a href="アンケートデータと知覚マップ.html#cb277-3" tabindex="-1"></a>  <span class="fu">select</span>(MR1, MR2)</span>
+<span id="cb277-4"><a href="アンケートデータと知覚マップ.html#cb277-4" tabindex="-1"></a><span class="co">#事前の階層的クラスター分析等は省略</span></span>
+<span id="cb277-5"><a href="アンケートデータと知覚マップ.html#cb277-5" tabindex="-1"></a><span class="co">#便宜的に3クラスターを想定している</span></span>
+<span id="cb277-6"><a href="アンケートデータと知覚マップ.html#cb277-6" tabindex="-1"></a>cl_cafe<span class="ot">&lt;-</span> <span class="fu">kmeans</span>(cafe_cluster,<span class="dv">3</span>)</span>
+<span id="cb277-7"><a href="アンケートデータと知覚マップ.html#cb277-7" tabindex="-1"></a>clus_fa_cafe <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(cl_cafe<span class="sc">$</span>cluster)</span>
+<span id="cb277-8"><a href="アンケートデータと知覚マップ.html#cb277-8" tabindex="-1"></a>clus_fa_cafe<span class="sc">$</span>rowname <span class="ot">&lt;-</span> <span class="fu">rownames</span>(clus_fa_cafe)</span>
+<span id="cb277-9"><a href="アンケートデータと知覚マップ.html#cb277-9" tabindex="-1"></a>brand_based2 <span class="ot">&lt;-</span> <span class="fu">left_join</span>(brand_based2, clus_fa_cafe, <span class="at">by =</span> <span class="st">&quot;rowname&quot;</span>)</span>
+<span id="cb277-10"><a href="アンケートデータと知覚マップ.html#cb277-10" tabindex="-1"></a>brand_based2<span class="sc">$</span>cl_cafe.cluster <span class="ot">&lt;-</span> <span class="fu">factor</span>(brand_based2<span class="sc">$</span>cl_cafe.cluster)</span>
+<span id="cb277-11"><a href="アンケートデータと知覚マップ.html#cb277-11" tabindex="-1"></a></span>
+<span id="cb277-12"><a href="アンケートデータと知覚マップ.html#cb277-12" tabindex="-1"></a><span class="do">##Visualizing the clusters with 2 factors</span></span>
+<span id="cb277-13"><a href="アンケートデータと知覚マップ.html#cb277-13" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> brand_based2,</span>
+<span id="cb277-14"><a href="アンケートデータと知覚マップ.html#cb277-14" tabindex="-1"></a>             <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> MR1, <span class="at">y =</span> MR2, <span class="at">color =</span> cl_cafe.cluster))</span>
+<span id="cb277-15"><a href="アンケートデータと知覚マップ.html#cb277-15" tabindex="-1"></a>p1 <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb277-16"><a href="アンケートデータと知覚マップ.html#cb277-16" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">rownames</span>(brand_based2))) <span class="sc">+</span></span>
+<span id="cb277-17"><a href="アンケートデータと知覚マップ.html#cb277-17" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Atmosphere&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Product+environment&quot;</span>,</span>
+<span id="cb277-18"><a href="アンケートデータと知覚マップ.html#cb277-18" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">&quot;Cluster&quot;</span>,<span class="at">shape =</span> <span class="st">&quot;Cluster&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:cafeclusterplot"></span>
 <img src="mktres_lecture_files/figure-html/cafeclusterplot-1.png" alt="知覚マップ &amp; クラスター" width="672" />
 <p class="caption">

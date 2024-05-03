@@ -4,7 +4,6 @@ tab:rolldice
 tab:llnsimulation
 tab:errortypes
 tab:variablechoice
-tab:modelcomparison
 fig:segment
 fig:distance
 tab:exampledata

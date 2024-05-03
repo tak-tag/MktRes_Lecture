@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>10.4 非階層的クラスター分析：K-means法 | マーケティングリサーチ講義ノート</title>
   <meta name="description" content="10.4 非階層的クラスター分析：K-means法 | マーケティングリサーチ講義ノート" />
-  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="10.4 非階層的クラスター分析：K-means法 | マーケティングリサーチ講義ノート" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2024-03-19" />
+<meta name="date" content="2024-05-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -51,15 +51,11 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
-<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -328,14 +324,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p>図 <a href="k-means.html#fig:kmeans1">10.7</a>と<a href="k-means.html#fig:kmeans2">10.8</a> はK-means法のプロセスに関する直感的説明を段階的に図示化したものである。ここでは、図 <a href="k-means.html#fig:kmeans1">10.7</a> (1) のようなデータに対し、3つのクラスター数を仮定した場合を考える（このプロセスは任意の <span class="math inline">\(k\)</span> 個のクラスターに対して適応可能）。</p>
 <div class="figure"><span style="display:block;" id="fig:kmeans1"></span>
-<img src="cluster/kmeans1.jpg" alt="K-means法直感１" width="2044" />
+<img src="cluster/kmeans1.jpg" alt="K-means法直感１"  />
 <p class="caption">
 Figure 10.7: K-means法直感１
 </p>
 </div>
 <p>まず初めに図<a href="k-means.html#fig:kmeans1">10.7</a> (2) に着目してほしい。ここでは、与えられたデータの空間に対して3つのクラスターセンター初期値（初期シードとも言う）をランダムにとる。次に各観測個体をそれぞれの最も近い初期センターに割り当てる形で3つのクラスターを作成する（図<a href="k-means.html#fig:kmeans1">10.7</a> (3)）。ここで、作成された3つのクラスター（の観測値）と、初期値とを比較し、適切に中心を表しているかを検討する（図<a href="k-means.html#fig:kmeans1">10.7</a> (4)）。例えば、図<a href="k-means.html#fig:kmeans1">10.7</a> (4) における赤いクラスターについてはもう少し右上の方向にセンターを移動したほうがいいかもしれない。このように、各クラスターの観測値に基づき、クラスターセンターが計算され、アップデートされる。</p>
 <div class="figure"><span style="display:block;" id="fig:kmeans2"></span>
-<img src="cluster/kmeans2.jpg" alt="K-means法直感２" width="2642" />
+<img src="cluster/kmeans2.jpg" alt="K-means法直感２"  />
 <p class="caption">
 Figure 10.8: K-means法直感２
 </p>

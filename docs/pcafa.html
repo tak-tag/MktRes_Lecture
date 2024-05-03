@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>11.5 （おまけ）主成分分析との違い | マーケティングリサーチ講義ノート</title>
   <meta name="description" content="11.5 （おまけ）主成分分析との違い | マーケティングリサーチ講義ノート" />
-  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="11.5 （おまけ）主成分分析との違い | マーケティングリサーチ講義ノート" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2024-03-19" />
+<meta name="date" content="2024-05-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -51,15 +51,11 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
-<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -323,7 +319,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>因子分析とよく対比される手法として主成分分析（Principal component analysis）がある。主成分分析は、複数の変数間の類似性を分析し、これらの変数をできるだけ少ない数の合成変数（主成分）にまとめることを目的とした分析手法である。そのため、この主成分はできるだけ高い寄与率を持つことが求められる。主成分分析は、変数が多いとき情報の損失を最小限に押さえながらできるだけ少ない（理想的にはひとつの）主成分に縮約する方法であるといえる。一方で因子分析は、観測変数を「メリハリのある分かれ方（単純構造）」にするように因子数の決定や負荷量の計算が行われる（分寺, 2022, p.55）。主成分の計算方法は本資料では省略するが、興味のある人は田中・脇本（1998）や、渡辺（2017）を参考にしてほしい。</p>
 主成分分析のモデルは、図<a href="pcafa.html#fig:pcafig">11.13</a> のように示される。因子分析のパス図（<a href="因子分析概要.html#fig:factor">11.3</a>）と比べると、矢印の向きに違いがあることがわかる。
 <div class="figure"><span style="display:block;" id="fig:pcafig"></span>
-<img src="factor/pca.jpg" alt="主成分分析モデル" width="740" />
+<img src="factor/pca.jpg" alt="主成分分析モデル"  />
 <p class="caption">
 Figure 11.13: 主成分分析モデル
 </p>
@@ -336,10 +332,10 @@ z_i=b_1x_{1i}+b_2x_{2i}+b_3x_{3i}
 <p>主成分分析は計算方法においても因子分析とは異なる点を有する。結論から述べると、主成分分析は因子分析の特殊形と考えられる（渡辺, 2017 参照）。計算上では、主成分分析は因子分析における主因子法というアプローチの特殊な場合と位置づけられる。主因子法とは、ある制約のもとで、各因子が観測変数の分散を説明する寄与率を最大にするように因子を求める計算方法である。この方法では、共通性を最初に計算し、因子負荷量を算出、因子数を決定した後再度共通性を計算する。そして新しく得られた共通性をもとに再度因子負荷量を算出するというプロセスを繰り返す。計算における共通性の初期値は1や、重相関係数の2乗値、相関行列の行の相関の最大絶対値などが使われる。</p>
 <p>これに対して主成分分析は、共通性初期値を1とし、繰り返し計算を行わない主因子法といえる。より細かく述べれば、主成分分析によって求められる主成分係数（上式の <span class="math inline">\(b_1, b_2, b_3\)</span>）は項目間分散共分散行列の固有ベクトルとして計算される一方で、因子負荷量は対角要素に共通性を代入した項目間相関行列の固有ベクトルに固有値の平方根を乗じたものだといえる（渡辺, 2017）。そのため、標準化された項目を用いた主成分分析によって得る主成分係数（項目間相関行列の固有ベクトル）に固有値の平方根を乗じると、対角要素を1とした項目間相関行列の因子負荷量（ただし、繰り返し計算は行わない）と等しくなる。</p>
 <p>Rで主成分分析を行う際は、<code>psych::pca()</code> を用いる。ここで、<a href="faex.html#faex">11.3</a> 節で用いた演習用データを用いて、主成分分析を実行し、それが、「項目間相関行列の固有ベクトルに固有値の平方根を乗じたもの」と等しくなるかを検討する。まず主成分分析を実行するが、デフォルトでは軸の回転を行ってしまうので、ここでは <code>rotate = "none"</code>とする。</p>
-<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="pcafa.html#cb276-1" tabindex="-1"></a>factor_exdata3 <span class="ot">&lt;-</span> factor_exdata <span class="sc">%&gt;%</span> </span>
-<span id="cb276-2"><a href="pcafa.html#cb276-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>ID)</span>
-<span id="cb276-3"><a href="pcafa.html#cb276-3" tabindex="-1"></a>pca_res <span class="ot">&lt;-</span> <span class="fu">pca</span>(factor_exdata3, <span class="at">nfactors =</span> <span class="dv">2</span>, <span class="at">rotate =</span> <span class="st">&quot;none&quot;</span>)</span>
-<span id="cb276-4"><a href="pcafa.html#cb276-4" tabindex="-1"></a>pca_res</span></code></pre></div>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="pcafa.html#cb278-1" tabindex="-1"></a>factor_exdata3 <span class="ot">&lt;-</span> factor_exdata <span class="sc">%&gt;%</span> </span>
+<span id="cb278-2"><a href="pcafa.html#cb278-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>ID)</span>
+<span id="cb278-3"><a href="pcafa.html#cb278-3" tabindex="-1"></a>pca_res <span class="ot">&lt;-</span> <span class="fu">pca</span>(factor_exdata3, <span class="at">nfactors =</span> <span class="dv">2</span>, <span class="at">rotate =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb278-4"><a href="pcafa.html#cb278-4" tabindex="-1"></a>pca_res</span></code></pre></div>
 <pre><code>## Principal Components Analysis
 ## Call: principal(r = r, nfactors = nfactors, residuals = residuals, 
 ##     rotate = rotate, n.obs = n.obs, covar = covar, scores = scores, 
@@ -369,17 +365,17 @@ z_i=b_1x_{1i}+b_2x_{2i}+b_3x_{3i}
 ## 
 ## Fit based upon off diagonal values = 0.98</code></pre>
 <p>続いて、項目間相関係数の固有ベクトルを計算し、それに固有値の平方根を乗じる。その結果、表<a href="pcafa.html#tab:calculationcheck">11.5</a> は（PC2については符号は異なるものの）上記の主成分分析の結果と一致している事がわかる。</p>
-<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="pcafa.html#cb278-1" tabindex="-1"></a><span class="co">#データの相関行列から固有値と固有ベクトルを抽出</span></span>
-<span id="cb278-2"><a href="pcafa.html#cb278-2" tabindex="-1"></a>cor_ex <span class="ot">&lt;-</span> <span class="fu">cor</span>(factor_exdata3)</span>
-<span id="cb278-3"><a href="pcafa.html#cb278-3" tabindex="-1"></a>eigen_list <span class="ot">&lt;-</span> <span class="fu">eigen</span>(cor_ex)</span>
-<span id="cb278-4"><a href="pcafa.html#cb278-4" tabindex="-1"></a><span class="co">#固有ベクトルについての情報をオブジェクトとして定義</span></span>
-<span id="cb278-5"><a href="pcafa.html#cb278-5" tabindex="-1"></a>pc1_eig <span class="ot">&lt;-</span> eigen_list<span class="sc">$</span>vectors[, <span class="dv">1</span>]</span>
-<span id="cb278-6"><a href="pcafa.html#cb278-6" tabindex="-1"></a>pc2_eig <span class="ot">&lt;-</span> eigen_list<span class="sc">$</span>vectors[, <span class="dv">2</span>]</span>
-<span id="cb278-7"><a href="pcafa.html#cb278-7" tabindex="-1"></a><span class="co">#固有ベクトルに、固有値の平方根を乗じる</span></span>
-<span id="cb278-8"><a href="pcafa.html#cb278-8" tabindex="-1"></a>PC1 <span class="ot">&lt;-</span> pc1_eig<span class="sc">*</span> <span class="fu">sqrt</span>(eigen_list<span class="sc">$</span>values[<span class="dv">1</span>])</span>
-<span id="cb278-9"><a href="pcafa.html#cb278-9" tabindex="-1"></a>PC2 <span class="ot">&lt;-</span> pc2_eig<span class="sc">*</span> <span class="fu">sqrt</span>(eigen_list<span class="sc">$</span>values[<span class="dv">2</span>])</span>
-<span id="cb278-10"><a href="pcafa.html#cb278-10" tabindex="-1"></a></span>
-<span id="cb278-11"><a href="pcafa.html#cb278-11" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">data.frame</span>(<span class="fu">cbind</span>(PC1,PC2)), <span class="at">caption=</span><span class="st">&quot;計算結果&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="pcafa.html#cb280-1" tabindex="-1"></a><span class="co">#データの相関行列から固有値と固有ベクトルを抽出</span></span>
+<span id="cb280-2"><a href="pcafa.html#cb280-2" tabindex="-1"></a>cor_ex <span class="ot">&lt;-</span> <span class="fu">cor</span>(factor_exdata3)</span>
+<span id="cb280-3"><a href="pcafa.html#cb280-3" tabindex="-1"></a>eigen_list <span class="ot">&lt;-</span> <span class="fu">eigen</span>(cor_ex)</span>
+<span id="cb280-4"><a href="pcafa.html#cb280-4" tabindex="-1"></a><span class="co">#固有ベクトルについての情報をオブジェクトとして定義</span></span>
+<span id="cb280-5"><a href="pcafa.html#cb280-5" tabindex="-1"></a>pc1_eig <span class="ot">&lt;-</span> eigen_list<span class="sc">$</span>vectors[, <span class="dv">1</span>]</span>
+<span id="cb280-6"><a href="pcafa.html#cb280-6" tabindex="-1"></a>pc2_eig <span class="ot">&lt;-</span> eigen_list<span class="sc">$</span>vectors[, <span class="dv">2</span>]</span>
+<span id="cb280-7"><a href="pcafa.html#cb280-7" tabindex="-1"></a><span class="co">#固有ベクトルに、固有値の平方根を乗じる</span></span>
+<span id="cb280-8"><a href="pcafa.html#cb280-8" tabindex="-1"></a>PC1 <span class="ot">&lt;-</span> pc1_eig<span class="sc">*</span> <span class="fu">sqrt</span>(eigen_list<span class="sc">$</span>values[<span class="dv">1</span>])</span>
+<span id="cb280-9"><a href="pcafa.html#cb280-9" tabindex="-1"></a>PC2 <span class="ot">&lt;-</span> pc2_eig<span class="sc">*</span> <span class="fu">sqrt</span>(eigen_list<span class="sc">$</span>values[<span class="dv">2</span>])</span>
+<span id="cb280-10"><a href="pcafa.html#cb280-10" tabindex="-1"></a></span>
+<span id="cb280-11"><a href="pcafa.html#cb280-11" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">data.frame</span>(<span class="fu">cbind</span>(PC1,PC2)), <span class="at">caption=</span><span class="st">&quot;計算結果&quot;</span>)</span></code></pre></div>
 <table>
 <caption><span id="tab:calculationcheck">Table 11.5: </span>計算結果</caption>
 <thead>
