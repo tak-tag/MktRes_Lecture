@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2024-05-03" />
+<meta name="date" content="2024-05-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -343,8 +343,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5    46 2019/9/10  7595      1
 ## 6    44 2019/9/14  7858      0</code></pre>
 <p>ここで、date変数を用いて直近で何日前の来店かを示す変数を作成する。このデータは、2019年09月01日 から 2019年10月01日までの一ヶ月間、とある店舗で記録された取引データであると仮定し作成されている。そのため、データ収集終了最新時点（2019-10-2）と来店日時の差を表す変数を作成する (ここでの処理にエラーが出る場合は、<code>idpos$date &lt;- as.Date(idpos$date)</code> というコマンドを事前に試してから変数の定義を行ってほしい)。head関数により出力された結果によって新たな変数（datediff）が追加されたことがわかる。</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="統計的検定を用いない顧客分析.html#cb79-1" tabindex="-1"></a>idpos<span class="sc">$</span>datediff<span class="ot">&lt;-</span> </span>
-<span id="cb79-2"><a href="統計的検定を用いない顧客分析.html#cb79-2" tabindex="-1"></a>  <span class="fu">round</span>(<span class="fu">as.numeric</span>(<span class="fu">difftime</span>(<span class="st">&quot;2019-10-02&quot;</span>,idpos<span class="sc">$</span>date,<span class="at">units=</span><span class="st">&quot;days&quot;</span>)))</span>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="統計的検定を用いない顧客分析.html#cb79-1" tabindex="-1"></a>idpos<span class="sc">$</span>datediff <span class="ot">&lt;-</span></span>
+<span id="cb79-2"><a href="統計的検定を用いない顧客分析.html#cb79-2" tabindex="-1"></a>  <span class="fu">as.numeric</span>(<span class="fu">difftime</span>(<span class="st">&quot;2019-10-02&quot;</span>,idpos<span class="sc">$</span>date,<span class="at">units=</span><span class="st">&quot;days&quot;</span>))</span>
 <span id="cb79-3"><a href="統計的検定を用いない顧客分析.html#cb79-3" tabindex="-1"></a><span class="fu">head</span>(idpos)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 5
 ##      id date      spent coupon datediff
