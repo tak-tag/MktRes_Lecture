@@ -224,7 +224,7 @@ head(idpos)
 ここで、date変数を用いて直近で何日前の来店かを示す変数を作成する。このデータは、2019年09月01日 から 2019年10月01日までの一ヶ月間、とある店舗で記録された取引データであると仮定し作成されている。そのため、データ収集終了最新時点（2019-10-2）と来店日時の差を表す変数を作成する (ここでの処理にエラーが出る場合は、`idpos$date <- as.Date(idpos$date)` というコマンドを事前に試してから変数の定義を行ってほしい)。head関数により出力された結果によって新たな変数（datediff）が追加されたことがわかる。
 
 ```{r datediff}
-idpos$datediff <-
+idpos$datediff<-
   as.numeric(difftime("2019-10-02",idpos$date,units="days"))
 head(idpos)
 ```
