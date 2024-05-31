@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2024-05-16" />
+<meta name="date" content="2024-06-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -324,14 +324,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p>図 <a href="k-means.html#fig:kmeans1">10.7</a>と<a href="k-means.html#fig:kmeans2">10.8</a> はK-means法のプロセスに関する直感的説明を段階的に図示化したものである。ここでは、図 <a href="k-means.html#fig:kmeans1">10.7</a> (1) のようなデータに対し、3つのクラスター数を仮定した場合を考える（このプロセスは任意の <span class="math inline">\(k\)</span> 個のクラスターに対して適応可能）。</p>
 <div class="figure"><span style="display:block;" id="fig:kmeans1"></span>
-<img src="cluster/kmeans1.jpg" alt="K-means法直感１"  />
+<img src="cluster/kmeans1.jpg" alt="K-means法直感１" width="2044" />
 <p class="caption">
 Figure 10.7: K-means法直感１
 </p>
 </div>
 <p>まず初めに図<a href="k-means.html#fig:kmeans1">10.7</a> (2) に着目してほしい。ここでは、与えられたデータの空間に対して3つのクラスターセンター初期値（初期シードとも言う）をランダムにとる。次に各観測個体をそれぞれの最も近い初期センターに割り当てる形で3つのクラスターを作成する（図<a href="k-means.html#fig:kmeans1">10.7</a> (3)）。ここで、作成された3つのクラスター（の観測値）と、初期値とを比較し、適切に中心を表しているかを検討する（図<a href="k-means.html#fig:kmeans1">10.7</a> (4)）。例えば、図<a href="k-means.html#fig:kmeans1">10.7</a> (4) における赤いクラスターについてはもう少し右上の方向にセンターを移動したほうがいいかもしれない。このように、各クラスターの観測値に基づき、クラスターセンターが計算され、アップデートされる。</p>
 <div class="figure"><span style="display:block;" id="fig:kmeans2"></span>
-<img src="cluster/kmeans2.jpg" alt="K-means法直感２"  />
+<img src="cluster/kmeans2.jpg" alt="K-means法直感２" width="2642" />
 <p class="caption">
 Figure 10.8: K-means法直感２
 </p>

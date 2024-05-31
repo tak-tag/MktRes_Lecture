@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2024-05-16" />
+<meta name="date" content="2024-06-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -322,14 +322,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>受容価格帯に関する知見としては、Gabor and Granger (1966) による購買反応曲線（Buy Response Curve；以下、BRC）の知見が活かされている。本節では、この論文の知見を簡単に紹介する。詳細について関心がある場合にはぜひ論文を読んで見てほしい。逆に、PSMに関する理論的背景に関心がない場合には、「実務的に広く使われているPSMにも、学術的な蓄積がある」ということさえ頭に留めてくれれば、そのまま次節へ進んでもらっても構わない。</p>
 <p>Gabor and Granger (1966)では価格に対する需要量の変化ではなく、ある価格においてその製品が購買される可能性（Plausibility）について捉えた議論を展開している。この研究では受容価格の上限と下限に着目し、ある価格Pにおいて、消費者がそれを安すぎると感じる確率を<span class="math inline">\(L(P)\)</span>、価格Pにおいて、消費者がそれを高すぎると感じる確率を <span class="math inline">\(H(P)\)</span> とした（ただし、<span class="math inline">\(0\leq L(P)\leq1\)</span>かつ<span class="math inline">\(0\leq H(P)\leq1\)</span>）。これらの確率は、下図で示されるように、<span class="math inline">\(H(P)\)</span>が単調増加である一方で、<span class="math inline">\(L(P)\)</span> は単調減少であり、<span class="math inline">\(L(P)\)</span> ではなく <span class="math inline">\(1-L(P)\)</span> が累積分布関数として捉えられる。</p>
 <div class="figure"><span style="display:block;" id="fig:LpHpfig"></span>
-<img src="psm/BRC.jpeg" alt="L(P)とH(P)"  />
+<img src="psm/BRC.jpeg" alt="L(P)とH(P)" width="486" />
 <p class="caption">
 Figure 12.2: L(P)とH(P)
 </p>
 </div>
 <p>これらを用いて、価格Pが消費者の受容価格範囲に入っている確率を <span class="math inline">\(B(P) = 1- L(P) - H(P)\)</span> と定義した。ただし、<span class="math inline">\(H(P)\)</span> と <span class="math inline">\(L(P)\)</span> はすべての <span class="math inline">\(P\)</span> に対して微分可能であり、<span class="math inline">\(l(P)=dL(P)/dP\)</span>、<span class="math inline">\(h(P)=dH(P)/dP\)</span>とする。<span class="math inline">\(B(P)\)</span>は、ある価格Pを消費者が高すぎるとも安すぎるとも感じない確率と言い換えることができ、これを購買反応曲線（BRC）と呼んだ。BRCの形状は以下のように示すことができる。この形状から、<span class="math inline">\(P&#39;\)</span> という価格水準を基準とし、それより高いないし低い価格において、購買される可能性が低くなることが予想される。</p>
 <div class="figure"><span style="display:block;" id="fig:referenceprice"></span>
-<img src="psm/BRC.jpeg" alt="購買反応曲線"  />
+<img src="psm/BRC.jpeg" alt="購買反応曲線" width="486" />
 <p class="caption">
 Figure 12.3: 購買反応曲線
 </p>
@@ -339,7 +339,7 @@ Figure 12.3: 購買反応曲線
 <p>仮説2（H2）では、ある価格と消費者グループにおいては、<span class="math inline">\(l(p)\)</span> と <span class="math inline">\(h(p)\)</span> の標準偏差は近似的にほぼ等しいと述べた。詳細は割愛するが、H1とH2を含む計4つの仮説と整合的な結果を得ることで、BRCの形状についての知見を獲得した。<span class="math inline">\(1-L(p)\)</span> と <span class="math inline">\(H(p)\)</span> が正規の確率分布関数に従うとするならば、<span class="math inline">\(B(p) = 1- L(p) - H(p)\)</span>
 の理論的な形状も推察できる。ただし、<span class="math inline">\(B(p)\)</span> 自体は確率密度関数ではない。Gabor and Granger (1966) では、<span class="math inline">\(m_1\)</span> と <span class="math inline">\(m_2\)</span> をそれぞれ、<span class="math inline">\(l(p)\)</span> と <span class="math inline">\(h(p)\)</span> の期待値とし、<span class="math inline">\(b(p)=B(p)/(m_2-m_1)\)</span> を確率密度関数と捉えた。単純化のために H2 を仮定すると、<span class="math inline">\(b(p)\)</span> は <span class="math inline">\((m_1+m_2)/2\)</span> を中心に左右対称である。これらの仮説および議論のもと、<span class="math inline">\(l(p)\)</span>、<span class="math inline">\(h(p)\)</span>と、<span class="math inline">\(b(p)\)</span> は以下のように図示できる。このように、Gabor and Granger (1966)は、いくつかの仮定を満たすような状況では、消費者の価格に対する反応を数量的に分析することが可能になることを示した。</p>
 <div class="figure"><span style="display:block;" id="fig:brcfig"></span>
-<img src="psm/brc_density.png" alt="購買反応密度関数"  />
+<img src="psm/brc_density.png" alt="購買反応密度関数" width="716" />
 <p class="caption">
 Figure 12.4: 購買反応密度関数
 </p>
@@ -349,7 +349,7 @@ Figure 12.4: 購買反応密度関数
 <h3><span class="header-section-number">12.3.2</span> 内的参照価格に関する知見<a href="psmに関する既存研究.html#内的参照価格に関する知見" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>受容価格に関するBRCに加え、内的参照価格についての知見もPSMには重要である。詳しくは兼子（2014）を参照してほしいが、内的参照価格にも幅が存在すると考えられる。つまり、受容価格帯内において安いか高いかを知覚する価格は特定の水準だけでなく、価格幅として構成されると考えられる。ある製品の価格が消費者にとって高いと感じる価格帯よりも低く、安いと感じる価格帯よりも高い価格幅に含まれている場合、その価格は「安くも高くもない」価格として知覚される。言い換えると、この安くも高くもない価格幅に基づき、その上限よりも高い価格については高いと感じ、下限よりも低い価格については安いと感じると考えられる。以下では、兼子（2014）を参考に、受容価格帯（<span class="math inline">\(P_4-P_1\)</span>）と内的参照価格帯（<span class="math inline">\(P_3-P_2\)</span>）を図示する。</p>
 <div class="figure"><span style="display:block;" id="fig:acceptfig"></span>
-<img src="psm/accept.jpg" alt="内的参照価格帯"  />
+<img src="psm/accept.jpg" alt="内的参照価格帯" width="1288" />
 <p class="caption">
 Figure 12.5: 内的参照価格帯
 </p>
