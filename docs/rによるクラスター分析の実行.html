@@ -623,7 +623,7 @@ Figure 10.15: 4クラスターモデル図
 </tr>
 </tbody>
 </table>
-<p>以下では、各クラスターの平均的な消費者像について理解するために、個人属性情報をまとめる。その作業方法と結果は、以下のコードと表<a href="rによるクラスター分析の実行.html#tab:clusSummary">10.3</a> のとおりである。ここでは、表<a href="rによるクラスター分析の実行.html#tab:clusSummary">10.3</a>に基づき、いくつかのクラスターに絞り、それらの特徴を整理し解釈を行う。</p>
+<p>以下では、各クラスターの平均的な消費者像について理解するために、個人属性情報をまとめる。その作業方法と結果は、以下のコードと表<a href="rによるクラスター分析の実行.html#tab:clusSummary">10.3</a> のとおりである。ここでは、表<a href="rによるクラスター分析の実行.html#tab:clusSummary">10.3</a>に基づき、いくつかのクラスターに絞り、それらの特徴を整理し解釈を行う。なお、本データでは東京在住者の観測数（1465）が兵庫在住者の観測数（508）を大きく上回っているため、居住エリアの比率については本データの比率（<span class="math inline">\(1465/1973\approx 0.742\)</span>）を基準に、この比率と同等の東京在住者がいれば1を、それより多ければ1より大きい値を取るような比率で示している。</p>
 <p>表<a href="rによるクラスター分析の実行.html#tab:clusSummary">10.3</a>におけるクラスター１は最も人数が少なく、価格志向は高くスイッチはやや低いことがうかがえる。そのため、このグループに属する消費者は、価格に基づいて選んだブランドを買い続ける傾向があるのかもしれない。また、このクラスターは他のクラスターよりも東京在住者の比率が高いこともうかがえる。クラスター6は、価格志向もスイッチもどちらも低いことがうかがえる。そのため、このクラスターに属する消費者は価格以外の属性に基づいて選んだブランドを買い続ける傾向があるかもしれない。また、このクラスターは既婚者率が高く、このような属性の特徴も価値観に影響しているのかもしれない。他のクラスターに関する解釈はここでは割愛するが、ぜひ読者においてもそれぞれのクラスターについての解釈を展開してみてほしい。</p>
 <div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="rによるクラスター分析の実行.html#cb260-1" tabindex="-1"></a>clus_summary <span class="ot">&lt;-</span> df_cons <span class="sc">%&gt;%</span> </span>
 <span id="cb260-2"><a href="rによるクラスター分析の実行.html#cb260-2" tabindex="-1"></a>  <span class="fu">group_by</span>(cluster_id) <span class="sc">%&gt;%</span> </span>
@@ -632,7 +632,7 @@ Figure 10.15: 4クラスターモデル図
 <span id="cb260-5"><a href="rによるクラスター分析の実行.html#cb260-5" tabindex="-1"></a>            <span class="at">Price_m =</span> <span class="fu">mean</span>(q13_3),</span>
 <span id="cb260-6"><a href="rによるクラスター分析の実行.html#cb260-6" tabindex="-1"></a>            <span class="at">Age_m =</span> <span class="fu">mean</span>(年齢),</span>
 <span id="cb260-7"><a href="rによるクラスター分析の実行.html#cb260-7" tabindex="-1"></a>            <span class="at">Male_r =</span> <span class="fu">sum</span>(Gender <span class="sc">==</span> <span class="st">&quot;Male&quot;</span>)<span class="sc">/</span><span class="fu">n</span>(),</span>
-<span id="cb260-8"><a href="rによるクラスター分析の実行.html#cb260-8" tabindex="-1"></a>            <span class="at">Tokyo_r =</span> <span class="fu">sum</span>(Pref <span class="sc">==</span> <span class="st">&quot;Tokyo&quot;</span>)<span class="sc">/</span><span class="fu">n</span>(),</span>
+<span id="cb260-8"><a href="rによるクラスター分析の実行.html#cb260-8" tabindex="-1"></a>            <span class="at">Tokyo_r =</span> (<span class="fu">sum</span>(Pref <span class="sc">==</span> <span class="st">&quot;Tokyo&quot;</span>)<span class="sc">/</span><span class="fu">n</span>())<span class="sc">/</span>(<span class="dv">1465</span><span class="sc">/</span><span class="dv">1973</span>),</span>
 <span id="cb260-9"><a href="rによるクラスター分析の実行.html#cb260-9" tabindex="-1"></a>            <span class="at">Married_r =</span> <span class="fu">sum</span>(MaritalSt. <span class="sc">==</span> <span class="st">&quot;Married&quot;</span>)<span class="sc">/</span><span class="fu">n</span>())</span>
 <span id="cb260-10"><a href="rによるクラスター分析の実行.html#cb260-10" tabindex="-1"></a></span>
 <span id="cb260-11"><a href="rによるクラスター分析の実行.html#cb260-11" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(clus_summary, <span class="at">caption =</span> <span class="st">&quot;クラスターサマリー&quot;</span>)</span></code></pre></div>
@@ -668,7 +668,7 @@ Figure 10.15: 4クラスターモデル図
 <td align="right">2.150000</td>
 <td align="right">42.61250</td>
 <td align="right">0.5125000</td>
-<td align="right">0.6500000</td>
+<td align="right">0.8753925</td>
 <td align="right">0.5250000</td>
 </tr>
 <tr class="even">
@@ -678,7 +678,7 @@ Figure 10.15: 4クラスターモデル図
 <td align="right">1.781879</td>
 <td align="right">38.56040</td>
 <td align="right">0.5134228</td>
-<td align="right">0.6979866</td>
+<td align="right">0.9400188</td>
 <td align="right">0.6107383</td>
 </tr>
 <tr class="odd">
@@ -688,7 +688,7 @@ Figure 10.15: 4クラスターモデル図
 <td align="right">3.207895</td>
 <td align="right">41.88816</td>
 <td align="right">0.5065789</td>
-<td align="right">0.7500000</td>
+<td align="right">1.0100683</td>
 <td align="right">0.5618421</td>
 </tr>
 <tr class="even">
@@ -698,7 +698,7 @@ Figure 10.15: 4クラスターモデル図
 <td align="right">4.123311</td>
 <td align="right">43.79730</td>
 <td align="right">0.4645270</td>
-<td align="right">0.7567568</td>
+<td align="right">1.0191680</td>
 <td align="right">0.4712838</td>
 </tr>
 <tr class="odd">
@@ -708,7 +708,7 @@ Figure 10.15: 4クラスターモデル図
 <td align="right">1.777778</td>
 <td align="right">34.91770</td>
 <td align="right">0.5102881</td>
-<td align="right">0.7695473</td>
+<td align="right">1.0363938</td>
 <td align="right">0.6213992</td>
 </tr>
 </tbody>
