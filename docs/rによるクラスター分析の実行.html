@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2024-06-04" />
+<meta name="date" content="2024-06-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -318,7 +318,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">10.5</span> Rによるクラスター分析の実行<a href="rによるクラスター分析の実行.html#rによるクラスター分析の実行" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>ここからは、Rを用いたクラスター分析の実行方法について紹介する。なお、本節では、吉田秀雄記念事業財団によって2023年に実施された消費者調査アンケートデータ、<a href="https://www.yhmf.jp/aid/data/data_aid_2023_later.html">研究⽀援消費者調査結果 2023年度下期</a> のうち、（簡単化のために）特定の変数と回答者（兵庫と東京在住者のみ）を抽出して利用する<a href="#fn16" class="footnote-ref" id="fnref16"><sup>16</sup></a>。ここでは、以下のリストにある変数を活用する。</p>
 <ul>
-<li>q12_4（ブランドスイッチ傾向）：「たとえ多くのブランドを利用できる状況にあっても、何時も同じブランドを選ぶ。」</li>
+<li>q12_4（ブランドロイヤリティ性向）：「たとえ多くのブランドを利用できる状況にあっても、何時も同じブランドを選ぶ。」</li>
 <li>q13_3（価格感度）：「大抵、一番安いものを買う。」</li>
 <li>性別</li>
 <li>年齢</li>
@@ -337,7 +337,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb250-8"><a href="rによるクラスター分析の実行.html#cb250-8" tabindex="-1"></a>    <span class="fu">filter</span>(県番号 <span class="sc">%in%</span> list,</span>
 <span id="cb250-9"><a href="rによるクラスター分析の実行.html#cb250-9" tabindex="-1"></a>           q12_4 <span class="sc">!=</span> <span class="dv">999</span>,</span>
 <span id="cb250-10"><a href="rによるクラスター分析の実行.html#cb250-10" tabindex="-1"></a>           q13_3 <span class="sc">!=</span> <span class="dv">999</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb250-11"><a href="rによるクラスター分析の実行.html#cb250-11" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Pref =</span> <span class="fu">ifelse</span>(県番号 <span class="sc">==</span> <span class="dv">13</span>, <span class="st">&quot;Hyogo&quot;</span>, <span class="st">&quot;Tokyo&quot;</span>),</span>
+<span id="cb250-11"><a href="rによるクラスター分析の実行.html#cb250-11" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Pref =</span> <span class="fu">ifelse</span>(県番号 <span class="sc">==</span> <span class="dv">13</span>, <span class="st">&quot;Tokyo&quot;</span>, <span class="st">&quot;Hyogo&quot;</span>),</span>
 <span id="cb250-12"><a href="rによるクラスター分析の実行.html#cb250-12" tabindex="-1"></a>         <span class="at">Gender =</span> <span class="fu">case_when</span>(性別 <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="st">&quot;Male&quot;</span>,</span>
 <span id="cb250-13"><a href="rによるクラスター分析の実行.html#cb250-13" tabindex="-1"></a>                            性別 <span class="sc">==</span> <span class="dv">2</span> <span class="sc">~</span> <span class="st">&quot;Female&quot;</span>,</span>
 <span id="cb250-14"><a href="rによるクラスター分析の実行.html#cb250-14" tabindex="-1"></a>                            <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">&quot;Others&quot;</span>),</span>
@@ -361,18 +361,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>まずは以下の通り、階層的クラスター分析を実行する。なお、階層的クラスター分析の実行においては、<code>agnes()</code> 関数を用いる。その際に用いる距離の計測方法は <code>metric =</code> という引数で設定できる。その後、階層的クラスター分析の結果を用いて <code>pltree()</code> 関数を実行することで、デンドログラムが出力される。</p>
 <div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="rによるクラスター分析の実行.html#cb252-1" tabindex="-1"></a>clus_cons <span class="ot">&lt;-</span> df_cons <span class="sc">%&gt;%</span> </span>
 <span id="cb252-2"><a href="rによるクラスター分析の実行.html#cb252-2" tabindex="-1"></a>  <span class="fu">select</span>(q12_4, q13_3)</span>
-<span id="cb252-3"><a href="rによるクラスター分析の実行.html#cb252-3" tabindex="-1"></a>Hier1 <span class="ot">&lt;-</span> <span class="fu">agnes</span>(clus_cons, <span class="at">metric =</span> <span class="st">&quot;euclidian&quot;</span>, <span class="at">stand =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb252-4"><a href="rによるクラスター分析の実行.html#cb252-4" tabindex="-1"></a><span class="fu">pltree</span>(Hier1)</span></code></pre></div>
+<span id="cb252-3"><a href="rによるクラスター分析の実行.html#cb252-3" tabindex="-1"></a>Hier1 <span class="ot">&lt;-</span> <span class="fu">agnes</span>(clus_cons, <span class="at">metric =</span> <span class="st">&quot;euclidian&quot;</span>, <span class="at">method =</span> <span class="st">&quot;ward&quot;</span>, <span class="at">stand =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb252-4"><a href="rによるクラスター分析の実行.html#cb252-4" tabindex="-1"></a></span>
+<span id="cb252-5"><a href="rによるクラスター分析の実行.html#cb252-5" tabindex="-1"></a><span class="fu">pltree</span>(Hier1)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:consdendrom"></span>
 <img src="mktres_lecture_files/figure-html/consdendrom-1.png" alt="消費者デンドログラム" width="672" />
 <p class="caption">
 Figure 10.10: 消費者デンドログラム
 </p>
 </div>
-<p>図<a href="rによるクラスター分析の実行.html#fig:consdendrom">10.10</a> の通り、本データは1973件の観測個体を有するため、デンドログラムも下部については識別が難しくなっている。しかしながら、例えば高さを3に設定した場合、クラスターは4つに分かれることがうかがえる。4クラスターの場合、どのような分け方になるかについて、直感的に示すために、<code>factoextra</code> パッケージを用いると図<a href="rによるクラスター分析の実行.html#fig:factodendrogram">10.11</a>のようにデンドログラムを出力できる。この時、<code>fviz_dend()</code> 関数における <code>k = 4</code> という引数で、ここでのクラスター数を定義している。</p>
+<p>図<a href="rによるクラスター分析の実行.html#fig:consdendrom">10.10</a> の通り、本データは1973件の観測個体を有するため、デンドログラムも下部については識別が難しくなっている。しかしながら、例えば高さを40ぐらいに設定した場合、クラスターは4つか5つに分かれることがうかがえる。例えば4クラスターの場合、どのような分け方になるかについて、直感的に示すために、<code>factoextra</code> パッケージを用いると図<a href="rによるクラスター分析の実行.html#fig:factodendrogram">10.11</a>のようにデンドログラムを出力できる。この時、<code>fviz_dend()</code> 関数における <code>k = 4</code> という引数で、ここでのクラスター数を定義している。</p>
 <div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="rによるクラスター分析の実行.html#cb253-1" tabindex="-1"></a>alt_Hier <span class="ot">&lt;-</span> clus_cons <span class="sc">%&gt;%</span> </span>
 <span id="cb253-2"><a href="rによるクラスター分析の実行.html#cb253-2" tabindex="-1"></a>  <span class="fu">dist</span>(<span class="st">&quot;euclidian&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb253-3"><a href="rによるクラスター分析の実行.html#cb253-3" tabindex="-1"></a>  <span class="fu">hclust</span>(<span class="st">&quot;complete&quot;</span>)</span>
+<span id="cb253-3"><a href="rによるクラスター分析の実行.html#cb253-3" tabindex="-1"></a>  <span class="fu">hclust</span>(<span class="st">&quot;ward.D&quot;</span>)</span>
 <span id="cb253-4"><a href="rによるクラスター分析の実行.html#cb253-4" tabindex="-1"></a>alt_Hier <span class="sc">%&gt;%</span> </span>
 <span id="cb253-5"><a href="rによるクラスター分析の実行.html#cb253-5" tabindex="-1"></a>  <span class="fu">fviz_dend</span>(<span class="at">k =</span> <span class="dv">4</span>, <span class="at">rect =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb253-6"><a href="rによるクラスター分析の実行.html#cb253-6" tabindex="-1"></a>            <span class="at">rect_border =</span> <span class="cn">TRUE</span>) </span></code></pre></div>
@@ -484,7 +485,7 @@ Figure 10.13: 5クラスターデンドログラム
 ## [1] &quot;cluster&quot;      &quot;centers&quot;      &quot;totss&quot;        &quot;withinss&quot;     &quot;tot.withinss&quot;
 ## [6] &quot;betweenss&quot;    &quot;size&quot;         &quot;iter&quot;         &quot;ifault&quot;</code></pre>
 <p>分析の結果表示される <code>Cluster means:</code>では、分析に用いた変数に関する各クラスターごとの平均値が出力される。例えば、クラスター1は、ブランドスイッチ（q12_4）については高いが、価格志向（q13_3）については低いことがうかがえる。結果の下部で表示される、<code>Within cluster sum of squares by cluster:</code>には、各クラスターの内部平方和（分散）が出力されている。その下の <code>between_SS / total_SS</code> は、全体の平方和に占めるクラスター間平方和の比率であり、全体の分散の何%を5つのクラスターが説明しているかを示している。</p>
-<p>以下では、上述の結果について、<code>factoextra::fviz_cluster()</code>によって図示化する。図<a href="rによるクラスター分析の実行.html#fig:kmeansplot1">10.14</a> では、ブランドスイッチと価格志向のどちらも高い（低い）グループや、どちらか一方のみ高いグループに加え、価格志向は低いがブランドスイッチについては平均的というグループも確認できた。このように図示化することで、クラスター分析の結果についての解釈が容易になる。なお、4クラスターを採用した場合の結果については、<a href="rによるクラスター分析の実行.html#fig:kmeansplot2">10.15</a>で示されている。また、4クラスターでの分析を実行すると、<code>between_SS / total_SS =  65.6 %</code> という結果を得るはずなので、興味のある読者は自身で実行してみてほしい。</p>
+<p>以下では、上述の結果について、<code>factoextra::fviz_cluster()</code>によって図示化する。図<a href="rによるクラスター分析の実行.html#fig:kmeansplot1">10.14</a> では、ブランドロイヤリティと価格志向のどちらも高い（低い）グループや、どちらか一方のみ高いグループに加え、価格志向は低いがブランドスイッチについては平均的というグループも確認できた。このように図示化することで、クラスター分析の結果についての解釈が容易になる。なお、4クラスターを採用した場合の結果については、<a href="rによるクラスター分析の実行.html#fig:kmeansplot2">10.15</a>で示されている。また、4クラスターでの分析を実行すると、<code>between_SS / total_SS =  65.6 %</code> という結果を得るはずなので、興味のある読者は自身で実行してみてほしい。</p>
 <div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="rによるクラスター分析の実行.html#cb258-1" tabindex="-1"></a><span class="fu">fviz_cluster</span>(K_shopping, <span class="at">data =</span> clus_cons, <span class="at">geom =</span> <span class="st">&quot;point&quot;</span>) <span class="sc">+</span></span>
 <span id="cb258-2"><a href="rによるクラスター分析の実行.html#cb258-2" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;k = 5&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Brand switching (Std. score)&quot;</span>, </span>
 <span id="cb258-3"><a href="rによるクラスター分析の実行.html#cb258-3" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Price orientation (Std. score)&quot;</span>)</span></code></pre></div>
@@ -545,7 +546,7 @@ Figure 10.15: 4クラスターモデル図
 <td align="right">2</td>
 <td align="right">8</td>
 <td align="right">4</td>
-<td align="left">Hyogo</td>
+<td align="left">Tokyo</td>
 <td align="left">Female</td>
 <td align="left">Not Married</td>
 <td align="left">5</td>
@@ -559,7 +560,7 @@ Figure 10.15: 4クラスターモデル図
 <td align="right">2</td>
 <td align="right">2</td>
 <td align="right">9</td>
-<td align="left">Hyogo</td>
+<td align="left">Tokyo</td>
 <td align="left">Male</td>
 <td align="left">Not Married</td>
 <td align="left">5</td>
@@ -573,7 +574,7 @@ Figure 10.15: 4クラスターモデル図
 <td align="right">1</td>
 <td align="right">3</td>
 <td align="right">NA</td>
-<td align="left">Hyogo</td>
+<td align="left">Tokyo</td>
 <td align="left">Male</td>
 <td align="left">Married</td>
 <td align="left">5</td>
@@ -587,7 +588,7 @@ Figure 10.15: 4クラスターモデル図
 <td align="right">1</td>
 <td align="right">3</td>
 <td align="right">NA</td>
-<td align="left">Hyogo</td>
+<td align="left">Tokyo</td>
 <td align="left">Male</td>
 <td align="left">Married</td>
 <td align="left">4</td>
@@ -601,7 +602,7 @@ Figure 10.15: 4クラスターモデル図
 <td align="right">1</td>
 <td align="right">3</td>
 <td align="right">10</td>
-<td align="left">Tokyo</td>
+<td align="left">Hyogo</td>
 <td align="left">Male</td>
 <td align="left">Married</td>
 <td align="left">3</td>
@@ -615,7 +616,7 @@ Figure 10.15: 4クラスターモデル図
 <td align="right">1</td>
 <td align="right">3</td>
 <td align="right">NA</td>
-<td align="left">Tokyo</td>
+<td align="left">Hyogo</td>
 <td align="left">Male</td>
 <td align="left">Married</td>
 <td align="left">3</td>
@@ -627,19 +628,20 @@ Figure 10.15: 4クラスターモデル図
 <div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="rによるクラスター分析の実行.html#cb260-1" tabindex="-1"></a>clus_summary <span class="ot">&lt;-</span> df_cons <span class="sc">%&gt;%</span> </span>
 <span id="cb260-2"><a href="rによるクラスター分析の実行.html#cb260-2" tabindex="-1"></a>  <span class="fu">group_by</span>(cluster_id) <span class="sc">%&gt;%</span> </span>
 <span id="cb260-3"><a href="rによるクラスター分析の実行.html#cb260-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">N =</span> <span class="fu">n</span>(),</span>
-<span id="cb260-4"><a href="rによるクラスター分析の実行.html#cb260-4" tabindex="-1"></a>            <span class="at">Price_m =</span> <span class="fu">mean</span>(q12_4),</span>
-<span id="cb260-5"><a href="rによるクラスター分析の実行.html#cb260-5" tabindex="-1"></a>            <span class="at">Switch_m =</span> <span class="fu">mean</span>(q13_3),</span>
+<span id="cb260-4"><a href="rによるクラスター分析の実行.html#cb260-4" tabindex="-1"></a>            <span class="at">Loyalty_m =</span> <span class="fu">mean</span>(q12_4),</span>
+<span id="cb260-5"><a href="rによるクラスター分析の実行.html#cb260-5" tabindex="-1"></a>            <span class="at">Price_m =</span> <span class="fu">mean</span>(q13_3),</span>
 <span id="cb260-6"><a href="rによるクラスター分析の実行.html#cb260-6" tabindex="-1"></a>            <span class="at">Age_m =</span> <span class="fu">mean</span>(年齢),</span>
 <span id="cb260-7"><a href="rによるクラスター分析の実行.html#cb260-7" tabindex="-1"></a>            <span class="at">Male_r =</span> <span class="fu">sum</span>(Gender <span class="sc">==</span> <span class="st">&quot;Male&quot;</span>)<span class="sc">/</span><span class="fu">n</span>(),</span>
 <span id="cb260-8"><a href="rによるクラスター分析の実行.html#cb260-8" tabindex="-1"></a>            <span class="at">Tokyo_r =</span> <span class="fu">sum</span>(Pref <span class="sc">==</span> <span class="st">&quot;Tokyo&quot;</span>)<span class="sc">/</span><span class="fu">n</span>(),</span>
 <span id="cb260-9"><a href="rによるクラスター分析の実行.html#cb260-9" tabindex="-1"></a>            <span class="at">Married_r =</span> <span class="fu">sum</span>(MaritalSt. <span class="sc">==</span> <span class="st">&quot;Married&quot;</span>)<span class="sc">/</span><span class="fu">n</span>())</span>
-<span id="cb260-10"><a href="rによるクラスター分析の実行.html#cb260-10" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(clus_summary, <span class="at">caption =</span> <span class="st">&quot;クラスターサマリー&quot;</span>)</span></code></pre></div>
-<table>
+<span id="cb260-10"><a href="rによるクラスター分析の実行.html#cb260-10" tabindex="-1"></a></span>
+<span id="cb260-11"><a href="rによるクラスター分析の実行.html#cb260-11" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(clus_summary, <span class="at">caption =</span> <span class="st">&quot;クラスターサマリー&quot;</span>)</span></code></pre></div>
+<table style="width:100%;">
 <caption><span id="tab:clusSummary">Table 10.3: </span>クラスターサマリー</caption>
 <colgroup>
 <col width="15%" />
 <col width="5%" />
-<col width="12%" />
+<col width="13%" />
 <col width="12%" />
 <col width="12%" />
 <col width="13%" />
@@ -650,8 +652,8 @@ Figure 10.15: 4クラスターモデル図
 <tr class="header">
 <th align="left">cluster_id</th>
 <th align="right">N</th>
+<th align="right">Loyalty_m</th>
 <th align="right">Price_m</th>
-<th align="right">Switch_m</th>
 <th align="right">Age_m</th>
 <th align="right">Male_r</th>
 <th align="right">Tokyo_r</th>
@@ -666,7 +668,7 @@ Figure 10.15: 4クラスターモデル図
 <td align="right">2.150000</td>
 <td align="right">42.61250</td>
 <td align="right">0.5125000</td>
-<td align="right">0.3500000</td>
+<td align="right">0.6500000</td>
 <td align="right">0.5250000</td>
 </tr>
 <tr class="even">
@@ -676,7 +678,7 @@ Figure 10.15: 4クラスターモデル図
 <td align="right">1.781879</td>
 <td align="right">38.56040</td>
 <td align="right">0.5134228</td>
-<td align="right">0.3020134</td>
+<td align="right">0.6979866</td>
 <td align="right">0.6107383</td>
 </tr>
 <tr class="odd">
@@ -686,7 +688,7 @@ Figure 10.15: 4クラスターモデル図
 <td align="right">3.207895</td>
 <td align="right">41.88816</td>
 <td align="right">0.5065789</td>
-<td align="right">0.2500000</td>
+<td align="right">0.7500000</td>
 <td align="right">0.5618421</td>
 </tr>
 <tr class="even">
@@ -696,7 +698,7 @@ Figure 10.15: 4クラスターモデル図
 <td align="right">4.123311</td>
 <td align="right">43.79730</td>
 <td align="right">0.4645270</td>
-<td align="right">0.2432432</td>
+<td align="right">0.7567568</td>
 <td align="right">0.4712838</td>
 </tr>
 <tr class="odd">
@@ -706,7 +708,7 @@ Figure 10.15: 4クラスターモデル図
 <td align="right">1.777778</td>
 <td align="right">34.91770</td>
 <td align="right">0.5102881</td>
-<td align="right">0.2304527</td>
+<td align="right">0.7695473</td>
 <td align="right">0.6213992</td>
 </tr>
 </tbody>

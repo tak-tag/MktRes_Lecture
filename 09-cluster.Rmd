@@ -191,7 +191,7 @@ fviz_nbclust(milk, kmeans, method = "wss")
 ## Rによるクラスター分析の実行
 ここからは、Rを用いたクラスター分析の実行方法について紹介する。なお、本節では、吉田秀雄記念事業財団によって2023年に実施された消費者調査アンケートデータ、[研究⽀援消費者調査結果 2023年度下期](https://www.yhmf.jp/aid/data/data_aid_2023_later.html) のうち、（簡単化のために）特定の変数と回答者（兵庫と東京在住者のみ）を抽出して利用する^[なお、履修生によるデータの読み込みエラーを防ぐために、自由回答設問項目は削除している。]。ここでは、以下のリストにある変数を活用する。
 
-- q12_4（ブランドスイッチ傾向）：「たとえ多くのブランドを利用できる状況にあっても、何時も同じブランドを選ぶ。」
+- q12_4（ブランドロイヤリティ性向）：「たとえ多くのブランドを利用できる状況にあっても、何時も同じブランドを選ぶ。」
 - q13_3（価格感度）：「大抵、一番安いものを買う。」
 - 性別
 - 年齢
@@ -212,7 +212,7 @@ df_cons <- df_cons %>%
     filter(県番号 %in% list,
            q12_4 != 999,
            q13_3 != 999) %>% 
-  mutate(Pref = ifelse(県番号 == 13, "Hyogo", "Tokyo"),
+  mutate(Pref = ifelse(県番号 == 13, "Tokyo", "Hyogo"),
          Gender = case_when(性別 == 1 ~ "Male",
                             性別 == 2 ~ "Female",
                             TRUE ~ "Others"),
@@ -246,15 +246,16 @@ library(useful)
 ```{r consdendrom, fig.cap="消費者デンドログラム"}
 clus_cons <- df_cons %>% 
   select(q12_4, q13_3)
-Hier1 <- agnes(clus_cons, metric = "euclidian", stand = TRUE)
+Hier1 <- agnes(clus_cons, metric = "euclidian", method = "ward", stand = TRUE)
+
 pltree(Hier1)
 ```
 
-図\@ref(fig:consdendrom) の通り、本データは1973件の観測個体を有するため、デンドログラムも下部については識別が難しくなっている。しかしながら、例えば高さを3に設定した場合、クラスターは4つに分かれることがうかがえる。4クラスターの場合、どのような分け方になるかについて、直感的に示すために、`factoextra` パッケージを用いると図\@ref(fig:factodendrogram)のようにデンドログラムを出力できる。この時、`fviz_dend()` 関数における `k = 4` という引数で、ここでのクラスター数を定義している。
+図\@ref(fig:consdendrom) の通り、本データは1973件の観測個体を有するため、デンドログラムも下部については識別が難しくなっている。しかしながら、例えば高さを40ぐらいに設定した場合、クラスターは4つか5つに分かれることがうかがえる。例えば4クラスターの場合、どのような分け方になるかについて、直感的に示すために、`factoextra` パッケージを用いると図\@ref(fig:factodendrogram)のようにデンドログラムを出力できる。この時、`fviz_dend()` 関数における `k = 4` という引数で、ここでのクラスター数を定義している。
 ```{r factodendrogram, message=FALSE, warning=FALSE, fig.cap="4クラスターデンドログラム"}
 alt_Hier <- clus_cons %>% 
   dist("euclidian") %>% 
-  hclust("complete")
+  hclust("ward.D")
 alt_Hier %>% 
   fviz_dend(k = 4, rect = TRUE,
             rect_border = TRUE) 
@@ -290,7 +291,7 @@ K_shopping
 ```
 分析の結果表示される `Cluster means:`では、分析に用いた変数に関する各クラスターごとの平均値が出力される。例えば、クラスター1は、ブランドスイッチ（q12_4）については高いが、価格志向（q13_3）については低いことがうかがえる。結果の下部で表示される、`Within cluster sum of squares by cluster:`には、各クラスターの内部平方和（分散）が出力されている。その下の `between_SS / total_SS` は、全体の平方和に占めるクラスター間平方和の比率であり、全体の分散の何%を5つのクラスターが説明しているかを示している。
 
-以下では、上述の結果について、`factoextra::fviz_cluster()`によって図示化する。図\@ref(fig:kmeansplot1) では、ブランドスイッチと価格志向のどちらも高い（低い）グループや、どちらか一方のみ高いグループに加え、価格志向は低いがブランドスイッチについては平均的というグループも確認できた。このように図示化することで、クラスター分析の結果についての解釈が容易になる。なお、4クラスターを採用した場合の結果については、\@ref(fig:kmeansplot2)で示されている。また、4クラスターでの分析を実行すると、`between_SS / total_SS =  65.6 %` という結果を得るはずなので、興味のある読者は自身で実行してみてほしい。
+以下では、上述の結果について、`factoextra::fviz_cluster()`によって図示化する。図\@ref(fig:kmeansplot1) では、ブランドロイヤリティと価格志向のどちらも高い（低い）グループや、どちらか一方のみ高いグループに加え、価格志向は低いがブランドスイッチについては平均的というグループも確認できた。このように図示化することで、クラスター分析の結果についての解釈が容易になる。なお、4クラスターを採用した場合の結果については、\@ref(fig:kmeansplot2)で示されている。また、4クラスターでの分析を実行すると、`between_SS / total_SS =  65.6 %` という結果を得るはずなので、興味のある読者は自身で実行してみてほしい。
 
 ```{r kmeansplot1, message=FALSE, warning=FALSE, fig.cap="消費者価値観クラスター"}
 fviz_cluster(K_shopping, data = clus_cons, geom = "point") +
@@ -323,12 +324,13 @@ knitr::kable(head(df_cons),caption = "結合データ")
 clus_summary <- df_cons %>% 
   group_by(cluster_id) %>% 
   summarize(N = n(),
-            Price_m = mean(q12_4),
-            Switch_m = mean(q13_3),
+            Loyalty_m = mean(q12_4),
+            Price_m = mean(q13_3),
             Age_m = mean(年齢),
             Male_r = sum(Gender == "Male")/n(),
             Tokyo_r = sum(Pref == "Tokyo")/n(),
             Married_r = sum(MaritalSt. == "Married")/n())
+
 knitr::kable(clus_summary, caption = "クラスターサマリー")
 ```
 
