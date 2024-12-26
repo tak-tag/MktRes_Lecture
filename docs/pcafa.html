@@ -22,7 +22,11 @@
 
 
 
+<<<<<<< HEAD
 <meta name="date" content="2024-07-02" />
+=======
+<meta name="date" content="2024-09-11" />
+>>>>>>> parent of 0dc89dc (firstpush)
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -332,10 +336,17 @@ z_i=b_1x_{1i}+b_2x_{2i}+b_3x_{3i}
 <p>主成分分析は計算方法においても因子分析とは異なる点を有する。結論から述べると、主成分分析は因子分析の特殊形と考えられる（渡辺, 2017 参照）。計算上では、主成分分析は因子分析における主因子法というアプローチの特殊な場合と位置づけられる。主因子法とは、ある制約のもとで、各因子が観測変数の分散を説明する寄与率を最大にするように因子を求める計算方法である。この方法では、共通性を最初に計算し、因子負荷量を算出、因子数を決定した後再度共通性を計算する。そして新しく得られた共通性をもとに再度因子負荷量を算出するというプロセスを繰り返す。計算における共通性の初期値は1や、重相関係数の2乗値、相関行列の行の相関の最大絶対値などが使われる。</p>
 <p>これに対して主成分分析は、共通性初期値を1とし、繰り返し計算を行わない主因子法といえる。より細かく述べれば、主成分分析によって求められる主成分係数（上式の <span class="math inline">\(b_1, b_2, b_3\)</span>）は項目間分散共分散行列の固有ベクトルとして計算される一方で、因子負荷量は対角要素に共通性を代入した項目間相関行列の固有ベクトルに固有値の平方根を乗じたものだといえる（渡辺, 2017）。そのため、標準化された項目を用いた主成分分析によって得る主成分係数（項目間相関行列の固有ベクトル）に固有値の平方根を乗じると、対角要素を1とした項目間相関行列の因子負荷量（ただし、繰り返し計算は行わない）と等しくなる。</p>
 <p>Rで主成分分析を行う際は、<code>psych::pca()</code> を用いる。ここで、<a href="faex.html#faex">11.3</a> 節で用いた演習用データを用いて、主成分分析を実行し、それが、「項目間相関行列の固有ベクトルに固有値の平方根を乗じたもの」と等しくなるかを検討する。まず主成分分析を実行するが、デフォルトでは軸の回転を行ってしまうので、ここでは <code>rotate = "none"</code>とする。</p>
+<<<<<<< HEAD
 <div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="pcafa.html#cb278-1" tabindex="-1"></a>factor_exdata3 <span class="ot">&lt;-</span> factor_exdata <span class="sc">%&gt;%</span> </span>
 <span id="cb278-2"><a href="pcafa.html#cb278-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>ID)</span>
 <span id="cb278-3"><a href="pcafa.html#cb278-3" tabindex="-1"></a>pca_res <span class="ot">&lt;-</span> <span class="fu">pca</span>(factor_exdata3, <span class="at">nfactors =</span> <span class="dv">2</span>, <span class="at">rotate =</span> <span class="st">&quot;none&quot;</span>)</span>
 <span id="cb278-4"><a href="pcafa.html#cb278-4" tabindex="-1"></a>pca_res</span></code></pre></div>
+=======
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="pcafa.html#cb279-1" tabindex="-1"></a>factor_exdata3 <span class="ot">&lt;-</span> factor_exdata <span class="sc">%&gt;%</span> </span>
+<span id="cb279-2"><a href="pcafa.html#cb279-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>ID)</span>
+<span id="cb279-3"><a href="pcafa.html#cb279-3" tabindex="-1"></a>pca_res <span class="ot">&lt;-</span> <span class="fu">pca</span>(factor_exdata3, <span class="at">nfactors =</span> <span class="dv">2</span>, <span class="at">rotate =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb279-4"><a href="pcafa.html#cb279-4" tabindex="-1"></a>pca_res</span></code></pre></div>
+>>>>>>> parent of 0dc89dc (firstpush)
 <pre><code>## Principal Components Analysis
 ## Call: principal(r = r, nfactors = nfactors, residuals = residuals, 
 ##     rotate = rotate, n.obs = n.obs, covar = covar, scores = scores, 
@@ -365,6 +376,7 @@ z_i=b_1x_{1i}+b_2x_{2i}+b_3x_{3i}
 ## 
 ## Fit based upon off diagonal values = 0.98</code></pre>
 <p>続いて、項目間相関係数の固有ベクトルを計算し、それに固有値の平方根を乗じる。その結果、表<a href="pcafa.html#tab:calculationcheck">11.5</a> は（PC2については符号は異なるものの）上記の主成分分析の結果と一致している事がわかる。</p>
+<<<<<<< HEAD
 <div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="pcafa.html#cb280-1" tabindex="-1"></a><span class="co">#データの相関行列から固有値と固有ベクトルを抽出</span></span>
 <span id="cb280-2"><a href="pcafa.html#cb280-2" tabindex="-1"></a>cor_ex <span class="ot">&lt;-</span> <span class="fu">cor</span>(factor_exdata3)</span>
 <span id="cb280-3"><a href="pcafa.html#cb280-3" tabindex="-1"></a>eigen_list <span class="ot">&lt;-</span> <span class="fu">eigen</span>(cor_ex)</span>
@@ -376,6 +388,19 @@ z_i=b_1x_{1i}+b_2x_{2i}+b_3x_{3i}
 <span id="cb280-9"><a href="pcafa.html#cb280-9" tabindex="-1"></a>PC2 <span class="ot">&lt;-</span> pc2_eig<span class="sc">*</span> <span class="fu">sqrt</span>(eigen_list<span class="sc">$</span>values[<span class="dv">2</span>])</span>
 <span id="cb280-10"><a href="pcafa.html#cb280-10" tabindex="-1"></a></span>
 <span id="cb280-11"><a href="pcafa.html#cb280-11" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">data.frame</span>(<span class="fu">cbind</span>(PC1,PC2)), <span class="at">caption=</span><span class="st">&quot;計算結果&quot;</span>)</span></code></pre></div>
+=======
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="pcafa.html#cb281-1" tabindex="-1"></a><span class="co">#データの相関行列から固有値と固有ベクトルを抽出</span></span>
+<span id="cb281-2"><a href="pcafa.html#cb281-2" tabindex="-1"></a>cor_ex <span class="ot">&lt;-</span> <span class="fu">cor</span>(factor_exdata3)</span>
+<span id="cb281-3"><a href="pcafa.html#cb281-3" tabindex="-1"></a>eigen_list <span class="ot">&lt;-</span> <span class="fu">eigen</span>(cor_ex)</span>
+<span id="cb281-4"><a href="pcafa.html#cb281-4" tabindex="-1"></a><span class="co">#固有ベクトルについての情報をオブジェクトとして定義</span></span>
+<span id="cb281-5"><a href="pcafa.html#cb281-5" tabindex="-1"></a>pc1_eig <span class="ot">&lt;-</span> eigen_list<span class="sc">$</span>vectors[, <span class="dv">1</span>]</span>
+<span id="cb281-6"><a href="pcafa.html#cb281-6" tabindex="-1"></a>pc2_eig <span class="ot">&lt;-</span> eigen_list<span class="sc">$</span>vectors[, <span class="dv">2</span>]</span>
+<span id="cb281-7"><a href="pcafa.html#cb281-7" tabindex="-1"></a><span class="co">#固有ベクトルに、固有値の平方根を乗じる</span></span>
+<span id="cb281-8"><a href="pcafa.html#cb281-8" tabindex="-1"></a>PC1 <span class="ot">&lt;-</span> pc1_eig<span class="sc">*</span> <span class="fu">sqrt</span>(eigen_list<span class="sc">$</span>values[<span class="dv">1</span>])</span>
+<span id="cb281-9"><a href="pcafa.html#cb281-9" tabindex="-1"></a>PC2 <span class="ot">&lt;-</span> pc2_eig<span class="sc">*</span> <span class="fu">sqrt</span>(eigen_list<span class="sc">$</span>values[<span class="dv">2</span>])</span>
+<span id="cb281-10"><a href="pcafa.html#cb281-10" tabindex="-1"></a></span>
+<span id="cb281-11"><a href="pcafa.html#cb281-11" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">data.frame</span>(<span class="fu">cbind</span>(PC1,PC2)), <span class="at">caption=</span><span class="st">&quot;計算結果&quot;</span>)</span></code></pre></div>
+>>>>>>> parent of 0dc89dc (firstpush)
 <table>
 <caption><span id="tab:calculationcheck">Table 11.5: </span>計算結果</caption>
 <thead>

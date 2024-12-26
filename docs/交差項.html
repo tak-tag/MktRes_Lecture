@@ -22,7 +22,11 @@
 
 
 
+<<<<<<< HEAD
 <meta name="date" content="2024-07-02" />
+=======
+<meta name="date" content="2024-09-11" />
+>>>>>>> parent of 0dc89dc (firstpush)
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -509,12 +513,20 @@ y_i = \beta_0 + \beta_1 (x_i-\bar{x})+\beta_2(z_i-\bar{z})+\beta_3(x_i-\bar{x})\
 <span id="cb221-4"><a href="交差項.html#cb221-4" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;R&amp;D Investment&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Sales&quot;</span>)<span class="sc">+</span> </span>
 <span id="cb221-5"><a href="交差項.html#cb221-5" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">name =</span> <span class="st">&quot;Promotion level&quot;</span>, <span class="at">labels=</span>leg)</span></code></pre></div>
 <pre><code>## Scale for colour is already present.
+<<<<<<< HEAD
 ## Adding another scale for colour, which will replace
 ## the existing scale.</code></pre>
 <div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="交差項.html#cb223-1" tabindex="-1"></a>int_fig1</span></code></pre></div>
 <p><img src="mktres_lecture_files/figure-html/slopeHeadphone-1.png" width="672" /></p>
 <p>続いて、二つ目の方法を実行するために、以下の要領でパッケージをインストールしてほしい。<code>marginaleffects</code> は、<code>margins</code> や <code>emtrends</code> の機能を引き継ぎ、限界効果に関する計算結果を図示化するためのパッケージである<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a>。</p>
 <div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="交差項.html#cb224-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;marginaleffects&quot;</span>)</span></code></pre></div>
+=======
+## Adding another scale for colour, which will replace the existing scale.</code></pre>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="交差項.html#cb224-1" tabindex="-1"></a>int_fig1</span></code></pre></div>
+<p><img src="mktres_lecture_files/figure-html/slopeHeadphone-1.png" width="672" /></p>
+<p>続いて、二つ目の方法を実行するために、以下の要領でパッケージをインストールしてほしい。<code>marginaleffects</code> は、<code>margins</code> や <code>emtrends</code> の機能を引き継ぎ、限界効果に関する計算結果を図示化するためのパッケージである<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a>。</p>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="交差項.html#cb225-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;marginaleffects&quot;</span>)</span></code></pre></div>
+>>>>>>> parent of 0dc89dc (firstpush)
 <p>R&amp;D が 売上に与える影響（傾き）がどのように変化するかは、<code>plot_slopes()</code> という関数を用いる。以下は、傾きの変化に関する図の出力結果である。</p>
 <div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="交差項.html#cb225-1" tabindex="-1"></a><span class="fu">library</span>(marginaleffects)</span>
 <span id="cb225-2"><a href="交差項.html#cb225-2" tabindex="-1"></a>int_fig2 <span class="ot">&lt;-</span> <span class="fu">plot_slopes</span>(fit_int_c, <span class="at">variables =</span> <span class="st">&quot;rd_c&quot;</span>, <span class="at">condition =</span> <span class="st">&quot;promotion_c&quot;</span>, <span class="at">conf_level =</span> .<span class="dv">99999999</span>) <span class="sc">+</span></span>

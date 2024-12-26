@@ -22,7 +22,11 @@
 
 
 
+<<<<<<< HEAD
 <meta name="date" content="2024-07-02" />
+=======
+<meta name="date" content="2024-09-11" />
+>>>>>>> parent of 0dc89dc (firstpush)
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -330,9 +334,15 @@ Y=AL^\alpha K^\beta
 \ln Y_i = \ln A + \alpha\ln K_i+\beta\ln L_i + u_i
 \]</span></p>
 <p>このような回帰式をR上で構築することは難しくない。<code>lm()</code> 関数内のモデル定式化において、<code>log()</code> を用いれば良い。例えば、上の式を firmdata19 に当てはめて、<em>Y</em>を売上、<em>L</em>を人件費、<em>K</em> を有形固定資産とおいて、以下のようにモデルを推定してみる<a href="#fn14" class="footnote-ref" id="fnref14"><sup>14</sup></a>。</p>
+<<<<<<< HEAD
 <div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="対数線形.html#cb231-1" tabindex="-1"></a>fit_prod <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(sales) <span class="sc">~</span> <span class="fu">log</span>(labor_cost) <span class="sc">+</span> <span class="fu">log</span>(ppent), <span class="at">data =</span> firmdata19)</span>
 <span id="cb231-2"><a href="対数線形.html#cb231-2" tabindex="-1"></a></span>
 <span id="cb231-3"><a href="対数線形.html#cb231-3" tabindex="-1"></a><span class="fu">summary</span>(fit_prod)</span></code></pre></div>
+=======
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="対数線形.html#cb232-1" tabindex="-1"></a>fit_prod <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(sales) <span class="sc">~</span> <span class="fu">log</span>(labor_cost) <span class="sc">+</span> <span class="fu">log</span>(ppent), <span class="at">data =</span> firmdata19)</span>
+<span id="cb232-2"><a href="対数線形.html#cb232-2" tabindex="-1"></a></span>
+<span id="cb232-3"><a href="対数線形.html#cb232-3" tabindex="-1"></a><span class="fu">summary</span>(fit_prod)</span></code></pre></div>
+>>>>>>> parent of 0dc89dc (firstpush)
 <pre><code>## 
 ## Call:
 ## lm(formula = log(sales) ~ log(labor_cost) + log(ppent), data = firmdata19)
