@@ -22,11 +22,7 @@
 
 
 
-<<<<<<< HEAD
-<meta name="date" content="2024-07-02" />
-=======
-<meta name="date" content="2024-09-11" />
->>>>>>> parent of 0dc89dc (firstpush)
+<meta name="date" content="2024-12-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -69,7 +65,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -321,13 +317,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="おまけ分析結果のまとめ出力上の工夫" class="section level2 hasAnchor" number="9.5">
 <h2><span class="header-section-number">9.5</span> （おまけ）分析結果のまとめ・出力上の工夫<a href="おまけ分析結果のまとめ出力上の工夫.html#おまけ分析結果のまとめ出力上の工夫" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>これまで本書では、分析結果について、Rで出力されるものをそのまま示していた。しかしながら、Rでの出力結果をレポートや論文にベタ貼りすることは、可読性の低下につながるため好ましくない。論文やレポート執筆の際には、Rで出力された結果から表を作成することが必要になるのだが、Excelなどのスプレッドシートに一つ一つの値をコピー・アンド・ペースト（コピペ）して表を作成していく方法は、操作ミスによる間違いの可能性が高まることと、作業プロセスを記録できない上に、何より面倒くさい。そこで、分析結果を読みやすく見た目も良い表の形式で楽に出力してくれるコマンドをR上で実行するした。そのために用いるパッケージは色々あるが、本書では <code>modelsummary</code> パッケージを 紹介する。以下のようにインストールして欲しい。</p>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb243-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;modelsummary&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb244-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;modelsummary&quot;</span>)</span></code></pre></div>
 <p>ここでは試しに、本節で実行した <code>fit_int</code>を <code>msummary()</code> 関数で出力する。Rstudio上で<code>msummary()</code> を実行すると、結果がコンソールではなく、Viewerに表示される。</p>
-<<<<<<< HEAD
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb244-1" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span></code></pre></div>
-=======
 <div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb245-1" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span></code></pre></div>
->>>>>>> parent of 0dc89dc (firstpush)
 <pre><code>## `modelsummary` 2.0.0 now uses `tinytable` as its default table-drawing
 ##   backend. Learn more at: https://vincentarelbundock.github.io/tinytable/
 ## 
@@ -340,7 +332,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Silence this message forever:
 ## 
 ##   config_modelsummary(startup_message = FALSE)</code></pre>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb246-1" tabindex="-1"></a><span class="fu">msummary</span>(fit_int, <span class="at">statistic =</span> <span class="st">&#39;conf.int&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb247-1" tabindex="-1"></a><span class="fu">msummary</span>(fit_int, <span class="at">statistic =</span> <span class="st">&#39;conf.int&#39;</span>)</span></code></pre></div>
 <!DOCTYPE html> 
 <html lang="en">
   <head>
@@ -533,7 +525,7 @@ window.addEventListener('load', function () { styleCell_tinytable_dafoz4quq1vmj5
 
 </html>
 <p>上記のように引数をほぼ指定せずとも（<code>statistic = 'conf.int'</code> は信頼区間を出力する引数。デフォルトでは標準誤差）、このような表形式で結果を出力することができる。引数を用いることで、研究者に都合の良い表なるよう編集可能であることもこの関数の利点である。例えば、不必要な情報があれば、以下のように表から削除することもできる。</p>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb247-1" tabindex="-1"></a><span class="fu">msummary</span>(fit_int, <span class="at">gof_omit =</span> <span class="st">&quot;Log.Lik.|AIC|BIC|RMSE&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb248-1" tabindex="-1"></a><span class="fu">msummary</span>(fit_int, <span class="at">gof_omit =</span> <span class="st">&quot;Log.Lik.|AIC|BIC|RMSE&quot;</span>)</span></code></pre></div>
 <!DOCTYPE html> 
 <html lang="en">
   <head>
@@ -702,20 +694,20 @@ window.addEventListener('load', function () { styleCell_tinytable_a2eoxfcn5yqflh
 
 </html>
 <p>また、<code>msummary()</code> は二つ以上のモデルを並べて表示させる場合にも便利である。複数の分析結果を <code>list</code> としてまとめ以下のように出力できる。ここでは、交差項を用いた回帰モデルにおける中心化のありなしを併記し比較可能にする。更に、表示される変数名も調整する。</p>
-<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb248-1" tabindex="-1"></a>var_nam <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;rd&quot;</span> <span class="ot">=</span> <span class="st">&quot;R&amp;D&quot;</span>, <span class="st">&quot;promotion&quot;</span> <span class="ot">=</span> <span class="st">&quot;Promotion&quot;</span>, <span class="st">&quot;rd:promotion&quot;</span> <span class="ot">=</span> <span class="st">&quot;R&amp;D * Promotion&quot;</span>,</span>
-<span id="cb248-2"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb248-2" tabindex="-1"></a>             <span class="st">&quot;rd_c&quot;</span> <span class="ot">=</span> <span class="st">&quot;R&amp;D_c&quot;</span>, <span class="st">&quot;promotion_c&quot;</span> <span class="ot">=</span> <span class="st">&quot;Promotion_c&quot;</span>, <span class="st">&quot;rd_c:promotion_c&quot;</span> <span class="ot">=</span> <span class="st">&quot;R&amp;D_c * Promotion_c&quot;</span>,</span>
-<span id="cb248-3"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb248-3" tabindex="-1"></a>             <span class="st">&quot;(Intercept)&quot;</span> <span class="ot">=</span> <span class="st">&quot;定数項&quot;</span>)</span>
-<span id="cb248-4"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb248-4" tabindex="-1"></a>Int <span class="ot">&lt;-</span> <span class="fu">list</span>() </span>
-<span id="cb248-5"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb248-5" tabindex="-1"></a>Int[[<span class="st">&quot;Without centering&quot;</span>]] <span class="ot">&lt;-</span> fit_int</span>
-<span id="cb248-6"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb248-6" tabindex="-1"></a>Int[[<span class="st">&quot;With centering&quot;</span>]] <span class="ot">&lt;-</span> fit_int_c</span>
-<span id="cb248-7"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb248-7" tabindex="-1"></a></span>
-<span id="cb248-8"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb248-8" tabindex="-1"></a><span class="fu">msummary</span>(Int, </span>
-<span id="cb248-9"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb248-9" tabindex="-1"></a>         <span class="at">coef_map =</span> var_nam,</span>
-<span id="cb248-10"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb248-10" tabindex="-1"></a>         <span class="at">title =</span> <span class="st">&quot;Comparing Interaction Models&quot;</span>,</span>
-<span id="cb248-11"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb248-11" tabindex="-1"></a>         <span class="at">notes =</span> <span class="st">&quot;Values in [ ] show 95% confidence intervals&quot;</span>,</span>
-<span id="cb248-12"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb248-12" tabindex="-1"></a>         <span class="at">stars =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb248-13"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb248-13" tabindex="-1"></a>         <span class="at">statistic =</span> <span class="st">&#39;conf.int&#39;</span>, <span class="at">conf_level =</span> .<span class="dv">95</span>,</span>
-<span id="cb248-14"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb248-14" tabindex="-1"></a>         <span class="at">gof_omit =</span> <span class="st">&quot;Log.Lik.|AIC|BIC|RMSE&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb249-1" tabindex="-1"></a>var_nam <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;rd&quot;</span> <span class="ot">=</span> <span class="st">&quot;R&amp;D&quot;</span>, <span class="st">&quot;promotion&quot;</span> <span class="ot">=</span> <span class="st">&quot;Promotion&quot;</span>, <span class="st">&quot;rd:promotion&quot;</span> <span class="ot">=</span> <span class="st">&quot;R&amp;D * Promotion&quot;</span>,</span>
+<span id="cb249-2"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb249-2" tabindex="-1"></a>             <span class="st">&quot;rd_c&quot;</span> <span class="ot">=</span> <span class="st">&quot;R&amp;D_c&quot;</span>, <span class="st">&quot;promotion_c&quot;</span> <span class="ot">=</span> <span class="st">&quot;Promotion_c&quot;</span>, <span class="st">&quot;rd_c:promotion_c&quot;</span> <span class="ot">=</span> <span class="st">&quot;R&amp;D_c * Promotion_c&quot;</span>,</span>
+<span id="cb249-3"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb249-3" tabindex="-1"></a>             <span class="st">&quot;(Intercept)&quot;</span> <span class="ot">=</span> <span class="st">&quot;定数項&quot;</span>)</span>
+<span id="cb249-4"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb249-4" tabindex="-1"></a>Int <span class="ot">&lt;-</span> <span class="fu">list</span>() </span>
+<span id="cb249-5"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb249-5" tabindex="-1"></a>Int[[<span class="st">&quot;Without centering&quot;</span>]] <span class="ot">&lt;-</span> fit_int</span>
+<span id="cb249-6"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb249-6" tabindex="-1"></a>Int[[<span class="st">&quot;With centering&quot;</span>]] <span class="ot">&lt;-</span> fit_int_c</span>
+<span id="cb249-7"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb249-7" tabindex="-1"></a></span>
+<span id="cb249-8"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb249-8" tabindex="-1"></a><span class="fu">msummary</span>(Int, </span>
+<span id="cb249-9"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb249-9" tabindex="-1"></a>         <span class="at">coef_map =</span> var_nam,</span>
+<span id="cb249-10"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb249-10" tabindex="-1"></a>         <span class="at">title =</span> <span class="st">&quot;Comparing Interaction Models&quot;</span>,</span>
+<span id="cb249-11"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb249-11" tabindex="-1"></a>         <span class="at">notes =</span> <span class="st">&quot;Values in [ ] show 95% confidence intervals&quot;</span>,</span>
+<span id="cb249-12"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb249-12" tabindex="-1"></a>         <span class="at">stars =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb249-13"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb249-13" tabindex="-1"></a>         <span class="at">statistic =</span> <span class="st">&#39;conf.int&#39;</span>, <span class="at">conf_level =</span> .<span class="dv">95</span>,</span>
+<span id="cb249-14"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb249-14" tabindex="-1"></a>         <span class="at">gof_omit =</span> <span class="st">&quot;Log.Lik.|AIC|BIC|RMSE&quot;</span>)</span></code></pre></div>
 <!DOCTYPE html> 
 <html lang="en">
   <head>
@@ -964,12 +956,12 @@ window.addEventListener('load', function () { styleCell_tinytable_iae44rshikn643
 <p>対外的に分析結果を共有する場合には、このような分析結果をViewer上ではなく、文書ファイル等に貼り付けたいと考えることも多いだろう。<code>msummary()</code> 関数では、引数を変更することで、出力形式を変更することも可能である。そのうえで、本書が最もおすすめする方法が、Latex形式での表の出力と、それを用いたLatexによる文書作成である。</p>
 <p>Latex（ラテック or レイテック）は、ソースファイルにコマンドと文章を記載していきながらpdfを出力することで文書を作成するためのツールである。Latexは、数式や表の入力が簡単であり、出力結果もきれいであることや、文書フォーマットについて細かく気にせず文書を作成できるという利点がある。そのため、定量的な分析を伴う文書を作成するのに適したツールである。逆に短所としては、ソースコードの入力や、コンピュータ内へのLatex用環境構築に関する手間がかかるという点が挙げられる。しかし近年では、ウェブブラウザ上でLatexを動かせる “Overleaf” というサービスも普及し、環境構築による問題は解決されている。本書では、LatexやOverleafの詳細や設定方法については割愛するが、基本的にはOverleafの活用をおすすめするので、以下のリンクを参照して欲しい（<a href="https://dreamer-uma.com/overleaf/" class="uri">https://dreamer-uma.com/overleaf/</a>）。特に、卒業論文や修士論文に取り組む学生にとって、Overleafによってウェブ上にファイルを保管できることは非常に重要な利点となるだろう（毎年少なくない学生が論文のファイル保管ミスやノートPCの故障などのトラブルに見舞われるのを観察している）。</p>
 <p>先程の交差項比較の表について、<code>output = "latex"</code> と引数を設定することで、出力形式を変更する。</p>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb249-1" tabindex="-1"></a><span class="fu">msummary</span>(Int, </span>
-<span id="cb249-2"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb249-2" tabindex="-1"></a>         <span class="at">title =</span> <span class="st">&quot;Comparing Interaction Models&quot;</span>,</span>
-<span id="cb249-3"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb249-3" tabindex="-1"></a>         <span class="at">notes =</span> <span class="st">&quot;Values in [ ] show 95% confidence intervals&quot;</span>,</span>
-<span id="cb249-4"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb249-4" tabindex="-1"></a>         <span class="at">stars =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb249-5"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb249-5" tabindex="-1"></a>         <span class="at">statistic =</span> <span class="st">&#39;conf.int&#39;</span>, <span class="at">conf_level =</span> .<span class="dv">95</span>,</span>
-<span id="cb249-6"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb249-6" tabindex="-1"></a>         <span class="at">gof_omit =</span> <span class="st">&quot;Log.Lik.|AIC|BIC|RMSE&quot;</span>, <span class="at">output=</span> <span class="st">&quot;latex&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb250-1" tabindex="-1"></a><span class="fu">msummary</span>(Int, </span>
+<span id="cb250-2"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb250-2" tabindex="-1"></a>         <span class="at">title =</span> <span class="st">&quot;Comparing Interaction Models&quot;</span>,</span>
+<span id="cb250-3"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb250-3" tabindex="-1"></a>         <span class="at">notes =</span> <span class="st">&quot;Values in [ ] show 95% confidence intervals&quot;</span>,</span>
+<span id="cb250-4"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb250-4" tabindex="-1"></a>         <span class="at">stars =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb250-5"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb250-5" tabindex="-1"></a>         <span class="at">statistic =</span> <span class="st">&#39;conf.int&#39;</span>, <span class="at">conf_level =</span> .<span class="dv">95</span>,</span>
+<span id="cb250-6"><a href="おまけ分析結果のまとめ出力上の工夫.html#cb250-6" tabindex="-1"></a>         <span class="at">gof_omit =</span> <span class="st">&quot;Log.Lik.|AIC|BIC|RMSE&quot;</span>, <span class="at">output=</span> <span class="st">&quot;latex&quot;</span>)</span></code></pre></div>
 <!DOCTYPE html> 
 <html lang="en">
   <head>

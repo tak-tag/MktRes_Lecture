@@ -22,11 +22,7 @@
 
 
 
-<<<<<<< HEAD
-<meta name="date" content="2024-07-02" />
-=======
-<meta name="date" content="2024-09-11" />
->>>>>>> parent of 0dc89dc (firstpush)
+<meta name="date" content="2024-12-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -69,7 +65,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -364,8 +360,8 @@ D_i=0\Rightarrow &amp; \frac{\Delta y_i}{\Delta x_i}=\beta_1
 \]</span>
 つまり、<span class="math inline">\(\small x\)</span> が <span class="math inline">\(\small y\)</span> に与える影響（傾き）が、<span class="math inline">\(\small \beta_3\)</span> の分だけ、ダミー変数のカテゴリーによって変化することが伺える。<span class="math inline">\(\small \beta_1\)</span> は <span class="math inline">\(\small D=0\)</span> の際の <em>x</em> の効果であり、 <span class="math inline">\(\small D=1\)</span> の際の効果は、<span class="math inline">\(\small \beta_1+\beta_3\)</span> で表される。 そのため、このようなダミー変数の使い方を「傾きダミー（Slope dummy）」と呼ぶことも多い。</p>
 <p>先程の firmdara19 にこの分析モデルを適応してみる。Rにおける交差項の導入は、<code>lm(y ~ x * d)</code> のように指定すれば、<em>x</em>と<em>d</em>の交差項とそれぞれの独立項を自動でモデルに含めてくれる。</p>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="交差項.html#cb211-1" tabindex="-1"></a>fit.d3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(op <span class="sc">~</span>  mkexp <span class="sc">*</span> retail, <span class="at">data =</span> firmdata19)</span>
-<span id="cb211-2"><a href="交差項.html#cb211-2" tabindex="-1"></a><span class="fu">summary</span>(fit.d3)</span></code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="交差項.html#cb212-1" tabindex="-1"></a>fit.d3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(op <span class="sc">~</span>  mkexp <span class="sc">*</span> retail, <span class="at">data =</span> firmdata19)</span>
+<span id="cb212-2"><a href="交差項.html#cb212-2" tabindex="-1"></a><span class="fu">summary</span>(fit.d3)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = op ~ mkexp * retail, data = firmdata19)
@@ -397,15 +393,15 @@ D_i=0\Rightarrow &amp; \frac{\Delta y_i}{\Delta x_i}=\beta_1
 \end{cases}
 \]</span></p>
 <p>交差項を用いた分析を実行する場合、分析結果をより詳細に理解するため、結果を図示化することが大切になる。具体的には以下のように、分析結果からカテゴリ別に予測値をそれぞれ計算し、図示化することで、含意を得ることができる。ここでは、<code>sjPlot</code>というパッケージの <code>plot_model()</code> 関数を用いて、分析結果に基づく被説明変数の予測値を図示化する。まず、パッケージをインストールして欲しい。</p>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="交差項.html#cb213-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;sjPlot&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="交差項.html#cb214-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;sjPlot&quot;</span>)</span></code></pre></div>
 <p>今回の図示化のために、<code>plot_model()</code> 関数内では、<code>type = "pred"</code> と引数を指定した上で、<code>terms</code> において着目する変数名を特定する。また、この関数では、ggplot2のように、図示化に関する凡例や軸ラベルなどの様々な情報を書き足していくことができる。</p>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="交差項.html#cb214-1" tabindex="-1"></a><span class="fu">library</span>(sjPlot)</span>
-<span id="cb214-2"><a href="交差項.html#cb214-2" tabindex="-1"></a>pred <span class="ot">&lt;-</span> <span class="fu">plot_model</span>(fit.d3, <span class="at">type =</span> <span class="st">&quot;pred&quot;</span>, <span class="at">terms =</span> <span class="fu">c</span>(<span class="st">&quot;mkexp&quot;</span>,<span class="st">&quot;retail&quot;</span>), <span class="at">ci.lvl =</span> .<span class="dv">95</span>) <span class="sc">+</span></span>
-<span id="cb214-3"><a href="交差項.html#cb214-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Slope Analysis&quot;</span>,</span>
-<span id="cb214-4"><a href="交差項.html#cb214-4" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;(Predicted Values of Profitability with 95% Confdence Intervals)&quot;</span>,</span>
-<span id="cb214-5"><a href="交差項.html#cb214-5" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Marketing Expense&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Profitability&quot;</span>) <span class="sc">+</span></span>
-<span id="cb214-6"><a href="交差項.html#cb214-6" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">name =</span> <span class="st">&quot;Retail Dummy&quot;</span>)</span>
-<span id="cb214-7"><a href="交差項.html#cb214-7" tabindex="-1"></a>pred</span></code></pre></div>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="交差項.html#cb215-1" tabindex="-1"></a><span class="fu">library</span>(sjPlot)</span>
+<span id="cb215-2"><a href="交差項.html#cb215-2" tabindex="-1"></a>pred <span class="ot">&lt;-</span> <span class="fu">plot_model</span>(fit.d3, <span class="at">type =</span> <span class="st">&quot;pred&quot;</span>, <span class="at">terms =</span> <span class="fu">c</span>(<span class="st">&quot;mkexp&quot;</span>,<span class="st">&quot;retail&quot;</span>), <span class="at">ci.lvl =</span> .<span class="dv">95</span>) <span class="sc">+</span></span>
+<span id="cb215-3"><a href="交差項.html#cb215-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Slope Analysis&quot;</span>,</span>
+<span id="cb215-4"><a href="交差項.html#cb215-4" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;(Predicted Values of Profitability with 95% Confdence Intervals)&quot;</span>,</span>
+<span id="cb215-5"><a href="交差項.html#cb215-5" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Marketing Expense&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Profitability&quot;</span>) <span class="sc">+</span></span>
+<span id="cb215-6"><a href="交差項.html#cb215-6" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">name =</span> <span class="st">&quot;Retail Dummy&quot;</span>)</span>
+<span id="cb215-7"><a href="交差項.html#cb215-7" tabindex="-1"></a>pred</span></code></pre></div>
 <p><img src="mktres_lecture_files/figure-html/slopeanalysis-1.png" width="672" /></p>
 <p>分析の結果、小売企業においてはマーケティング支出と利益率の関係は右上がりである一方で、その他の企業では右下がりである。回帰分析における交差項の係数がこの傾きの違いを示している。また、実線を比較すると マーケティング支出が 0.5 辺りを境に小売企業の利益率の予測値のほうがその他グループよりも高くなっているように見える<a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a>。しかしながら、両直線の95%信頼区間は重なっており、統計的に有意な差があるとは言えない。そのため、マーケティング支出が高いとき、小売企業の利益率（の予測値）のほうが有意に高いとは言えない。</p>
 </div>
@@ -444,10 +440,10 @@ y_i = \beta_0 + \beta_1 (x_i-\bar{x})+\beta_2(z_i-\bar{z})+\beta_3(x_i-\bar{x})\
 <li>R&amp;D投資額（百万円）</li>
 </ul>
 <p>このデータセットに対して、本分析ではR&amp;Dによって向上する（と仮定する）製品品質とプロモーションの相互作用が売上に与える影響を分析する。具体的には、たとえ良いものを作っても、きちんとその情報を消費者に伝達しないといけないのではないかという課題を捉える。そのため本分析を通じて、製品品質への投資（R&amp;D投資）が売上に与える影響が、プロモーション量に応じて変化するのではないかという研究課題に答える。まず以下のようにデータを読み込み、データフレームを確認する。</p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="交差項.html#cb215-1" tabindex="-1"></a>Headphone07 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/headphone07.csv&quot;</span>, <span class="at">na =</span> <span class="st">&quot;.&quot;</span>)</span>
-<span id="cb215-2"><a href="交差項.html#cb215-2" tabindex="-1"></a></span>
-<span id="cb215-3"><a href="交差項.html#cb215-3" tabindex="-1"></a><span class="co">#データフレームの確認</span></span>
-<span id="cb215-4"><a href="交差項.html#cb215-4" tabindex="-1"></a><span class="fu">glimpse</span>(Headphone07)</span></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="交差項.html#cb216-1" tabindex="-1"></a>Headphone07 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/headphone07.csv&quot;</span>, <span class="at">na =</span> <span class="st">&quot;.&quot;</span>)</span>
+<span id="cb216-2"><a href="交差項.html#cb216-2" tabindex="-1"></a></span>
+<span id="cb216-3"><a href="交差項.html#cb216-3" tabindex="-1"></a><span class="co">#データフレームの確認</span></span>
+<span id="cb216-4"><a href="交差項.html#cb216-4" tabindex="-1"></a><span class="fu">glimpse</span>(Headphone07)</span></code></pre></div>
 <pre><code>## Rows: 221
 ## Columns: 4
 ## $ ID        &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 1…
@@ -455,8 +451,8 @@ y_i = \beta_0 + \beta_1 (x_i-\bar{x})+\beta_2(z_i-\bar{z})+\beta_3(x_i-\bar{x})\
 ## $ rd        &lt;dbl&gt; 404.0893, 252.1270, 444.3374, 407.5876, 841.7605, 336.8744, …
 ## $ promotion &lt;dbl&gt; 75.63163, 102.74572, 97.98040, 83.46613, 105.69250, 80.17476…</code></pre>
 <p>このデータに対して、まずは以下の通り中心化していない変数を用いて分析を行う。</p>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="交差項.html#cb217-1" tabindex="-1"></a>fit_int <span class="ot">&lt;-</span> <span class="fu">lm</span>(sales <span class="sc">~</span> rd<span class="sc">*</span>promotion, <span class="at">data =</span> Headphone07)</span>
-<span id="cb217-2"><a href="交差項.html#cb217-2" tabindex="-1"></a><span class="fu">summary</span>(fit_int)</span></code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="交差項.html#cb218-1" tabindex="-1"></a>fit_int <span class="ot">&lt;-</span> <span class="fu">lm</span>(sales <span class="sc">~</span> rd<span class="sc">*</span>promotion, <span class="at">data =</span> Headphone07)</span>
+<span id="cb218-2"><a href="交差項.html#cb218-2" tabindex="-1"></a><span class="fu">summary</span>(fit_int)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = sales ~ rd * promotion, data = Headphone07)
@@ -478,12 +474,12 @@ y_i = \beta_0 + \beta_1 (x_i-\bar{x})+\beta_2(z_i-\bar{z})+\beta_3(x_i-\bar{x})\
 ## Multiple R-squared:  0.9935, Adjusted R-squared:  0.9934 
 ## F-statistic: 1.111e+04 on 3 and 217 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>分析の結果、rdとpromotion の交差項は正に有意だが、どちらの独立項も負に有意であった。また、先述の通りこれらの独立項の係数は、もう一方の変数が0のときのそれぞれの効果を表しており、現実的には解釈が難しい結果になっている。したがって、以下の様に中心化変数を作成し、回帰分析を実行する。</p>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="交差項.html#cb219-1" tabindex="-1"></a>Headphone07 <span class="ot">&lt;-</span> Headphone07 <span class="sc">%&gt;%</span> </span>
-<span id="cb219-2"><a href="交差項.html#cb219-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">promotion_c =</span> promotion <span class="sc">-</span> <span class="fu">mean</span>(promotion, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb219-3"><a href="交差項.html#cb219-3" tabindex="-1"></a>         <span class="at">rd_c =</span> rd <span class="sc">-</span> <span class="fu">mean</span>(rd, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb219-4"><a href="交差項.html#cb219-4" tabindex="-1"></a></span>
-<span id="cb219-5"><a href="交差項.html#cb219-5" tabindex="-1"></a>fit_int_c <span class="ot">&lt;-</span> <span class="fu">lm</span>(sales <span class="sc">~</span> rd_c<span class="sc">*</span>promotion_c , <span class="at">data =</span> Headphone07)</span>
-<span id="cb219-6"><a href="交差項.html#cb219-6" tabindex="-1"></a><span class="fu">summary</span>(fit_int_c)</span></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="交差項.html#cb220-1" tabindex="-1"></a>Headphone07 <span class="ot">&lt;-</span> Headphone07 <span class="sc">%&gt;%</span> </span>
+<span id="cb220-2"><a href="交差項.html#cb220-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">promotion_c =</span> promotion <span class="sc">-</span> <span class="fu">mean</span>(promotion, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb220-3"><a href="交差項.html#cb220-3" tabindex="-1"></a>         <span class="at">rd_c =</span> rd <span class="sc">-</span> <span class="fu">mean</span>(rd, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb220-4"><a href="交差項.html#cb220-4" tabindex="-1"></a></span>
+<span id="cb220-5"><a href="交差項.html#cb220-5" tabindex="-1"></a>fit_int_c <span class="ot">&lt;-</span> <span class="fu">lm</span>(sales <span class="sc">~</span> rd_c<span class="sc">*</span>promotion_c , <span class="at">data =</span> Headphone07)</span>
+<span id="cb220-6"><a href="交差項.html#cb220-6" tabindex="-1"></a><span class="fu">summary</span>(fit_int_c)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = sales ~ rd_c * promotion_c, data = Headphone07)
@@ -507,45 +503,36 @@ y_i = \beta_0 + \beta_1 (x_i-\bar{x})+\beta_2(z_i-\bar{z})+\beta_3(x_i-\bar{x})\
 <p>分析の結果、交差項の結果については非中心化モデルと同じであることが伺える。一方で独立項については、rdは負に、promotionは正に有意であることが明らかになった。つまり、プロモーションが平均値である場合、rdにコストを掛けても売上には繋がらない一方で、rdが平均値の場合、プロモーションによって売上が伸びることが伺える。これをまとめると、品質が平均的ならプロモーションで売上は上がるが、プロモーションが平均的で品質投資をしても売上に逆効果となることが伺える。R&amp;D投資による負の効果については価格との関係もあるかもしれない。品質が向上すると通常価格も上がるため、プロモーションがあまり高くない状態においては、価格の向上によって売上を損ねるかもしれない。この点については、価格も含めたさらなる調査、分析が必要になる。</p>
 <p>量的変数同士の交差項分析結果の図示化においては、二種類の方法がある。一つ目は調整変数として捉える変数を高水準（例、平均 <span class="math inline">\(+\)</span> 1標準偏差）と低水準（例、平均 <span class="math inline">\(-\)</span> 1標準偏差）に二分し、前節の傾きダミーの図示化のようにそれぞれの場合でメイン変数による被説明変数への傾きを描画する方法である。これは、前節で使用した<code>sjPlot</code>パッケージで実行できる。 二つ目は、メインの変数が被説明変数へ与える影響を縦軸に、調整変数の値を横軸に取ることによって、メイン変数が持つ効果が調整変数によって変化する様子を連続的に描画する方法である。これは、<code>marginaleffects</code>というパッケージを用いる。</p>
 <p>まず、一つ目の方法は、以下の通り実行することができる。分析の結果、やはりプロモーション水準が低い場合にはR&amp;D投資が売上に与える影響は負であるものの、プロモーション水準が高い場合には正に転じることが伺える。</p>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="交差項.html#cb221-1" tabindex="-1"></a>leg <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Mean - 1sd&quot;</span>, <span class="st">&quot;Mean&quot;</span>, <span class="st">&quot;Mean + 1sd&quot;</span>)</span>
-<span id="cb221-2"><a href="交差項.html#cb221-2" tabindex="-1"></a>int_fig1 <span class="ot">&lt;-</span> <span class="fu">plot_model</span>(fit_int_c, <span class="at">type =</span> <span class="st">&quot;int&quot;</span>, <span class="at">mdrt.values =</span> <span class="st">&quot;meansd&quot;</span>, <span class="at">ci.lvl =</span> .<span class="dv">9999999999</span>) <span class="sc">+</span></span>
-<span id="cb221-3"><a href="交差項.html#cb221-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Predicted values of Sales (R&amp;D * Promotion)&quot;</span>,</span>
-<span id="cb221-4"><a href="交差項.html#cb221-4" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;R&amp;D Investment&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Sales&quot;</span>)<span class="sc">+</span> </span>
-<span id="cb221-5"><a href="交差項.html#cb221-5" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">name =</span> <span class="st">&quot;Promotion level&quot;</span>, <span class="at">labels=</span>leg)</span></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="交差項.html#cb222-1" tabindex="-1"></a>leg <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Mean - 1sd&quot;</span>, <span class="st">&quot;Mean&quot;</span>, <span class="st">&quot;Mean + 1sd&quot;</span>)</span>
+<span id="cb222-2"><a href="交差項.html#cb222-2" tabindex="-1"></a>int_fig1 <span class="ot">&lt;-</span> <span class="fu">plot_model</span>(fit_int_c, <span class="at">type =</span> <span class="st">&quot;int&quot;</span>, <span class="at">mdrt.values =</span> <span class="st">&quot;meansd&quot;</span>, <span class="at">ci.lvl =</span> .<span class="dv">9999999999</span>) <span class="sc">+</span></span>
+<span id="cb222-3"><a href="交差項.html#cb222-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Predicted values of Sales (R&amp;D * Promotion)&quot;</span>,</span>
+<span id="cb222-4"><a href="交差項.html#cb222-4" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;R&amp;D Investment&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Sales&quot;</span>)<span class="sc">+</span> </span>
+<span id="cb222-5"><a href="交差項.html#cb222-5" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">name =</span> <span class="st">&quot;Promotion level&quot;</span>, <span class="at">labels=</span>leg)</span></code></pre></div>
 <pre><code>## Scale for colour is already present.
-<<<<<<< HEAD
-## Adding another scale for colour, which will replace
-## the existing scale.</code></pre>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="交差項.html#cb223-1" tabindex="-1"></a>int_fig1</span></code></pre></div>
-<p><img src="mktres_lecture_files/figure-html/slopeHeadphone-1.png" width="672" /></p>
-<p>続いて、二つ目の方法を実行するために、以下の要領でパッケージをインストールしてほしい。<code>marginaleffects</code> は、<code>margins</code> や <code>emtrends</code> の機能を引き継ぎ、限界効果に関する計算結果を図示化するためのパッケージである<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a>。</p>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="交差項.html#cb224-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;marginaleffects&quot;</span>)</span></code></pre></div>
-=======
 ## Adding another scale for colour, which will replace the existing scale.</code></pre>
 <div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="交差項.html#cb224-1" tabindex="-1"></a>int_fig1</span></code></pre></div>
 <p><img src="mktres_lecture_files/figure-html/slopeHeadphone-1.png" width="672" /></p>
 <p>続いて、二つ目の方法を実行するために、以下の要領でパッケージをインストールしてほしい。<code>marginaleffects</code> は、<code>margins</code> や <code>emtrends</code> の機能を引き継ぎ、限界効果に関する計算結果を図示化するためのパッケージである<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a>。</p>
 <div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="交差項.html#cb225-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;marginaleffects&quot;</span>)</span></code></pre></div>
->>>>>>> parent of 0dc89dc (firstpush)
 <p>R&amp;D が 売上に与える影響（傾き）がどのように変化するかは、<code>plot_slopes()</code> という関数を用いる。以下は、傾きの変化に関する図の出力結果である。</p>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="交差項.html#cb225-1" tabindex="-1"></a><span class="fu">library</span>(marginaleffects)</span>
-<span id="cb225-2"><a href="交差項.html#cb225-2" tabindex="-1"></a>int_fig2 <span class="ot">&lt;-</span> <span class="fu">plot_slopes</span>(fit_int_c, <span class="at">variables =</span> <span class="st">&quot;rd_c&quot;</span>, <span class="at">condition =</span> <span class="st">&quot;promotion_c&quot;</span>, <span class="at">conf_level =</span> .<span class="dv">99999999</span>) <span class="sc">+</span></span>
-<span id="cb225-3"><a href="交差項.html#cb225-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Marginal effects of R&amp;D on Sales&quot;</span>,</span>
-<span id="cb225-4"><a href="交差項.html#cb225-4" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Promotion&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Slope of R&amp;D on Sales&quot;</span>) <span class="sc">+</span> <span class="fu">geom_hline</span>(<span class="fu">aes</span>(<span class="at">yintercept=</span><span class="dv">0</span>), <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>) </span>
-<span id="cb225-5"><a href="交差項.html#cb225-5" tabindex="-1"></a>int_fig2</span></code></pre></div>
-<p><img src="mktres_lecture_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="交差項.html#cb226-1" tabindex="-1"></a><span class="fu">library</span>(marginaleffects)</span>
+<span id="cb226-2"><a href="交差項.html#cb226-2" tabindex="-1"></a>int_fig2 <span class="ot">&lt;-</span> <span class="fu">plot_slopes</span>(fit_int_c, <span class="at">variables =</span> <span class="st">&quot;rd_c&quot;</span>, <span class="at">condition =</span> <span class="st">&quot;promotion_c&quot;</span>, <span class="at">conf_level =</span> .<span class="dv">99999999</span>) <span class="sc">+</span></span>
+<span id="cb226-3"><a href="交差項.html#cb226-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Marginal effects of R&amp;D on Sales&quot;</span>,</span>
+<span id="cb226-4"><a href="交差項.html#cb226-4" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Promotion&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Slope of R&amp;D on Sales&quot;</span>) <span class="sc">+</span> <span class="fu">geom_hline</span>(<span class="fu">aes</span>(<span class="at">yintercept=</span><span class="dv">0</span>), <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>) </span>
+<span id="cb226-5"><a href="交差項.html#cb226-5" tabindex="-1"></a>int_fig2</span></code></pre></div>
+<p><img src="mktres_lecture_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 <p>分析の結果、promotionが0（平均）である条件を基準に、R&amp;Dの傾きが正に転じていることが伺える。なお、よく見ると、直線の周りに灰色の影が描画されていることがわかる。これは、99%信頼区間を示している。今回は人工的に作成したデータなので、非常に当てはまりがよく信頼区間がとても狭くなっているが、実際のデータを用いて同様の図示化をすればもう少し明確に信頼区間を視認できる。このように、交差項を利用した回帰モデルを分析する際は、事後的な図示化を行うことを心がけると良い。この作業により実務的・学術的により有益な含意につながることがある。</p>
 <!--- fit1_ame <- slopes(fit_int_c, variables = "rd_c",
                    newdata = datagrid(promotion_c = -86:155))--->
 <p>以下は、<code>plot_slopes()</code> に関するおまけである。図示化の確認のために、firmdata19を使って、マーケティング支出と総資産との交差項により、利益率を説明する回帰モデルを考える。以下では、中心化と回帰分析の実行、図の出力を実施している（回帰分析結果は省略）。</p>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="交差項.html#cb226-1" tabindex="-1"></a>firmdata19 <span class="ot">&lt;-</span> firmdata19 <span class="sc">%&gt;%</span> </span>
-<span id="cb226-2"><a href="交差項.html#cb226-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mkexp_c =</span> mkexp <span class="sc">-</span> <span class="fu">mean</span>(mkexp),</span>
-<span id="cb226-3"><a href="交差項.html#cb226-3" tabindex="-1"></a>         <span class="at">asset_c =</span> total_assets <span class="sc">-</span> <span class="fu">mean</span>(total_assets))</span>
-<span id="cb226-4"><a href="交差項.html#cb226-4" tabindex="-1"></a></span>
-<span id="cb226-5"><a href="交差項.html#cb226-5" tabindex="-1"></a>fit_int2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(op <span class="sc">~</span>  mkexp_c <span class="sc">*</span> asset_c, <span class="at">data =</span> firmdata19)</span>
-<span id="cb226-6"><a href="交差項.html#cb226-6" tabindex="-1"></a></span>
-<span id="cb226-7"><a href="交差項.html#cb226-7" tabindex="-1"></a>int_fig3 <span class="ot">&lt;-</span> <span class="fu">plot_slopes</span>(fit_int2, <span class="at">variables =</span> <span class="st">&quot;mkexp_c&quot;</span>, <span class="at">condition =</span> <span class="st">&quot;asset_c&quot;</span>, <span class="at">conf_level =</span> <span class="fl">0.99</span>) <span class="sc">+</span> <span class="fu">geom_hline</span>(<span class="fu">aes</span>(<span class="at">yintercept=</span><span class="dv">0</span>), <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>) </span>
-<span id="cb226-8"><a href="交差項.html#cb226-8" tabindex="-1"></a>int_fig3</span></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="交差項.html#cb227-1" tabindex="-1"></a>firmdata19 <span class="ot">&lt;-</span> firmdata19 <span class="sc">%&gt;%</span> </span>
+<span id="cb227-2"><a href="交差項.html#cb227-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mkexp_c =</span> mkexp <span class="sc">-</span> <span class="fu">mean</span>(mkexp),</span>
+<span id="cb227-3"><a href="交差項.html#cb227-3" tabindex="-1"></a>         <span class="at">asset_c =</span> total_assets <span class="sc">-</span> <span class="fu">mean</span>(total_assets))</span>
+<span id="cb227-4"><a href="交差項.html#cb227-4" tabindex="-1"></a></span>
+<span id="cb227-5"><a href="交差項.html#cb227-5" tabindex="-1"></a>fit_int2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(op <span class="sc">~</span>  mkexp_c <span class="sc">*</span> asset_c, <span class="at">data =</span> firmdata19)</span>
+<span id="cb227-6"><a href="交差項.html#cb227-6" tabindex="-1"></a></span>
+<span id="cb227-7"><a href="交差項.html#cb227-7" tabindex="-1"></a>int_fig3 <span class="ot">&lt;-</span> <span class="fu">plot_slopes</span>(fit_int2, <span class="at">variables =</span> <span class="st">&quot;mkexp_c&quot;</span>, <span class="at">condition =</span> <span class="st">&quot;asset_c&quot;</span>, <span class="at">conf_level =</span> <span class="fl">0.99</span>) <span class="sc">+</span> <span class="fu">geom_hline</span>(<span class="fu">aes</span>(<span class="at">yintercept=</span><span class="dv">0</span>), <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>) </span>
+<span id="cb227-8"><a href="交差項.html#cb227-8" tabindex="-1"></a>int_fig3</span></code></pre></div>
 <p><img src="mktres_lecture_files/figure-html/omake-1.png" width="672" /></p>
 <p>図を見ると、Headphoneデータよりもはっきりと信頼区間が視認できる。マーケティング支出の効果は資産によって低下するように見えるが、信頼区間を考慮すると、資産額が平均値（asset_c <span class="math inline">\(=0\)</span>）付近の値を取るときのみマーケティング支出は負に有意の影響を持つが、それ以外の区間では有意でない（信頼区間に0を含む）ことが伺える。このように、信頼区間の出力は結果の解釈を有意義なものにしてくれる。</p>
 </div>

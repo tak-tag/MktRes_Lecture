@@ -22,11 +22,7 @@
 
 
 
-<<<<<<< HEAD
-<meta name="date" content="2024-07-02" />
-=======
-<meta name="date" content="2024-09-11" />
->>>>>>> parent of 0dc89dc (firstpush)
+<meta name="date" content="2024-12-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -69,7 +65,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -341,8 +337,8 @@ y_i=\beta_0+\beta_1x_{1i}+\beta_2x_{2i}+u
 \]</span>
 つまり、重回帰モデルにおける <span class="math inline">\(\hat{\beta}_1\)</span> は、別の説明変数をコントロール（<span class="math inline">\(\small \Delta x_{2i}=0\)</span>）した上で、<span class="math inline">\(\small x_1\)</span> が <span class="math inline">\(\small \hat{y}\)</span> に与える影響（<span class="math inline">\(\small x_1\)</span> が変化した際の <span class="math inline">\(\small \hat{y}\)</span>の変化の程度）を捉えていると解釈できる。また、<span class="math inline">\(\small \hat{\beta}_2\)</span> についても同様に解釈できる。そしてこの特徴は、<em>k</em>個の説明変数を用いたモデルにも同様に適応できる。なお、パーシャル効果に関するもう少し詳細な説明は本書では割愛する。</p>
 <p>では、このパーシャル効果という重回帰モデルの特徴は、どのように応用できるのだろうか。多くの実証研究では、重回帰モデルの特徴を利用し、「コントロール変数」を用いた分析を行っている。本節では、先程の企業データを用いて、「企業の広告支出が営業利益に与える影響を明らかにする」という問いを考える。まずは、学習的意図から以下のように単回帰分析を実施してみる（通常の論文・レポートであればこのようなプロセスを記載する必要はない）。</p>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="重回帰モデル2.html#cb195-1" tabindex="-1"></a>reg2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(operating_profit <span class="sc">~</span> adv, <span class="at">data =</span> firmdata19)</span>
-<span id="cb195-2"><a href="重回帰モデル2.html#cb195-2" tabindex="-1"></a><span class="fu">summary</span>(reg2)</span></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="重回帰モデル2.html#cb196-1" tabindex="-1"></a>reg2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(operating_profit <span class="sc">~</span> adv, <span class="at">data =</span> firmdata19)</span>
+<span id="cb196-2"><a href="重回帰モデル2.html#cb196-2" tabindex="-1"></a><span class="fu">summary</span>(reg2)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = operating_profit ~ adv, data = firmdata19)
@@ -361,7 +357,7 @@ y_i=\beta_0+\beta_1x_{1i}+\beta_2x_{2i}+u
 ## Residual standard error: 117200 on 145 degrees of freedom
 ## Multiple R-squared:  0.1907, Adjusted R-squared:  0.1852 
 ## F-statistic: 34.18 on 1 and 145 DF,  p-value: 3.197e-08</code></pre>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="重回帰モデル2.html#cb197-1" tabindex="-1"></a><span class="fu">confint</span>(reg2)</span></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="重回帰モデル2.html#cb198-1" tabindex="-1"></a><span class="fu">confint</span>(reg2)</span></code></pre></div>
 <pre><code>##                    2.5 %       97.5 %
 ## (Intercept) 3.609692e+04 77602.573216
 ## adv         8.325719e-01     1.683065</code></pre>
@@ -372,8 +368,8 @@ y_i=\beta_0+\beta_1x_{1i}+\beta_2x_{2i}+u
 \text{opretating_profit}_i = \beta_0 + \beta_1 adv_i + \beta_2emp_i+\beta_3temp_i+\beta_4\text{labor_cost}_i+\beta_5\text{total_assets}_i+\beta_6rd_i+u_i
 \]</span>
 Rにおいて重回帰分析を実行するのは簡単である。<code>lm(y ~ x1 + x2 + x3)</code> のように <span class="math inline">\(+\)</span> 記号と変数を追加すれば、重回帰モデルとして分析を実行してくれる。</p>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="重回帰モデル2.html#cb199-1" tabindex="-1"></a>reg3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(operating_profit <span class="sc">~</span> adv <span class="sc">+</span> temp <span class="sc">+</span> emp <span class="sc">+</span> labor_cost <span class="sc">+</span> total_assets <span class="sc">+</span> rd, <span class="at">data =</span> firmdata19)</span>
-<span id="cb199-2"><a href="重回帰モデル2.html#cb199-2" tabindex="-1"></a><span class="fu">summary</span>(reg3)</span></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="重回帰モデル2.html#cb200-1" tabindex="-1"></a>reg3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(operating_profit <span class="sc">~</span> adv <span class="sc">+</span> temp <span class="sc">+</span> emp <span class="sc">+</span> labor_cost <span class="sc">+</span> total_assets <span class="sc">+</span> rd, <span class="at">data =</span> firmdata19)</span>
+<span id="cb200-2"><a href="重回帰モデル2.html#cb200-2" tabindex="-1"></a><span class="fu">summary</span>(reg3)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = operating_profit ~ adv + temp + emp + labor_cost + 
@@ -398,7 +394,7 @@ Rにおいて重回帰分析を実行するのは簡単である。<code>lm(y ~ 
 ## Residual standard error: 78740 on 140 degrees of freedom
 ## Multiple R-squared:  0.6474, Adjusted R-squared:  0.6323 
 ## F-statistic: 42.84 on 6 and 140 DF,  p-value: &lt; 2.2e-16</code></pre>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="重回帰モデル2.html#cb201-1" tabindex="-1"></a><span class="fu">confint</span>(reg3)</span></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="重回帰モデル2.html#cb202-1" tabindex="-1"></a><span class="fu">confint</span>(reg3)</span></code></pre></div>
 <pre><code>##                      2.5 %        97.5 %
 ## (Intercept)  5749.50978947  3.760568e+04
 ## adv            -2.01201729 -8.470087e-01

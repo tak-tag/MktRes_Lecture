@@ -22,11 +22,7 @@
 
 
 
-<<<<<<< HEAD
-<meta name="date" content="2024-07-02" />
-=======
-<meta name="date" content="2024-09-11" />
->>>>>>> parent of 0dc89dc (firstpush)
+<meta name="date" content="2024-12-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -69,7 +65,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -348,10 +344,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><span class="math inline">\(H_1:~\mu\neq1700\)</span></li>
 </ul>
 <p>改めて以下の通り、新型電球に関する16個の無作為標本から得た製品寿命の平均値を計算すると、<span class="math inline">\(\small \bar{X}=1835\)</span> であった。では、この1835は 1700 から十分に離れていると言えるのだろうか？もし、十分に離れていると判断されれば帰無仮説を棄却するが、この差が十分でなければ帰無仮説を採択する。</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="統計的仮説検定.html#cb164-1" tabindex="-1"></a><span class="fu">mean</span>(bulb)</span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="統計的仮説検定.html#cb165-1" tabindex="-1"></a><span class="fu">mean</span>(bulb)</span></code></pre></div>
 <pre><code>## [1] 1834.688</code></pre>
 <p>Rを用いて統計的検定を実行すること自体は難しくない。母平均の検定は <code>t.test()</code> で実施することが可能である。母平均が特定の値を取るか否かについての検定では、<code>mu=</code> という引数を使って帰無仮説に対応する値を指定する。今回の分析に関するコマンドおよびその結果は以下のとおりである。</p>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="統計的仮説検定.html#cb166-1" tabindex="-1"></a><span class="fu">t.test</span>(bulb, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="at">mu =</span> <span class="dv">1700</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="統計的仮説検定.html#cb167-1" tabindex="-1"></a><span class="fu">t.test</span>(bulb, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="at">mu =</span> <span class="dv">1700</span>)</span></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -451,15 +447,15 @@ P(T_0\in R|H_0~\text{is False})=1-\beta
 </div>
 <p>このとき、検定統計量 <em>Z</em> は帰無仮説が正しければ標準正規分布に従うはずである。したがって、臨界値 <span class="math inline">\(\pm c\)</span> は、<span class="math inline">\(\pm z_{0.025}\)</span> として分布表などより導出が可能である。Rにおいては前節と同様、<code>qnorm()</code> により、<span class="math inline">\(z_{0.025}=1.96\)</span> だとわかる。すなわち、検定統計量の計算結果が 1.96（-1.96）を上回る（下回る）場合には、帰無仮説を棄却するが、そこには第一種の誤りを犯す確率が5%残されていると解釈できる。</p>
 <p>ここまでの議論を踏まえ、新型電球に関する統計的検定を標準正規分布に基づき以下のように実施する。</p>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="統計的仮説検定.html#cb168-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(bulb)</span>
-<span id="cb168-2"><a href="統計的仮説検定.html#cb168-2" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.025</span>, <span class="at">lower.tail=</span><span class="cn">FALSE</span>)</span>
-<span id="cb168-3"><a href="統計的仮説検定.html#cb168-3" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(bulb)</span>
-<span id="cb168-4"><a href="統計的仮説検定.html#cb168-4" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="dv">180</span></span>
-<span id="cb168-5"><a href="統計的仮説検定.html#cb168-5" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">1700</span></span>
-<span id="cb168-6"><a href="統計的仮説検定.html#cb168-6" tabindex="-1"></a></span>
-<span id="cb168-7"><a href="統計的仮説検定.html#cb168-7" tabindex="-1"></a><span class="co">#Test statistic</span></span>
-<span id="cb168-8"><a href="統計的仮説検定.html#cb168-8" tabindex="-1"></a>Z <span class="ot">&lt;-</span> (xbar <span class="sc">-</span> mu)<span class="sc">/</span>(sigma<span class="sc">/</span><span class="fu">sqrt</span>(n))</span>
-<span id="cb168-9"><a href="統計的仮説検定.html#cb168-9" tabindex="-1"></a>Z</span></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="統計的仮説検定.html#cb169-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(bulb)</span>
+<span id="cb169-2"><a href="統計的仮説検定.html#cb169-2" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.025</span>, <span class="at">lower.tail=</span><span class="cn">FALSE</span>)</span>
+<span id="cb169-3"><a href="統計的仮説検定.html#cb169-3" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(bulb)</span>
+<span id="cb169-4"><a href="統計的仮説検定.html#cb169-4" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="dv">180</span></span>
+<span id="cb169-5"><a href="統計的仮説検定.html#cb169-5" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">1700</span></span>
+<span id="cb169-6"><a href="統計的仮説検定.html#cb169-6" tabindex="-1"></a></span>
+<span id="cb169-7"><a href="統計的仮説検定.html#cb169-7" tabindex="-1"></a><span class="co">#Test statistic</span></span>
+<span id="cb169-8"><a href="統計的仮説検定.html#cb169-8" tabindex="-1"></a>Z <span class="ot">&lt;-</span> (xbar <span class="sc">-</span> mu)<span class="sc">/</span>(sigma<span class="sc">/</span><span class="fu">sqrt</span>(n))</span>
+<span id="cb169-9"><a href="統計的仮説検定.html#cb169-9" tabindex="-1"></a>Z</span></code></pre></div>
 <pre><code>## [1] 2.993056</code></pre>
 <p>分析の結果、検定統計量 <em>Z</em> の実現値が5%有意水準に基づく臨界値（1.96）よりも大きいことが示されたため、5%有意水準で帰無仮説が棄却された。つまり、5%の第一種の誤りの確率を残した上ではあるが、新型電球の製品寿命は旧型製品の寿命よりも長いと言える。このような結果は一般的に、「統計的に有意な結果」と表現される。</p>
 <p>ここまでは、有意水準の意味を踏まえ、検定の手順及び結果の解釈について説明した。上述の例では、ある有意水準のもと帰無仮説を棄却できる「統計的に有意な」結果を得た。しかしながら、統計的に有意でない（帰無仮説を棄却できない）結果を得たときには、その解釈について注意が必要である。具体的には、統計的に有意でないからと言って、帰無仮説が正しい（つまり <span class="math inline">\(\small \mu =1700\)</span> である）と結論づけることはできない。ここまでの説明の通り、有意水準とは第一種の誤りを犯す確率であり、有意水準に基づく統計的検定では主にこの確率に対応した分析を行っている。そのため、第二種の誤りである、本当は <span class="math inline">\(\small \mu \neq 1700\)</span> であるにも関わらず、<span class="math inline">\(\small \mu =1700\)</span> と判断している可能性については未対応である。これらの点から「有意でない」ということを理由に、帰無仮説が正しいと結論づけることは適切ではない。そのため、もし今回の仮説検定で帰無仮説を棄却できていなかったとしたら、その結論は「新型電球寿命の平均は1700時間ではないとは言えない」となる。なんとも歯切れの悪い結論だということは理解できるが、統計的検定の特性上、このような解釈を提示しないといけない。</p>

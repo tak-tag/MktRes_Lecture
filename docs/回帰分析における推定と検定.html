@@ -22,11 +22,7 @@
 
 
 
-<<<<<<< HEAD
-<meta name="date" content="2024-07-02" />
-=======
-<meta name="date" content="2024-09-11" />
->>>>>>> parent of 0dc89dc (firstpush)
+<meta name="date" content="2024-12-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -69,7 +65,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -356,7 +352,7 @@ E(y|x)=\beta_0+\beta_1x
 </ul></li>
 </ul>
 <p>先述の通り、推定されたOLSEは、モデルの真の値ではない。そのため、仮に分析の結果得た推定値が正の値であっても、母数においては0と大差がないかもしれない。そのため、統計的検定や推測を用いて、未知パラメータに対する検討を行う。なお、Rで回帰係数の検定結果を得るのは非常に簡単である。 <code>lm()</code> 関数の実行結果をストアしたオブジェクトに対して、<code>summary()</code> 関数を実行することで統計的検定結果を得ることができる。先程分析した <code>reg1</code> を再度利用すると、以下のような結果を得る。</p>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="回帰分析における推定と検定.html#cb191-1" tabindex="-1"></a><span class="fu">summary</span>(reg1)</span></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="回帰分析における推定と検定.html#cb192-1" tabindex="-1"></a><span class="fu">summary</span>(reg1)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = sales ~ emp, data = firmdata19)
@@ -403,7 +399,7 @@ P\left(\left|\frac{\hat{\beta}-\beta}{se(\hat{\beta})}\right|\leq z_{\alpha/2}\r
 P(\hat{\beta}-se(\hat{\beta})\cdot z_{\alpha/2}\leq\beta\leq\hat{\beta}+se(\hat{\beta})\cdot z_{\alpha/2})=1-\alpha
 \]</span></p>
 <p>したがって、<span class="math inline">\(\small [\hat{\beta}\pm se(\hat{\beta})\cdot z_{\alpha/2}]\)</span> という観察可能な情報によって信頼区間推定できる。Rによって信頼区間を得るには、回帰分析の結果に対して、<code>confint()</code> 関数を用いる（デフォルトで95%信頼係数が設定されている）。例えば、先程の <code>reg1</code>の結果を用いて、99%信頼区間を得ると、以下のような結果を得る。</p>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="回帰分析における推定と検定.html#cb193-1" tabindex="-1"></a><span class="fu">confint</span>(reg1,<span class="at">level =</span> <span class="fl">0.99</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="回帰分析における推定と検定.html#cb194-1" tabindex="-1"></a><span class="fu">confint</span>(reg1,<span class="at">level =</span> <span class="fl">0.99</span>)</span></code></pre></div>
 <pre><code>##                    0.5 %       99.5 %
 ## (Intercept) -208335.9722 253955.32943
 ## emp              51.4537     64.81018</code></pre>

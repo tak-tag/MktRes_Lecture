@@ -22,11 +22,7 @@
 
 
 
-<<<<<<< HEAD
-<meta name="date" content="2024-07-02" />
-=======
-<meta name="date" content="2024-09-11" />
->>>>>>> parent of 0dc89dc (firstpush)
+<meta name="date" content="2024-12-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -69,7 +65,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -338,20 +334,20 @@ E(y_i|D_i=0)=\alpha+\beta x_i
 </div>
 <p>ダミー変数を説明変数に含む回帰分析をRで実行することはとても簡単である。<code>lm()</code> 関数内のモデル定義において、カテゴリ変数を含めば良いだけである。Characterという文字列情報のデータ型で示されているカテゴリ変数を用いると、自動でダミー変数化して、回帰分析を実行してくれる。</p>
 <p>例えば、本章で使っている firmdata19 を使って分析を行ってみる。具体的には、営業利益率（営業利益/売上）が小売産業に属する企業とそれ以外で異なるかを分析する。しかし、データセット上にこの分類に対応するカテゴリー変数は存在しないため、以下のように、“Retail Stores, NEC” もしくは “Supermarket Chains” のどちらかに含まれる企業であれば1、それ以外であれば0を取るカテゴリー変数（<code>format</code>）を作成する。<code>%in%</code> は二つのベクトル間の要素の一致を確認するための演算子で、下記<code>mutate</code>コマンドでは、<code>ind_en</code> 列に書かれている情報が <code>retail</code> リストに「含まれる」か否かをチェックしている。そのため、以下コマンドでは、事前に作成した <code>retail</code> を参照し、<code>ind_en</code> で観察されるカテゴリーが <code>retail</code> に当てはまれば、<code>"Retail"</code>を、そうでなければ、<code>"Others"</code> を返すように指示していることになる。</p>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="ダミー変数.html#cb203-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb203-2"><a href="ダミー変数.html#cb203-2" tabindex="-1"></a><span class="co">#産業名を特定したオブジェクト&quot;Retail&quot;の作成</span></span>
-<span id="cb203-3"><a href="ダミー変数.html#cb203-3" tabindex="-1"></a>retail <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Retail Stores, NEC&quot;</span>, <span class="st">&quot;Supermarket Chains&quot;</span>)</span>
-<span id="cb203-4"><a href="ダミー変数.html#cb203-4" tabindex="-1"></a><span class="co"># Retailを使ったカテゴリー変数の作成</span></span>
-<span id="cb203-5"><a href="ダミー変数.html#cb203-5" tabindex="-1"></a>firmdata19 <span class="ot">&lt;-</span> firmdata19 <span class="sc">%&gt;%</span> </span>
-<span id="cb203-6"><a href="ダミー変数.html#cb203-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">format =</span> <span class="fu">ifelse</span>(ind_en <span class="sc">%in%</span> retail, <span class="st">&quot;Retail&quot;</span>, <span class="st">&quot;Other&quot;</span>))</span>
-<span id="cb203-7"><a href="ダミー変数.html#cb203-7" tabindex="-1"></a><span class="co">#カテゴリーの頻度チェック</span></span>
-<span id="cb203-8"><a href="ダミー変数.html#cb203-8" tabindex="-1"></a><span class="fu">with</span>(firmdata19, <span class="fu">table</span>(format))</span></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="ダミー変数.html#cb204-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb204-2"><a href="ダミー変数.html#cb204-2" tabindex="-1"></a><span class="co">#産業名を特定したオブジェクト&quot;Retail&quot;の作成</span></span>
+<span id="cb204-3"><a href="ダミー変数.html#cb204-3" tabindex="-1"></a>retail <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Retail Stores, NEC&quot;</span>, <span class="st">&quot;Supermarket Chains&quot;</span>)</span>
+<span id="cb204-4"><a href="ダミー変数.html#cb204-4" tabindex="-1"></a><span class="co"># Retailを使ったカテゴリー変数の作成</span></span>
+<span id="cb204-5"><a href="ダミー変数.html#cb204-5" tabindex="-1"></a>firmdata19 <span class="ot">&lt;-</span> firmdata19 <span class="sc">%&gt;%</span> </span>
+<span id="cb204-6"><a href="ダミー変数.html#cb204-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">format =</span> <span class="fu">ifelse</span>(ind_en <span class="sc">%in%</span> retail, <span class="st">&quot;Retail&quot;</span>, <span class="st">&quot;Other&quot;</span>))</span>
+<span id="cb204-7"><a href="ダミー変数.html#cb204-7" tabindex="-1"></a><span class="co">#カテゴリーの頻度チェック</span></span>
+<span id="cb204-8"><a href="ダミー変数.html#cb204-8" tabindex="-1"></a><span class="fu">with</span>(firmdata19, <span class="fu">table</span>(format))</span></code></pre></div>
 <pre><code>## format
 ##  Other Retail 
 ##     98     49</code></pre>
 <p>そして、作成したカテゴリー変数も含めて、以下のような回帰モデルを分析する。</p>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="ダミー変数.html#cb205-1" tabindex="-1"></a>fit.d1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(op <span class="sc">~</span> mkexp <span class="sc">+</span> format, <span class="at">data =</span> firmdata19)</span>
-<span id="cb205-2"><a href="ダミー変数.html#cb205-2" tabindex="-1"></a><span class="fu">summary</span>(fit.d1)</span></code></pre></div>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="ダミー変数.html#cb206-1" tabindex="-1"></a>fit.d1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(op <span class="sc">~</span> mkexp <span class="sc">+</span> format, <span class="at">data =</span> firmdata19)</span>
+<span id="cb206-2"><a href="ダミー変数.html#cb206-2" tabindex="-1"></a><span class="fu">summary</span>(fit.d1)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = op ~ mkexp + format, data = firmdata19)
@@ -372,17 +368,17 @@ E(y_i|D_i=0)=\alpha+\beta x_i
 ## Multiple R-squared:  0.1042, Adjusted R-squared:  0.09178 
 ## F-statistic: 8.377 on 2 and 144 DF,  p-value: 0.0003617</code></pre>
 <p>上記のように、カテゴリー変数（format）を回帰モデルに含めるだけで、自動的にダミー変数化して分析を実行してくれる。今回はたまたま我々の意図通り Othersをベースライングループに設定されているが、これは、指示した結果ではない。　 もし確実に特定のカテゴリーを1と定義したい場合には、自身でダミー変数を作成して回帰分析を行えばいい。</p>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="ダミー変数.html#cb207-1" tabindex="-1"></a>firmdata19 <span class="ot">&lt;-</span> firmdata19 <span class="sc">%&gt;%</span> </span>
-<span id="cb207-2"><a href="ダミー変数.html#cb207-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">retail =</span> <span class="fu">ifelse</span>(format <span class="sc">==</span> <span class="st">&quot;Retail&quot;</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span>
-<span id="cb207-3"><a href="ダミー変数.html#cb207-3" tabindex="-1"></a></span>
-<span id="cb207-4"><a href="ダミー変数.html#cb207-4" tabindex="-1"></a><span class="co">#確認</span></span>
-<span id="cb207-5"><a href="ダミー変数.html#cb207-5" tabindex="-1"></a><span class="fu">with</span>(firmdata19, <span class="fu">table</span>(retail, format))</span></code></pre></div>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="ダミー変数.html#cb208-1" tabindex="-1"></a>firmdata19 <span class="ot">&lt;-</span> firmdata19 <span class="sc">%&gt;%</span> </span>
+<span id="cb208-2"><a href="ダミー変数.html#cb208-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">retail =</span> <span class="fu">ifelse</span>(format <span class="sc">==</span> <span class="st">&quot;Retail&quot;</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span>
+<span id="cb208-3"><a href="ダミー変数.html#cb208-3" tabindex="-1"></a></span>
+<span id="cb208-4"><a href="ダミー変数.html#cb208-4" tabindex="-1"></a><span class="co">#確認</span></span>
+<span id="cb208-5"><a href="ダミー変数.html#cb208-5" tabindex="-1"></a><span class="fu">with</span>(firmdata19, <span class="fu">table</span>(retail, format))</span></code></pre></div>
 <pre><code>##       format
 ## retail Other Retail
 ##      0    98      0
 ##      1     0     49</code></pre>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="ダミー変数.html#cb209-1" tabindex="-1"></a>fit.d2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(op <span class="sc">~</span>  mkexp <span class="sc">+</span> retail, <span class="at">data =</span> firmdata19)</span>
-<span id="cb209-2"><a href="ダミー変数.html#cb209-2" tabindex="-1"></a><span class="fu">summary</span>(fit.d2)</span></code></pre></div>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="ダミー変数.html#cb210-1" tabindex="-1"></a>fit.d2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(op <span class="sc">~</span>  mkexp <span class="sc">+</span> retail, <span class="at">data =</span> firmdata19)</span>
+<span id="cb210-2"><a href="ダミー変数.html#cb210-2" tabindex="-1"></a><span class="fu">summary</span>(fit.d2)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = op ~ mkexp + retail, data = firmdata19)

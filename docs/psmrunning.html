@@ -22,11 +22,7 @@
 
 
 
-<<<<<<< HEAD
-<meta name="date" content="2024-07-02" />
-=======
-<meta name="date" content="2024-09-11" />
->>>>>>> parent of 0dc89dc (firstpush)
+<meta name="date" content="2024-12-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -69,7 +65,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -358,21 +354,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Rを用いた分析においては、自身でデータ構造の変換を行う必要はない。Rでは、“pricesensitivitymeter” というパッケージの <code>psm_analysis()</code>という関数を用いることで分析を実行できる。なお、PSM用データ構造への集計作業もこのパッケージにおいて行ってくれる。</p>
 <p>ここからは、実際にRを用いたPSMの実行手順を紹介する。まず分析の実行に際し、このパッケージをインストールし、起動する。</p>
-<<<<<<< HEAD
-<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="psmrunning.html#cb281-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;pricesensitivitymeter&quot;</span>)</span>
-<span id="cb281-2"><a href="psmrunning.html#cb281-2" tabindex="-1"></a><span class="fu">library</span>(pricesensitivitymeter)</span>
-<span id="cb281-3"><a href="psmrunning.html#cb281-3" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
-<p>続いて、“psm_ex.csv” という演習用データを読み込み、<code>psm_ex</code> として定義する。</p>
-<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="psmrunning.html#cb282-1" tabindex="-1"></a>psm_ex <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/psm_ex.csv&quot;</span>, <span class="at">na =</span> <span class="st">&quot;.&quot;</span>)</span>
-<span id="cb282-2"><a href="psmrunning.html#cb282-2" tabindex="-1"></a><span class="fu">head</span>(psm_ex)</span></code></pre></div>
-=======
 <div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="psmrunning.html#cb282-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;pricesensitivitymeter&quot;</span>)</span>
 <span id="cb282-2"><a href="psmrunning.html#cb282-2" tabindex="-1"></a><span class="fu">library</span>(pricesensitivitymeter)</span>
 <span id="cb282-3"><a href="psmrunning.html#cb282-3" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <p>続いて、“psm_ex.csv” という演習用データを読み込み、<code>psm_ex</code> として定義する。</p>
 <div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="psmrunning.html#cb283-1" tabindex="-1"></a>psm_ex <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/psm_ex.csv&quot;</span>, <span class="at">na =</span> <span class="st">&quot;.&quot;</span>)</span>
 <span id="cb283-2"><a href="psmrunning.html#cb283-2" tabindex="-1"></a><span class="fu">head</span>(psm_ex)</span></code></pre></div>
->>>>>>> parent of 0dc89dc (firstpush)
 <pre><code>##    tch   ch   ex  tex
 ## 1  963 1016 1242 1318
 ## 2  866 1082 1272 1303
@@ -381,17 +368,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5 1026  818 1228 1289
 ## 6  912  987 1195 1395</code></pre>
 <p>このデータは、ある製品への価格について、安すぎる（tch）、安い（ch）、高い（ex）、高すぎる（tex）という上記4つの価格認識について、250人の消費者から回答を得た（と仮定する）人工データである。分析の実行においては以下のように、<code>psm_analysis()</code> という関数において、<code>toocheap</code>、<code>cheap</code>、<code>expensive</code>、<code>tooexpensive</code>という引数を用いて、データセットにおけるどの変数がPSMで用いる価格情報に対応するのかを指示する必要がある。</p>
-<<<<<<< HEAD
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="psmrunning.html#cb284-1" tabindex="-1"></a>output_psm <span class="ot">&lt;-</span> <span class="fu">psm_analysis</span>(</span>
-<span id="cb284-2"><a href="psmrunning.html#cb284-2" tabindex="-1"></a>  <span class="at">toocheap =</span> <span class="st">&quot;tch&quot;</span>,</span>
-<span id="cb284-3"><a href="psmrunning.html#cb284-3" tabindex="-1"></a>  <span class="at">cheap =</span> <span class="st">&quot;ch&quot;</span>,</span>
-<span id="cb284-4"><a href="psmrunning.html#cb284-4" tabindex="-1"></a>  <span class="at">expensive =</span> <span class="st">&quot;ex&quot;</span>,</span>
-<span id="cb284-5"><a href="psmrunning.html#cb284-5" tabindex="-1"></a>  <span class="at">tooexpensive =</span> <span class="st">&quot;tex&quot;</span>,</span>
-<span id="cb284-6"><a href="psmrunning.html#cb284-6" tabindex="-1"></a>  <span class="at">data =</span> psm_ex</span>
-<span id="cb284-7"><a href="psmrunning.html#cb284-7" tabindex="-1"></a>)</span>
-<span id="cb284-8"><a href="psmrunning.html#cb284-8" tabindex="-1"></a></span>
-<span id="cb284-9"><a href="psmrunning.html#cb284-9" tabindex="-1"></a><span class="fu">summary</span>(output_psm)</span></code></pre></div>
-=======
 <div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="psmrunning.html#cb285-1" tabindex="-1"></a>output_psm <span class="ot">&lt;-</span> <span class="fu">psm_analysis</span>(</span>
 <span id="cb285-2"><a href="psmrunning.html#cb285-2" tabindex="-1"></a>  <span class="at">toocheap =</span> <span class="st">&quot;tch&quot;</span>,</span>
 <span id="cb285-3"><a href="psmrunning.html#cb285-3" tabindex="-1"></a>  <span class="at">cheap =</span> <span class="st">&quot;ch&quot;</span>,</span>
@@ -401,7 +377,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb285-7"><a href="psmrunning.html#cb285-7" tabindex="-1"></a>)</span>
 <span id="cb285-8"><a href="psmrunning.html#cb285-8" tabindex="-1"></a></span>
 <span id="cb285-9"><a href="psmrunning.html#cb285-9" tabindex="-1"></a><span class="fu">summary</span>(output_psm)</span></code></pre></div>
->>>>>>> parent of 0dc89dc (firstpush)
 <pre><code>## Van Westendorp Price Sensitivity Meter Analysis
 ## 
 ## Accepted Price Range: 923 - 1253 
@@ -414,15 +389,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## (Removed: n = 93 / 37% of data)</code></pre>
 <p><code>psm_analysis()</code> の実行結果として、Accepted price range（受容価格域）、Indifference price point（無差別価格）、Optimal price point（最適価格）が提示される。今回の分析の結果を見れば、受容価格域は <code>923-1253</code>、無差別価格は <code>1101</code>、最適価格は <code>1058</code> である。受容価格域とは、安すぎると感じる人と高すぎると感じる人が少ない価格域を表している。 また無差別価格とは、高いと感じる人と安いと感じる人がつりあっていて、高くもなく安くもない価格である。一方で最適価格とは、高すぎたり安すぎたりして買わないという人が最も少ない（受容する人が最も多い）価格である。</p>
 <p>また、PSMでは分析結果を図示化する慣習もあるが、これも <code>psm_plot()</code> という関数を用いて、ggplot 形式のコマンドで簡単に出力できる。</p>
-<<<<<<< HEAD
-<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="psmrunning.html#cb286-1" tabindex="-1"></a><span class="fu">psm_plot</span>(output_psm) <span class="sc">+</span></span>
-<span id="cb286-2"><a href="psmrunning.html#cb286-2" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb286-3"><a href="psmrunning.html#cb286-3" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Price&quot;</span>,</span>
-<span id="cb286-4"><a href="psmrunning.html#cb286-4" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Share of Respondents (0-1)&quot;</span>,</span>
-<span id="cb286-5"><a href="psmrunning.html#cb286-5" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Price Sensitivity Meter Plot&quot;</span>,</span>
-<span id="cb286-6"><a href="psmrunning.html#cb286-6" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;Shaded area: range of acceptable prices</span><span class="sc">\n</span><span class="st">Data: Randomly generated&quot;</span>) <span class="sc">+</span></span>
-<span id="cb286-7"><a href="psmrunning.html#cb286-7" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
-=======
 <div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="psmrunning.html#cb287-1" tabindex="-1"></a><span class="fu">psm_plot</span>(output_psm) <span class="sc">+</span></span>
 <span id="cb287-2"><a href="psmrunning.html#cb287-2" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
 <span id="cb287-3"><a href="psmrunning.html#cb287-3" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Price&quot;</span>,</span>
@@ -430,7 +396,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb287-5"><a href="psmrunning.html#cb287-5" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Price Sensitivity Meter Plot&quot;</span>,</span>
 <span id="cb287-6"><a href="psmrunning.html#cb287-6" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;Shaded area: range of acceptable prices</span><span class="sc">\n</span><span class="st">Data: Randomly generated&quot;</span>) <span class="sc">+</span></span>
 <span id="cb287-7"><a href="psmrunning.html#cb287-7" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
->>>>>>> parent of 0dc89dc (firstpush)
 <div class="figure"><span style="display:block;" id="fig:psmfigure"></span>
 <img src="mktres_lecture_files/figure-html/psmfigure-1.png" alt="PSM Plot" width="672" />
 <p class="caption">

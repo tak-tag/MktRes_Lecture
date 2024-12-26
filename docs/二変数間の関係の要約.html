@@ -22,11 +22,7 @@
 
 
 
-<<<<<<< HEAD
-<meta name="date" content="2024-07-02" />
-=======
-<meta name="date" content="2024-09-11" />
->>>>>>> parent of 0dc89dc (firstpush)
+<meta name="date" content="2024-12-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -69,7 +65,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -326,6 +322,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math inline">\(\rho_{xy}=\frac{S_{xy}}{\sqrt{S_x^2}\cdot \sqrt{S_y^2}}\)</span></p>
 <p>共分散は、二つのデータ間の共変動を示す指標であるものの、この数値を持って我々研究者が二変数の関係について（例えばその強弱などを）解釈するのは困難である。そこで、二変数間の関係を数値的に解釈する場合には、一般的に相関係数を用いる。相関係数は、-1 から 1 までの値を取り、正の値を取る場合は正の相関、負の値を取る場合は負の相関を、着目している二つの変数が持つことが知られている。また、相関係数が正（負）の値かつ1に近いほど強い正（負）の相関であることが知られている。ただし、相関係数で表される二変数間の関係は、線形関係の程度である。言い換えると、相関が高いとはデータがどれだけ直線上に集まって分布しているかを示しており、グラフ等で示される線形関係の傾きについては何も回答することができないという点に注意が必要である。
 例えば、以下のようなデータセットを考える。</p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="二変数間の関係の要約.html#cb136-1" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x1 =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">5</span>), <span class="at">y1 =</span> <span class="fu">c</span>(<span class="dv">16</span>, <span class="dv">12</span>, <span class="dv">10</span>, <span class="dv">6</span>, <span class="dv">0</span>), <span class="at">y2 =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">0</span>))</span>
+<span id="cb136-2"><a href="二変数間の関係の要約.html#cb136-2" tabindex="-1"></a>X</span></code></pre></div>
 <pre><code>## # A tibble: 5 × 3
 ##      x1    y1    y2
 ##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -335,12 +333,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4     2     6     3
 ## 5     5     0     0</code></pre>
 <p>このデータセットにおける x1 と y1 の相関係数は -1 であり、両者の関係を図で示すと、すべてのデータが直線上（<span class="math inline">\(y=-2x+10\)</span>）に並ぶことがわかる。一方で、x1 と y2 との相関係数も -1 であるものの、両者の線形関係は <span class="math inline">\(y=-x+5\)</span>である。このことからも、相関係数が線形関数の傾きや切片についての情報は何も持たないことがわかる。</p>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="二変数間の関係の要約.html#cb137-1" tabindex="-1"></a><span class="fu">cor</span>(X<span class="sc">$</span>x1, X<span class="sc">$</span>y1)</span></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="二変数間の関係の要約.html#cb138-1" tabindex="-1"></a><span class="fu">cor</span>(X<span class="sc">$</span>x1, X<span class="sc">$</span>y1)</span></code></pre></div>
 <pre><code>## [1] -1</code></pre>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="二変数間の関係の要約.html#cb139-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> X, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x1, <span class="at">y =</span> y1)) <span class="sc">+</span> </span>
-<span id="cb139-2"><a href="二変数間の関係の要約.html#cb139-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb139-3"><a href="二変数間の関係の要約.html#cb139-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm)</span></code></pre></div>
-<p><img src="mktres_lecture_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="二変数間の関係の要約.html#cb140-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> X, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x1, <span class="at">y =</span> y1)) <span class="sc">+</span> </span>
+<span id="cb140-2"><a href="二変数間の関係の要約.html#cb140-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb140-3"><a href="二変数間の関係の要約.html#cb140-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm)</span></code></pre></div>
+<p><img src="mktres_lecture_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 <p>また我々は、二変数間の相関係数がゼロであることが、両者が無関係であることを意味しないことにも注意をしなければならない。例えば、以下のようなデータセットにおけるA と B の相関は 0 になる。</p>
 <pre><code>## # A tibble: 5 × 2
 ##       A     B
@@ -350,23 +348,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 3     0     0
 ## 4     1     1
 ## 5     2     4</code></pre>
-<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="二変数間の関係の要約.html#cb141-1" tabindex="-1"></a><span class="fu">cor</span>(AB<span class="sc">$</span>A, AB<span class="sc">$</span>B)</span></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="二変数間の関係の要約.html#cb142-1" tabindex="-1"></a><span class="fu">cor</span>(AB<span class="sc">$</span>A, AB<span class="sc">$</span>B)</span></code></pre></div>
 <pre><code>## [1] 0</code></pre>
 <p>しかしながら、両者の関係を描画すると、<span class="math inline">\(y = x^2\)</span> という二次関数の関係にあることがわかる。つまり、相関係数がゼロだからといって、二つの変数間に関係がないと結論づける事はできず、相関ではなく異なる複数の分析アプローチによって関係を特定していくことが必要になる。</p>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="二変数間の関係の要約.html#cb143-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> AB, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> A, <span class="at">y =</span> B)) <span class="sc">+</span> </span>
-<span id="cb143-2"><a href="二変数間の関係の要約.html#cb143-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb143-3"><a href="二変数間の関係の要約.html#cb143-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, <span class="at">formula =</span> y <span class="sc">~</span> x <span class="sc">+</span> <span class="fu">I</span>(x<span class="sc">^</span><span class="dv">2</span>), <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<p><img src="mktres_lecture_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="二変数間の関係の要約.html#cb144-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> AB, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> A, <span class="at">y =</span> B)) <span class="sc">+</span> </span>
+<span id="cb144-2"><a href="二変数間の関係の要約.html#cb144-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb144-3"><a href="二変数間の関係の要約.html#cb144-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, <span class="at">formula =</span> y <span class="sc">~</span> x <span class="sc">+</span> <span class="fu">I</span>(x<span class="sc">^</span><span class="dv">2</span>), <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p><img src="mktres_lecture_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 <p>勘の良い読者であればすでに気づいているかも知れないが、二変数間の関係についての可視化もggplot2にて対応できる。具体的には、<code>geom_point()</code>という関数を用いるのだが、それだけではなく、mappingに対する引数として、x と y 二つの変数を指定することが必要になる。ダイアモンドの価格は、カラット数に大きく依存すると考えられる。そこで、以下のようにカラット数と価格との間の共分散と相関を計算する。</p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="二変数間の関係の要約.html#cb144-1" tabindex="-1"></a><span class="fu">cov</span>(diamonds<span class="sc">$</span>carat,diamonds<span class="sc">$</span>price)</span></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="二変数間の関係の要約.html#cb145-1" tabindex="-1"></a><span class="fu">cov</span>(diamonds<span class="sc">$</span>carat,diamonds<span class="sc">$</span>price)</span></code></pre></div>
 <pre><code>## [1] 1742.765</code></pre>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="二変数間の関係の要約.html#cb146-1" tabindex="-1"></a><span class="fu">cor</span>(diamonds<span class="sc">$</span>carat,diamonds<span class="sc">$</span>price)</span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="二変数間の関係の要約.html#cb147-1" tabindex="-1"></a><span class="fu">cor</span>(diamonds<span class="sc">$</span>carat,diamonds<span class="sc">$</span>price)</span></code></pre></div>
 <pre><code>## [1] 0.9215913</code></pre>
 <p>これらの変数間の相関係数は約0.92であり、高い正の相関関係であることが確認された。続いて、これらの変数の関係を可視化する。二変数間の関係を端的に可視化する方法が散布図である。散布図は、一方の変数を横軸に、もう一方の変数を縦軸に取り、各データのそれぞれの値の組み合わせをプロットしたものである。</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="二変数間の関係の要約.html#cb148-1" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(diamonds, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price))</span>
-<span id="cb148-2"><a href="二変数間の関係の要約.html#cb148-2" tabindex="-1"></a>p3 <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb148-3"><a href="二変数間の関係の要約.html#cb148-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;カラット&quot;</span>, <span class="at">y =</span> <span class="st">&quot;価格&quot;</span>,</span>
-<span id="cb148-4"><a href="二変数間の関係の要約.html#cb148-4" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;散布図1: カラット：価格&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="二変数間の関係の要約.html#cb149-1" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(diamonds, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price))</span>
+<span id="cb149-2"><a href="二変数間の関係の要約.html#cb149-2" tabindex="-1"></a>p3 <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb149-3"><a href="二変数間の関係の要約.html#cb149-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;カラット&quot;</span>, <span class="at">y =</span> <span class="st">&quot;価格&quot;</span>,</span>
+<span id="cb149-4"><a href="二変数間の関係の要約.html#cb149-4" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;散布図1: カラット：価格&quot;</span>)</span></code></pre></div>
 <p><img src="mktres_lecture_files/figure-html/plotnormal-1.png" width="672" /></p>
 <p>研究目的次第では、二つの変数間の関係をカテゴリごとに比較したい場合もあるだろう。例えば、我々はカラットと価格の関係は、カットの質によって変わるのか、という問いに関心があるとしよう。その場合には、(1) 同一図内にてカテゴリごとに色分けする方法と、(2) カテゴリごとに分割して図示化する方法がある。それぞれのggplot2での実行方法は、以下のとおりである。</p>
 <ol style="list-style-type: decimal">
@@ -374,35 +372,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>facet_grid() や facet_wrap() を用いる。</li>
 </ol>
 <p>まず、(1) の図内での色分け方法は、以下のようなコマンドで実行できる。</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="二変数間の関係の要約.html#cb149-1" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(diamonds, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price, <span class="at">color =</span> cut))</span>
-<span id="cb149-2"><a href="二変数間の関係の要約.html#cb149-2" tabindex="-1"></a>p4 <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb149-3"><a href="二変数間の関係の要約.html#cb149-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;カラット&quot;</span>, <span class="at">y =</span> <span class="st">&quot;価格&quot;</span>, <span class="at">color =</span> <span class="st">&quot;カット&quot;</span>,</span>
-<span id="cb149-4"><a href="二変数間の関係の要約.html#cb149-4" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;散布図 2: カット別、カラット：価格&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="二変数間の関係の要約.html#cb150-1" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(diamonds, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price, <span class="at">color =</span> cut))</span>
+<span id="cb150-2"><a href="二変数間の関係の要約.html#cb150-2" tabindex="-1"></a>p4 <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb150-3"><a href="二変数間の関係の要約.html#cb150-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;カラット&quot;</span>, <span class="at">y =</span> <span class="st">&quot;価格&quot;</span>, <span class="at">color =</span> <span class="st">&quot;カット&quot;</span>,</span>
+<span id="cb150-4"><a href="二変数間の関係の要約.html#cb150-4" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;散布図 2: カット別、カラット：価格&quot;</span>)</span></code></pre></div>
 <p><img src="mktres_lecture_files/figure-html/plotcolor-1.png" width="672" /></p>
 <p>このように、<code>mapping = aes()</code> 内にて色付けに関する引数を設定することで散布図内の観測値を色分けできる。ただし、ここで重要なのは、<code>color =</code>という引数では、カテゴリ変数を指定すべきであり、色そのもの（例えば、redやblue）を指定するものではないということである。しかしながら、散布図 2のように多くのカテゴリが含まれる場合には、この可視化の方法だと逆に見にくいかもしれない。そこで、以下の方法を紹介する。<code>facet_wrap()</code> を用いた図の作成では、散布図 2のように color 引数を指定する必要はなく、p3 を再利用できる。<code>geom_point()</code> で散布図作成の指示を与えたあとに、<code>facet_wrap()</code> のレイヤーを重ねる指示を与えれば、散布図 3が作成される。</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="二変数間の関係の要約.html#cb150-1" tabindex="-1"></a>p3 <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>cut) <span class="sc">+</span></span>
-<span id="cb150-2"><a href="二変数間の関係の要約.html#cb150-2" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;カラット&quot;</span>, <span class="at">y =</span> <span class="st">&quot;価格&quot;</span>,</span>
-<span id="cb150-3"><a href="二変数間の関係の要約.html#cb150-3" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;散布図 3: カット別、カラット：価格&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="二変数間の関係の要約.html#cb151-1" tabindex="-1"></a>p3 <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>cut) <span class="sc">+</span></span>
+<span id="cb151-2"><a href="二変数間の関係の要約.html#cb151-2" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;カラット&quot;</span>, <span class="at">y =</span> <span class="st">&quot;価格&quot;</span>,</span>
+<span id="cb151-3"><a href="二変数間の関係の要約.html#cb151-3" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;散布図 3: カット別、カラット：価格&quot;</span>)</span></code></pre></div>
 <p><img src="mktres_lecture_files/figure-html/plotfacet-1.png" width="672" /></p>
 <p>散布図 3をみると、基本的にはカラット数と価格には正の相関があるものの、カットの質が低い（例、Fair）場合にはばらつきが大きいことがうかがえる。</p>
 <p>これまでに学んだdplyrによるデータ処理方法をパイプ演算子でつなげることで、特定の群のみを対象にした図示化も容易になる。ここでは例として、1.00カラット以上と未満とで分けて、それぞれのヒストグラムを作成してみる。</p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="二変数間の関係の要約.html#cb151-1" tabindex="-1"></a>p5 <span class="ot">&lt;-</span> diamonds <span class="sc">%&gt;%</span> </span>
-<span id="cb151-2"><a href="二変数間の関係の要約.html#cb151-2" tabindex="-1"></a>  <span class="fu">filter</span>(carat <span class="sc">&gt;=</span> <span class="fl">1.0</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb151-3"><a href="二変数間の関係の要約.html#cb151-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> price))</span>
-<span id="cb151-4"><a href="二変数間の関係の要約.html#cb151-4" tabindex="-1"></a>p5 <span class="sc">+</span> <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
-<span id="cb151-5"><a href="二変数間の関係の要約.html#cb151-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;価格&quot;</span>, <span class="at">y =</span> <span class="st">&quot;頻度&quot;</span>,</span>
-<span id="cb151-6"><a href="二変数間の関係の要約.html#cb151-6" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;ヒストグラム:1.00カラット以上&quot;</span>)</span></code></pre></div>
-<p><img src="mktres_lecture_files/figure-html/pipegg-1.png" width="672" /></p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="二変数間の関係の要約.html#cb152-1" tabindex="-1"></a>p6 <span class="ot">&lt;-</span> diamonds <span class="sc">%&gt;%</span> </span>
-<span id="cb152-2"><a href="二変数間の関係の要約.html#cb152-2" tabindex="-1"></a>  <span class="fu">filter</span>(carat <span class="sc">&lt;</span> <span class="fl">1.0</span>) <span class="sc">%&gt;%</span> </span>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="二変数間の関係の要約.html#cb152-1" tabindex="-1"></a>p5 <span class="ot">&lt;-</span> diamonds <span class="sc">%&gt;%</span> </span>
+<span id="cb152-2"><a href="二変数間の関係の要約.html#cb152-2" tabindex="-1"></a>  <span class="fu">filter</span>(carat <span class="sc">&gt;=</span> <span class="fl">1.0</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb152-3"><a href="二変数間の関係の要約.html#cb152-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> price))</span>
-<span id="cb152-4"><a href="二変数間の関係の要約.html#cb152-4" tabindex="-1"></a>p6 <span class="sc">+</span> <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
+<span id="cb152-4"><a href="二変数間の関係の要約.html#cb152-4" tabindex="-1"></a>p5 <span class="sc">+</span> <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
 <span id="cb152-5"><a href="二変数間の関係の要約.html#cb152-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;価格&quot;</span>, <span class="at">y =</span> <span class="st">&quot;頻度&quot;</span>,</span>
-<span id="cb152-6"><a href="二変数間の関係の要約.html#cb152-6" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;ヒストグラム:1.00カラット未満&quot;</span>)</span></code></pre></div>
+<span id="cb152-6"><a href="二変数間の関係の要約.html#cb152-6" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;ヒストグラム:1.00カラット以上&quot;</span>)</span></code></pre></div>
+<p><img src="mktres_lecture_files/figure-html/pipegg-1.png" width="672" /></p>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="二変数間の関係の要約.html#cb153-1" tabindex="-1"></a>p6 <span class="ot">&lt;-</span> diamonds <span class="sc">%&gt;%</span> </span>
+<span id="cb153-2"><a href="二変数間の関係の要約.html#cb153-2" tabindex="-1"></a>  <span class="fu">filter</span>(carat <span class="sc">&lt;</span> <span class="fl">1.0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb153-3"><a href="二変数間の関係の要約.html#cb153-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> price))</span>
+<span id="cb153-4"><a href="二変数間の関係の要約.html#cb153-4" tabindex="-1"></a>p6 <span class="sc">+</span> <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
+<span id="cb153-5"><a href="二変数間の関係の要約.html#cb153-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;価格&quot;</span>, <span class="at">y =</span> <span class="st">&quot;頻度&quot;</span>,</span>
+<span id="cb153-6"><a href="二変数間の関係の要約.html#cb153-6" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;ヒストグラム:1.00カラット未満&quot;</span>)</span></code></pre></div>
 <p><img src="mktres_lecture_files/figure-html/pipegg-2.png" width="672" /></p>
 <p>Rで図を作成したら保存（出力）したいと考えることも多いだろう。日本語を使っていない図はggsaveを使い簡単に保存できる。具体的には、まず、作成した図そのもの（図示化のためのggplot() オブジェクトではない）をオブジェクトとして定義（例、plot1）する。ggsaveの使用例は以下の様になる (以下は見本コード)。</p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="二変数間の関係の要約.html#cb153-1" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">filename =</span> <span class="st">&quot;plot1.pdf&quot;</span>, </span>
-<span id="cb153-2"><a href="二変数間の関係の要約.html#cb153-2" tabindex="-1"></a> <span class="at">plot =</span> plot1, <span class="at">width =</span> <span class="dv">10</span>, <span class="at">height =</span> <span class="dv">5</span>, <span class="at">units =</span> <span class="st">&quot;cm&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="二変数間の関係の要約.html#cb154-1" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">filename =</span> <span class="st">&quot;plot1.pdf&quot;</span>, </span>
+<span id="cb154-2"><a href="二変数間の関係の要約.html#cb154-2" tabindex="-1"></a> <span class="at">plot =</span> plot1, <span class="at">width =</span> <span class="dv">10</span>, <span class="at">height =</span> <span class="dv">5</span>, <span class="at">units =</span> <span class="st">&quot;cm&quot;</span>)</span></code></pre></div>
 <p>日本語を含む頭の場合、<code>quartz()</code> を用いた以下の手順を経て図を保存する。
 1. quartz()で作図デバイスを起動する。
 2. 作図デバイスを開いたまま、Rstudio内で図を表示する。

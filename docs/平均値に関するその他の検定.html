@@ -22,11 +22,7 @@
 
 
 
-<<<<<<< HEAD
-<meta name="date" content="2024-07-02" />
-=======
-<meta name="date" content="2024-09-11" />
->>>>>>> parent of 0dc89dc (firstpush)
+<meta name="date" content="2024-12-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -69,7 +65,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -344,8 +340,8 @@ t=\frac{(\bar{X}-\bar{Y})}{\sqrt{s^2\left(\frac{1}{m}+\frac{1}{n}\right)}}\sim t
 \]</span>
 Rにおいて平均の差の検定を行うことはさほど難しくない。先程の等分散性についても、<code>var.equal=TRUE</code>または<code>var.equal=FALSE</code>という引数で設定できる。<code>var.equal=</code> 引数についてはTRUEが等分散性を仮定するが、デフォルトでは、FALSEとなっている。</p>
 <p>平均の差の検定では、 <code>t.test(outcome ~ category)</code> のように、はじめに着目する成果変数を、その後 ~（チルダ）のあとに着目するカテゴリ変数を指示することで、どの変数（outcome）の平均の差をどのカテゴリ変数（category）で検定するのかが特定化できる。ここでは、以前の章で利用したidposデータを利用して、総支出額の平均が男女間で異なるか否かを以下のように分析する。</p>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="平均値に関するその他の検定.html#cb170-1" tabindex="-1"></a>idpos_cust <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/idpos_customer.csv&quot;</span>)</span>
-<span id="cb170-2"><a href="平均値に関するその他の検定.html#cb170-2" tabindex="-1"></a><span class="fu">t.test</span>(monetary <span class="sc">~</span> gender, <span class="at">data =</span> idpos_cust)</span></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="平均値に関するその他の検定.html#cb171-1" tabindex="-1"></a>idpos_cust <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/idpos_customer.csv&quot;</span>)</span>
+<span id="cb171-2"><a href="平均値に関するその他の検定.html#cb171-2" tabindex="-1"></a><span class="fu">t.test</span>(monetary <span class="sc">~</span> gender, <span class="at">data =</span> idpos_cust)</span></code></pre></div>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
@@ -357,7 +353,7 @@ Rにおいて平均の差の検定を行うことはさほど難しくない。�
 ## sample estimates:
 ## mean in group female   mean in group male 
 ##             17511.03             14878.36</code></pre>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="平均値に関するその他の検定.html#cb172-1" tabindex="-1"></a><span class="fu">t.test</span>(monetary <span class="sc">~</span> gender, <span class="at">data =</span> idpos_cust,<span class="at">var.equal=</span>T)</span></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="平均値に関するその他の検定.html#cb173-1" tabindex="-1"></a><span class="fu">t.test</span>(monetary <span class="sc">~</span> gender, <span class="at">data =</span> idpos_cust,<span class="at">var.equal=</span>T)</span></code></pre></div>
 <pre><code>## 
 ##  Two Sample t-test
 ## 
@@ -371,7 +367,7 @@ Rにおいて平均の差の検定を行うことはさほど難しくない。�
 ##             17511.03             14878.36</code></pre>
 <p>分析の結果、等分散性を仮定するか否かで、計算結果は微妙に異なるが、どちらの検定結果においても10%有意水準で帰無仮説を棄却できなかった。そのため、本データにおいて総支出額に関する男女差があるとは言えない。</p>
 <p>なおRにおいては、等分散性に関する検定も<code>var.test(outcome ~ category)</code>で実行可能である。先程のidposデータに関する男女差について、等分散性の分析を以下のように実施する。</p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="平均値に関するその他の検定.html#cb174-1" tabindex="-1"></a><span class="fu">var.test</span>(monetary <span class="sc">~</span> gender, <span class="at">data =</span> idpos_cust, <span class="at">ratio =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="平均値に関するその他の検定.html#cb175-1" tabindex="-1"></a><span class="fu">var.test</span>(monetary <span class="sc">~</span> gender, <span class="at">data =</span> idpos_cust, <span class="at">ratio =</span> <span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## 
 ##  F test to compare two variances
 ## 

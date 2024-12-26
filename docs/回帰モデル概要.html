@@ -22,11 +22,7 @@
 
 
 
-<<<<<<< HEAD
-<meta name="date" content="2024-07-02" />
-=======
-<meta name="date" content="2024-09-11" />
->>>>>>> parent of 0dc89dc (firstpush)
+<meta name="date" content="2024-12-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -69,7 +65,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -354,8 +350,8 @@ y=\beta_0+\beta_1x
 \hat{\beta}_1=\frac{\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y})}{\sum_{i=1}^n(x_i-\bar{x})^2}
 \]</span></p>
 <p>Rによる回帰分析は、<code>lm()</code>という関数（linear model）を用いて簡単に実行できる。この関数内では、<code>lm(y ~ x, data = df)</code> という要領で、説明変数と被説明変数を <span class="math inline">\(\sim\)</span>（チルダ）で繋いでモデルを指定する。例えば、先程の企業データにおける2019年の観測を用いて、従業員数と売上高の関係について分析するためには、以下のように分析を実行する。</p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="回帰モデル概要.html#cb189-1" tabindex="-1"></a>reg1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(sales <span class="sc">~</span> emp, <span class="at">data =</span> firmdata19)</span>
-<span id="cb189-2"><a href="回帰モデル概要.html#cb189-2" tabindex="-1"></a><span class="fu">coef</span>(reg1)</span></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="回帰モデル概要.html#cb190-1" tabindex="-1"></a>reg1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(sales <span class="sc">~</span> emp, <span class="at">data =</span> firmdata19)</span>
+<span id="cb190-2"><a href="回帰モデル概要.html#cb190-2" tabindex="-1"></a><span class="fu">coef</span>(reg1)</span></code></pre></div>
 <pre><code>## (Intercept)         emp 
 ## 22809.67863    58.13194</code></pre>
 <p>分析の結果、定数項（Intercept）は 22809.7 で、傾きは 58.1 であることがわかった。つまり、従業員数を一単位増やすと、売上高が58.1（百万円）増えることを示唆している。仮に従業員数が10人であれば、売上高の「予測値」は以下のように計算できる。</p>

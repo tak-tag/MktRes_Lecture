@@ -22,11 +22,7 @@
 
 
 
-<<<<<<< HEAD
-<meta name="date" content="2024-07-02" />
-=======
-<meta name="date" content="2024-09-11" />
->>>>>>> parent of 0dc89dc (firstpush)
+<meta name="date" content="2024-12-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -69,7 +65,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -334,15 +330,9 @@ Y=AL^\alpha K^\beta
 \ln Y_i = \ln A + \alpha\ln K_i+\beta\ln L_i + u_i
 \]</span></p>
 <p>このような回帰式をR上で構築することは難しくない。<code>lm()</code> 関数内のモデル定式化において、<code>log()</code> を用いれば良い。例えば、上の式を firmdata19 に当てはめて、<em>Y</em>を売上、<em>L</em>を人件費、<em>K</em> を有形固定資産とおいて、以下のようにモデルを推定してみる<a href="#fn14" class="footnote-ref" id="fnref14"><sup>14</sup></a>。</p>
-<<<<<<< HEAD
-<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="対数線形.html#cb231-1" tabindex="-1"></a>fit_prod <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(sales) <span class="sc">~</span> <span class="fu">log</span>(labor_cost) <span class="sc">+</span> <span class="fu">log</span>(ppent), <span class="at">data =</span> firmdata19)</span>
-<span id="cb231-2"><a href="対数線形.html#cb231-2" tabindex="-1"></a></span>
-<span id="cb231-3"><a href="対数線形.html#cb231-3" tabindex="-1"></a><span class="fu">summary</span>(fit_prod)</span></code></pre></div>
-=======
 <div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="対数線形.html#cb232-1" tabindex="-1"></a>fit_prod <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(sales) <span class="sc">~</span> <span class="fu">log</span>(labor_cost) <span class="sc">+</span> <span class="fu">log</span>(ppent), <span class="at">data =</span> firmdata19)</span>
 <span id="cb232-2"><a href="対数線形.html#cb232-2" tabindex="-1"></a></span>
 <span id="cb232-3"><a href="対数線形.html#cb232-3" tabindex="-1"></a><span class="fu">summary</span>(fit_prod)</span></code></pre></div>
->>>>>>> parent of 0dc89dc (firstpush)
 <pre><code>## 
 ## Call:
 ## lm(formula = log(sales) ~ log(labor_cost) + log(ppent), data = firmdata19)
@@ -395,10 +385,10 @@ Y=AL^\alpha K^\beta
 <div id="対数線形の推定と検定" class="section level3 hasAnchor" number="9.4.2">
 <h3><span class="header-section-number">9.4.2</span> 対数線形の推定と検定<a href="対数線形.html#対数線形の推定と検定" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>ここで、需要の価格弾力性に関する分析を実行するために、“price_data.csv” という人工データを用いる。このデータは製品の価格と需要量の情報を含んでいる。以下のようにデータを読み込み、分析を実行してほしい。</p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="対数線形.html#cb233-1" tabindex="-1"></a>price <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/price_data.csv&quot;</span>)</span>
-<span id="cb233-2"><a href="対数線形.html#cb233-2" tabindex="-1"></a></span>
-<span id="cb233-3"><a href="対数線形.html#cb233-3" tabindex="-1"></a>fit_q <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(q) <span class="sc">~</span> <span class="fu">log</span>(p), <span class="at">data =</span> price)</span>
-<span id="cb233-4"><a href="対数線形.html#cb233-4" tabindex="-1"></a><span class="fu">summary</span>(fit_q)</span></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="対数線形.html#cb234-1" tabindex="-1"></a>price <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/price_data.csv&quot;</span>)</span>
+<span id="cb234-2"><a href="対数線形.html#cb234-2" tabindex="-1"></a></span>
+<span id="cb234-3"><a href="対数線形.html#cb234-3" tabindex="-1"></a>fit_q <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(q) <span class="sc">~</span> <span class="fu">log</span>(p), <span class="at">data =</span> price)</span>
+<span id="cb234-4"><a href="対数線形.html#cb234-4" tabindex="-1"></a><span class="fu">summary</span>(fit_q)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = log(q) ~ log(p), data = price)
@@ -418,9 +408,9 @@ Y=AL^\alpha K^\beta
 ## Multiple R-squared:  0.1506, Adjusted R-squared:  0.1497 
 ## F-statistic: 176.9 on 1 and 998 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>分析の結果、<code>log(p)</code> の係数は負に有意であった。しかしここで、デフォルトで出力される検定結果の「帰無仮説」を思い出して欲しい。これは、係数が0か否かの検定を行っている。しかしながら、我々は係数が 1 より高いか、低いかに興味がある。そのため、<span class="math inline">\(\small H_0:\beta = 1\)</span>という帰無仮説による検定を採用すべきである。このような検定の実行には、色々とやり方はあるが、本書では <code>car</code>というパッケージの<code>linearHypothesis()</code> 関数 を用いる方法を紹介する。まず、以下のようにパッケージをインストールして欲しい。</p>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="対数線形.html#cb235-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;car&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="対数線形.html#cb236-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;car&quot;</span>)</span></code></pre></div>
 <p>そして、<code>linearHypothesis()</code>において、参照する分析結果と、着目する変数（の係数）とその値について入力することで、検定を行う。</p>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="対数線形.html#cb236-1" tabindex="-1"></a><span class="fu">library</span>(car)</span></code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="対数線形.html#cb237-1" tabindex="-1"></a><span class="fu">library</span>(car)</span></code></pre></div>
 <pre><code>## Loading required package: carData</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;car&#39;</code></pre>
@@ -430,7 +420,7 @@ Y=AL^\alpha K^\beta
 <pre><code>## The following object is masked from &#39;package:purrr&#39;:
 ## 
 ##     some</code></pre>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="対数線形.html#cb241-1" tabindex="-1"></a><span class="fu">linearHypothesis</span>(fit_q, <span class="fu">c</span>(<span class="st">&quot;log(p) = -1&quot;</span>)) </span></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="対数線形.html#cb242-1" tabindex="-1"></a><span class="fu">linearHypothesis</span>(fit_q, <span class="fu">c</span>(<span class="st">&quot;log(p) = -1&quot;</span>)) </span></code></pre></div>
 <pre><code>## Linear hypothesis test
 ## 
 ## Hypothesis:
